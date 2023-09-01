@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://tqg8duvjuik7"]
 
-[ext_resource type="TileSet" uid="uid://bx1rsqucrwm2i" path="res://resources/bg_tile_set.tres" id="1_enwxl"]
+[ext_resource type="TileSet" uid="uid://bx1rsqucrwm2i" path="res://assets/resources/bg_tile_set.tres" id="1_0t8t3"]
 
 [node name="Main" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = ExtResource("1_enwxl")
+tile_set = ExtResource("1_0t8t3")
 format = 2
