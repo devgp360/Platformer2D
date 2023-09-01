@@ -1,8 +1,9 @@
-[gd_scene format=3 uid="uid://tqg8duvjuik7"]
+[gd_scene load_steps=2 format=3 uid="uid://tqg8duvjuik7"]
+
+[ext_resource type="TileSet" uid="uid://bx1rsqucrwm2i" path="res://resources/bg_tile_set.tres" id="1_enwxl"]
 
 [node name="Main" type="Node2D"]
 
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Escena 2"
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_enwxl")
+format = 2

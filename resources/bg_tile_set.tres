@@ -1,0 +1,57 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bx1rsqucrwm2i"]
+
+[ext_resource type="Texture2D" uid="uid://b7takygm7xwpr" path="res://assets/treasure_hunters/palm_tree_island/sprites/terrain/terrain_(32x32).png" id="1_k7yxl"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ntfj"]
+texture = ExtResource("1_k7yxl")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+2:1/0 = 0
+1:1/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+4:0/0 = 0
+4:1/0 = 0
+4:2/0 = 0
+6:0/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+7:0/0 = 0
+9:0/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+10:0/0 = 0
+12:0/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+13:0/0 = 0
+15:0/0 = 0
+15:1/0 = 0
+16:1/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+4:4/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+7:4/0 = 0
+6:4/0 = 0
+9:3/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+10:3/0 = 0
+12:3/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+13:3/0 = 0
+15:3/0 = 0
+15:4/0 = 0
+16:4/0 = 0
+16:3/0 = 0
+
+[resource]
+sources/3 = SubResource("TileSetAtlasSource_7ntfj")
