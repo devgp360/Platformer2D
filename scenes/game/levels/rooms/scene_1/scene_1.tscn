@@ -193,24 +193,25 @@ texture = ExtResource("1_a12cs")
 
 [node name="ParallaxLayer1" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(1200, 0)
 
 [node name="Cloud" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer1"]
-position = Vector2(294, 85)
+position = Vector2(171, 83.004)
 scale = Vector2(4, 2.667)
 texture = SubResource("CompressedTexture2D_7drek")
 
 [node name="Cloud2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer1"]
-position = Vector2(670, 121)
+position = Vector2(547, 119.004)
 scale = Vector2(4, 2.667)
 texture = SubResource("CompressedTexture2D_7drek")
 
 [node name="Cloud3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer1"]
-position = Vector2(1072, 41)
+position = Vector2(949, 39.004)
 scale = Vector2(4, 2.667)
 texture = SubResource("CompressedTexture2D_7drek")
 
 [node name="Cloud4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer1"]
-position = Vector2(1334, 125)
+position = Vector2(1211, 123.004)
 scale = Vector2(4, 2.667)
 texture = SubResource("CompressedTexture2D_7drek")
 
