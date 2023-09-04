@@ -1,9 +1,9 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bx1rsqucrwm2i"]
 
-[ext_resource type="Texture2D" uid="uid://b7takygm7xwpr" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/terrain/terrain_(32x32).png" id="1_ht61c"]
+[ext_resource type="Texture2D" uid="uid://b7takygm7xwpr" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/terrain/terrain_(32x32).png" id="1_tvvix"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ntfj"]
-texture = ExtResource("1_ht61c")
+texture = ExtResource("1_tvvix")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
