@@ -1,6 +1,20 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bx1rsqucrwm2i"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://bx1rsqucrwm2i"]
 
 [ext_resource type="Texture2D" uid="uid://b7takygm7xwpr" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/terrain/terrain_(32x32).png" id="1_tvvix"]
+[ext_resource type="Texture2D" uid="uid://dpn0wm3iorpic" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/front_palm_trees/front_palm_bottom_and_grass_(32x32).png" id="1_wm1i3"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nlm5g"]
+texture = ExtResource("1_wm1i3")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ntfj"]
 texture = ExtResource("1_tvvix")
@@ -57,3 +71,4 @@ texture_region_size = Vector2i(32, 32)
 [resource]
 tile_size = Vector2i(32, 32)
 sources/3 = SubResource("TileSetAtlasSource_7ntfj")
+sources/2 = SubResource("TileSetAtlasSource_nlm5g")
