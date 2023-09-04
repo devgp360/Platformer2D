@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://maf7s1c6fyyp" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/chest/chest_close_04.png" id="10_2jg0w"]
 [ext_resource type="Texture2D" uid="uid://dcptpykdlp5rk" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/flag/flag_01.png" id="11_4ker5"]
 [ext_resource type="Texture2D" uid="uid://c8ml72h6eandi" path="res://assets/sprites/treasure_hunters/shooter_traps/sprites/cannon/cannon_hit/4.png" id="12_lbiwa"]
-[ext_resource type="Script" path="res://scenes/game/levels/rooms/scene_1/Camera2D.gd" id="13_tat1o"]
+[ext_resource type="Script" path="res://scenes/game/levels/rooms/scene_1/camera.gd" id="13_jncem"]
 [ext_resource type="Texture2D" uid="uid://ntgt51twdxdm" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/water_reflect_medium_03.png" id="13_u3w7t"]
 [ext_resource type="Texture2D" uid="uid://bqmy4jqv4pp6j" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/back_palm_trees/back_palm_tree_right_02.png" id="14_n2amn"]
 [ext_resource type="Texture2D" uid="uid://dxflqrst5dy31" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/captain_clown_nose/captain_clown_nose_without_sword/01-idle/idle_01.png" id="14_njevs"]
@@ -177,7 +177,7 @@ texture = ExtResource("5_5343a")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(285, 346)
-script = ExtResource("13_tat1o")
+script = ExtResource("13_jncem")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
