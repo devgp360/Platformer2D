@@ -165,3 +165,4 @@ position = Vector2(344, 391)
 zoom = Vector2(1.75, 1.75)
 
 [node name="MainCharacter" parent="." instance=ExtResource("15_ooixx")]
+position = Vector2(203, 454)

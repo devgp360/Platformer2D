@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ca3ueo0yewjov"]
+[gd_scene load_steps=10 format=3 uid="uid://ca3ueo0yewjov"]
 
 [ext_resource type="Script" path="res://scenes/game/characters/main_character/main_character.gd" id="1_ty3dm"]
 [ext_resource type="Texture2D" uid="uid://dxflqrst5dy31" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/captain_clown_nose/captain_clown_nose_without_sword/01-idle/idle_01.png" id="2_dghf6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bqhc3cxnlse2b" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/captain_clown_nose/captain_clown_nose_without_sword/01-idle/idle_03.png" id="4_g25du"]
 [ext_resource type="Texture2D" uid="uid://c8die1kuusyrb" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/captain_clown_nose/captain_clown_nose_without_sword/01-idle/idle_04.png" id="5_op2l2"]
 [ext_resource type="Texture2D" uid="uid://ds4p0uhg4fyws" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/captain_clown_nose/captain_clown_nose_without_sword/01-idle/idle_05.png" id="6_mk8qw"]
+[ext_resource type="Script" path="res://scenes/game/characters/main_character/main_character_movement.gd" id="7_fm4k8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sohxe"]
 animations = [{
@@ -30,16 +31,21 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_68dfa"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ve7ee"]
+size = Vector2(20, 26)
 
 [node name="MainCharacter" type="CharacterBody2D"]
-position = Vector2(300, 600)
 script = ExtResource("1_ty3dm")
 
 [node name="Animation" type="AnimatedSprite2D" parent="."]
-position = Vector2(-18, -100)
 sprite_frames = SubResource("SpriteFrames_sohxe")
 frame_progress = 0.364365
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_68dfa")
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_ve7ee")
+
+[node name="MainCharacterMovement" type="Node2D" parent="." node_paths=PackedStringArray("character", "main_animation")]
+script = ExtResource("7_fm4k8")
+character = NodePath("..")
+main_animation = NodePath("../Animation")
