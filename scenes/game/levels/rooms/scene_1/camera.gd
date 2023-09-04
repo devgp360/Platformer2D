@@ -10,7 +10,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if (self.position.x < 0 and _direction == 'left') || (self.position.x < 1500 and _direction == 'right'):
+	if (self.position.x < 0 and _direction == 'left') || (
+		self.position.x < 1500 and _direction == 'right'
+	):
 		_direction = 'right'
 	elif self.position.x > 1500 and _direction == 'right':
 		_direction = 'left'
