@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://tqg8duvjuik7"]
+[gd_scene load_steps=16 format=3 uid="uid://tqg8duvjuik7"]
 
 [ext_resource type="TileSet" uid="uid://bx1rsqucrwm2i" path="res://assets/resources/bg_tile_set.tres" id="1_0t8t3"]
 [ext_resource type="Texture2D" uid="uid://cg6wkkuni8aq8" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/bg_image.png" id="1_xttku"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bcil4n46byhj5" path="res://scenes/game/levels/objects/back_palm_tree/back_palm_tree.tscn" id="13_uwpfu"]
 [ext_resource type="Texture2D" uid="uid://bf80xyf45y2wk" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/blue_diamond/02.png" id="14_te0nb"]
 [ext_resource type="PackedScene" uid="uid://c2nps502udtd6" path="res://scenes/game/levels/objects/front_palm_tree/front_palm_tree.tscn" id="14_uwyh7"]
+[ext_resource type="PackedScene" uid="uid://ca3ueo0yewjov" path="res://scenes/game/characters/main_character/main_character.tscn" id="15_ooixx"]
 
 [node name="Main" type="Node2D"]
 
@@ -162,3 +163,5 @@ texture = ExtResource("14_te0nb")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(344, 391)
 zoom = Vector2(1.75, 1.75)
+
+[node name="MainCharacter" parent="." instance=ExtResource("15_ooixx")]

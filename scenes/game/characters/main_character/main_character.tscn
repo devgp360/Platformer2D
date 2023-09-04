@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://ca3ueo0yewjov"]
+
+[ext_resource type="Script" path="res://scenes/game/characters/main_character/main_character.gd" id="1_ty3dm"]
+[ext_resource type="Texture2D" uid="uid://dxflqrst5dy31" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/captain_clown_nose/captain_clown_nose_without_sword/01-idle/idle_01.png" id="2_dghf6"]
+[ext_resource type="Texture2D" uid="uid://blgvtq8v7xeg1" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/captain_clown_nose/captain_clown_nose_without_sword/01-idle/idle_02.png" id="3_rorqg"]
+[ext_resource type="Texture2D" uid="uid://bqhc3cxnlse2b" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/captain_clown_nose/captain_clown_nose_without_sword/01-idle/idle_03.png" id="4_g25du"]
+[ext_resource type="Texture2D" uid="uid://c8die1kuusyrb" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/captain_clown_nose/captain_clown_nose_without_sword/01-idle/idle_04.png" id="5_op2l2"]
+[ext_resource type="Texture2D" uid="uid://ds4p0uhg4fyws" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/captain_clown_nose/captain_clown_nose_without_sword/01-idle/idle_05.png" id="6_mk8qw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sohxe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_dghf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rorqg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_g25du")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_op2l2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_mk8qw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_68dfa"]
+
+[node name="MainCharacter" type="CharacterBody2D"]
+position = Vector2(300, 600)
+script = ExtResource("1_ty3dm")
+
+[node name="Animation" type="AnimatedSprite2D" parent="."]
+position = Vector2(-18, -100)
+sprite_frames = SubResource("SpriteFrames_sohxe")
+frame_progress = 0.364365
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_68dfa")
