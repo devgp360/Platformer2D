@@ -1,0 +1,50 @@
+[gd_scene load_steps=11 format=3 uid="uid://c2nps502udtd6"]
+
+[ext_resource type="Texture2D" uid="uid://8awnoujdi0oo" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/front_palm_trees/front_palm_tree_top_01.png" id="1_gvuxi"]
+[ext_resource type="Texture2D" uid="uid://ch7ur25p23xx4" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/front_palm_trees/front_palm_tree_top_02.png" id="2_ttu7x"]
+[ext_resource type="Texture2D" uid="uid://c7awxy5b8efvt" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/front_palm_trees/front_palm_tree_top_03.png" id="3_v4n6e"]
+[ext_resource type="Texture2D" uid="uid://d2pf6crc8w4ig" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/front_palm_trees/front_palm_tree_top_04.png" id="4_q2qjq"]
+[ext_resource type="Script" path="res://scenes/game/levels/objects/front_palm_tree/front_palm_tree.gd" id="5_kc2f4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qyc5"]
+atlas = ExtResource("1_gvuxi")
+region = Rect2(0, 0, 39, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w58bq"]
+atlas = ExtResource("2_ttu7x")
+region = Rect2(0, 0, 39, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4ry0"]
+atlas = ExtResource("3_v4n6e")
+region = Rect2(0, 0, 39, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v286r"]
+atlas = ExtResource("4_q2qjq")
+region = Rect2(0, 0, 39, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p8vj6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qyc5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w58bq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4ry0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v286r")
+}],
+"loop": true,
+"name": &"idle_front",
+"speed": 8.0
+}]
+
+[node name="FrontPalmTree" type="AnimatedSprite2D"]
+position = Vector2(623, 432)
+sprite_frames = SubResource("SpriteFrames_p8vj6")
+animation = &"idle_front"
+frame_progress = 0.626995
+script = ExtResource("5_kc2f4")
