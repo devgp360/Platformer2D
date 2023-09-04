@@ -1,0 +1,122 @@
+[gd_scene load_steps=27 format=3 uid="uid://bcil4n46byhj5"]
+
+[ext_resource type="Script" path="res://scenes/game/levels/objects/back_palm_tree/back_palm_tree.gd" id="1_bh1tx"]
+[ext_resource type="Texture2D" uid="uid://ckuup75600332" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/back_palm_trees/back_palm_tree_left_01.png" id="1_gt3vx"]
+[ext_resource type="Texture2D" uid="uid://dd3tqgwlrgcoa" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/back_palm_trees/back_palm_tree_left_02.png" id="2_lcb0m"]
+[ext_resource type="Texture2D" uid="uid://p13rird35c8u" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/back_palm_trees/back_palm_tree_left_03.png" id="3_4m4ka"]
+[ext_resource type="Texture2D" uid="uid://dfomglkgj563b" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/back_palm_trees/back_palm_tree_left_04.png" id="4_7mnln"]
+[ext_resource type="Texture2D" uid="uid://bs8l41know8hu" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/back_palm_trees/back_palm_tree_regular_01.png" id="6_gngq0"]
+[ext_resource type="Texture2D" uid="uid://ba1cejfqvp520" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/back_palm_trees/back_palm_tree_regular_02.png" id="7_vsis7"]
+[ext_resource type="Texture2D" uid="uid://b2yyy26ooxgvv" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/back_palm_trees/back_palm_tree_regular_03.png" id="8_u06qa"]
+[ext_resource type="Texture2D" uid="uid://dpy5n2huytbj" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/back_palm_trees/back_palm_tree_regular_04.png" id="9_v4r15"]
+[ext_resource type="Texture2D" uid="uid://c4truvubnc8w5" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/back_palm_trees/back_palm_tree_right_01.png" id="10_iqnyq"]
+[ext_resource type="Texture2D" uid="uid://bqmy4jqv4pp6j" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/back_palm_trees/back_palm_tree_right_02.png" id="11_nac5l"]
+[ext_resource type="Texture2D" uid="uid://igpjhy0hbkol" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/back_palm_trees/back_palm_tree_right_03.png" id="12_moamy"]
+[ext_resource type="Texture2D" uid="uid://i3f5i82nuowa" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/back_palm_trees/back_palm_tree_right_04.png" id="13_tp4cf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kygsy"]
+atlas = ExtResource("1_gt3vx")
+region = Rect2(0, 0, 51, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwilj"]
+atlas = ExtResource("2_lcb0m")
+region = Rect2(0, 0, 51, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqp2l"]
+atlas = ExtResource("3_4m4ka")
+region = Rect2(0, 0, 51, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyotq"]
+atlas = ExtResource("4_7mnln")
+region = Rect2(0, 0, 51, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0fkt"]
+atlas = ExtResource("6_gngq0")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6awv6"]
+atlas = ExtResource("7_vsis7")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8e4cr"]
+atlas = ExtResource("8_u06qa")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_or3nq"]
+atlas = ExtResource("9_v4r15")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tye8e"]
+atlas = ExtResource("10_iqnyq")
+region = Rect2(0, 0, 52, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yj4mf"]
+atlas = ExtResource("11_nac5l")
+region = Rect2(0, 0, 52, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ey3i4"]
+atlas = ExtResource("12_moamy")
+region = Rect2(0, 0, 52, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8m76q"]
+atlas = ExtResource("13_tp4cf")
+region = Rect2(0, 0, 52, 53)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1djo4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kygsy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwilj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqp2l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyotq")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0fkt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6awv6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8e4cr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_or3nq")
+}],
+"loop": true,
+"name": &"idle_regular",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tye8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yj4mf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ey3i4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8m76q")
+}],
+"loop": true,
+"name": &"idle_right",
+"speed": 8.0
+}]
+
+[node name="BackPalmTree" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_1djo4")
+animation = &"idle_left"
+script = ExtResource("1_bh1tx")
