@@ -2,14 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://cg6wkkuni8aq8" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/bg_image.png" id="1_a12cs"]
 [ext_resource type="TileSet" uid="uid://bx1rsqucrwm2i" path="res://assets/resources/bg_tile_set.tres" id="1_atorb"]
+[ext_resource type="PackedScene" uid="uid://c2nps502udtd6" path="res://scenes/game/levels/objects/front_palm_tree/front_palm_tree.tscn" id="4_6u8cq"]
 [ext_resource type="Texture2D" uid="uid://cmlgr3i0h1klc" path="res://assets/sprites/treasure_hunters/the_crusty_crew/sprites/crabby/01_idle/idle_01.png" id="5_5343a"]
 [ext_resource type="Texture2D" uid="uid://bmn2hx61jlm7n" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/gold_coin/01.png" id="7_lg7xm"]
-[ext_resource type="Texture2D" uid="uid://8awnoujdi0oo" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/front_palm_trees/front_palm_tree_top_01.png" id="8_dqm30"]
 [ext_resource type="Texture2D" uid="uid://5va2c11ojds3" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/spikes/spikes.png" id="9_nulv1"]
 [ext_resource type="Texture2D" uid="uid://maf7s1c6fyyp" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/chest/chest_close_04.png" id="10_2jg0w"]
 [ext_resource type="Texture2D" uid="uid://dcptpykdlp5rk" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/flag/flag_01.png" id="11_4ker5"]
 [ext_resource type="Texture2D" uid="uid://c8ml72h6eandi" path="res://assets/sprites/treasure_hunters/shooter_traps/sprites/cannon/cannon_hit/4.png" id="12_lbiwa"]
-[ext_resource type="Texture2D" uid="uid://dou8unl7cgc0j" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/green_bottle/01.png" id="13_tdixc"]
+[ext_resource type="Script" path="res://scenes/game/levels/rooms/scene_1/Camera2D.gd" id="13_tat1o"]
 [ext_resource type="Texture2D" uid="uid://ntgt51twdxdm" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/water_reflect_medium_03.png" id="13_u3w7t"]
 [ext_resource type="Texture2D" uid="uid://bqmy4jqv4pp6j" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/back_palm_trees/back_palm_tree_right_02.png" id="14_n2amn"]
 [ext_resource type="Texture2D" uid="uid://dxflqrst5dy31" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/captain_clown_nose/captain_clown_nose_without_sword/01-idle/idle_01.png" id="14_njevs"]
@@ -18,11 +18,11 @@
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dxm3p"]
 load_path = "res://.godot/imported/small_cloud_1.png-40532304be8a8e58b358963bfcb15f67.ctex"
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7drek"]
-load_path = "res://.godot/imported/small_cloud_1.png-40532304be8a8e58b358963bfcb15f67.ctex"
-
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_d1lya"]
 load_path = "res://.godot/imported/small_cloud_3.png-2824e524f4818e08cf60700642ab74ab.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7drek"]
+load_path = "res://.godot/imported/small_cloud_1.png-40532304be8a8e58b358963bfcb15f67.ctex"
 
 [node name="Main" type="Node2D"]
 
@@ -40,45 +40,91 @@ layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(1179648, 65539, 1, 1245184, 65539, 1, 1179649, 65539, 1, 1245185, 65539, 1, 1179650, 65539, 1, 1245186, 65539, 1, 1179651, 65539, 0, 1245187, 65539, 1, 1179652, 65539, 0, 1245188, 65539, 1, 1179653, 65539, 0, 1245189, 65539, 1, 1179654, 65539, 0, 1245190, 65539, 1, 1245200, 65539, 1, 1245201, 65539, 1, 1245202, 65539, 1, 1245203, 65539, 1, 1245204, 65539, 1, 1245205, 65539, 1, 1179673, 65539, 0, 1245209, 65539, 1, 1179674, 65539, 0, 1245210, 65539, 1, 1179675, 65539, 0, 1245211, 65539, 1, 1179676, 65539, 0, 1245212, 65539, 1, 1179677, 65539, 0, 1245213, 65539, 1, 1179678, 65539, 0, 1245214, 65539, 1, 1179679, 65539, 0, 1245215, 65539, 1, 1179680, 65539, 0, 1245216, 65539, 1, 1179681, 65539, 0, 1245217, 65539, 1, 1179682, 65539, 0, 1245218, 65539, 1, 1179683, 65539, 0, 1245219, 65539, 1, 1179684, 65539, 1, 1245220, 65539, 1, 1179685, 65539, 1, 1245221, 65539, 1, 1179686, 65539, 1, 1245222, 65539, 1, 851987, 983043, 3, 917523, 65539, 1, 851988, 589827, 3, 917524, 65539, 1, 851989, 1048579, 3, 917525, 65539, 1, 589852, 3, 4, 589853, 65539, 4, 589854, 65539, 4, 589855, 65539, 4, 589856, 131075, 4, 983074, 262147, 1, 1048610, 262147, 1, 1114146, 262147, 1, 852002, 262147, 1, 917538, 262147, 1, 720930, 262147, 0, 786466, 262147, 1, 1310720, 65539, 1, 1310721, 65539, 1, 1310722, 65539, 1, 1310723, 65539, 1, 1310724, 65539, 1, 1310725, 65539, 1, 1310726, 65539, 1, 1310719, 65539, 1, 1376255, 65539, 1, 1245183, 65539, 1, 1245182, 65539, 1, 1310718, 65539, 1, 1376254, 65539, 1, 1310736, 65539, 1, 1310737, 65539, 1, 1310738, 65539, 1, 1310739, 65539, 1, 1310740, 65539, 1, 1310741, 65539, 1, 1310742, 65539, 1, 1310743, 65539, 1, 1310744, 65539, 1, 1310745, 65539, 1, 1310746, 65539, 1, 1310747, 65539, 1, 1310748, 65539, 1, 1310749, 65539, 1, 1310750, 65539, 1, 1310751, 65539, 1, 1310752, 65539, 1, 1310753, 65539, 1, 1310754, 65539, 1, 1310755, 65539, 1, 1310756, 65539, 1, 1310757, 65539, 1, 1310758, 65539, 1, 1179658, 65539, 0, 1245194, 65539, 1, 1179657, 65539, 0, 1245193, 65539, 1, 1245195, 65539, 1, 1245196, 65539, 1, 1310729, 65539, 1, 1310730, 65539, 1, 1310731, 65539, 1, 1310732, 65539, 1, 1048587, 3, 0, 1048588, 65539, 1, 1114124, 65539, 1, 1114123, 3, 1, 983052, 3, 0, 983053, 65539, 0, 983054, 65539, 0, 1048589, 65539, 1, 1048590, 65539, 1, 1114126, 65539, 1, 1179662, 65539, 1, 1245198, 65539, 1, 1310734, 65539, 1, 1310733, 65539, 1, 1245197, 65539, 1, 1114125, 65539, 1, 1179659, 65539, 1, 1179661, 65539, 1, 1179660, 65539, 1, 983055, 65539, 0, 983056, 65539, 0, 983057, 65539, 0, 1048591, 65539, 1, 1048592, 65539, 1, 1048593, 65539, 1, 1048594, 65539, 1, 1048595, 65539, 1, 1048596, 65539, 1, 1048597, 65539, 1, 1114133, 65539, 1, 1179669, 65539, 1, 1179668, 65539, 1, 1179667, 65539, 1, 1179666, 65539, 1, 1179665, 65539, 1, 1179664, 65539, 1, 1179663, 65539, 1, 1114127, 65539, 1, 1114128, 65539, 1, 1114129, 65539, 1, 1114130, 65539, 1, 1114131, 65539, 1, 1114132, 65539, 1, 1245199, 65539, 1, 1310735, 65539, 1, 983058, 65539, 1, 983059, 65539, 1, 983060, 65539, 1, 983061, 65539, 1, 917537, 983043, 3, 917536, 983043, 3, 983039, 65539, 0, 917504, 65539, 0, 917505, 65539, 0, 1048574, 65539, 1, 1048575, 65539, 1, 983040, 65539, 1, 983041, 65539, 1, 1048577, 65539, 1, 1114113, 65539, 1, 1179647, 65539, 1, 1179646, 65539, 1, 1179645, 65539, 1, 1114110, 65539, 1, 1114111, 65539, 1, 1048576, 65539, 1, 1114112, 65539, 1, 983038, 65539, 0, 917506, 131075, 0, 983042, 131075, 1, 1048578, 131075, 1, 1114114, 131075, 1, 917529, 983043, 3, 917530, 983043, 3, 917531, 262147, 0, 1114147, 262147, 1, 1048611, 262147, 1, 983075, 262147, 1, 917539, 262147, 1, 852003, 262147, 1, 852004, 65539, 1, 786468, 65539, 1, 720932, 65539, 1, 655396, 65539, 1, 589860, 65539, 1, 524324, 65539, 1, 458788, 65539, 1, 393252, 65539, 1, 393251, 262147, 1, 327715, 262147, 1, 262179, 3, 0, 458787, 262147, 1, 524323, 262147, 1, 589859, 262147, 1, 655395, 262147, 1, 720931, 262147, 1, 786467, 262147, 1, 262180, 65539, 0, 327716, 65539, 1, 917540, 65539, 1, 983076, 65539, 1, 1048612, 65539, 1, 1114148, 65539, 1, 917522, 3, 0, 983044, 65539, 4, 983045, 65539, 4, 983046, 65539, 4, 524296, 262147, 4, 720910, 3, 1, 720911, 65539, 1, 720912, 65539, 4, 917518, 3, 1, 851982, 3, 1, 786446, 3, 1, 655374, 3, 1, 589837, 3, 1, 524301, 3, 1, 458764, 3, 0, 393229, 3, 0, 393230, 65539, 0, 393231, 131075, 0, 458767, 131075, 1, 524303, 131075, 1, 589839, 131075, 1, 655375, 131075, 1, 786447, 131075, 1, 851983, 131075, 1, 917519, 131075, 1, 589838, 65539, 1, 524302, 65539, 1, 458766, 65539, 1, 458765, 65539, 1, 851979, 262147, 4, 786441, 262147, 4, 786440, 262147, 4, 655370, 262147, 4, 655369, 262147, 4, 786439, 262147, 4, 524295, 262147, 4, 393225, 262147, 4, 393226, 262147, 4, 327704, 3, 4, 327706, 131075, 4, 720913, 131075, 4, 327705, 65539, 4, 327698, 3, 4, 327699, 65539, 4, 327700, 131075, 4)
 
-[node name="Objects" type="Node2D" parent="."]
+[node name="Enemies" type="Node2D" parent="."]
 
-[node name="Crabby" type="Sprite2D" parent="Objects"]
+[node name="Crabby" type="Sprite2D" parent="Enemies"]
 position = Vector2(1018, 276)
 texture = ExtResource("5_5343a")
 
-[node name="Crabby2" type="Sprite2D" parent="Objects"]
+[node name="Crabby2" type="Sprite2D" parent="Enemies"]
 position = Vector2(241, 373)
 texture = ExtResource("5_5343a")
 
-[node name="Icon" type="Sprite2D" parent="Objects"]
+[node name="CollectableObjects" type="Node2D" parent="."]
+
+[node name="Icon" type="Sprite2D" parent="CollectableObjects"]
 position = Vector2(915, 266)
 texture = ExtResource("7_lg7xm")
 
-[node name="Icon2" type="Sprite2D" parent="Objects"]
+[node name="Icon2" type="Sprite2D" parent="CollectableObjects"]
 position = Vector2(954, 266)
 texture = ExtResource("7_lg7xm")
 
-[node name="Icon3" type="Sprite2D" parent="Objects"]
+[node name="Icon3" type="Sprite2D" parent="CollectableObjects"]
 position = Vector2(933, 266)
 texture = ExtResource("7_lg7xm")
 
+[node name="Diamond" type="Sprite2D" parent="CollectableObjects"]
+position = Vector2(803, 149)
+texture = ExtResource("15_6keb8")
+
+[node name="Diamond2" type="Sprite2D" parent="CollectableObjects"]
+position = Vector2(839, 149)
+texture = ExtResource("15_6keb8")
+
+[node name="Diamond3" type="Sprite2D" parent="CollectableObjects"]
+position = Vector2(821, 149)
+texture = ExtResource("15_6keb8")
+
+[node name="WaterReflect" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="WaterReflect"]
+z_index = -1
+position = Vector2(179, 477)
+scale = Vector2(5, 5)
+texture = ExtResource("13_u3w7t")
+
+[node name="Sprite2D2" type="Sprite2D" parent="WaterReflect"]
+z_index = -1
+position = Vector2(383, 516)
+scale = Vector2(5, 5)
+texture = ExtResource("13_u3w7t")
+
+[node name="Sprite2D3" type="Sprite2D" parent="WaterReflect"]
+z_index = -1
+position = Vector2(738, 544)
+scale = Vector2(5, 5)
+texture = ExtResource("13_u3w7t")
+
+[node name="Sprite2D4" type="Sprite2D" parent="WaterReflect"]
+z_index = -1
+position = Vector2(949, 464)
+scale = Vector2(5, 5)
+texture = ExtResource("13_u3w7t")
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="PalmStatic" type="Node2D" parent="Objects"]
+position = Vector2(207, 12)
+
+[node name="Palm" type="Sprite2D" parent="Objects/PalmStatic"]
+z_index = -1
+position = Vector2(894, 122)
+texture = ExtResource("14_n2amn")
+
 [node name="FrontPalm" type="Node2D" parent="Objects"]
 
-[node name="FrontPalm" type="Sprite2D" parent="Objects/FrontPalm"]
-position = Vector2(16, 400)
-texture = ExtResource("8_dqm30")
-
-[node name="FrontPalm3" type="Sprite2D" parent="Objects/FrontPalm"]
-position = Vector2(1103, 305)
-texture = ExtResource("8_dqm30")
-
-[node name="FrontPalm4" type="Sprite2D" parent="Objects/FrontPalm"]
-position = Vector2(911, 536)
-texture = ExtResource("8_dqm30")
-
-[node name="FrontPalm6" type="Sprite2D" parent="Objects/FrontPalm"]
+[node name="FrontPalmTree" parent="Objects/FrontPalm" instance=ExtResource("4_6u8cq")]
 position = Vector2(623, 376)
-texture = ExtResource("8_dqm30")
+
+[node name="FrontPalmTree2" parent="Objects/FrontPalm" instance=ExtResource("4_6u8cq")]
+position = Vector2(15, 408)
+
+[node name="FrontPalmTree3" parent="Objects/FrontPalm" instance=ExtResource("4_6u8cq")]
+position = Vector2(1103, 312)
+
+[node name="FrontPalmTree4" parent="Objects/FrontPalm" instance=ExtResource("4_6u8cq")]
+position = Vector2(239, 216)
 
 [node name="Spikes" type="Node2D" parent="Objects"]
 
@@ -121,71 +167,17 @@ texture = ExtResource("12_lbiwa")
 position = Vector2(1064, 435)
 texture = ExtResource("12_lbiwa")
 
-[node name="WaterReflect" type="Node2D" parent="Objects"]
-
-[node name="Sprite2D" type="Sprite2D" parent="Objects/WaterReflect"]
-z_index = -1
-position = Vector2(179, 477)
-scale = Vector2(5, 5)
-texture = ExtResource("13_u3w7t")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Objects/WaterReflect"]
-z_index = -1
-position = Vector2(383, 516)
-scale = Vector2(5, 5)
-texture = ExtResource("13_u3w7t")
-
-[node name="Sprite2D3" type="Sprite2D" parent="Objects/WaterReflect"]
-z_index = -1
-position = Vector2(738, 544)
-scale = Vector2(5, 5)
-texture = ExtResource("13_u3w7t")
-
-[node name="Sprite2D4" type="Sprite2D" parent="Objects/WaterReflect"]
-z_index = -1
-position = Vector2(949, 464)
-scale = Vector2(5, 5)
-texture = ExtResource("13_u3w7t")
-
 [node name="Captain" type="Sprite2D" parent="Objects"]
 position = Vector2(43, 436)
 texture = ExtResource("14_njevs")
-
-[node name="Poison" type="Sprite2D" parent="Objects"]
-position = Vector2(10, 88)
-texture = ExtResource("13_tdixc")
-
-[node name="Palm" type="Node2D" parent="Objects"]
-position = Vector2(207, 12)
-
-[node name="Sprite2D" type="Sprite2D" parent="Objects/Palm"]
-z_index = -1
-position = Vector2(894, 122)
-texture = ExtResource("14_n2amn")
 
 [node name="Crabby3" type="Sprite2D" parent="Objects"]
 position = Vector2(628, 149)
 texture = ExtResource("5_5343a")
 
-[node name="Diamond" type="Sprite2D" parent="Objects"]
-position = Vector2(803, 149)
-texture = ExtResource("15_6keb8")
-
-[node name="Diamond2" type="Sprite2D" parent="Objects"]
-position = Vector2(839, 149)
-texture = ExtResource("15_6keb8")
-
-[node name="Diamond3" type="Sprite2D" parent="Objects"]
-position = Vector2(821, 149)
-texture = ExtResource("15_6keb8")
-
-[node name="Tree" type="Sprite2D" parent="Objects"]
-position = Vector2(239, 215)
-texture = ExtResource("8_dqm30")
-
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(291, 470)
-zoom = Vector2(1.75, 1.75)
+position = Vector2(285, 346)
+script = ExtResource("13_tat1o")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -200,24 +192,27 @@ scale = Vector2(3.07552, 5.17188)
 texture = ExtResource("1_a12cs")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.1, 0.1)
+motion_scale = Vector2(0.3, 0.3)
 motion_mirroring = Vector2(1200, 0)
 
 [node name="Cloud" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(877, 263)
-scale = Vector2(8, 5.333)
+position = Vector2(883, 197)
+scale = Vector2(6, 4)
 texture = SubResource("CompressedTexture2D_dxm3p")
 
-[node name="Cloud2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2(284, 345)
-scale = Vector2(6, 4)
-texture = SubResource("CompressedTexture2D_7drek")
-
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.1, 0.1)
-motion_mirroring = Vector2(1000, 0)
+motion_scale = Vector2(0.6, 0.6)
+motion_mirroring = Vector2(1200, 0)
 
 [node name="Cloud" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
-position = Vector2(331, 127.203)
-scale = Vector2(6, 6.486)
+position = Vector2(325, 297)
+scale = Vector2(4, 4.324)
 texture = SubResource("CompressedTexture2D_d1lya")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+
+[node name="Cloud" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2(294, 85)
+scale = Vector2(4, 2.667)
+texture = SubResource("CompressedTexture2D_7drek")
