@@ -15,14 +15,14 @@
 [ext_resource type="Texture2D" uid="uid://dxflqrst5dy31" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/captain_clown_nose/captain_clown_nose_without_sword/01-idle/idle_01.png" id="14_njevs"]
 [ext_resource type="Texture2D" uid="uid://dag1d05f4evdq" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/green_diamond/01.png" id="15_6keb8"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7drek"]
+load_path = "res://.godot/imported/small_cloud_1.png-40532304be8a8e58b358963bfcb15f67.ctex"
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dxm3p"]
 load_path = "res://.godot/imported/small_cloud_1.png-40532304be8a8e58b358963bfcb15f67.ctex"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_d1lya"]
 load_path = "res://.godot/imported/small_cloud_3.png-2824e524f4818e08cf60700642ab74ab.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7drek"]
-load_path = "res://.godot/imported/small_cloud_1.png-40532304be8a8e58b358963bfcb15f67.ctex"
 
 [node name="Main" type="Node2D"]
 
@@ -191,6 +191,29 @@ position = Vector2(576, 320)
 scale = Vector2(3.07552, 5.17188)
 texture = ExtResource("1_a12cs")
 
+[node name="ParallaxLayer1" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+
+[node name="Cloud" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer1"]
+position = Vector2(294, 85)
+scale = Vector2(4, 2.667)
+texture = SubResource("CompressedTexture2D_7drek")
+
+[node name="Cloud2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer1"]
+position = Vector2(670, 121)
+scale = Vector2(4, 2.667)
+texture = SubResource("CompressedTexture2D_7drek")
+
+[node name="Cloud3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer1"]
+position = Vector2(1072, 41)
+scale = Vector2(4, 2.667)
+texture = SubResource("CompressedTexture2D_7drek")
+
+[node name="Cloud4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer1"]
+position = Vector2(1334, 125)
+scale = Vector2(4, 2.667)
+texture = SubResource("CompressedTexture2D_7drek")
+
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.3, 0.3)
 motion_mirroring = Vector2(1200, 0)
@@ -200,19 +223,26 @@ position = Vector2(883, 197)
 scale = Vector2(6, 4)
 texture = SubResource("CompressedTexture2D_dxm3p")
 
+[node name="Cloud2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(367, 245)
+scale = Vector2(6, 4)
+texture = SubResource("CompressedTexture2D_dxm3p")
+
+[node name="Cloud3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(1013, 311)
+scale = Vector2(6, 4)
+texture = SubResource("CompressedTexture2D_dxm3p")
+
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.6, 0.6)
 motion_mirroring = Vector2(1200, 0)
 
 [node name="Cloud" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
-position = Vector2(325, 297)
+position = Vector2(249, 373)
 scale = Vector2(4, 4.324)
 texture = SubResource("CompressedTexture2D_d1lya")
 
-[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.1, 0.1)
-
-[node name="Cloud" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
-position = Vector2(294, 85)
-scale = Vector2(4, 2.667)
-texture = SubResource("CompressedTexture2D_7drek")
+[node name="Cloud2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(725, 303)
+scale = Vector2(4, 4.324)
+texture = SubResource("CompressedTexture2D_d1lya")
