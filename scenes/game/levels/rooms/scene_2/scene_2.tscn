@@ -1,9 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://tqg8duvjuik7"]
+[gd_scene load_steps=6 format=3 uid="uid://tqg8duvjuik7"]
 
 [ext_resource type="TileSet" uid="uid://bx1rsqucrwm2i" path="res://assets/resources/bg_tile_set.tres" id="1_0t8t3"]
+[ext_resource type="Texture2D" uid="uid://cg6wkkuni8aq8" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/bg_image.png" id="1_xttku"]
+[ext_resource type="Texture2D" uid="uid://c8apilaqosli4" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/additional_sky.png" id="2_qll5i"]
+[ext_resource type="Texture2D" uid="uid://xjmch2w77hf8" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/additional_water.png" id="3_l8cec"]
+[ext_resource type="Texture2D" uid="uid://5va2c11ojds3" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/spikes/spikes.png" id="5_6p3ud"]
 
 [node name="Main" type="Node2D"]
 
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(613.5, 391.5)
+scale = Vector2(3.23177, 2.42969)
+texture = ExtResource("1_xttku")
+
+[node name="Sky" type="Sprite2D" parent="Background"]
+position = Vector2(0.232052, -111.756)
+scale = Vector2(11.9855, 3.21625)
+texture = ExtResource("2_qll5i")
+
+[node name="Water" type="Sprite2D" parent="Background"]
+position = Vector2(0.199814, 85.0161)
+scale = Vector2(12.0068, 1.36174)
+texture = ExtResource("3_l8cec")
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_0t8t3")
+cell_quadrant_size = 32
 format = 2
+layer_0/tile_data = PackedInt32Array(1114115, 65539, 0, 1114116, 65539, 0, 1114117, 65539, 0, 1114118, 65539, 0, 1114119, 65539, 0, 1048584, 3, 1, 983048, 983043, 3, 983049, 65539, 0, 983050, 65539, 0, 917515, 3, 1, 851979, 983043, 3, 851980, 65539, 0, 851981, 1048579, 3, 917517, 131075, 1, 1114120, 458755, 1, 983053, 393219, 1, 983051, 458755, 1, 983054, 65539, 0, 983055, 65539, 0, 983056, 65539, 0, 983057, 65539, 0, 983058, 65539, 0, 983059, 65539, 0, 983060, 65539, 0, 917525, 3, 0, 983061, 458755, 1, 917526, 65539, 0, 917527, 458755, 1, 851991, 3, 0, 851992, 458755, 1, 786456, 3, 1, 720920, 3, 0, 720921, 65539, 0, 720922, 65539, 0, 786459, 131075, 1, 720923, 131075, 0, 851996, 65539, 0, 851995, 393219, 1, 851997, 65539, 0, 851998, 131075, 0, 917534, 131075, 1, 983070, 393219, 1, 983071, 65539, 0, 983072, 65539, 0, 983073, 65539, 0, 983074, 458755, 1, 917538, 3, 1, 852002, 3, 1, 786466, 3, 1, 720930, 3, 1, 655394, 3, 1, 1048578, 131075, 1, 983042, 131075, 1, 917506, 131075, 1, 851970, 131075, 1, 786434, 131075, 1, 720898, 131075, 1, 655362, 131075, 1, 589826, 131075, 1, 524290, 131075, 1, 458754, 131075, 1, 393218, 131075, 1, 327682, 131075, 1, 262146, 131075, 1, 65539, 65539, 2, 65540, 65539, 2, 65541, 65539, 2, 65542, 65539, 2, 65543, 65539, 2, 65544, 65539, 2, 65545, 65539, 2, 65546, 65539, 2, 65547, 65539, 2, 65548, 65539, 2, 65549, 65539, 2, 65550, 65539, 2, 65551, 65539, 2, 65555, 65539, 2, 65556, 65539, 2, 65557, 65539, 2, 65558, 65539, 2, 65559, 65539, 2, 65560, 65539, 2, 65561, 65539, 2, 65562, 65539, 2, 65563, 65539, 2, 65564, 65539, 2, 65565, 65539, 2, -65505, 65539, 2, -65504, 65539, 2, -65503, 65539, 2, 34, 3, 1, 65570, 3, 1, 131106, 3, 1, 196642, 3, 2, 262181, 3, 1, 327717, 3, 1, 393253, 3, 1, 458789, 3, 1, 524325, 3, 1, 589859, 65539, 0, 589860, 65539, 0, 196610, 131075, 1, 131074, 131075, 1, 65538, 393219, 0, -65502, 458755, 0, -65506, 393219, 0, 30, 131075, 1, 65566, 131075, 2, 131088, 3, 1, 196624, 3, 1, 131090, 131075, 1, 196626, 131075, 1, 262161, 65539, 2, 262162, 131075, 2, 262160, 3, 2, 65552, 458755, 0, 65554, 393219, 0, 196643, 65539, 2, 196644, 65539, 2, 196645, 458755, 0, 1114114, 393219, 1, 589858, 3, 0, 589861, 458755, 1)
+
+[node name="Objects" type="Node2D" parent="."]
+position = Vector2(132, 512)
+
+[node name="Spikes" type="Sprite2D" parent="Objects"]
+scale = Vector2(2, 2)
+texture = ExtResource("5_6p3ud")
