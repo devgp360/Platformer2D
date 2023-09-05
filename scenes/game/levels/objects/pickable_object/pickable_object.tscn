@@ -47,7 +47,7 @@ func _ready():
 	var _animation2 = \"res://assets/sprites/treasure_hunters/pirate_treasure/sprites/\" + animation + \"/02.png\"
 	var _animation3 = \"res://assets/sprites/treasure_hunters/pirate_treasure/sprites/\" + animation + \"/03.png\"
 	var _animation4 = \"res://assets/sprites/treasure_hunters/pirate_treasure/sprites/\" + animation + \"/04.png\"
-	print(animation)
+
 	# Aplicamos la textura cargada a la animación
 	_animated_sprite.sprite_frames.set_frame(\"idle\", 0, load(_animation1))
 	_animated_sprite.sprite_frames.set_frame(\"idle\", 1, load(_animation2))
@@ -66,18 +66,6 @@ func _process(_delta):
 		do_animation()
 
 
-func _physics_process(delta):
-	pass
-	# Obtenemos todos los objetos que collapsan con la moneda
-	var bodies = get_overlapping_bodies()
-	# Recorremos todos los objetos
-	for body in bodies:
-		# Validamos si el objeto es nuestro personaje principal
-		if body.name == _player_name:
-			# Reproducimos la animación de la moneda recogida
-			do_animation()
-
-
 func _on_animated_sprite_2d_animation_finished():
 	# Eliminamos el objeto recogido de la escena
 	queue_free()
@@ -91,7 +79,8 @@ func do_animation():
 
 
 func _on_area_entered(area):
-	if area.is_in_group:
+	print(area)
+	if area.is_in_group(\"player\"):
 		# Reproducimos la animación de la moneda recogida
 		do_animation()
 "
