@@ -25,7 +25,7 @@ load_path = "res://.godot/imported/small_cloud_3.png-2824e524f4818e08cf60700642a
 [node name="Main" type="Node2D"]
 
 [node name="MainCharacter" parent="." instance=ExtResource("1_vi0ax")]
-position = Vector2(56, 534)
+position = Vector2(42, 433)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(285, 346)
@@ -267,7 +267,3 @@ texture = SubResource("CompressedTexture2D_d1lya")
 position = Vector2(725, 303)
 scale = Vector2(4, 4.324)
 texture = SubResource("CompressedTexture2D_d1lya")
-
-[node name="PickableObject" parent="." instance=ExtResource("6_6sl3g")]
-position = Vector2(77, 396)
-animation = "red_diamond"
