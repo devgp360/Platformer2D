@@ -8,11 +8,6 @@ func _ready():
 	animation.play()
 
 
-# Función que se ejecuta en cada frame: delta: es el tiempo transcurrido desde el frame anterior
-func _process(delta):
-	pass
-
-
 # Función para detectar eventos de teclado o ratón
 func _unhandled_input(event):
 	_flip_sprite(event)
