@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 ## Clase que controla animación y configuración de los objetos recolectables
 ##
 ## Setea la animación del objeto segun el nombre configurado
@@ -9,7 +9,7 @@ extends Area2D
 @export var animation = ''
 
 # Definimos el sprite animado de la moneda
-@onready var _animated_sprite = $AnimatedSprite2D
+@onready var _animated_sprite = $test/AnimatedSprite2D
 
 # Nombre del personaje principal
 var _player_name = 'MainCharacter'
@@ -45,14 +45,15 @@ func _process(_delta):
 
 
 func _physics_process(delta):
+	pass
 	# Obtenemos todos los objetos que collapsan con la moneda
-	var bodies = get_overlapping_bodies()
+	#var bodies = get_overlapping_bodies()
 	# Recorremos todos los objetos
-	for body in bodies:
+	#for body in bodies:
 		# Validamos si el objeto es nuestro personaje principal
-		if body.name == _player_name:
+		#if body.name == _player_name:
 			# Reproducimos la animación de la moneda recogida
-			_animated_sprite.play("taken")
+			#_animated_sprite.play("taken")
 
 
 func _on_animated_sprite_2d_animation_finished():

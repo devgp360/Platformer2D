@@ -63,7 +63,7 @@ texture = ExtResource("5_5343a")
 
 [node name="Coin" parent="CollectableObjects" instance=ExtResource("6_6sl3g")]
 position = Vector2(70, 430)
-animation = "green_diamond"
+animation = "gold_coin"
 
 [node name="Coin2" parent="CollectableObjects" instance=ExtResource("6_6sl3g")]
 position = Vector2(910, 270)
@@ -75,22 +75,23 @@ animation = "gold_coin"
 
 [node name="Coin4" parent="CollectableObjects" instance=ExtResource("6_6sl3g")]
 position = Vector2(960, 270)
+animation = "gold_coin"
 
 [node name="Diamond" parent="CollectableObjects" instance=ExtResource("6_6sl3g")]
 position = Vector2(92, 430)
-animation = "gold_coin"
+animation = "green_diamond"
 
 [node name="Diamond2" parent="CollectableObjects" instance=ExtResource("6_6sl3g")]
 position = Vector2(793, 140)
-animation = "gold_coin"
+animation = "green_diamond"
 
 [node name="Diamond3" parent="CollectableObjects" instance=ExtResource("6_6sl3g")]
 position = Vector2(818, 140)
-animation = "gold_coin"
+animation = "green_diamond"
 
 [node name="Diamond4" parent="CollectableObjects" instance=ExtResource("6_6sl3g")]
 position = Vector2(843, 140)
-animation = "gold_coin"
+animation = "green_diamond"
 
 [node name="WaterReflect" type="Node2D" parent="."]
 
@@ -268,7 +269,5 @@ scale = Vector2(4, 4.324)
 texture = SubResource("CompressedTexture2D_d1lya")
 
 [node name="PickableObject" parent="." instance=ExtResource("6_6sl3g")]
-position = Vector2(51, 397)
-
-[node name="PickableObject2" parent="." instance=ExtResource("6_6sl3g")]
-position = Vector2(83, 398)
+position = Vector2(77, 396)
+animation = "red_diamond"
