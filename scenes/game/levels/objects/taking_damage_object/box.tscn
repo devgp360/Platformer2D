@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://cqhiovy7j3xcq"]
+
+[ext_resource type="Script" path="res://scenes/game/levels/objects/taking_damage_object/taking_damage_object.gd" id="1_5lw12"]
+[ext_resource type="Texture2D" uid="uid://demtjc6ujwp3v" path="res://assets/sprites/treasure_hunters/merchant_ship/sprites/box/hit/2.png" id="8_eiacq"]
+[ext_resource type="Texture2D" uid="uid://ntitpdk5junf" path="res://assets/sprites/treasure_hunters/merchant_ship/sprites/box/hit/3.png" id="9_ljn0a"]
+[ext_resource type="Texture2D" uid="uid://d3q0a6mj1y217" path="res://assets/sprites/treasure_hunters/merchant_ship/sprites/box/hit/4.png" id="10_fd2m1"]
+[ext_resource type="Texture2D" uid="uid://duuwanma5dhvk" path="res://assets/sprites/treasure_hunters/merchant_ship/sprites/box/idle/1.png" id="11_aiq8x"]
+[ext_resource type="PackedScene" uid="uid://ipglcucbygcg" path="res://scenes/game/levels/objects/taking_damage_object/box_destroyed.tscn" id="13_spjgs"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6x7cn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_eiacq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ljn0a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_fd2m1")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_aiq8x")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_70pju"]
+
+[node name="Box" type="Area2D"]
+gravity_space_override = 1
+script = ExtResource("1_5lw12")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6x7cn")
+animation = &"hit"
+speed_scale = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_70pju")
+
+[node name="BoxDestroyed" parent="." instance=ExtResource("13_spjgs")]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
