@@ -108,9 +108,11 @@ position = Vector2(1252, -174)
 
 [node name="BackPalmTree2" parent="Objects" instance=ExtResource("13_uwpfu")]
 position = Vector2(-21, -130)
+animation = &"idle_left"
 
 [node name="BackPalmTree3" parent="Objects" instance=ExtResource("13_uwpfu")]
 position = Vector2(781, -148)
+animation = &"idle_left"
 
 [node name="BackPalmTree4" parent="Objects" instance=ExtResource("13_uwpfu")]
 position = Vector2(603, -134)
