@@ -21,18 +21,26 @@ func _ready():
 
 
 # Función de ejecución de físicas
-func _physics_process(delta):
+func _physics_process(_delta):
+	_move()
+
+
+# Función de movimiento general del personaje
+func _move():
 	# Aplicamos una constante de gravedad al valor "Y" de la velocidad del personaje
 	character.velocity.y = gravity
 	
 	# Cuando se presiona la tecla (flecha izquierda), movemos el personaje a la izquierda
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("izquierda"):
 		character.velocity.x = -velocity
 		_flip_sprite(false)
 	# Cuando se presiona la tecla (flecha derecha), movemos el personaje a la derecha
-	elif Input.is_action_pressed("ui_right"):
+	elif Input.is_action_pressed("derecha"):
 		character.velocity.x = velocity
 		_flip_sprite(true)
+	elif Input.is_action_pressed("saltar"):
+		character.velocity.x = 0
+		print("Saltando...")
 	# Cuando no presionamos teclas, no hay movimiento
 	else:
 		character.velocity.x = 0
