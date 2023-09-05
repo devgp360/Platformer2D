@@ -11,13 +11,15 @@ extends Node2D
 
 var gravity = 150 # Gravedad para el personaje
 var velocity = 100 # Velocidad de movimiento
-
+var anim_idle_with_sword: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Si no hay un personaje, deshabilitamos la función: _physics_process
 	if not character:
 		set_physics_process(false)
+		
+	anim_idle_with_sword = load("res://scenes/game/characters/main_character/animations/idle_with_sword.tscn")
 
 
 # Función de ejecución de físicas
