@@ -118,5 +118,5 @@ animations = [{
 
 [node name="BackPalmTree" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_1djo4")
-animation = &"idle_left"
+animation = &"idle_right"
 script = ExtResource("1_bh1tx")
