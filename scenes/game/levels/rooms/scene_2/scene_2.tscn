@@ -114,15 +114,12 @@ position = Vector2(781, -148)
 
 [node name="BackPalmTree4" parent="Objects" instance=ExtResource("13_uwpfu")]
 position = Vector2(603, -134)
-animation = &"idle_right"
 
 [node name="BackPalmTree5" parent="Objects" instance=ExtResource("13_uwpfu")]
 position = Vector2(188, -64)
-animation = &"idle_right"
 
 [node name="BackPalmTree6" parent="Objects" instance=ExtResource("13_uwpfu")]
 position = Vector2(1339, -295)
-animation = &"idle_right"
 
 [node name="Spikes" type="Sprite2D" parent="Objects"]
 position = Vector2(-23, 18)

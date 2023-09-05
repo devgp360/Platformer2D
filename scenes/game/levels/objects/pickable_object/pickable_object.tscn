@@ -1,0 +1,59 @@
+[gd_scene load_steps=11 format=3 uid="uid://b5qjvfbte4svk"]
+
+[ext_resource type="Script" path="res://scenes/game/levels/objects/pickable_object/pickable_object.gd" id="1_hgvw0"]
+[ext_resource type="Texture2D" uid="uid://bmn2hx61jlm7n" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/gold_coin/01.png" id="2_edow6"]
+[ext_resource type="Texture2D" uid="uid://bosp5l4cys2vv" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/gold_coin/02.png" id="3_o1sj4"]
+[ext_resource type="Texture2D" uid="uid://l026ummyfo1j" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/gold_coin/03.png" id="4_kva8p"]
+[ext_resource type="Texture2D" uid="uid://dhjgv3bpubs32" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/gold_coin/04.png" id="5_3cgyq"]
+[ext_resource type="Texture2D" uid="uid://n47d46qjjtlm" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/coin_effect/01.png" id="6_xv0o1"]
+[ext_resource type="Texture2D" uid="uid://bkqcurpg6xq3v" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/coin_effect/02.png" id="7_ewl5e"]
+[ext_resource type="Texture2D" uid="uid://bqtelhgdi3cfn" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/coin_effect/03.png" id="8_udmu3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5qi15"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_edow6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_o1sj4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kva8p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3cgyq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_xv0o1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ewl5e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_udmu3")
+}],
+"loop": false,
+"name": &"taken",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p0cjw"]
+radius = 7.0
+
+[node name="PickableObject" type="Area2D"]
+script = ExtResource("1_hgvw0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5qi15")
+animation = &"taken"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_p0cjw")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

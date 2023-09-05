@@ -1,19 +1,17 @@
-[gd_scene load_steps=18 format=3 uid="uid://dhor7t5klwdwx"]
+[gd_scene load_steps=16 format=3 uid="uid://dhor7t5klwdwx"]
 
 [ext_resource type="Texture2D" uid="uid://cg6wkkuni8aq8" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/bg_image.png" id="1_a12cs"]
 [ext_resource type="TileSet" uid="uid://bx1rsqucrwm2i" path="res://assets/resources/bg_tile_set.tres" id="1_atorb"]
+[ext_resource type="PackedScene" uid="uid://ca3ueo0yewjov" path="res://scenes/game/characters/main_character/main_character.tscn" id="1_vi0ax"]
 [ext_resource type="PackedScene" uid="uid://c2nps502udtd6" path="res://scenes/game/levels/objects/front_palm_tree/front_palm_tree.tscn" id="4_6u8cq"]
 [ext_resource type="Texture2D" uid="uid://cmlgr3i0h1klc" path="res://assets/sprites/treasure_hunters/the_crusty_crew/sprites/crabby/01_idle/idle_01.png" id="5_5343a"]
-[ext_resource type="Texture2D" uid="uid://bmn2hx61jlm7n" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/gold_coin/01.png" id="7_lg7xm"]
+[ext_resource type="PackedScene" uid="uid://b5qjvfbte4svk" path="res://scenes/game/levels/objects/pickable_object/pickable_object.tscn" id="6_6sl3g"]
+[ext_resource type="PackedScene" uid="uid://bcil4n46byhj5" path="res://scenes/game/levels/objects/back_palm_tree/back_palm_tree.tscn" id="7_243vd"]
 [ext_resource type="Texture2D" uid="uid://5va2c11ojds3" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/spikes/spikes.png" id="9_nulv1"]
 [ext_resource type="Texture2D" uid="uid://maf7s1c6fyyp" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/chest/chest_close_04.png" id="10_2jg0w"]
 [ext_resource type="Texture2D" uid="uid://dcptpykdlp5rk" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/flag/flag_01.png" id="11_4ker5"]
 [ext_resource type="Texture2D" uid="uid://c8ml72h6eandi" path="res://assets/sprites/treasure_hunters/shooter_traps/sprites/cannon/cannon_hit/4.png" id="12_lbiwa"]
-[ext_resource type="Script" path="res://scenes/game/levels/rooms/scene_1/camera.gd" id="13_jncem"]
 [ext_resource type="Texture2D" uid="uid://ntgt51twdxdm" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/water_reflect_medium_03.png" id="13_u3w7t"]
-[ext_resource type="Texture2D" uid="uid://bqmy4jqv4pp6j" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/back_palm_trees/back_palm_tree_right_02.png" id="14_n2amn"]
-[ext_resource type="Texture2D" uid="uid://dxflqrst5dy31" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/captain_clown_nose/captain_clown_nose_without_sword/01-idle/idle_01.png" id="14_njevs"]
-[ext_resource type="Texture2D" uid="uid://dag1d05f4evdq" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/green_diamond/01.png" id="15_6keb8"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7drek"]
 load_path = "res://.godot/imported/small_cloud_1.png-40532304be8a8e58b358963bfcb15f67.ctex"
@@ -25,6 +23,13 @@ load_path = "res://.godot/imported/small_cloud_1.png-40532304be8a8e58b358963bfcb
 load_path = "res://.godot/imported/small_cloud_3.png-2824e524f4818e08cf60700642ab74ab.ctex"
 
 [node name="Main" type="Node2D"]
+
+[node name="MainCharacter" parent="." instance=ExtResource("1_vi0ax")]
+position = Vector2(56, 534)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(285, 346)
+zoom = Vector2(1.75, 1.75)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_atorb")
@@ -50,31 +55,42 @@ texture = ExtResource("5_5343a")
 position = Vector2(241, 373)
 texture = ExtResource("5_5343a")
 
+[node name="Crabby3" type="Sprite2D" parent="Enemies"]
+position = Vector2(628, 149)
+texture = ExtResource("5_5343a")
+
 [node name="CollectableObjects" type="Node2D" parent="."]
 
-[node name="Icon" type="Sprite2D" parent="CollectableObjects"]
-position = Vector2(915, 266)
-texture = ExtResource("7_lg7xm")
+[node name="Coin" parent="CollectableObjects" instance=ExtResource("6_6sl3g")]
+position = Vector2(70, 430)
+animation = "green_diamond"
 
-[node name="Icon2" type="Sprite2D" parent="CollectableObjects"]
-position = Vector2(954, 266)
-texture = ExtResource("7_lg7xm")
+[node name="Coin2" parent="CollectableObjects" instance=ExtResource("6_6sl3g")]
+position = Vector2(910, 270)
+animation = "gold_coin"
 
-[node name="Icon3" type="Sprite2D" parent="CollectableObjects"]
-position = Vector2(933, 266)
-texture = ExtResource("7_lg7xm")
+[node name="Coin3" parent="CollectableObjects" instance=ExtResource("6_6sl3g")]
+position = Vector2(935, 270)
+animation = "gold_coin"
 
-[node name="Diamond" type="Sprite2D" parent="CollectableObjects"]
-position = Vector2(803, 149)
-texture = ExtResource("15_6keb8")
+[node name="Coin4" parent="CollectableObjects" instance=ExtResource("6_6sl3g")]
+position = Vector2(960, 270)
 
-[node name="Diamond2" type="Sprite2D" parent="CollectableObjects"]
-position = Vector2(839, 149)
-texture = ExtResource("15_6keb8")
+[node name="Diamond" parent="CollectableObjects" instance=ExtResource("6_6sl3g")]
+position = Vector2(92, 430)
+animation = "gold_coin"
 
-[node name="Diamond3" type="Sprite2D" parent="CollectableObjects"]
-position = Vector2(821, 149)
-texture = ExtResource("15_6keb8")
+[node name="Diamond2" parent="CollectableObjects" instance=ExtResource("6_6sl3g")]
+position = Vector2(793, 140)
+animation = "gold_coin"
+
+[node name="Diamond3" parent="CollectableObjects" instance=ExtResource("6_6sl3g")]
+position = Vector2(818, 140)
+animation = "gold_coin"
+
+[node name="Diamond4" parent="CollectableObjects" instance=ExtResource("6_6sl3g")]
+position = Vector2(843, 140)
+animation = "gold_coin"
 
 [node name="WaterReflect" type="Node2D" parent="."]
 
@@ -104,13 +120,22 @@ texture = ExtResource("13_u3w7t")
 
 [node name="Objects" type="Node2D" parent="."]
 
-[node name="PalmStatic" type="Node2D" parent="Objects"]
+[node name="BackPalm" type="Node2D" parent="Objects"]
 position = Vector2(207, 12)
 
-[node name="Palm" type="Sprite2D" parent="Objects/PalmStatic"]
+[node name="BackPalmTree" parent="Objects/BackPalm" instance=ExtResource("7_243vd")]
 z_index = -1
-position = Vector2(894, 122)
-texture = ExtResource("14_n2amn")
+position = Vector2(510, 476)
+animation = &"idle_left"
+
+[node name="BackPalmTree2" parent="Objects/BackPalm" instance=ExtResource("7_243vd")]
+z_index = -1
+position = Vector2(320, 221)
+animation = &"idle_left"
+
+[node name="BackPalmTree3" parent="Objects/BackPalm" instance=ExtResource("7_243vd")]
+z_index = -1
+position = Vector2(897, 139)
 
 [node name="FrontPalm" type="Node2D" parent="Objects"]
 
@@ -125,6 +150,12 @@ position = Vector2(1103, 312)
 
 [node name="FrontPalmTree4" parent="Objects/FrontPalm" instance=ExtResource("4_6u8cq")]
 position = Vector2(239, 216)
+
+[node name="FrontPalmTree6" parent="Objects/FrontPalm" instance=ExtResource("4_6u8cq")]
+position = Vector2(431, 152)
+
+[node name="FrontPalmTree5" parent="Objects/FrontPalm" instance=ExtResource("4_6u8cq")]
+position = Vector2(911, 535)
 
 [node name="Spikes" type="Node2D" parent="Objects"]
 
@@ -166,18 +197,6 @@ texture = ExtResource("12_lbiwa")
 [node name="Cannon" type="Sprite2D" parent="Objects"]
 position = Vector2(1064, 435)
 texture = ExtResource("12_lbiwa")
-
-[node name="Captain" type="Sprite2D" parent="Objects"]
-position = Vector2(43, 436)
-texture = ExtResource("14_njevs")
-
-[node name="Crabby3" type="Sprite2D" parent="Objects"]
-position = Vector2(628, 149)
-texture = ExtResource("5_5343a")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(285, 346)
-script = ExtResource("13_jncem")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -247,3 +266,9 @@ texture = SubResource("CompressedTexture2D_d1lya")
 position = Vector2(725, 303)
 scale = Vector2(4, 4.324)
 texture = SubResource("CompressedTexture2D_d1lya")
+
+[node name="PickableObject" parent="." instance=ExtResource("6_6sl3g")]
+position = Vector2(51, 397)
+
+[node name="PickableObject2" parent="." instance=ExtResource("6_6sl3g")]
+position = Vector2(83, 398)
