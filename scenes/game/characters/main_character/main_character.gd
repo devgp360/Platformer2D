@@ -10,7 +10,8 @@ var animations_map = {
 
 # Función de inicialización del nodo
 func _ready():
-	animation.play()
+	pass
+	# animation.play()
 	
 	# _load_animations()
 	# anim_idle_with_sword = load("res://scenes/game/characters/main_character/animations/idle_with_sword.tscn")
