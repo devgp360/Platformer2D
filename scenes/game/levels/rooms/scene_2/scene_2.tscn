@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://tqg8duvjuik7"]
+[gd_scene load_steps=19 format=3 uid="uid://tqg8duvjuik7"]
 
 [ext_resource type="TileSet" uid="uid://bx1rsqucrwm2i" path="res://assets/resources/bg_tile_set.tres" id="1_0t8t3"]
 [ext_resource type="PackedScene" uid="uid://8rbt5lmdrp0s" path="res://scenes/game/camera/camera.tscn" id="1_8l71v"]
@@ -17,6 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://bf80xyf45y2wk" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/blue_diamond/02.png" id="14_te0nb"]
 [ext_resource type="PackedScene" uid="uid://c2nps502udtd6" path="res://scenes/game/levels/objects/front_palm_tree/front_palm_tree.tscn" id="14_uwyh7"]
 [ext_resource type="PackedScene" uid="uid://ca3ueo0yewjov" path="res://scenes/game/characters/main_character/main_character.tscn" id="15_ooixx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3x710"]
+size = Vector2(31, 21)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_j3e3j")
@@ -53,6 +56,14 @@ position = Vector2(35.12, -59.219)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("4_ruur6")
 flip_h = true
+
+[node name="Areas" type="Node2D" parent="."]
+
+[node name="AreaNextLevel" type="Area2D" parent="Areas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/AreaNextLevel"]
+position = Vector2(437.5, 371.5)
+shape = SubResource("RectangleShape2D_3x710")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_0t8t3")
