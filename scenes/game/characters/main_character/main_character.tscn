@@ -85,7 +85,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack_2",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -303,8 +303,7 @@ script = ExtResource("1_ty3dm")
 
 [node name="Animation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sohxe")
-animation = &"attack_3"
-frame_progress = 0.418576
+animation = &"attack_2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2.5)

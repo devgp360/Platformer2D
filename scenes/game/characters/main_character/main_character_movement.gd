@@ -23,6 +23,8 @@ var _movements = {
 }
 var _current_movement = _movements.IDLE # Variable de movimiento
 var _is_jumping = false # Indicamos que el personaje está saltando
+var _max_jumps = 2 # Máximo número de saltos
+var _jump_count = 0 # Contador de saltos realizados
 
 
 # Called when the node enters the scene tree for the first time.
@@ -40,9 +42,6 @@ func _physics_process(_delta):
 
 # Función de movimiento general del personaje
 func _move(delta):
-	# Aplicamos una constante de gravedad al valor "Y" de la velocidad del personaje
-	# character.velocity.y = gravity
-	
 	# Cuando se presiona la tecla (flecha izquierda), movemos el personaje a la izquierda
 	if Input.is_action_pressed("izquierda"):
 		character.velocity.x = -velocity
@@ -57,11 +56,14 @@ func _move(delta):
 		_current_movement = _movements.IDLE
 	
 	# Cuando se presiona la tecla (espacio), hacemos animación de salto
-	if Input.is_action_pressed("saltar"):
-		#character.velocity.x = 0
+	if Input.is_action_just_pressed("saltar"):
 		if character.is_on_floor():
 			_current_movement = _movements.JUMP_WITH_SWORD
 			_is_jumping = true
+			_jump_count += 1
+		elif _is_jumping and _jump_count < _max_jumps:
+			_current_movement = _movements.JUMP_WITH_SWORD
+			_jump_count += 1
 
 	_apply_gravity(delta)
 	_set_animation()
@@ -104,6 +106,8 @@ func _apply_gravity(delta):
 		v.y += gravity * delta
 		# Después de un salto, validamos cuando volvemos a tocar el suelo para poder volver a saltar
 		if character.is_on_floor():
+			# Reseteamos variables de salto
 			_is_jumping = false
+			_jump_count = 0
 	# Aplicamos el vector de velocidad al personaje
 	character.velocity = v
