@@ -4,6 +4,7 @@ extends Node2D
 ## Setea la animación del objeto 
 ## Cambia animación de idle a disparado, elimina la bala de la escena
 
+
 # Definimos la escena de destrucción del objeto
 @onready var _cannon_animation = $Cannon/AnimatedSprite2D
 # Definimos el sprite animado de efectos
@@ -19,12 +20,12 @@ func _ready():
 	
 	
 func fire():
-	# Reproducimos la animación idle
+	# Reproducimos la animación de disparo
 	_cannon_animation.play("fire")
 
 
 func _on_animated_sprite_2d_frame_changed():
-	# Validamos si el frame de animació es 3
+	# Validamos si el frame de animación es 3
 	if _cannon_animation.frame == 3:
 		# Cargamos la escena de bala
 		var ball = "scenes/game/levels/objects/damage_object/cannon_ball.tscn"
