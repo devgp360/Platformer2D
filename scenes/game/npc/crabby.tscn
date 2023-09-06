@@ -306,7 +306,7 @@ script = SubResource("GDScript_6chrj")
 [node name="NpcAnimation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fq7gh")
 animation = &"idle"
-frame_progress = 0.698478
+frame_progress = 0.340138
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 1.5)

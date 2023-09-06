@@ -12,11 +12,10 @@ extends CharacterBody2D
 
 # Variable para control de animación
 @onready var _animation := $NpcAnimation
-@onready var _animation := $NpcAnimation
+@onready var _raycast := $Area2D/RayCast2D
 
 var _gravity = 10
 var _speed = 25
-var _velocity = Vector2(0,0)
 var moving_left = true
 
 
@@ -33,13 +32,21 @@ func _process(delta):
 	
 	
 func _move_character():
-	_velocity.y += _gravity 
-	_velocity.x += - _speed 
-	_velocity = move_and_slide()
+	velocity.y += _gravity 
+	
+	if moving_left:
+		velocity.x = - _speed 
+	else:	
+		velocity.x = _speed 
+			
+	move_and_slide()
 
 
 func _on_area_2d_body_entered(body):
 	print("atacar")
 	
-func _turn(body):
-	if not 
+	
+func _turn():
+	if not _raycast.is_colliding():
+		moving_left = !moving_left
+		scale.x = -scale.x
