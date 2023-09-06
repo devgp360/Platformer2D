@@ -27,7 +27,7 @@ var _max_jumps = 2 # Máximo número de saltos
 var _jump_count = 0 # Contador de saltos realizados
 
 
-# Called when the node enters the scene tree for the first time.
+# Función de inicialización
 func _ready():
 	main_animation.play(_current_movement)
 	# Si no hay un personaje, deshabilitamos la función: _physics_process

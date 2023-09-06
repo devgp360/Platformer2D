@@ -298,7 +298,7 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="MainCharacter" type="CharacterBody2D" groups=["player"]]
+[node name="MainCharacter" type="CharacterBody2D"]
 script = ExtResource("1_ty3dm")
 
 [node name="Animation" type="AnimatedSprite2D" parent="."]
