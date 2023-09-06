@@ -45,31 +45,28 @@ func _physics_process(_delta):
 
 # Función de movimiento general del personaje
 func _move(delta):
-	if _died:
-		_current_movement = _movements.DEAD_HIT
+	# Cuando se presiona la tecla (flecha izquierda), movemos el personaje a la izquierda
+	if Input.is_action_pressed("izquierda"):
+		character.velocity.x = -velocity
+		_current_movement = _movements.LEFT_WITH_SWORD
+	# Cuando se presiona la tecla (flecha derecha), movemos el personaje a la derecha
+	elif Input.is_action_pressed("derecha"):
+		character.velocity.x = velocity
+		_current_movement = _movements.RIGHT_WITH_SWORD
+	# Cuando no presionamos teclas, no hay movimiento
 	else:
-		# Cuando se presiona la tecla (flecha izquierda), movemos el personaje a la izquierda
-		if Input.is_action_pressed("izquierda"):
-			character.velocity.x = -velocity
-			_current_movement = _movements.LEFT_WITH_SWORD
-		# Cuando se presiona la tecla (flecha derecha), movemos el personaje a la derecha
-		elif Input.is_action_pressed("derecha"):
-			character.velocity.x = velocity
-			_current_movement = _movements.RIGHT_WITH_SWORD
-		# Cuando no presionamos teclas, no hay movimiento
-		else:
-			character.velocity.x = 0
-			_current_movement = _movements.IDLE
-		
-		# Cuando se presiona la tecla (espacio), hacemos animación de salto
-		if Input.is_action_just_pressed("saltar"):
-			if character.is_on_floor():
-				_current_movement = _movements.JUMP_WITH_SWORD
-				_is_jumping = true
-				_jump_count += 1 # Sumamos el primer salto
-			elif _is_jumping and _jump_count < _max_jumps:
-				_current_movement = _movements.JUMP_WITH_SWORD
-				_jump_count += 1 # Sumamos el segundo salto
+		character.velocity.x = 0
+		_current_movement = _movements.IDLE
+	
+	# Cuando se presiona la tecla (espacio), hacemos animación de salto
+	if Input.is_action_just_pressed("saltar"):
+		if character.is_on_floor():
+			_current_movement = _movements.JUMP_WITH_SWORD
+			_is_jumping = true
+			_jump_count += 1 # Sumamos el primer salto
+		elif _is_jumping and _jump_count < _max_jumps:
+			_current_movement = _movements.JUMP_WITH_SWORD
+			_jump_count += 1 # Sumamos el segundo salto
 
 	_apply_gravity(delta)
 	_set_animation()
@@ -126,13 +123,12 @@ func _apply_gravity(delta):
 	character.velocity = v
 	
 func die():
-	# Reproducimos la animación de morir
-	print("murio")
+	# Seteamos la variable de morir averdadero
 	_died = true
 
 
 func _on_animation_animation_finished():
-	# Validamos si la animación es de pegar
+	# Validamos si la animación es de morir
 	if main_animation.get_animation() == 'dead_hit':
-		# qitamos al personaje principal de la excena
+		# Qitamos al personaje principal de la excena
 		self.get_parent().queue_free()

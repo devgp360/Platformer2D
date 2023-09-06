@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://b4s6057mbcjcg" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/diamond_effect/04.png" id="7_qmpyn"]
 [ext_resource type="Texture2D" uid="uid://bqtelhgdi3cfn" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/coin_effect/03.png" id="8_udmu3"]
 
-[sub_resource type="GDScript" id="GDScript_cib8d"]
+[sub_resource type="GDScript" id="GDScript_5io65"]
 resource_local_to_scene = true
 script/source = "extends Area2D
 ## Clase que controla animación y configuración de los objetos recolectables
@@ -61,13 +61,17 @@ func _on_animated_sprite_2d_animation_finished():
 	
 	
 func do_animation():
+	# Validamos si la animación es de moneda
 	if animation == \"gold_coin\" or animation == \"silver_coin\":
-			_animated_sprite.play(\"coin_taken\")
+		# Reproducimos la animación de la moneda
+		_animated_sprite.play(\"coin_taken\")
 	else:
+		# Reproducimos la animación del diamante
 		_animated_sprite.play(\"diamond_taken\")
 
 
 func _on_area_entered(area):
+	# Validamos que la colisión es con el personaje principal 
 	if area.is_in_group(\"player\"):
 		# Reproducimos la animación de la moneda recogida
 		do_animation()
@@ -129,7 +133,7 @@ animations = [{
 radius = 7.0
 
 [node name="PickableObject" type="Area2D"]
-script = SubResource("GDScript_cib8d")
+script = SubResource("GDScript_5io65")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2ebd0")

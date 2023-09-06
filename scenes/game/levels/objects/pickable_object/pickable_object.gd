@@ -45,13 +45,17 @@ func _on_animated_sprite_2d_animation_finished():
 	
 	
 func do_animation():
+	# Validamos si la animación es de moneda
 	if animation == "gold_coin" or animation == "silver_coin":
-			_animated_sprite.play("coin_taken")
+		# Reproducimos la animación de la moneda
+		_animated_sprite.play("coin_taken")
 	else:
+		# Reproducimos la animación del diamante
 		_animated_sprite.play("diamond_taken")
 
 
 func _on_area_entered(area):
+	# Validamos que la colisión es con el personaje principal 
 	if area.is_in_group("player"):
 		# Reproducimos la animación de la moneda recogida
 		do_animation()
