@@ -123,13 +123,12 @@ func _apply_gravity(delta):
 	character.velocity = v
 	
 func die():
-	# Reproducimos la animación de morir
-	print("murio")
+	# Seteamos la variable de morir averdadero
 	_died = true
 
 
 func _on_animation_animation_finished():
-	# Validamos si la animación es de pegar
+	# Validamos si la animación es de morir
 	if main_animation.get_animation() == 'dead_hit':
-		# qitamos al personaje principal de la excena
+		# Qitamos al personaje principal de la excena
 		self.get_parent().queue_free()
