@@ -1,0 +1,108 @@
+[gd_scene load_steps=20 format=3 uid="uid://bnp6y3fe4kqob"]
+
+[ext_resource type="Script" path="res://scenes/game/levels/objects/damage_object/cannon.gd" id="1_t2rj5"]
+[ext_resource type="PackedScene" uid="uid://2c222ridowhl" path="res://scenes/game/levels/objects/damage_object/cannon_ball.tscn" id="2_ogjmt"]
+[ext_resource type="Texture2D" uid="uid://b1bifyx4c5ggd" path="res://assets/sprites/treasure_hunters/shooter_traps/sprites/cannon/cannon_destroyed/1.png" id="13_gpq6s"]
+[ext_resource type="Texture2D" uid="uid://j2cv5jaxm6l8" path="res://assets/sprites/treasure_hunters/shooter_traps/sprites/cannon/cannon_destroyed/2.png" id="14_8nfpg"]
+[ext_resource type="Texture2D" uid="uid://cw83bqjxq35re" path="res://assets/sprites/treasure_hunters/shooter_traps/sprites/cannon/cannon_destroyed/3.png" id="15_eoukm"]
+[ext_resource type="Texture2D" uid="uid://c8yf738wi76sq" path="res://assets/sprites/treasure_hunters/shooter_traps/sprites/cannon/cannon_destroyed/4.png" id="16_7yqly"]
+[ext_resource type="Texture2D" uid="uid://bi173vfx1xywa" path="res://assets/sprites/treasure_hunters/shooter_traps/sprites/cannon/cannon_fire/1.png" id="17_y86jf"]
+[ext_resource type="Texture2D" uid="uid://dx7mk5m5gj8fn" path="res://assets/sprites/treasure_hunters/shooter_traps/sprites/cannon/cannon_fire/2.png" id="18_o2ut2"]
+[ext_resource type="Texture2D" uid="uid://oaykh7x3qa2t" path="res://assets/sprites/treasure_hunters/shooter_traps/sprites/cannon/cannon_fire/3.png" id="19_phxut"]
+[ext_resource type="Texture2D" uid="uid://1gkyvjygb0rs" path="res://assets/sprites/treasure_hunters/shooter_traps/sprites/cannon/cannon_fire/4.png" id="20_fyevh"]
+[ext_resource type="Texture2D" uid="uid://bakbtemngbbce" path="res://assets/sprites/treasure_hunters/shooter_traps/sprites/cannon/cannon_fire/5.png" id="21_74r0y"]
+[ext_resource type="Texture2D" uid="uid://mi8t4mtlm4tq" path="res://assets/sprites/treasure_hunters/shooter_traps/sprites/cannon/cannon_fire/6.png" id="22_nl32q"]
+[ext_resource type="Texture2D" uid="uid://bb4hccofvwe3x" path="res://assets/sprites/treasure_hunters/shooter_traps/sprites/cannon/cannon_hit/1.png" id="23_mm8ec"]
+[ext_resource type="Texture2D" uid="uid://docejptn7mf5s" path="res://assets/sprites/treasure_hunters/shooter_traps/sprites/cannon/cannon_hit/2.png" id="24_15v71"]
+[ext_resource type="Texture2D" uid="uid://dlgms8bbptic1" path="res://assets/sprites/treasure_hunters/shooter_traps/sprites/cannon/cannon_hit/3.png" id="25_5o46n"]
+[ext_resource type="Texture2D" uid="uid://c8ml72h6eandi" path="res://assets/sprites/treasure_hunters/shooter_traps/sprites/cannon/cannon_hit/4.png" id="26_obvdl"]
+[ext_resource type="Texture2D" uid="uid://1c2x1eybvkk3" path="res://assets/sprites/treasure_hunters/shooter_traps/sprites/cannon/cannon_idle/1.png" id="27_o0xpr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h5nvd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_gpq6s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_8nfpg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_eoukm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_7yqly")
+}],
+"loop": false,
+"name": &"destroyed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_y86jf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_o2ut2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_phxut")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_fyevh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_74r0y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_nl32q")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_mm8ec")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_15v71")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_5o46n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_obvdl")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("27_o0xpr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x6cfl"]
+size = Vector2(31, 23)
+
+[node name="DamageObject" type="Node2D"]
+script = ExtResource("1_t2rj5")
+
+[node name="cannon_ball" parent="." instance=ExtResource("2_ogjmt")]
+position = Vector2(-22, 0)
+
+[node name="Cannon" type="Area2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Cannon"]
+sprite_frames = SubResource("SpriteFrames_h5nvd")
+animation = &"fire"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cannon"]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_x6cfl")
+
+[connection signal="frame_changed" from="Cannon/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
