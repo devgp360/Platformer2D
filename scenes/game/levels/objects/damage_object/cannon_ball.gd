@@ -18,9 +18,12 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	if body.is_in_group("player"):
-		print("entro")
-		# Reproducimos la animación de la moneda recogida
-		self.freeze = true
-		#self.mode = FREEZE_MODE_STATIC
-		_ball_animation.play("explosion")
+	print(body.name)
+	# Reproducimos la animación de la moneda recogida
+	self.set_deferred("freeze", true)
+	self.set_deferred("sleeping", true)
+	self.set_deferred("linear_velocity.x", 0)
+	self.set_deferred("linear_velocity.y", 0)
+	self.set_deferred("gravity_scale", 0)
+	return
+	_ball_animation.play("explosion")

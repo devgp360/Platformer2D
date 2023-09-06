@@ -18,7 +18,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("4_vdsk3")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": ExtResource("5_4wb0n")
 }, {
 "duration": 1.0,
@@ -54,6 +54,7 @@ mass = 0.1
 gravity_scale = 0.5
 max_contacts_reported = 1
 contact_monitor = true
+lock_rotation = true
 linear_velocity = Vector2(-500, 50)
 script = ExtResource("1_ms4ky")
 
@@ -63,6 +64,6 @@ shape = SubResource("CircleShape2D_7a6pl")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ky7wi")
 animation = &"idle"
-frame_progress = 0.809967
+speed_scale = 2.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

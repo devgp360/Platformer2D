@@ -1,8 +1,9 @@
-extends Area2D
+extends RigidBody2D
 ## Clase que controla animación y configuración de los objetos que reciben daño
 ##
 ## Setea la animación del objeto segun el nombre configurado
 ## Cambia animación de idle a destruido, elimina objeto destruible de la escena
+
 
 # Definimos el sprite animado del objeto
 @onready var _animated_sprite = $AnimatedSprite2D
@@ -35,8 +36,15 @@ func do_animation():
 	_animated_sprite.play("hit")
 
 
-func _on_area_entered(area):
+func _on_body_entered(body):
+	print("enter1")
 	# Validamos si la colisión es de personaje principal
-	if area.is_in_group("player"):
+	if body.is_in_group("player"):
+		print("entro")
 		# Reproducimos la animación de la moneda recogida
 		do_animation()
+
+
+func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+	print("enter2")
+

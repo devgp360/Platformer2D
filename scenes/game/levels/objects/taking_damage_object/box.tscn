@@ -32,10 +32,14 @@ animations = [{
 "speed": 3.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_70pju"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oeywc"]
+size = Vector2(25, 18)
 
-[node name="Box" type="Area2D"]
-gravity_space_override = 1
+[node name="RigidBody2D" type="RigidBody2D"]
+input_pickable = true
+max_contacts_reported = 100
+contact_monitor = true
+lock_rotation = true
 script = ExtResource("1_5lw12")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -44,9 +48,10 @@ animation = &"idle"
 speed_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_70pju")
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_oeywc")
 
 [node name="BoxDestroyed" parent="." instance=ExtResource("13_spjgs")]
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
