@@ -63,7 +63,7 @@ shape = SubResource("CircleShape2D_7a6pl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ky7wi")
-animation = &"idle"
+animation = &"explosion"
 speed_scale = 2.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

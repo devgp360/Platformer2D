@@ -9,6 +9,8 @@ extends RigidBody2D
 @onready var _animated_sprite = $AnimatedSprite2D
 # Definimos la escena de destrucción del objeto
 @onready var _box_destroyed = $BoxDestroyed
+# Vandera de hacer animación
+var _do_animation = false
 
 	
 # Función de carga del nodo
@@ -33,21 +35,14 @@ func _on_animated_sprite_2d_animation_finished():
 					
 	
 func do_animation():
+	# Reproducir la animación pegar
 	_animated_sprite.play("hit")
 
 
-func _on_body_entered(body):
-	print("enter1")
-	# Validamos si la colisión es de personaje principal
-	if body.is_in_group("player"):
-		print("entro")
-		# Reproducimos la animación de la moneda recogida
-		do_animation()
-
-
-func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	print("enter2")
-
-
 func hint():
-	do_animation()
+	# Validamos si estamos reproduciendo la animación
+	if not _do_animation:
+		# Seteamos que ya estamos reproduciendo la animación
+		_do_animation = true
+		# Reproducimos la animación
+		do_animation()
