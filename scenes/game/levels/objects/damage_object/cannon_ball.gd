@@ -27,4 +27,6 @@ func _on_body_entered(body):
 	_ball_animation.play("explosion")
 	if body.is_in_group("player"):
 		# Quitamos al personaje principal
-		body.die()
+		var _move_script = body.get_node("MainCharacterMovement")
+		if _move_script:
+			_move_script.die()

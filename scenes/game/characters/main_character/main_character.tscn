@@ -137,7 +137,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("19_b5u2l")
 }],
-"loop": true,
+"loop": false,
 "name": &"dead_ground",
 "speed": 5.0
 }, {
@@ -154,7 +154,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("23_0sshq")
 }],
-"loop": true,
+"loop": false,
 "name": &"dead_hit",
 "speed": 5.0
 }, {
@@ -355,9 +355,7 @@ character = NodePath("..")
 
 [node name="Animation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sohxe")
-animation = &"dead_hit"
-frame = 2
-frame_progress = 0.133338
+animation = &"idle_with_sword"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2.5)
@@ -369,4 +367,4 @@ sprite_frames = SubResource("SpriteFrames_cwldb")
 animation = &"fall"
 frame_progress = 0.450057
 
-[connection signal="animation_finished" from="Animation" to="." method="_on_animation_animation_finished"]
+[connection signal="animation_finished" from="Animation" to="MainCharacterMovement" method="_on_animation_animation_finished"]
