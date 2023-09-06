@@ -15,6 +15,10 @@ run/main_scene="res://scenes/game/levels/rooms/scene_1/scene_1.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SceneTransition="*res://scenes/game/transitions/scene_transition.tscn"
+
 [display]
 
 window/stretch/mode="viewport"
