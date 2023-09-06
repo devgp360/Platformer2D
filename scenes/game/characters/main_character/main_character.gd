@@ -59,3 +59,12 @@ func _load_one_animation(anim_name, anim_path, default_anim = "default"):
 		# Agregamos la propiedad "loop" a la animación
 		var loop = animation.sprite_frames.get_animation_loop(default_anim)
 		animation.sprite_frames.set_animation_loop(default_anim, loop)
+
+func die():
+	animation.play("dead_hit")
+
+
+func _on_animation_animation_finished():
+	# Validamos si la animación es de pegar
+	if animation.get_animation() == 'dead_hit':
+		queue_free()

@@ -27,7 +27,7 @@ load_path = "res://.godot/imported/small_cloud_3.png-2824e524f4818e08cf60700642a
 [node name="Main" type="Node2D"]
 
 [node name="MainCharacter" parent="." instance=ExtResource("1_vi0ax")]
-position = Vector2(13, 435)
+position = Vector2(-7, 436)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(285, 346)

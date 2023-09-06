@@ -26,4 +26,5 @@ func _on_body_entered(body):
 	self.set_deferred("gravity_scale", 0)
 	_ball_animation.play("explosion")
 	if body.is_in_group("player"):
-		print('murio')
+		# Quitamos al personaje principal
+		body.die()
