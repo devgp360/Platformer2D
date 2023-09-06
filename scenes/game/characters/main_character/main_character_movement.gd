@@ -60,10 +60,10 @@ func _move(delta):
 		if character.is_on_floor():
 			_current_movement = _movements.JUMP_WITH_SWORD
 			_is_jumping = true
-			_jump_count += 1
+			_jump_count += 1 # Sumamos el primer salto
 		elif _is_jumping and _jump_count < _max_jumps:
 			_current_movement = _movements.JUMP_WITH_SWORD
-			_jump_count += 1
+			_jump_count += 1 # Sumamos el segundo salto
 
 	_apply_gravity(delta)
 	_set_animation()

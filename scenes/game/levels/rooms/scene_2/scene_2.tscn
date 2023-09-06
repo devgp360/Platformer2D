@@ -159,9 +159,5 @@ position = Vector2(1079, -52)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("14_te0nb")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(344, 391)
-zoom = Vector2(1.75, 1.75)
-
 [node name="MainCharacter" parent="." instance=ExtResource("15_ooixx")]
 position = Vector2(206, 365)
