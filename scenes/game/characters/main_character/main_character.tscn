@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://ca3ueo0yewjov"]
+[gd_scene load_steps=61 format=3 uid="uid://ca3ueo0yewjov"]
 
 [ext_resource type="Script" path="res://scenes/game/characters/main_character/main_character.gd" id="1_ty3dm"]
 [ext_resource type="Texture2D" uid="uid://xd70a23vyklm" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/captain_clown_nose/captain_clown_nose_with_sword/15_attack_1/attack_1_01.png" id="2_082ap"]
@@ -56,6 +56,7 @@
 [ext_resource type="Texture2D" uid="uid://dgdcguorr4mef" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/dust_particles/run_03.png" id="54_wye7t"]
 [ext_resource type="Texture2D" uid="uid://cxctf3c5kurwl" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/dust_particles/run_04.png" id="55_qndtn"]
 [ext_resource type="Texture2D" uid="uid://dfilactnw23ej" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/dust_particles/run_05.png" id="56_e847i"]
+[ext_resource type="Script" path="res://scenes/game/characters/main_character/main_character_collision.gd" id="57_7h47x"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sohxe"]
 animations = [{
@@ -301,6 +302,15 @@ animations = [{
 [node name="MainCharacter" type="CharacterBody2D"]
 script = ExtResource("1_ty3dm")
 
+[node name="MainCharacterMovement" type="Node2D" parent="." node_paths=PackedStringArray("character", "main_animation")]
+script = ExtResource("7_fm4k8")
+character = NodePath("..")
+main_animation = NodePath("../Animation")
+
+[node name="MainCharacterCollision" type="Node2D" parent="." node_paths=PackedStringArray("character")]
+script = ExtResource("57_7h47x")
+character = NodePath("..")
+
 [node name="Animation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sohxe")
 animation = &"attack_2"
@@ -308,11 +318,6 @@ animation = &"attack_2"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2.5)
 shape = SubResource("RectangleShape2D_q04ya")
-
-[node name="MainCharacterMovement" type="Node2D" parent="." node_paths=PackedStringArray("character", "main_animation")]
-script = ExtResource("7_fm4k8")
-character = NodePath("..")
-main_animation = NodePath("../Animation")
 
 [node name="Effects" type="AnimatedSprite2D" parent="."]
 visible = false

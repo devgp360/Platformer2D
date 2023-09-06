@@ -6,6 +6,7 @@ extends Camera2D
 ## Movimiento básica de personaje: https://docs.google.com/document/d/1c9XXznR1KBJSr0jrEWjYIqfFuNGCGP2YASkXsFgEayU/edit
 
 
+
 @export var character: CharacterBody2D
 
 
