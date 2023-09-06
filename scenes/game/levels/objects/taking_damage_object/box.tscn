@@ -53,5 +53,4 @@ shape = SubResource("RectangleShape2D_oeywc")
 
 [node name="BoxDestroyed" parent="." instance=ExtResource("13_spjgs")]
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

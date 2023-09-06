@@ -59,3 +59,4 @@ func _load_one_animation(anim_name, anim_path, default_anim = "default"):
 		# Agregamos la propiedad "loop" a la animación
 		var loop = animation.sprite_frames.get_animation_loop(default_anim)
 		animation.sprite_frames.set_animation_loop(default_anim, loop)
+

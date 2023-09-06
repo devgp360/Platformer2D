@@ -20,11 +20,14 @@ var _movements = {
 	RIGHT_WITH_SWORD = "run_with_sword",
 	JUMP_WITH_SWORD = "jump_with_sword",
 	FALL_WITH_SWORD = "fall_with_sword",
+	DEAD_HIT = "dead_hit",
 }
 var _current_movement = _movements.IDLE # Variable de movimiento
 var _is_jumping = false # Indicamos que el personaje está saltando
 var _max_jumps = 2 # Máximo número de saltos
 var _jump_count = 0 # Contador de saltos realizados
+var _died = false # Define si esta vovo o muerto
+var _died_anim_started = false # Define si esta vovo o muerto
 
 
 # Función de inicialización
@@ -42,28 +45,31 @@ func _physics_process(_delta):
 
 # Función de movimiento general del personaje
 func _move(delta):
-	# Cuando se presiona la tecla (flecha izquierda), movemos el personaje a la izquierda
-	if Input.is_action_pressed("izquierda"):
-		character.velocity.x = -velocity
-		_current_movement = _movements.LEFT_WITH_SWORD
-	# Cuando se presiona la tecla (flecha derecha), movemos el personaje a la derecha
-	elif Input.is_action_pressed("derecha"):
-		character.velocity.x = velocity
-		_current_movement = _movements.RIGHT_WITH_SWORD
-	# Cuando no presionamos teclas, no hay movimiento
+	if _died:
+		_current_movement = _movements.DEAD_HIT
 	else:
-		character.velocity.x = 0
-		_current_movement = _movements.IDLE
-	
-	# Cuando se presiona la tecla (espacio), hacemos animación de salto
-	if Input.is_action_just_pressed("saltar"):
-		if character.is_on_floor():
-			_current_movement = _movements.JUMP_WITH_SWORD
-			_is_jumping = true
-			_jump_count += 1 # Sumamos el primer salto
-		elif _is_jumping and _jump_count < _max_jumps:
-			_current_movement = _movements.JUMP_WITH_SWORD
-			_jump_count += 1 # Sumamos el segundo salto
+		# Cuando se presiona la tecla (flecha izquierda), movemos el personaje a la izquierda
+		if Input.is_action_pressed("izquierda"):
+			character.velocity.x = -velocity
+			_current_movement = _movements.LEFT_WITH_SWORD
+		# Cuando se presiona la tecla (flecha derecha), movemos el personaje a la derecha
+		elif Input.is_action_pressed("derecha"):
+			character.velocity.x = velocity
+			_current_movement = _movements.RIGHT_WITH_SWORD
+		# Cuando no presionamos teclas, no hay movimiento
+		else:
+			character.velocity.x = 0
+			_current_movement = _movements.IDLE
+		
+		# Cuando se presiona la tecla (espacio), hacemos animación de salto
+		if Input.is_action_just_pressed("saltar"):
+			if character.is_on_floor():
+				_current_movement = _movements.JUMP_WITH_SWORD
+				_is_jumping = true
+				_jump_count += 1 # Sumamos el primer salto
+			elif _is_jumping and _jump_count < _max_jumps:
+				_current_movement = _movements.JUMP_WITH_SWORD
+				_jump_count += 1 # Sumamos el segundo salto
 
 	_apply_gravity(delta)
 	_set_animation()
@@ -73,7 +79,13 @@ func _move(delta):
 		var collision = character.get_slide_collision(i)
 
 # Controla la animación según el movimiento del personaje
-func _set_animation():
+func _set_animation():	
+	if _died:
+		if not _died_anim_started:
+			_died_anim_started = true
+			main_animation.play(_movements.DEAD_HIT)
+		return
+	
 	if _is_jumping:
 		# Movimiento de salto (animación de "salto")
 		if character.velocity.y >= 0:
@@ -112,3 +124,15 @@ func _apply_gravity(delta):
 			_jump_count = 0
 	# Aplicamos el vector de velocidad al personaje
 	character.velocity = v
+	
+func die():
+	# Reproducimos la animación de morir
+	print("murio")
+	_died = true
+
+
+func _on_animation_animation_finished():
+	# Validamos si la animación es de pegar
+	if main_animation.get_animation() == 'dead_hit':
+		# qitamos al personaje principal de la excena
+		self.get_parent().queue_free()

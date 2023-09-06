@@ -18,12 +18,15 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	print(body.name)
 	# Reproducimos la animación de la moneda recogida
 	self.set_deferred("freeze", true)
 	self.set_deferred("sleeping", true)
 	self.set_deferred("linear_velocity.x", 0)
 	self.set_deferred("linear_velocity.y", 0)
 	self.set_deferred("gravity_scale", 0)
-	return
 	_ball_animation.play("explosion")
+	if body.is_in_group("player"):
+		# Quitamos al personaje principal
+		var _move_script = body.get_node("MainCharacterMovement")
+		if _move_script:
+			_move_script.die()
