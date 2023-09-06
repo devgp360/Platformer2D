@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://ca3ueo0yewjov"]
+[gd_scene load_steps=60 format=3 uid="uid://ca3ueo0yewjov"]
 
 [ext_resource type="Script" path="res://scenes/game/characters/main_character/main_character.gd" id="1_ty3dm"]
 [ext_resource type="Texture2D" uid="uid://xd70a23vyklm" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/captain_clown_nose/captain_clown_nose_with_sword/15_attack_1/attack_1_01.png" id="2_082ap"]
@@ -230,7 +230,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q04ya"]
-size = Vector2(25, 30)
+size = Vector2(20, 25)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cwldb"]
 animations = [{
@@ -298,11 +298,7 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xl1v"]
-size = Vector2(26, 29)
-
-[node name="MainCharacter" type="CharacterBody2D" groups=["player"]]
-safe_margin = 1.0
+[node name="MainCharacter" type="CharacterBody2D"]
 script = ExtResource("1_ty3dm")
 
 [node name="Animation" type="AnimatedSprite2D" parent="."]
@@ -310,7 +306,7 @@ sprite_frames = SubResource("SpriteFrames_sohxe")
 animation = &"attack_2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -3)
+position = Vector2(0, -2.5)
 shape = SubResource("RectangleShape2D_q04ya")
 
 [node name="MainCharacterMovement" type="Node2D" parent="." node_paths=PackedStringArray("character", "main_animation")]
@@ -323,10 +319,3 @@ visible = false
 sprite_frames = SubResource("SpriteFrames_cwldb")
 animation = &"fall"
 frame_progress = 0.450057
-
-[node name="Area2D" type="Area2D" parent="."]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1, -2.5)
-shape = SubResource("RectangleShape2D_7xl1v")

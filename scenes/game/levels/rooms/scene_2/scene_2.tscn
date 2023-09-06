@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://tqg8duvjuik7"]
+[gd_scene load_steps=17 format=3 uid="uid://tqg8duvjuik7"]
 
 [ext_resource type="TileSet" uid="uid://bx1rsqucrwm2i" path="res://assets/resources/bg_tile_set.tres" id="1_0t8t3"]
 [ext_resource type="Texture2D" uid="uid://cg6wkkuni8aq8" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/bg_image.png" id="1_xttku"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bf80xyf45y2wk" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/blue_diamond/02.png" id="14_te0nb"]
 [ext_resource type="PackedScene" uid="uid://c2nps502udtd6" path="res://scenes/game/levels/objects/front_palm_tree/front_palm_tree.tscn" id="14_uwyh7"]
 [ext_resource type="PackedScene" uid="uid://ca3ueo0yewjov" path="res://scenes/game/characters/main_character/main_character.tscn" id="15_ooixx"]
+[ext_resource type="Script" path="res://scenes/game/levels/rooms/scene_2/camera.gd" id="15_qfw7j"]
 
 [node name="Main" type="Node2D"]
 
@@ -158,6 +159,17 @@ texture = ExtResource("14_te0nb")
 position = Vector2(1079, -52)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("14_te0nb")
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("character")]
+position = Vector2(363, 397)
+zoom = Vector2(1.75, 1.75)
+limit_left = -50
+limit_top = -50
+limit_right = 1580
+limit_bottom = 650
+editor_draw_limits = true
+script = ExtResource("15_qfw7j")
+character = NodePath("../MainCharacter")
 
 [node name="MainCharacter" parent="." instance=ExtResource("15_ooixx")]
 position = Vector2(206, 365)
