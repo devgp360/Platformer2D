@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://dhor7t5klwdwx"]
+[gd_scene load_steps=19 format=3 uid="uid://dhor7t5klwdwx"]
 
 [ext_resource type="Texture2D" uid="uid://cg6wkkuni8aq8" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/bg_image.png" id="1_a12cs"]
 [ext_resource type="TileSet" uid="uid://bx1rsqucrwm2i" path="res://assets/resources/bg_tile_set.tres" id="1_atorb"]
 [ext_resource type="PackedScene" uid="uid://ca3ueo0yewjov" path="res://scenes/game/characters/main_character/main_character.tscn" id="1_vi0ax"]
+[ext_resource type="PackedScene" uid="uid://8rbt5lmdrp0s" path="res://scenes/game/camera/camera.tscn" id="2_2f152"]
 [ext_resource type="PackedScene" uid="uid://c2nps502udtd6" path="res://scenes/game/levels/objects/front_palm_tree/front_palm_tree.tscn" id="4_6u8cq"]
 [ext_resource type="PackedScene" uid="uid://bo37g7mv4j6pn" path="res://scenes/game/npc/crabby.tscn" id="4_ybh3i"]
 [ext_resource type="PackedScene" uid="uid://cqhiovy7j3xcq" path="res://scenes/game/levels/objects/taking_damage_object/box.tscn" id="5_phmby"]
@@ -27,11 +28,11 @@ load_path = "res://.godot/imported/small_cloud_3.png-2824e524f4818e08cf60700642a
 [node name="Main" type="Node2D"]
 
 [node name="MainCharacter" parent="." instance=ExtResource("1_vi0ax")]
-position = Vector2(29, 436)
+position = Vector2(29, 349)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(285, 346)
-zoom = Vector2(1.75, 1.75)
+[node name="Camera2D" parent="." node_paths=PackedStringArray("character") instance=ExtResource("2_2f152")]
+position = Vector2(324, 395)
+character = NodePath("../MainCharacter")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_atorb")
@@ -51,6 +52,7 @@ layer_1/tile_data = PackedInt32Array(1179648, 65539, 1, 1245184, 65539, 1, 11796
 
 [node name="Crabby" parent="Enemies" instance=ExtResource("4_ybh3i")]
 position = Vector2(337, 306)
+animation = "run"
 
 [node name="CollectableObjects" type="Node2D" parent="."]
 
@@ -86,7 +88,7 @@ position = Vector2(78, 439)
 [node name="DamageObject" type="Node2D" parent="."]
 
 [node name="Cannon" parent="DamageObject" instance=ExtResource("6_r6bnd")]
-position = Vector2(259, 370)
+position = Vector2(613, 147)
 
 [node name="WaterReflect" type="Node2D" parent="."]
 

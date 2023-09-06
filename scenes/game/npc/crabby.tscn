@@ -1,6 +1,5 @@
-[gd_scene load_steps=48 format=3 uid="uid://bo37g7mv4j6pn"]
+[gd_scene load_steps=49 format=3 uid="uid://bo37g7mv4j6pn"]
 
-[ext_resource type="Script" path="res://scenes/game/npc/crabby.gd" id="1_wp7we"]
 [ext_resource type="Texture2D" uid="uid://pspt6movicar" path="res://assets/sprites/treasure_hunters/the_crusty_crew/sprites/crabby/06_anticipation/anticipation_01.png" id="2_iucj7"]
 [ext_resource type="Texture2D" uid="uid://ddjoqp2flcc1b" path="res://assets/sprites/treasure_hunters/the_crusty_crew/sprites/crabby/06_anticipation/anticipation_02.png" id="3_cm8sj"]
 [ext_resource type="Texture2D" uid="uid://r5c5na2n5b1h" path="res://assets/sprites/treasure_hunters/the_crusty_crew/sprites/crabby/06_anticipation/anticipation_03.png" id="4_616ky"]
@@ -44,6 +43,44 @@
 [ext_resource type="Texture2D" uid="uid://dh75ps276gm0g" path="res://assets/sprites/treasure_hunters/the_crusty_crew/sprites/crabby/11_attack_effect/attack_effect_01.png" id="42_g2csu"]
 [ext_resource type="Texture2D" uid="uid://61tsaa7itvvm" path="res://assets/sprites/treasure_hunters/the_crusty_crew/sprites/crabby/11_attack_effect/attack_effect_02.png" id="43_jnpat"]
 [ext_resource type="Texture2D" uid="uid://l2xhb3srapic" path="res://assets/sprites/treasure_hunters/the_crusty_crew/sprites/crabby/11_attack_effect/attack_effect_03.png" id="44_gsfyy"]
+
+[sub_resource type="GDScript" id="GDScript_6chrj"]
+script/source = "extends CharacterBody2D
+## Clase que controla animación y configuración del NPC
+##
+## Setea la animación y comportamiento del NPC 
+
+
+# Acciones del NPC
+@export_enum(
+	\"idle\",
+	\"run\", 
+) var animation: String
+
+# Variable para control de animación
+@onready var _animation := $NpcAnimation
+
+var _gravity = 10
+var _speed = 25
+var _velocity = Vector2(0,0)
+
+
+# Función de inicialización
+func _ready():
+	if not animation:
+		return
+	_animation.play(animation)
+	
+	
+func _process(delta):
+	_move_character()
+	
+	
+func _move_character():
+	_velocity.y += _gravity 
+	_velocity.x += - _speed 
+	_velocity = move_and_slide()
+"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fq7gh"]
 animations = [{
@@ -219,6 +256,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ku5hj"]
+size = Vector2(40, 23)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6nhye"]
 animations = [{
@@ -242,16 +280,27 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Npc" type="CharacterBody2D"]
-script = ExtResource("1_wp7we")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6eegh"]
+size = Vector2(40, 23)
+
+[node name="Crabby" type="CharacterBody2D"]
+script = SubResource("GDScript_6chrj")
 
 [node name="NpcAnimation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fq7gh")
 animation = &"idle"
+frame_progress = 0.513516
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 1.5)
 shape = SubResource("RectangleShape2D_ku5hj")
 
 [node name="NpcEffect" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6nhye")
 animation = &"idle"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2, 1.5)
+shape = SubResource("RectangleShape2D_6eegh")
