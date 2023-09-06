@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://ipglcucbygcg"]
+
+[ext_resource type="Texture2D" uid="uid://di0v3vk0k5jtv" path="res://assets/sprites/treasure_hunters/merchant_ship/sprites/box/destroyed/2.png" id="1_73jkf"]
+[ext_resource type="Texture2D" uid="uid://bpgkpkrsnbc2o" path="res://assets/sprites/treasure_hunters/merchant_ship/sprites/box/destroyed/3.png" id="2_vapd2"]
+[ext_resource type="Texture2D" uid="uid://cm77g5828t8jo" path="res://assets/sprites/treasure_hunters/merchant_ship/sprites/box/destroyed/4.png" id="3_tthb0"]
+[ext_resource type="Texture2D" uid="uid://do2fqg82nvbmh" path="res://assets/sprites/treasure_hunters/merchant_ship/sprites/box/destroyed/5.png" id="4_yvshg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t1to2"]
+size = Vector2(18, 7.9375)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7o3u1"]
+size = Vector2(8, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4v6i"]
+size = Vector2(13, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rqrbu"]
+size = Vector2(13, 10)
+
+[node name="BoxDestroyed" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+mass = 0.1
+gravity_scale = 0.5
+linear_velocity = Vector2(80, -200)
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+texture = ExtResource("1_73jkf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(0, 0.03125)
+shape = SubResource("RectangleShape2D_t1to2")
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="."]
+mass = 0.1
+gravity_scale = 0.5
+linear_velocity = Vector2(120, -100)
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D2"]
+texture = ExtResource("2_vapd2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_7o3u1")
+
+[node name="RigidBody2D3" type="RigidBody2D" parent="."]
+mass = 0.1
+gravity_scale = 0.5
+linear_velocity = Vector2(150, -150)
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D3"]
+texture = ExtResource("3_tthb0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D3"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_k4v6i")
+
+[node name="RigidBody2D4" type="RigidBody2D" parent="."]
+mass = 0.1
+gravity_scale = 0.5
+linear_velocity = Vector2(90, -100)
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D4"]
+texture = ExtResource("4_yvshg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D4"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_rqrbu")

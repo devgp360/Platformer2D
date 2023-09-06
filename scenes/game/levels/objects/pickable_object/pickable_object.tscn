@@ -33,9 +33,6 @@ script/source = "extends Area2D
 # Definimos el sprite animado de la moneda
 @onready var _animated_sprite = $AnimatedSprite2D
 
-# Nombre del personaje principal
-var _player_name = 'MainCharacter'
-
 
 # Función de carga del nodo
 func _ready():
@@ -57,14 +54,6 @@ func _ready():
 	# Reproducimos la animación idle
 	_animated_sprite.play(\"idle\")
 	
-	
-# Función que siempre se llama
-func _process(_delta):
-	# Validamos si presionamos el boton Escape
-	if Input.is_action_pressed(\"ui_cancel\"):
-		# Cambiamos la animación
-		do_animation()
-
 
 func _on_animated_sprite_2d_animation_finished():
 	# Eliminamos el objeto recogido de la escena
@@ -79,7 +68,6 @@ func do_animation():
 
 
 func _on_area_entered(area):
-	print(area)
 	if area.is_in_group(\"player\"):
 		# Reproducimos la animación de la moneda recogida
 		do_animation()
@@ -145,7 +133,7 @@ script = SubResource("GDScript_cib8d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2ebd0")
-animation = &"diamond_taken"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_p0cjw")
