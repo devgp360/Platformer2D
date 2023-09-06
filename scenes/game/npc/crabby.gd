@@ -12,10 +12,12 @@ extends CharacterBody2D
 
 # Variable para control de animación
 @onready var _animation := $NpcAnimation
+@onready var _animation := $NpcAnimation
 
 var _gravity = 10
 var _speed = 25
 var _velocity = Vector2(0,0)
+var moving_left = true
 
 
 # Función de inicialización
@@ -27,9 +29,17 @@ func _ready():
 	
 func _process(delta):
 	_move_character()
+	_turn()
 	
 	
 func _move_character():
 	_velocity.y += _gravity 
 	_velocity.x += - _speed 
 	_velocity = move_and_slide()
+
+
+func _on_area_2d_body_entered(body):
+	print("atacar")
+	
+func _turn(body):
+	if not 

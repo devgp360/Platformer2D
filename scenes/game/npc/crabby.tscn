@@ -59,10 +59,11 @@ script/source = "extends CharacterBody2D
 
 # Variable para control de animación
 @onready var _animation := $NpcAnimation
+@onready var _raycast := $Area2D/RayCast2D
 
 var _gravity = 10
 var _speed = 25
-var _velocity = Vector2(0,0)
+var moving_left = true
 
 
 # Función de inicialización
@@ -74,12 +75,28 @@ func _ready():
 	
 func _process(delta):
 	_move_character()
+	_turn()
 	
 	
 func _move_character():
-	_velocity.y += _gravity 
-	_velocity.x += - _speed 
-	_velocity = move_and_slide()
+	velocity.y += _gravity 
+	
+	if moving_left:
+		velocity.x = - _speed 
+	else:	
+		velocity.x = _speed 
+			
+	move_and_slide()
+
+
+func _on_area_2d_body_entered(body):
+	print(\"atacar\")
+	
+	
+func _turn():
+	if not _raycast.is_colliding():
+		moving_left = !moving_left
+		scale.x = -scale.x
 "
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fq7gh"]
@@ -289,7 +306,7 @@ script = SubResource("GDScript_6chrj")
 [node name="NpcAnimation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fq7gh")
 animation = &"idle"
-frame_progress = 0.513516
+frame_progress = 0.698478
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 1.5)
@@ -304,3 +321,9 @@ animation = &"idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(2, 1.5)
 shape = SubResource("RectangleShape2D_6eegh")
+
+[node name="RayCast2D" type="RayCast2D" parent="Area2D"]
+position = Vector2(-20, -9)
+scale = Vector2(0.5, 0.5)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
