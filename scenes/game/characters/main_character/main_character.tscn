@@ -299,7 +299,7 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="MainCharacter" type="CharacterBody2D"]
+[node name="MainCharacter" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_ty3dm")
 
 [node name="MainCharacterMovement" type="Node2D" parent="." node_paths=PackedStringArray("character", "main_animation")]
