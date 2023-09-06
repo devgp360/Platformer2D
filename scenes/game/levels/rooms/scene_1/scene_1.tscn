@@ -90,7 +90,7 @@ animation = "green_diamond"
 [node name="TakingDamageObject" type="Node2D" parent="."]
 
 [node name="Box" parent="TakingDamageObject" instance=ExtResource("5_phmby")]
-position = Vector2(78, 437)
+position = Vector2(78, 439)
 
 [node name="DamageObject" type="Node2D" parent="."]
 
