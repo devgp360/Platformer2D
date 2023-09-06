@@ -5,9 +5,10 @@ extends CharacterBody2D
 
 
 # Variable para control de animación
-@onready var anim := $NpcAnimation
+@onready var _animation := $NpcAnimation
 
 
 # Función de inicialización
 func _ready():
-	anim.play("idle")
+	_animation.play("idle")
+	
