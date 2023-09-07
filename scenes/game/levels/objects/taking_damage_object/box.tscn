@@ -35,7 +35,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oeywc"]
 size = Vector2(25, 18)
 
-[node name="RigidBody2D" type="RigidBody2D"]
+[node name="Box" type="RigidBody2D"]
 input_pickable = true
 max_contacts_reported = 100
 contact_monitor = true

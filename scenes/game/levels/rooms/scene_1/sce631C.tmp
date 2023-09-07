@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ca3ueo0yewjov" path="res://scenes/game/characters/main_character/main_character.tscn" id="1_vi0ax"]
 [ext_resource type="PackedScene" uid="uid://8rbt5lmdrp0s" path="res://scenes/game/camera/camera.tscn" id="2_2f152"]
 [ext_resource type="PackedScene" uid="uid://c2nps502udtd6" path="res://scenes/game/levels/objects/front_palm_tree/front_palm_tree.tscn" id="4_6u8cq"]
-[ext_resource type="PackedScene" uid="uid://bo37g7mv4j6pn" path="res://scenes/game/enemy/crabby.tscn" id="4_cmc0y"]
+[ext_resource type="PackedScene" uid="uid://bo37g7mv4j6pn" path="res://scenes/game/npc/crabby.tscn" id="4_ybh3i"]
 [ext_resource type="PackedScene" uid="uid://cqhiovy7j3xcq" path="res://scenes/game/levels/objects/taking_damage_object/box.tscn" id="5_phmby"]
 [ext_resource type="PackedScene" uid="uid://b5qjvfbte4svk" path="res://scenes/game/levels/objects/pickable_object/pickable_object.tscn" id="6_6sl3g"]
 [ext_resource type="PackedScene" uid="uid://bnp6y3fe4kqob" path="res://scenes/game/levels/objects/damage_object/cannon.tscn" id="6_r6bnd"]
@@ -50,11 +50,22 @@ layer_1/tile_data = PackedInt32Array(1179648, 65539, 1, 1245184, 65539, 1, 11796
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="Crabby" parent="Enemies" instance=ExtResource("4_cmc0y")]
-position = Vector2(1233, 520)
+[node name="Crabby" parent="Enemies" instance=ExtResource("4_ybh3i")]
+position = Vector2(337, 306)
 animation = "idle"
-moving_direction = "right"
+moving_direction = "left"
+
+[node name="Crabby2" parent="Enemies" instance=ExtResource("4_ybh3i")]
+position = Vector2(201, 564)
+animation = "idle"
+moving_direction = "left"
 hits_to_die = 3
+
+[node name="Crabby3" parent="Enemies" instance=ExtResource("4_ybh3i")]
+position = Vector2(1277, 528)
+animation = "run"
+moving_direction = "left"
+is_active = true
 
 [node name="CollectableObjects" type="Node2D" parent="."]
 

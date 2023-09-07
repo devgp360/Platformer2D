@@ -26,6 +26,8 @@ func _on_animated_sprite_2d_animation_finished():
 	if _animated_sprite.get_animation() == 'hit':
 		# Quitamos el sprite de la caja
 		_animated_sprite.visible = false
+		# Quitamos la colisión
+		self.set_deferred("collision_layer", 2)
 		# Agregamos la animación de destrución
 		self.add_child(_box_destroyed)
 		# Esperamos 3 segundos
@@ -39,7 +41,7 @@ func do_animation():
 	_animated_sprite.play("hit")
 
 
-func hint():
+func hit():
 	# Validamos si estamos reproduciendo la animación
 	if not _do_animation:
 		# Seteamos que ya estamos reproduciendo la animación

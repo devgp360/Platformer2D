@@ -34,16 +34,16 @@ func _ready():
 	_animated_sprite.sprite_frames.set_frame("idle", 1, load(_animation2))
 	_animated_sprite.sprite_frames.set_frame("idle", 2, load(_animation3))
 	_animated_sprite.sprite_frames.set_frame("idle", 3, load(_animation4))
-	
+
 	# Reproducimos la animación idle
 	_animated_sprite.play("idle")
-	
+
 
 func _on_animated_sprite_2d_animation_finished():
 	# Eliminamos el objeto recogido de la escena
 	queue_free()
-	
-	
+
+
 func do_animation():
 	# Validamos si la animación es de moneda
 	if animation == "gold_coin" or animation == "silver_coin":
@@ -57,5 +57,12 @@ func do_animation():
 func _on_area_entered(area):
 	# Validamos que la colisión es con el personaje principal 
 	if area.is_in_group("player"):
+		# Reproducimos la animación de la moneda recogida
+		do_animation()
+
+
+func _on_body_entered(body):
+	# Validamos que la colisión es con el personaje principal 
+	if body.is_in_group("player"):
 		# Reproducimos la animación de la moneda recogida
 		do_animation()
