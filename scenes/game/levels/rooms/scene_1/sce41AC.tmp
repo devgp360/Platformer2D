@@ -54,17 +54,21 @@ layer_1/tile_data = PackedInt32Array(1179648, 65539, 1, 1245184, 65539, 1, 11796
 position = Vector2(337, 306)
 animation = "idle"
 moving_direction = "left"
+hits_to_die = null
+is_active = null
 
 [node name="Crabby2" parent="Enemies" instance=ExtResource("4_ybh3i")]
 position = Vector2(201, 564)
 animation = "idle"
 moving_direction = "left"
 hits_to_die = 3
+is_active = null
 
 [node name="Crabby3" parent="Enemies" instance=ExtResource("4_ybh3i")]
 position = Vector2(1277, 528)
 animation = "run"
 moving_direction = "left"
+hits_to_die = null
 is_active = true
 
 [node name="CollectableObjects" type="Node2D" parent="."]

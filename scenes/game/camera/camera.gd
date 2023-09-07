@@ -23,6 +23,10 @@ func _ready():
 func _physics_process(delta):
 	# Generamos posiciones "interpoladas" (entre la posición de la cámara y el personaje)
 	# para realizar el movimiento de la cámara
+	# Validamos si el personaje esta vivo y no murio
+	if not character:
+		# Si el personaje esta muerto dejamos de seguirlo
+		return
 	var charpos = character.position
 	var new_pos = position.lerp(charpos, delta * 2.0)
 	# Ajustamos los valores a números enteros, para evitar mover la cámara demasiadas veces
