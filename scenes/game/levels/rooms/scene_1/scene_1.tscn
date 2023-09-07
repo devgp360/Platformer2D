@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://dhor7t5klwdwx"]
+[gd_scene load_steps=19 format=3 uid="uid://dhor7t5klwdwx"]
 
 [ext_resource type="Texture2D" uid="uid://cg6wkkuni8aq8" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/bg_image.png" id="1_a12cs"]
 [ext_resource type="TileSet" uid="uid://bx1rsqucrwm2i" path="res://assets/resources/bg_tile_set.tres" id="1_atorb"]
 [ext_resource type="PackedScene" uid="uid://ca3ueo0yewjov" path="res://scenes/game/characters/main_character/main_character.tscn" id="1_vi0ax"]
+[ext_resource type="AudioStream" uid="uid://dfb4lvan1kwl2" path="res://assets/sounds/pirate_theme.ogg" id="1_xvhx7"]
 [ext_resource type="PackedScene" uid="uid://8rbt5lmdrp0s" path="res://scenes/game/camera/camera.tscn" id="2_2f152"]
 [ext_resource type="PackedScene" uid="uid://c2nps502udtd6" path="res://scenes/game/levels/objects/front_palm_tree/front_palm_tree.tscn" id="4_6u8cq"]
 [ext_resource type="PackedScene" uid="uid://bo37g7mv4j6pn" path="res://scenes/game/enemy/crabby.tscn" id="4_cmc0y"]
@@ -25,6 +26,11 @@ load_path = "res://.godot/imported/small_cloud_1.png-40532304be8a8e58b358963bfcb
 load_path = "res://.godot/imported/small_cloud_3.png-2824e524f4818e08cf60700642ab74ab.ctex"
 
 [node name="Main" type="Node2D"]
+
+[node name="AmbientSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_xvhx7")
+volume_db = -6.548
+autoplay = true
 
 [node name="MainCharacter" parent="." instance=ExtResource("1_vi0ax")]
 position = Vector2(823, 561)

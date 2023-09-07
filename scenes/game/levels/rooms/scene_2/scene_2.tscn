@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://tqg8duvjuik7"]
+[gd_scene load_steps=21 format=3 uid="uid://tqg8duvjuik7"]
 
 [ext_resource type="TileSet" uid="uid://bx1rsqucrwm2i" path="res://assets/resources/bg_tile_set.tres" id="1_0t8t3"]
 [ext_resource type="PackedScene" uid="uid://8rbt5lmdrp0s" path="res://scenes/game/camera/camera.tscn" id="1_8l71v"]
@@ -18,12 +18,17 @@
 [ext_resource type="PackedScene" uid="uid://c2nps502udtd6" path="res://scenes/game/levels/objects/front_palm_tree/front_palm_tree.tscn" id="14_uwyh7"]
 [ext_resource type="PackedScene" uid="uid://ca3ueo0yewjov" path="res://scenes/game/characters/main_character/main_character.tscn" id="15_ooixx"]
 [ext_resource type="PackedScene" uid="uid://brhmupxo2xjim" path="res://scenes/game/levels/objects/change_scene/door_change_scene.tscn" id="17_ydyba"]
+[ext_resource type="AudioStream" uid="uid://btstmivulu2by" path="res://assets/sounds/pirate_game_tune.ogg" id="19_as2yr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3x710"]
 size = Vector2(31, 21)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_j3e3j")
+
+[node name="AmbientSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_as2yr")
+autoplay = true
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("character") instance=ExtResource("1_8l71v")]
 character = NodePath("../MainCharacter")
