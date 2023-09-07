@@ -57,82 +57,54 @@ script/source = "extends CharacterBody2D
 	\"run\", 
 ) var animation: String
 
-# Dirección de movimiento del NPC
-@export_enum(
-	\"left\",
-	\"right\", 
-) var moving_direction: String
-
-# Variable para control de animación y colisiones
+# Variable para control de animación
 @onready var _animation := $NpcAnimation
 @onready var _raycast_terrain := $Area2D/RayCastTerrain
 
-# Definición de parametros de física
 var _gravity = 10
 var _speed = 25
-# Definición de dirección de movimientos
-var _moving_left = true
+var moving_left = true
 
 
 # Función de inicialización
 func _ready():
-	# Seteamos la direccion de movimiento
-	if moving_direction == 'right':
-		_moving_left = false
-		scale.x = -scale.x
-	# Si no seteamos la animación ponemos por defecto la animación idle
 	if not animation:
-		animation = \"idle\"
-	# Iniciamos la animación
-	_init_state()
+		return
+	_animation.play(animation)
 	
 	
 func _physics_process(delta):
-	# Si la animación es de correr, aplicamos el movimiento
+	_atack()
 	if animation == \"run\":
 		_move_character()
 		_turn()
 	
 	
-func _move_character():
-	# Aplicamos la gravidad
+func _move_character():	
 	velocity.y += _gravity 
 	
-	# Aplicamos la dirección de movimiento
-	if _moving_left:
+	if moving_left:
 		velocity.x = - _speed 
-	else:
+	else:	
 		velocity.x = _speed 
-	# Iniciamos el movimiento
+			
 	move_and_slide()
 
 
 func _on_area_2d_body_entered(body):
-	# Validamos si la colición es con el personaje principal
-	if body.is_in_group(\"player\"):
-		# Atacamos
-		_atack()
-	else: 
-		# Estado inicial
-		_init_state()
+	print(\"atacar\", body.name)
 
 
 func _turn():
-	# Validamos si termino el terreno
 	if not _raycast_terrain.is_colliding():
-		# Damos la vuelta
-		_moving_left = !_moving_left
+		moving_left = !moving_left
 		scale.x = -scale.x
 
 
 func _atack():
-	# Animación de atacar
-	_animation.play(\"attack\")
-
-
-func _init_state():
-	# Animación de estado inicial
-	_animation.play(animation)
+	if not _raycast_terrain.is_colliding():
+		moving_left = !moving_left
+		scale.x = -scale.x
 "
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fq7gh"]
@@ -309,7 +281,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ku5hj"]
-size = Vector2(44, 23)
+size = Vector2(40, 23)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6nhye"]
 animations = [{
@@ -334,7 +306,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6eegh"]
-size = Vector2(44, 23)
+size = Vector2(40, 23)
 
 [node name="Crabby" type="CharacterBody2D"]
 script = SubResource("GDScript_6chrj")
@@ -359,7 +331,15 @@ position = Vector2(2, 1.5)
 shape = SubResource("RectangleShape2D_6eegh")
 
 [node name="RayCastTerrain" type="RayCast2D" parent="Area2D"]
-position = Vector2(-21, -8)
+position = Vector2(-20, -9)
 scale = Vector2(0.5, 0.5)
+
+[node name="RayCastLeft" type="RayCast2D" parent="Area2D"]
+position = Vector2(-20, 0)
+target_position = Vector2(-11, 0)
+
+[node name="RayCastRight" type="RayCast2D" parent="Area2D"]
+position = Vector2(25, 0)
+target_position = Vector2(11, 0)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

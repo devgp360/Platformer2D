@@ -13,6 +13,5 @@ func _process(delta):
 	for i in character.get_slide_collision_count():
 		var collision = character.get_slide_collision(i)
 		var collider = collision.get_collider()
-		
-		if collider and collider.has_method("hint"):
-			collider.hint()
+		if collider and collider.has_method("hit"):
+			collider.hit()

@@ -75,6 +75,13 @@ func _on_area_entered(area):
 	if area.is_in_group(\"player\"):
 		# Reproducimos la animación de la moneda recogida
 		do_animation()
+
+
+func _on_body_entered(body):
+	# Validamos que la colisión es con el personaje principal 
+	if body.is_in_group(\"player\"):
+		# Reproducimos la animación de la moneda recogida
+		do_animation()
 "
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2ebd0"]
@@ -143,4 +150,5 @@ animation = &"idle"
 shape = SubResource("CircleShape2D_p0cjw")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
