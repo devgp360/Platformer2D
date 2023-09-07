@@ -70,8 +70,8 @@ script/source = "extends CharacterBody2D
 @export var is_active: bool = false
 
 # Variable para control de animación y colisiones
-@onready var _animation := $NpcAnimation
-@onready var _animation_effect := $NpcEffect
+@onready var _animation := $EnemyAnimation
+@onready var _animation_effect := $EnemyEffect
 @onready var _raycast_terrain := $Area2D/RayCastTerrain
 @onready var _raycast_wall := $Area2D/RayCastWall
 @onready var _raycast_vision_left := $Area2D/RayCastVisionLeft
@@ -440,7 +440,7 @@ size = Vector2(48, 25)
 [node name="Crabby" type="CharacterBody2D"]
 script = SubResource("GDScript_6chrj")
 
-[node name="NpcAnimation" type="AnimatedSprite2D" parent="."]
+[node name="EnemyAnimation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fq7gh")
 animation = &"idle"
 
@@ -448,7 +448,7 @@ animation = &"idle"
 position = Vector2(2, 1.5)
 shape = SubResource("RectangleShape2D_ku5hj")
 
-[node name="NpcEffect" type="AnimatedSprite2D" parent="."]
+[node name="EnemyEffect" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6nhye")
 animation = &"idle"
 
@@ -477,6 +477,6 @@ position = Vector2(25, 0)
 scale = Vector2(0.5, 0.5)
 target_position = Vector2(150, 0)
 
-[connection signal="frame_changed" from="NpcAnimation" to="." method="_on_npc_animation_frame_changed"]
+[connection signal="frame_changed" from="EnemyAnimation" to="." method="_on_npc_animation_frame_changed"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

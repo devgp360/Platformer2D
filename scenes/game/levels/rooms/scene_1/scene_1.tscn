@@ -53,8 +53,7 @@ layer_1/tile_data = PackedInt32Array(1179648, 65539, 1, 1245184, 65539, 1, 11796
 [node name="Crabby" parent="Enemies" instance=ExtResource("4_cmc0y")]
 position = Vector2(1233, 520)
 animation = "idle"
-moving_direction = "right"
-hits_to_die = 3
+moving_direction = "left"
 
 [node name="CollectableObjects" type="Node2D" parent="."]
 
