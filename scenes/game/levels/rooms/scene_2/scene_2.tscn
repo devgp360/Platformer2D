@@ -26,6 +26,10 @@ size = Vector2(31, 21)
 [node name="Main" type="Node2D"]
 script = ExtResource("1_j3e3j")
 
+[node name="AmbientSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_as2yr")
+autoplay = true
+
 [node name="Camera2D" parent="." node_paths=PackedStringArray("character") instance=ExtResource("1_8l71v")]
 character = NodePath("../MainCharacter")
 
@@ -185,7 +189,3 @@ _path_to_scene = "res://scenes/game/levels/rooms/scene_1/scene_1.tscn"
 
 [node name="MainCharacter" parent="." instance=ExtResource("15_ooixx")]
 position = Vector2(207, 479)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("19_as2yr")
-autoplay = true
