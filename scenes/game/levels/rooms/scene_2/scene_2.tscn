@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://tqg8duvjuik7"]
+[gd_scene load_steps=20 format=3 uid="uid://tqg8duvjuik7"]
 
 [ext_resource type="TileSet" uid="uid://bx1rsqucrwm2i" path="res://assets/resources/bg_tile_set.tres" id="1_0t8t3"]
 [ext_resource type="PackedScene" uid="uid://8rbt5lmdrp0s" path="res://scenes/game/camera/camera.tscn" id="1_8l71v"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bf80xyf45y2wk" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/blue_diamond/02.png" id="14_te0nb"]
 [ext_resource type="PackedScene" uid="uid://c2nps502udtd6" path="res://scenes/game/levels/objects/front_palm_tree/front_palm_tree.tscn" id="14_uwyh7"]
 [ext_resource type="PackedScene" uid="uid://ca3ueo0yewjov" path="res://scenes/game/characters/main_character/main_character.tscn" id="15_ooixx"]
+[ext_resource type="PackedScene" uid="uid://brhmupxo2xjim" path="res://scenes/game/levels/objects/change_scene/door_change_scene.tscn" id="17_ydyba"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3x710"]
 size = Vector2(31, 21)
@@ -176,5 +177,9 @@ position = Vector2(1079, -52)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("14_te0nb")
 
+[node name="DoorChangeScene" parent="." instance=ExtResource("17_ydyba")]
+position = Vector2(1392, 376)
+scale = Vector2(0.8, 0.8)
+
 [node name="MainCharacter" parent="." instance=ExtResource("15_ooixx")]
-position = Vector2(206, 365)
+position = Vector2(207, 479)
