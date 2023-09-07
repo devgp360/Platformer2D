@@ -180,6 +180,7 @@ texture = ExtResource("14_te0nb")
 [node name="DoorChangeScene" parent="." instance=ExtResource("17_ydyba")]
 position = Vector2(1392, 376)
 scale = Vector2(0.8, 0.8)
+_path_to_scene = "res://scenes/game/levels/rooms/scene_1/scene_1.tscn"
 
 [node name="MainCharacter" parent="." instance=ExtResource("15_ooixx")]
 position = Vector2(207, 479)
