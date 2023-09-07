@@ -143,6 +143,7 @@ func _move_idle():
 func _on_area_2d_body_entered(body):
 	# Validamos si la colición es con el personaje principal
 	if body.is_in_group(\"player\"):
+		print(\"ENTRO\", body.get_node(\"Animation\").get_animation())
 		_stop_detection = true
 		# Atacamos
 		_atack()
@@ -184,6 +185,7 @@ func _on_npc_animation_frame_changed():
 		# Pegamos al personaje
 		_animation_effect.play(\"attack_effect\")
 		_has_hits += 1
+		
 		if _has_hits >= hits_to_die and _body:
 			# Matamos al personaje
 			var _move_script = _body.get_node(\"MainCharacterMovement\")
@@ -231,6 +233,11 @@ func _move(_direction):
 
 	# Iniciamos el movimiento
 	move_and_slide()
+
+
+func _on_area_2d_area_entered(area):
+	if area.is_in_group(\"hit\"):
+		queue_free()
 "
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fq7gh"]
@@ -478,5 +485,6 @@ scale = Vector2(0.5, 0.5)
 target_position = Vector2(150, 0)
 
 [connection signal="frame_changed" from="EnemyAnimation" to="." method="_on_npc_animation_frame_changed"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

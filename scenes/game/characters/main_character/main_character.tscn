@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://ca3ueo0yewjov"]
+[gd_scene load_steps=70 format=3 uid="uid://ca3ueo0yewjov"]
 
 [ext_resource type="Script" path="res://scenes/game/characters/main_character/main_character.gd" id="1_ty3dm"]
 [ext_resource type="Texture2D" uid="uid://xd70a23vyklm" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/captain_clown_nose/captain_clown_nose_with_sword/15_attack_1/attack_1_01.png" id="2_082ap"]
@@ -78,7 +78,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("4_251hd")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_1",
 "speed": 8.0
 }, {
@@ -92,7 +92,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("7_vw8e4")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_2",
 "speed": 8.0
 }, {
@@ -106,7 +106,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("10_efncg")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_3",
 "speed": 8.0
 }, {
@@ -120,7 +120,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("7_juv42")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_air_1",
 "speed": 8.0
 }, {
@@ -341,6 +341,9 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_841yf"]
+size = Vector2(13, 26)
+
 [node name="MainCharacter" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_ty3dm")
 
@@ -355,7 +358,7 @@ character = NodePath("..")
 
 [node name="Animation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sohxe")
-animation = &"idle_with_sword"
+animation = &"attack_2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
@@ -367,4 +370,12 @@ sprite_frames = SubResource("SpriteFrames_cwldb")
 animation = &"fall"
 frame_progress = 0.450057
 
+[node name="Area2D" type="Area2D" parent="." groups=["hit"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(21.5, 6)
+shape = SubResource("RectangleShape2D_841yf")
+disabled = true
+
 [connection signal="animation_finished" from="Animation" to="MainCharacterMovement" method="_on_animation_animation_finished"]
+[connection signal="frame_changed" from="Animation" to="MainCharacterMovement" method="_on_animation_frame_changed"]
