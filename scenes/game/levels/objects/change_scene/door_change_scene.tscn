@@ -8,7 +8,6 @@ size = Vector2(37, 45)
 
 [node name="DoorChangeScene" type="Node2D"]
 script = ExtResource("1_o73yr")
-path_to_scene = "res://scenes/game/levels/rooms/scene_1/scene_1.tscn"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 18)

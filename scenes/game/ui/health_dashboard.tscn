@@ -1,0 +1,122 @@
+[gd_scene load_steps=12 format=3 uid="uid://bbdmu0jrh4l4o"]
+
+[ext_resource type="Script" path="res://scenes/game/ui/health_dashboard.gd" id="1_66ol8"]
+[ext_resource type="Texture2D" uid="uid://cl5b1weh62et3" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/life_bars/big_bars/1.png" id="1_chlyh"]
+[ext_resource type="Texture2D" uid="uid://c51psidx5cxry" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/life_bars/big_bars/3.png" id="2_p3a0p"]
+[ext_resource type="Texture2D" uid="uid://t2qsw1ribmcp" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/life_bars/big_bars/4.png" id="3_sldep"]
+[ext_resource type="Texture2D" uid="uid://bmn2hx61jlm7n" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/gold_coin/01.png" id="4_tr3c8"]
+[ext_resource type="Texture2D" uid="uid://ci24y5vdyxq0j" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/life_bars/colors/1.png" id="5_3jsni"]
+[ext_resource type="Texture2D" uid="uid://qegg5d225ej6" path="res://assets/atlases/text.png" id="7_dkqak"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2byhb"]
+atlas = ExtResource("7_dkqak")
+region = Rect2(104, 4, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8oydo"]
+atlas = ExtResource("7_dkqak")
+region = Rect2(4, 4, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2s7s"]
+atlas = ExtResource("7_dkqak")
+region = Rect2(104, 24, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqiuc"]
+atlas = ExtResource("7_dkqak")
+region = Rect2(104, 24, 10, 11)
+
+[node name="health_dashboard" type="CanvasLayer"]
+script = ExtResource("1_66ol8")
+
+[node name="LifeBar" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Left" type="TextureRect" parent="LifeBar"]
+layout_mode = 1
+offset_left = 12.0
+offset_right = 52.0
+offset_bottom = 40.0
+scale = Vector2(2, 2)
+texture = ExtResource("1_chlyh")
+
+[node name="Center" type="TextureRect" parent="LifeBar"]
+layout_mode = 1
+offset_left = 92.0
+offset_right = 132.0
+offset_bottom = 40.0
+scale = Vector2(2, 2)
+texture = ExtResource("2_p3a0p")
+
+[node name="Right" type="TextureRect" parent="LifeBar"]
+layout_mode = 1
+offset_left = 172.0
+offset_right = 212.0
+offset_bottom = 40.0
+scale = Vector2(2, 2)
+texture = ExtResource("3_sldep")
+
+[node name="Bar" type="TextureProgressBar" parent="LifeBar"]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 34.0
+offset_right = 108.0
+offset_bottom = 36.0
+scale = Vector2(3.5, 3.5)
+max_value = 10.0
+value = 5.0
+nine_patch_stretch = true
+texture_progress = ExtResource("5_3jsni")
+
+[node name="Points" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 3.0
+offset_top = 64.0
+offset_right = 43.0
+offset_bottom = 104.0
+
+[node name="Coin" type="TextureRect" parent="Points"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("4_tr3c8")
+
+[node name="X" type="TextureRect" parent="Points"]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 9.0
+offset_right = 101.0
+offset_bottom = 49.0
+scale = Vector2(0.9, 0.9)
+texture = SubResource("AtlasTexture_2byhb")
+
+[node name="Number1" type="TextureRect" parent="Points"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 9.0
+offset_right = 150.0
+offset_bottom = 49.0
+scale = Vector2(0.9, 0.9)
+texture = SubResource("AtlasTexture_8oydo")
+
+[node name="Number2" type="TextureRect" parent="Points"]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 9.0
+offset_right = 192.0
+offset_bottom = 49.0
+scale = Vector2(0.9, 0.9)
+texture = SubResource("AtlasTexture_w2s7s")
+
+[node name="Number3" type="TextureRect" parent="Points"]
+layout_mode = 0
+offset_left = 194.0
+offset_top = 9.0
+offset_right = 234.0
+offset_bottom = 49.0
+scale = Vector2(0.9, 0.9)
+texture = SubResource("AtlasTexture_xqiuc")
