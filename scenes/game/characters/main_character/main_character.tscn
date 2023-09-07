@@ -273,7 +273,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q04ya"]
-size = Vector2(37, 28)
+size = Vector2(24, 28)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cwldb"]
 animations = [{
@@ -358,7 +358,7 @@ sprite_frames = SubResource("SpriteFrames_sohxe")
 animation = &"idle_with_sword"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(6.5, -2)
+position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_q04ya")
 
 [node name="Effects" type="AnimatedSprite2D" parent="."]
