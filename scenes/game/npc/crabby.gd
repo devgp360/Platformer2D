@@ -10,11 +10,11 @@ extends CharacterBody2D
 	"run", 
 ) var animation: String
 
-# Acciones del NPC
+# Dirección de movimiento del NPC
 @export_enum(
 	"left",
 	"right", 
-) var moving_left: String
+) var moving_direction: String
 
 # Variable para control de animación y colisiones
 @onready var _animation := $NpcAnimation
@@ -30,7 +30,7 @@ var _moving_left = true
 # Función de inicialización
 func _ready():
 	# Seteamos la direccion de movimiento
-	if moving_left  == 'right':
+	if moving_direction == 'right':
 		_moving_left = false
 		scale.x = -scale.x
 	# Si no seteamos la animación ponemos por defecto la animación idle
