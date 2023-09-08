@@ -3,9 +3,13 @@ extends Node2D
 ##
 ## Controlará el acceso al menú principal y a las acciones del mismo (iniciar, pantalla completa y volumen de sonidos)
 ## Menú principal: https://docs.google.com/document/d/17z6OpRIyuTMBbdYGBseTlv9aqLGkM_OUsWnzCGrWyJs/edit?usp=sharing
+## Pantalla completa e iniciar juego: https://docs.google.com/document/d/1iXAeyJgSInJz_jI_zl1tHWvQ12DSI-W2FpcLWdxGre8/edit?usp=sharing
+## Control de sonidos: https://docs.google.com/document/d/1iF9UeO_rtx2qWtMxjB6LienO-kQPx3blTCgJw-aACx4/edit?usp=sharing
 
 
+# Nivel inicial que se cargará al presionar "Iniciar" en el menú principal
 const PATH_LEVEL_1 = "res://scenes/game/levels/rooms/scene_1/scene_1.tscn"
+
 
 # Variables para animación de nubes
 var _parallax_1_normal = true
@@ -13,14 +17,15 @@ var _parallax_2_normal = false
 var _started = false # Indica si ya iniciamos el juego (entramos al primer nivel)
 
 # Referencias a nodos de la escena
-@onready var grind_sound = $Main/CanvasLayer/Options/Sounds/GridSound
-@onready var anim_water = $Main/World/Background/AnimWater
-@onready var anim_ship = $Main/World/Ship/Ship
-@onready var anim_flag = $Main/World/Ship/Flag
-@onready var parallax_1 = $Main/ParallaxBackground/Parallax1
-@onready var parallax_2 = $Main/ParallaxBackground/Parallax2
-@onready var button = $Main/CanvasLayer/Options/Init/Button/Button
-@onready var main = $Main
+@onready var _anim_water = $Main/World/Background/AnimWater
+@onready var _anim_ship = $Main/World/Ship/Ship
+@onready var _anim_flag = $Main/World/Ship/Flag
+@onready var _parallax_1 = $Main/ParallaxBackground/Parallax1
+@onready var _parallax_2 = $Main/ParallaxBackground/Parallax2
+@onready var _button = $Main/CanvasLayer/Options/Init/Button/Button
+@onready var _slider_ambient = $Main/CanvasLayer/Options/Sounds/Sliders/Ambient/Slider/SliderAmbient
+@onready var _slider_effects = $Main/CanvasLayer/Options/Sounds/Sliders/Effects/Slider/SliderEffects
+@onready var _main = $Main
 
 
 # Función de inicialización
@@ -32,12 +37,14 @@ func _ready():
 	#_toggle_show()
 	HealthDashboard.visible = false
 	# Iniciamoa con las animaciones
-	anim_water.play()
-	anim_ship.play()
-	anim_flag.play()
-	parallax_1.play("parallax1")
-	parallax_2.play_backwards("parallax1")
-
+	_anim_water.play()
+	_anim_ship.play()
+	_anim_flag.play()
+	_parallax_1.play("parallax1")
+	_parallax_2.play_backwards("parallax1")
+	# Iniciar volumen de sonidos en base al valor de los "sliders"
+	_on_slider_ambient_value_changed(_slider_ambient.value)
+	_on_slider_effects_value_changed(_slider_effects.value)
 
 # Detecta eventos de teclado y ratón
 func _unhandled_input(event):
@@ -49,10 +56,10 @@ func _unhandled_input(event):
 func _on_parallax_1_animation_finished(_anim_name):
 	# Hace animación de izquierda a derecha indefinidamente
 	if _parallax_1_normal:
-		parallax_1.play_backwards("parallax1")
+		_parallax_1.play_backwards("parallax1")
 		_parallax_1_normal = false
 	else:
-		parallax_1.play("parallax1")
+		_parallax_1.play("parallax1")
 		_parallax_1_normal = true
 
 
@@ -60,10 +67,10 @@ func _on_parallax_1_animation_finished(_anim_name):
 func _on_parallax_2_animation_finished(_anim_name):
 	# Hace animación de izquierda a derecha indefinidamente
 	if _parallax_2_normal:
-		parallax_2.play_backwards("parallax1")
+		_parallax_2.play_backwards("parallax1")
 		_parallax_2_normal = false
 	else:
-		parallax_2.play("parallax1")
+		_parallax_2.play("parallax1")
 		_parallax_2_normal = true
 
 
@@ -73,10 +80,11 @@ func _toggle_show():
 	visible = not visible # Mostramos/Ocultamos el menu
 	HealthDashboard.visible = not visible # Mostramos/Ocultamos el tablero de salud
 	
+	# Agregar o remover el nodo principal del menú principal
 	if visible:
-		self.add_child(main)
+		self.add_child(_main)
 	else:
-		self.remove_child(main)
+		self.remove_child(_main)
 		
 	# Buscamos el nodo principal del nivel actual "Main"
 	var main_node = get_tree().get_root().get_node("Main")
@@ -89,7 +97,7 @@ func _toggle_show():
 			camera.enabled = not visible
 	# Si ya hemos iniciado, cambiamos el texto del botón a "Continuar"
 	if _started:
-		button.text = "Continuar"
+		_button.text = "Continuar"
 
 
 # Evento de nodo "CheckButton" para hacer pantalla completa o en modo ventana
@@ -109,6 +117,18 @@ func _on_button_pressed():
 		# Si no hemos iniciado, cargamos nivel 1 y cambiamos título de boton
 		SceneTransition.change_scene(PATH_LEVEL_1)
 		_started = true
+
+
+# Cuando cambia el slider de sonido de ambiente ajustamos el volumne de ambiente
+func _on_slider_ambient_value_changed(value):
+	var bus = AudioServer.get_bus_index("Ambient")
+	AudioServer.set_bus_volume_db(bus, linear_to_db(value))
+
+
+# Cuando cambia el slider de sonido de efectos ajustamos el volumne de los efectos
+func _on_slider_effects_value_changed(value):
+	var bus = AudioServer.get_bus_index("Effects")
+	AudioServer.set_bus_volume_db(bus, linear_to_db(value))
 
 
 # Función para poder mostrar/ocultar el menú
