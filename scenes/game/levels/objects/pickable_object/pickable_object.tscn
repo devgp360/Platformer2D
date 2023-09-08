@@ -65,9 +65,11 @@ func do_animation():
 	if animation == \"gold_coin\" or animation == \"silver_coin\":
 		# Reproducimos la animación de la moneda
 		_animated_sprite.play(\"coin_taken\")
+		HealthDashboard.add_points(10) # Agregamos 10 puntos por moneda
 	else:
 		# Reproducimos la animación del diamante
 		_animated_sprite.play(\"diamond_taken\")
+		HealthDashboard.add_points(50) # Agregamos 50 puntos por diamante
 
 
 func _on_area_entered(area):
