@@ -23,13 +23,12 @@ extends CharacterBody2D
 @export var is_active: bool = false
 
 # Variable para control de animación y colisiones
-@onready var _animation := $NpcAnimation
-@onready var _animation_effect := $NpcEffect
+@onready var _animation := $EnemyAnimation
+@onready var _animation_effect := $EnemyEffect
 @onready var _raycast_terrain := $Area2D/RayCastTerrain
 @onready var _raycast_wall := $Area2D/RayCastWall
 @onready var _raycast_vision_left := $Area2D/RayCastVisionLeft
 @onready var _raycast_vision_right := $Area2D/RayCastVisionRight
-@onready var _soft_collision := $SoftCollision
 
 # Definición de parametros de física
 var _gravity = 10
@@ -44,6 +43,8 @@ var _body: Node2D
 var _is_persecuted := false
 # Vandera de no detectar colisiones
 var _stop_detection := false
+# Vandera de no detectar ataques
+var _stop_attack := false
 
 # Función de inicialización
 func _ready():
@@ -120,6 +121,9 @@ func _turn():
 
 
 func _atack():
+	# No atacamos si se seteó la banderita _stop_attack
+	if _stop_attack:
+		return
 	# Animación de atacar
 	_animation.play("attack")
 
@@ -138,6 +142,7 @@ func _on_npc_animation_frame_changed():
 		# Pegamos al personaje
 		_animation_effect.play("attack_effect")
 		_has_hits += 1
+		
 		if _has_hits >= hits_to_die and _body:
 			# Matamos al personaje
 			var _move_script = _body.get_node("MainCharacterMovement")
@@ -185,3 +190,18 @@ func _move(_direction):
 
 	# Iniciamos el movimiento
 	move_and_slide()
+
+
+func _on_area_2d_area_entered(area):
+	# Si estan atacando al enemigo
+	if area.is_in_group("hit"):
+		# Seteamoas banderita no atacar
+		_stop_attack = true
+		# Lo matamos y quitamos de la escena
+		_animation.play("dead_ground")
+
+
+func _on_enemy_animation_animation_finished():
+	if _animation.animation == "dead_ground":
+		queue_free()
+	

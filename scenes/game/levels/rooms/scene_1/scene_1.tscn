@@ -33,7 +33,7 @@ volume_db = -6.548
 autoplay = true
 
 [node name="MainCharacter" parent="." instance=ExtResource("1_vi0ax")]
-position = Vector2(1398, 519)
+position = Vector2(823, 561)
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("character") instance=ExtResource("2_2f152")]
 position = Vector2(324, 395)
@@ -57,9 +57,10 @@ layer_1/tile_data = PackedInt32Array(1179648, 65539, 1, 1245184, 65539, 1, 11796
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Crabby" parent="Enemies" instance=ExtResource("4_cmc0y")]
-position = Vector2(1233, 520)
+position = Vector2(883, 562)
 animation = "idle"
-moving_direction = "left"
+moving_direction = "right"
+hits_to_die = 3
 
 [node name="CollectableObjects" type="Node2D" parent="."]
 

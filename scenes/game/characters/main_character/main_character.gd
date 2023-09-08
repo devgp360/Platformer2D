@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var animation: AnimatedSprite2D = $Animation # Nodo AnimationSprite2D
+
 # var anim_idle_with_sword: PackedScene
 var asigned = false
 
@@ -26,6 +27,8 @@ func _unhandled_input(event):
 func _flip_sprite(event):
 	if event.is_action_pressed("ui_accept"):
 		animation.play("idle_with_sword")
+	elif event.is_action_pressed("hit"):
+		animation.play("attack_2")
 
 
 
@@ -59,4 +62,3 @@ func _load_one_animation(anim_name, anim_path, default_anim = "default"):
 		# Agregamos la propiedad "loop" a la animación
 		var loop = animation.sprite_frames.get_animation_loop(default_anim)
 		animation.sprite_frames.set_animation_loop(default_anim, loop)
-
