@@ -88,7 +88,7 @@ func _set_animation():
 	# Si esta atacando no interrumpimos la animació	
 	if attacking:
 		return
-		
+	# Personaje murio
 	if _died:
 		main_animation.play(_movements.DEAD_HIT)
 		return
