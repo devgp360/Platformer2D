@@ -61,10 +61,10 @@ func _move(delta):
 		character.velocity.x = 0
 		_current_movement = _movements.IDLE
 		
+	# Cuando se presiona el boton derecho de mouse, atacamos	
 	if Input.is_action_pressed("hit"):
 		character.velocity.x = 0
 		_current_movement = _movements.ATTACK
-	# Cuando se presiona el boton derecho de mouse, atacamos
 	
 	# Cuando se presiona la tecla (espacio), hacemos animación de salto
 	if Input.is_action_just_pressed("saltar"):
@@ -85,7 +85,6 @@ func _move(delta):
 
 # Controla la animación según el movimiento del personaje
 func _set_animation():
-	print(attacking)
 	# Si esta atacando no interrumpimos la animació	
 	if attacking:
 		return
@@ -153,7 +152,7 @@ func _on_animation_animation_finished():
 
 func _on_animation_frame_changed():
 	# Si la animación es de atacar habilitamos el colicionador
-	if main_animation.animation == "attack_2":
+	if main_animation.animation == "attack_2" and main_animation.frame == 1:
 		_collision.disabled = false
 	else:
 		# Si la animación no es de atacar deshabilitamos el colicionador
