@@ -472,7 +472,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6eegh"]
-size = Vector2(48, 25)
+size = Vector2(52, 25)
 
 [node name="Crabby" type="CharacterBody2D"]
 script = SubResource("GDScript_6chrj")

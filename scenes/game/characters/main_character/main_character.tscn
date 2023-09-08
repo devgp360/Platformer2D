@@ -1,5 +1,6 @@
-[gd_scene load_steps=69 format=3 uid="uid://ca3ueo0yewjov"]
+[gd_scene load_steps=70 format=3 uid="uid://ca3ueo0yewjov"]
 
+[ext_resource type="Script" path="res://scenes/game/characters/main_character/main_character.gd" id="1_ty3dm"]
 [ext_resource type="Texture2D" uid="uid://xd70a23vyklm" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/captain_clown_nose/captain_clown_nose_with_sword/15_attack_1/attack_1_01.png" id="2_082ap"]
 [ext_resource type="Texture2D" uid="uid://dxflqrst5dy31" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/captain_clown_nose/captain_clown_nose_without_sword/01-idle/idle_01.png" id="2_dghf6"]
 [ext_resource type="Texture2D" uid="uid://lffdngv5hdqv" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/captain_clown_nose/captain_clown_nose_with_sword/15_attack_1/attack_1_02.png" id="3_ejl7h"]
@@ -272,7 +273,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q04ya"]
-size = Vector2(20, 25)
+size = Vector2(24, 25)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cwldb"]
 animations = [{
@@ -345,6 +346,7 @@ size = Vector2(13, 26)
 
 [node name="MainCharacter" type="CharacterBody2D" groups=["player"]]
 disable_mode = 1
+script = ExtResource("1_ty3dm")
 
 [node name="MainCharacterMovement" type="Node2D" parent="." node_paths=PackedStringArray("character", "main_animation", "audio_player")]
 script = ExtResource("7_fm4k8")
@@ -361,7 +363,7 @@ sprite_frames = SubResource("SpriteFrames_sohxe")
 animation = &"attack_2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2.5)
+position = Vector2(-1, -2.5)
 shape = SubResource("RectangleShape2D_q04ya")
 
 [node name="Effects" type="AnimatedSprite2D" parent="."]
