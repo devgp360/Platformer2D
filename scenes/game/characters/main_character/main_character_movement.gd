@@ -150,6 +150,17 @@ func die():
 	_died = true
 
 
+# Recibir daño
+func hit(value: int):
+	HealthDashboard.remove_life(value)
+	# Bajamos vida y validamos si el personaje ha perdido
+	if HealthDashboard.life == 0:
+		_died = true
+	else:
+		pass
+		# Animación de golpe
+
+
 func _on_animation_animation_finished():
 	# Validamos si la animación es de morir
 	if main_animation.get_animation() == 'dead_hit':
