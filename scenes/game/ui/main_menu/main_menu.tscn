@@ -1,0 +1,945 @@
+[gd_scene load_steps=82 format=3 uid="uid://ln85llv8md7"]
+
+[ext_resource type="Script" path="res://scenes/game/ui/main_menu/main_menu.gd" id="1_g1i31"]
+[ext_resource type="Texture2D" uid="uid://c8apilaqosli4" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/additional_sky.png" id="2_66173"]
+[ext_resource type="Texture2D" uid="uid://c8gbrqkb3q2ei" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/yellow_button/2.png" id="2_foa6f"]
+[ext_resource type="AudioStream" uid="uid://btstmivulu2by" path="res://assets/sounds/pirate_game_tune.ogg" id="2_gcb8x"]
+[ext_resource type="Texture2D" uid="uid://dpeemr04vg2s2" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/sliders/4.png" id="2_ifayy"]
+[ext_resource type="Texture2D" uid="uid://boj2dfl141v17" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/yellow_button/3.png" id="3_10kh6"]
+[ext_resource type="Texture2D" uid="uid://dfpvdu8l86t7s" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/sliders/5.png" id="3_ha70u"]
+[ext_resource type="Texture2D" uid="uid://cg6wkkuni8aq8" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/bg_image.png" id="3_heeya"]
+[ext_resource type="Texture2D" uid="uid://xjmch2w77hf8" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/additional_water.png" id="4_0xs5f"]
+[ext_resource type="Texture2D" uid="uid://b4y4paxn2nw2y" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/yellow_button/4.png" id="4_76ed7"]
+[ext_resource type="Texture2D" uid="uid://d0uycw76ah71t" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/sliders/6.png" id="4_s2jl3"]
+[ext_resource type="Texture2D" uid="uid://kfc2kokx4vgl" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/water_reflect_big_01.png" id="5_j1k1l"]
+[ext_resource type="Texture2D" uid="uid://b1m0xfdhglhsx" path="res://assets/sprites/treasure_hunters/merchant_ship/sprites/ship/ship/idle/2.png" id="6_svah5"]
+[ext_resource type="Texture2D" uid="uid://dk760y4e06pg4" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/water_reflect_big_02.png" id="6_ui466"]
+[ext_resource type="Texture2D" uid="uid://chay07asogtoi" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/water_reflect_big_03.png" id="7_fla8q"]
+[ext_resource type="Texture2D" uid="uid://cp5bnldtu4ka6" path="res://assets/sprites/treasure_hunters/merchant_ship/sprites/ship/ship/idle/3.png" id="7_nvph5"]
+[ext_resource type="Texture2D" uid="uid://d0h02nybfcov5" path="res://assets/sprites/treasure_hunters/merchant_ship/sprites/ship/ship/idle/4.png" id="8_4vevk"]
+[ext_resource type="Texture2D" uid="uid://bk6obtkxs5laa" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/water_reflect_big_04.png" id="8_ax1p8"]
+[ext_resource type="Texture2D" uid="uid://bm2fqv1raar8n" path="res://assets/sprites/treasure_hunters/merchant_ship/sprites/ship/ship/idle/5.png" id="9_4n45p"]
+[ext_resource type="Texture2D" uid="uid://8owkcbg613gq" path="res://assets/sprites/treasure_hunters/merchant_ship/sprites/ship/ship/idle/6.png" id="10_nkn1e"]
+[ext_resource type="PackedScene" uid="uid://ca3ueo0yewjov" path="res://scenes/game/characters/main_character/main_character.tscn" id="11_4tiyj"]
+[ext_resource type="Texture2D" uid="uid://bqh3l63o3d7g1" path="res://assets/sprites/treasure_hunters/merchant_ship/sprites/ship/sail/wind/1.png" id="11_lublc"]
+[ext_resource type="Texture2D" uid="uid://bskegan6e27fi" path="res://assets/sprites/treasure_hunters/merchant_ship/sprites/ship/ship/idle/1.png" id="12_5fnsh"]
+[ext_resource type="Texture2D" uid="uid://cmkbl2imk4eyd" path="res://assets/sprites/treasure_hunters/merchant_ship/sprites/ship/sail/wind/2.png" id="12_xkehm"]
+[ext_resource type="Texture2D" uid="uid://dmbw1ubsgqxwe" path="res://assets/sprites/treasure_hunters/merchant_ship/sprites/ship/sail/wind/3.png" id="13_olerl"]
+[ext_resource type="Texture2D" uid="uid://dwsfqoltg7rlt" path="res://assets/sprites/treasure_hunters/merchant_ship/sprites/ship/sail/wind/4.png" id="14_t7icp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4u6xb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_j1k1l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ui466")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_fla8q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ax1p8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h43hp"]
+size = Vector2(527, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5qhag"]
+size = Vector2(7, 148)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rab7k"]
+size = Vector2(6, 148)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rd73b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_lublc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_xkehm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_olerl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_t7icp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q32o8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_5fnsh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_svah5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_nvph5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4vevk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_4n45p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_nkn1e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xlum2"]
+load_path = "res://.godot/imported/text.png-c60f3c71437097c445e5745800ab64ed.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0nh0"]
+atlas = SubResource("CompressedTexture2D_xlum2")
+region = Rect2(44, 84, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4uxy"]
+atlas = SubResource("CompressedTexture2D_xlum2")
+region = Rect2(24, 104, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fftmn"]
+atlas = SubResource("CompressedTexture2D_xlum2")
+region = Rect2(44, 84, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xq1pu"]
+atlas = SubResource("CompressedTexture2D_xlum2")
+region = Rect2(44, 64, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0yw2"]
+atlas = SubResource("CompressedTexture2D_xlum2")
+region = Rect2(44, 84, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8gxc"]
+atlas = SubResource("CompressedTexture2D_xlum2")
+region = Rect2(44, 104, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2vnd"]
+atlas = SubResource("CompressedTexture2D_xlum2")
+region = Rect2(24, 104, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbjci"]
+atlas = SubResource("CompressedTexture2D_xlum2")
+region = Rect2(24, 104, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvw8h"]
+atlas = SubResource("CompressedTexture2D_xlum2")
+region = Rect2(24, 104, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bh38k"]
+atlas = SubResource("CompressedTexture2D_xlum2")
+region = Rect2(24, 104, 10, 11)
+
+[sub_resource type="Theme" id="Theme_f6sn6"]
+default_font_size = 24
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_q3nub"]
+load_path = "res://.godot/imported/text.png-c60f3c71437097c445e5745800ab64ed.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_roilr"]
+atlas = SubResource("CompressedTexture2D_q3nub")
+region = Rect2(64, 104, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4p0m1"]
+atlas = SubResource("CompressedTexture2D_q3nub")
+region = Rect2(4, 64, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3bk8"]
+atlas = SubResource("CompressedTexture2D_q3nub")
+region = Rect2(24, 104, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rovxd"]
+atlas = SubResource("CompressedTexture2D_q3nub")
+region = Rect2(24, 4, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jiknw"]
+atlas = SubResource("CompressedTexture2D_q3nub")
+region = Rect2(4, 64, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ha8t5"]
+atlas = SubResource("CompressedTexture2D_q3nub")
+region = Rect2(104, 84, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qguk"]
+atlas = SubResource("CompressedTexture2D_q3nub")
+region = Rect2(104, 84, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahbbe"]
+atlas = SubResource("CompressedTexture2D_q3nub")
+region = Rect2(4, 64, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydpge"]
+atlas = SubResource("CompressedTexture2D_q3nub")
+region = Rect2(44, 64, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddbbl"]
+atlas = SubResource("CompressedTexture2D_q3nub")
+region = Rect2(44, 104, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xc4ep"]
+atlas = SubResource("CompressedTexture2D_q3nub")
+region = Rect2(4, 104, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qogtb"]
+atlas = SubResource("CompressedTexture2D_q3nub")
+region = Rect2(64, 104, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3i8u"]
+atlas = SubResource("CompressedTexture2D_q3nub")
+region = Rect2(104, 84, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qber"]
+atlas = SubResource("CompressedTexture2D_q3nub")
+region = Rect2(84, 64, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46ho6"]
+atlas = SubResource("CompressedTexture2D_q3nub")
+region = Rect2(24, 4, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5py4y"]
+atlas = SubResource("CompressedTexture2D_q3nub")
+region = Rect2(4, 64, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2l5w"]
+atlas = SubResource("CompressedTexture2D_q3nub")
+region = Rect2(4, 4, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ubua"]
+atlas = SubResource("CompressedTexture2D_q3nub")
+region = Rect2(44, 104, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vjfv"]
+atlas = SubResource("CompressedTexture2D_q3nub")
+region = Rect2(24, 104, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1akk5"]
+atlas = SubResource("CompressedTexture2D_q3nub")
+region = Rect2(44, 84, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aoa2w"]
+atlas = SubResource("CompressedTexture2D_q3nub")
+region = Rect2(64, 64, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1q23x"]
+atlas = SubResource("CompressedTexture2D_q3nub")
+region = Rect2(44, 104, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c50bg"]
+atlas = SubResource("CompressedTexture2D_q3nub")
+region = Rect2(4, 4, 10, 11)
+
+[sub_resource type="Theme" id="Theme_6e42f"]
+default_font_size = 30
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_d8nc7"]
+load_path = "res://.godot/imported/small_cloud_1.png-40532304be8a8e58b358963bfcb15f67.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i0q63"]
+load_path = "res://.godot/imported/small_cloud_1.png-40532304be8a8e58b358963bfcb15f67.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_legtt"]
+load_path = "res://.godot/imported/small_cloud_1.png-40532304be8a8e58b358963bfcb15f67.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_d18gj"]
+load_path = "res://.godot/imported/small_cloud_1.png-40532304be8a8e58b358963bfcb15f67.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xltub"]
+load_path = "res://.godot/imported/small_cloud_3.png-2824e524f4818e08cf60700642ab74ab.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tofkg"]
+load_path = "res://.godot/imported/small_cloud_3.png-2824e524f4818e08cf60700642ab74ab.ctex"
+
+[sub_resource type="Animation" id="Animation_ownx8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ParallaxLayer1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(500, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jgm7b"]
+resource_name = "parallax1"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ParallaxLayer1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-300, 0), Vector2(200, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_khdo0"]
+_data = {
+"RESET": SubResource("Animation_ownx8"),
+"parallax1": SubResource("Animation_jgm7b")
+}
+
+[sub_resource type="Animation" id="Animation_xasse"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ParallaxLayer3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(400, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cx42v"]
+resource_name = "parallax1"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ParallaxLayer3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-200, 0), Vector2(200, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hyuae"]
+_data = {
+"RESET": SubResource("Animation_xasse"),
+"parallax1": SubResource("Animation_cx42v")
+}
+
+[node name="MainMenu" type="Node2D"]
+z_index = 10
+script = ExtResource("1_g1i31")
+
+[node name="Main" type="Node2D" parent="."]
+
+[node name="AmbientSound" type="AudioStreamPlayer" parent="Main"]
+stream = ExtResource("2_gcb8x")
+autoplay = true
+
+[node name="World" type="Node2D" parent="Main"]
+
+[node name="Background" type="Node2D" parent="Main/World"]
+
+[node name="Sky" type="Sprite2D" parent="Main/World/Background"]
+position = Vector2(598, 158)
+scale = Vector2(39.25, 11.1875)
+texture = ExtResource("2_66173")
+
+[node name="Bg" type="Sprite2D" parent="Main/World/Background"]
+position = Vector2(595.5, 395)
+scale = Vector2(3.27344, 1)
+texture = ExtResource("3_heeya")
+
+[node name="Water" type="Sprite2D" parent="Main/World/Background"]
+position = Vector2(597, 566)
+scale = Vector2(39.0625, 7.0625)
+texture = ExtResource("4_0xs5f")
+
+[node name="AnimWater" type="AnimatedSprite2D" parent="Main/World/Background"]
+position = Vector2(618, 462)
+scale = Vector2(3.94118, 5.6)
+sprite_frames = SubResource("SpriteFrames_4u6xb")
+frame_progress = 0.303069
+
+[node name="Ship" type="Node2D" parent="Main/World"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Main/World/Ship"]
+position = Vector2(43, 579)
+collision_layer = 2147483648
+collision_mask = 2147483648
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Main/World/Ship/StaticBody2D"]
+position = Vector2(243.5, -45)
+shape = SubResource("RectangleShape2D_h43hp")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Main/World/Ship"]
+position = Vector2(43, 579)
+collision_layer = 2147483648
+collision_mask = 2147483648
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Main/World/Ship/StaticBody2D2"]
+position = Vector2(-16.5, -109)
+shape = SubResource("RectangleShape2D_5qhag")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Main/World/Ship"]
+position = Vector2(43, 579)
+collision_layer = 2147483648
+collision_mask = 2147483648
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Main/World/Ship/StaticBody2D3"]
+position = Vector2(505, -109)
+shape = SubResource("RectangleShape2D_rab7k")
+
+[node name="Flag" type="AnimatedSprite2D" parent="Main/World/Ship"]
+position = Vector2(397, 398)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_rd73b")
+frame_progress = 0.786022
+
+[node name="MainCharacter" parent="Main/World/Ship" instance=ExtResource("11_4tiyj")]
+position = Vector2(149, 467)
+scale = Vector2(5, 5)
+disable_mode = 1
+collision_layer = 2147483648
+collision_mask = 2147483648
+
+[node name="Ship" type="AnimatedSprite2D" parent="Main/World/Ship"]
+position = Vector2(296, 586)
+scale = Vector2(7.2375, 6)
+sprite_frames = SubResource("SpriteFrames_q32o8")
+frame_progress = 0.136203
+
+[node name="Water2" type="Sprite2D" parent="Main/World"]
+position = Vector2(597, 640)
+scale = Vector2(39.0625, 2.4375)
+texture = ExtResource("4_0xs5f")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Main"]
+
+[node name="Options" type="Control" parent="Main/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Init" type="Control" parent="Main/CanvasLayer/Options"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -440.0
+offset_top = -170.0
+offset_right = -400.0
+offset_bottom = -130.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Letter1" type="TextureRect" parent="Main/CanvasLayer/Options/Init"]
+layout_mode = 0
+offset_right = 28.0
+offset_bottom = 41.0
+texture = SubResource("AtlasTexture_u0nh0")
+
+[node name="Letter2" type="TextureRect" parent="Main/CanvasLayer/Options/Init"]
+layout_mode = 0
+offset_left = 30.0
+offset_right = 58.0
+offset_bottom = 41.0
+texture = SubResource("AtlasTexture_l4uxy")
+
+[node name="Letter3" type="TextureRect" parent="Main/CanvasLayer/Options/Init"]
+layout_mode = 0
+offset_left = 60.0
+offset_right = 88.0
+offset_bottom = 41.0
+texture = SubResource("AtlasTexture_fftmn")
+
+[node name="Letter4" type="TextureRect" parent="Main/CanvasLayer/Options/Init"]
+layout_mode = 0
+offset_left = 90.0
+offset_right = 118.0
+offset_bottom = 41.0
+texture = SubResource("AtlasTexture_xq1pu")
+
+[node name="Letter5" type="TextureRect" parent="Main/CanvasLayer/Options/Init"]
+layout_mode = 0
+offset_left = 120.0
+offset_right = 148.0
+offset_bottom = 41.0
+texture = SubResource("AtlasTexture_n0yw2")
+
+[node name="Letter6" type="TextureRect" parent="Main/CanvasLayer/Options/Init"]
+layout_mode = 0
+offset_left = 150.0
+offset_right = 178.0
+offset_bottom = 41.0
+texture = SubResource("AtlasTexture_u8gxc")
+
+[node name="Letter7" type="TextureRect" parent="Main/CanvasLayer/Options/Init"]
+visible = false
+layout_mode = 0
+offset_left = 180.0
+offset_right = 208.0
+offset_bottom = 41.0
+texture = SubResource("AtlasTexture_p2vnd")
+
+[node name="Letter8" type="TextureRect" parent="Main/CanvasLayer/Options/Init"]
+visible = false
+layout_mode = 0
+offset_left = 210.0
+offset_right = 238.0
+offset_bottom = 41.0
+texture = SubResource("AtlasTexture_hbjci")
+
+[node name="Letter9" type="TextureRect" parent="Main/CanvasLayer/Options/Init"]
+visible = false
+layout_mode = 0
+offset_left = 240.0
+offset_right = 268.0
+offset_bottom = 41.0
+texture = SubResource("AtlasTexture_pvw8h")
+
+[node name="Letter10" type="TextureRect" parent="Main/CanvasLayer/Options/Init"]
+visible = false
+layout_mode = 0
+offset_left = 270.0
+offset_right = 298.0
+offset_bottom = 41.0
+texture = SubResource("AtlasTexture_bh38k")
+
+[node name="Button" type="Control" parent="Main/CanvasLayer/Options/Init"]
+anchors_preset = 0
+offset_top = 50.0
+offset_right = 40.0
+offset_bottom = 90.0
+
+[node name="Left" type="TextureRect" parent="Main/CanvasLayer/Options/Init/Button"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 45.0
+texture = ExtResource("2_foa6f")
+
+[node name="Center" type="TextureRect" parent="Main/CanvasLayer/Options/Init/Button"]
+layout_mode = 0
+offset_left = 36.0
+offset_right = 153.0
+offset_bottom = 45.0
+texture = ExtResource("3_10kh6")
+
+[node name="Right" type="TextureRect" parent="Main/CanvasLayer/Options/Init/Button"]
+layout_mode = 0
+offset_left = 150.0
+offset_right = 190.0
+offset_bottom = 45.0
+texture = ExtResource("4_76ed7")
+
+[node name="Button" type="Button" parent="Main/CanvasLayer/Options/Init/Button"]
+layout_mode = 0
+offset_right = 189.0
+offset_bottom = 42.0
+theme = SubResource("Theme_f6sn6")
+text = "INICIAR"
+flat = true
+icon_alignment = 1
+
+[node name="Fullscreen" type="Control" parent="Main/CanvasLayer/Options"]
+anchors_preset = 0
+offset_left = -400.0
+offset_top = -25.0
+offset_right = -360.0
+offset_bottom = 15.0
+
+[node name="Letter1" type="TextureRect" parent="Main/CanvasLayer/Options/Fullscreen"]
+layout_mode = 0
+offset_right = 28.0
+offset_bottom = 41.0
+texture = SubResource("AtlasTexture_roilr")
+
+[node name="Letter2" type="TextureRect" parent="Main/CanvasLayer/Options/Fullscreen"]
+layout_mode = 0
+offset_left = 30.0
+offset_right = 58.0
+offset_bottom = 41.0
+texture = SubResource("AtlasTexture_4p0m1")
+
+[node name="Letter3" type="TextureRect" parent="Main/CanvasLayer/Options/Fullscreen"]
+layout_mode = 0
+offset_left = 60.0
+offset_right = 88.0
+offset_bottom = 41.0
+texture = SubResource("AtlasTexture_r3bk8")
+
+[node name="Letter4" type="TextureRect" parent="Main/CanvasLayer/Options/Fullscreen"]
+layout_mode = 0
+offset_left = 90.0
+offset_right = 118.0
+offset_bottom = 41.0
+texture = SubResource("AtlasTexture_rovxd")
+
+[node name="Letter5" type="TextureRect" parent="Main/CanvasLayer/Options/Fullscreen"]
+layout_mode = 0
+offset_left = 120.0
+offset_right = 148.0
+offset_bottom = 41.0
+texture = SubResource("AtlasTexture_jiknw")
+
+[node name="Letter6" type="TextureRect" parent="Main/CanvasLayer/Options/Fullscreen"]
+layout_mode = 0
+offset_left = 150.0
+offset_right = 178.0
+offset_bottom = 41.0
+texture = SubResource("AtlasTexture_ha8t5")
+
+[node name="Letter7" type="TextureRect" parent="Main/CanvasLayer/Options/Fullscreen"]
+layout_mode = 0
+offset_left = 180.0
+offset_right = 208.0
+offset_bottom = 41.0
+texture = SubResource("AtlasTexture_4qguk")
+
+[node name="Letter8" type="TextureRect" parent="Main/CanvasLayer/Options/Fullscreen"]
+layout_mode = 0
+offset_left = 210.0
+offset_right = 238.0
+offset_bottom = 41.0
+texture = SubResource("AtlasTexture_ahbbe")
+
+[node name="Letter9" type="TextureRect" parent="Main/CanvasLayer/Options/Fullscreen"]
+layout_mode = 0
+offset_top = 41.0
+offset_right = 28.0
+offset_bottom = 82.0
+texture = SubResource("AtlasTexture_ydpge")
+
+[node name="Letter10" type="TextureRect" parent="Main/CanvasLayer/Options/Fullscreen"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 41.0
+offset_right = 58.0
+offset_bottom = 82.0
+texture = SubResource("AtlasTexture_ddbbl")
+
+[node name="Letter11" type="TextureRect" parent="Main/CanvasLayer/Options/Fullscreen"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 41.0
+offset_right = 88.0
+offset_bottom = 82.0
+texture = SubResource("AtlasTexture_xc4ep")
+
+[node name="Letter12" type="TextureRect" parent="Main/CanvasLayer/Options/Fullscreen"]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 41.0
+offset_right = 118.0
+offset_bottom = 82.0
+texture = SubResource("AtlasTexture_qogtb")
+
+[node name="Letter13" type="TextureRect" parent="Main/CanvasLayer/Options/Fullscreen"]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 41.0
+offset_right = 148.0
+offset_bottom = 82.0
+texture = SubResource("AtlasTexture_s3i8u")
+
+[node name="Letter14" type="TextureRect" parent="Main/CanvasLayer/Options/Fullscreen"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 41.0
+offset_right = 178.0
+offset_bottom = 82.0
+texture = SubResource("AtlasTexture_3qber")
+
+[node name="Letter15" type="TextureRect" parent="Main/CanvasLayer/Options/Fullscreen"]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 41.0
+offset_right = 208.0
+offset_bottom = 82.0
+texture = SubResource("AtlasTexture_46ho6")
+
+[node name="Letter16" type="TextureRect" parent="Main/CanvasLayer/Options/Fullscreen"]
+layout_mode = 0
+offset_left = 210.0
+offset_top = 41.0
+offset_right = 238.0
+offset_bottom = 82.0
+texture = SubResource("AtlasTexture_5py4y")
+
+[node name="CheckButton" type="CheckButton" parent="Main/CanvasLayer/Options/Fullscreen"]
+layout_mode = 0
+offset_top = 80.0
+offset_right = 44.0
+offset_bottom = 104.0
+scale = Vector2(2, 2)
+
+[node name="Sounds" type="Control" parent="Main/CanvasLayer/Options"]
+anchors_preset = 0
+offset_left = -400.0
+offset_top = 125.0
+offset_right = -360.0
+offset_bottom = 165.0
+
+[node name="Letter1" type="TextureRect" parent="Main/CanvasLayer/Options/Sounds"]
+layout_mode = 0
+offset_right = 28.0
+offset_bottom = 41.0
+texture = SubResource("AtlasTexture_y2l5w")
+
+[node name="Letter2" type="TextureRect" parent="Main/CanvasLayer/Options/Sounds"]
+layout_mode = 0
+offset_left = 30.0
+offset_right = 58.0
+offset_bottom = 41.0
+texture = SubResource("AtlasTexture_8ubua")
+
+[node name="Letter3" type="TextureRect" parent="Main/CanvasLayer/Options/Sounds"]
+layout_mode = 0
+offset_left = 60.0
+offset_right = 88.0
+offset_bottom = 41.0
+texture = SubResource("AtlasTexture_5vjfv")
+
+[node name="Letter4" type="TextureRect" parent="Main/CanvasLayer/Options/Sounds"]
+layout_mode = 0
+offset_left = 90.0
+offset_right = 118.0
+offset_bottom = 41.0
+texture = SubResource("AtlasTexture_1akk5")
+
+[node name="Letter5" type="TextureRect" parent="Main/CanvasLayer/Options/Sounds"]
+layout_mode = 0
+offset_left = 120.0
+offset_right = 148.0
+offset_bottom = 41.0
+texture = SubResource("AtlasTexture_aoa2w")
+
+[node name="Letter6" type="TextureRect" parent="Main/CanvasLayer/Options/Sounds"]
+layout_mode = 0
+offset_left = 150.0
+offset_right = 178.0
+offset_bottom = 41.0
+texture = SubResource("AtlasTexture_1q23x")
+
+[node name="Letter7" type="TextureRect" parent="Main/CanvasLayer/Options/Sounds"]
+layout_mode = 0
+offset_left = 180.0
+offset_right = 208.0
+offset_bottom = 41.0
+texture = SubResource("AtlasTexture_c50bg")
+
+[node name="Letter8" type="TextureRect" parent="Main/CanvasLayer/Options/Sounds"]
+visible = false
+layout_mode = 0
+offset_left = 210.0
+offset_right = 238.0
+offset_bottom = 41.0
+texture = SubResource("AtlasTexture_y2l5w")
+
+[node name="Letter9" type="TextureRect" parent="Main/CanvasLayer/Options/Sounds"]
+visible = false
+layout_mode = 0
+offset_left = 240.0
+offset_right = 268.0
+offset_bottom = 41.0
+texture = SubResource("AtlasTexture_y2l5w")
+
+[node name="Letter10" type="TextureRect" parent="Main/CanvasLayer/Options/Sounds"]
+visible = false
+layout_mode = 0
+offset_left = 270.0
+offset_right = 298.0
+offset_bottom = 41.0
+texture = SubResource("AtlasTexture_y2l5w")
+
+[node name="Sliders" type="Control" parent="Main/CanvasLayer/Options/Sounds"]
+anchors_preset = 0
+offset_top = 50.0
+offset_right = 40.0
+offset_bottom = 90.0
+
+[node name="Ambient" type="Control" parent="Main/CanvasLayer/Options/Sounds/Sliders"]
+anchors_preset = 0
+offset_right = 411.0
+offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Main/CanvasLayer/Options/Sounds/Sliders/Ambient"]
+layout_mode = 0
+offset_right = 161.0
+offset_bottom = 40.0
+theme = SubResource("Theme_6e42f")
+text = "Ambiente"
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="Slider" type="Control" parent="Main/CanvasLayer/Options/Sounds/Sliders/Ambient"]
+anchors_preset = 0
+offset_top = 5.0
+offset_right = 40.0
+offset_bottom = 45.0
+
+[node name="Left" type="TextureRect" parent="Main/CanvasLayer/Options/Sounds/Sliders/Ambient/Slider"]
+layout_mode = 0
+offset_left = 150.0
+offset_right = 190.0
+offset_bottom = 40.0
+texture = ExtResource("2_ifayy")
+
+[node name="Center" type="TextureRect" parent="Main/CanvasLayer/Options/Sounds/Sliders/Ambient/Slider"]
+layout_mode = 0
+offset_left = 165.0
+offset_right = 377.0
+offset_bottom = 40.0
+texture = ExtResource("3_ha70u")
+
+[node name="Right" type="TextureRect" parent="Main/CanvasLayer/Options/Sounds/Sliders/Ambient/Slider"]
+layout_mode = 0
+offset_left = 350.0
+offset_right = 390.0
+offset_bottom = 40.0
+texture = ExtResource("4_s2jl3")
+
+[node name="HSlider" type="HSlider" parent="Main/CanvasLayer/Options/Sounds/Sliders/Ambient/Slider"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 12.0
+offset_right = 383.0
+offset_bottom = 28.0
+max_value = 10.0
+
+[node name="Effects" type="Control" parent="Main/CanvasLayer/Options/Sounds/Sliders"]
+anchors_preset = 0
+offset_top = 40.0
+offset_right = 411.0
+offset_bottom = 80.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Main/CanvasLayer/Options/Sounds/Sliders/Effects"]
+layout_mode = 0
+offset_right = 161.0
+offset_bottom = 40.0
+theme = SubResource("Theme_6e42f")
+text = "Efectos"
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="Slider" type="Control" parent="Main/CanvasLayer/Options/Sounds/Sliders/Effects"]
+anchors_preset = 0
+offset_top = 5.0
+offset_right = 40.0
+offset_bottom = 45.0
+
+[node name="Left" type="TextureRect" parent="Main/CanvasLayer/Options/Sounds/Sliders/Effects/Slider"]
+layout_mode = 0
+offset_left = 150.0
+offset_right = 190.0
+offset_bottom = 40.0
+texture = ExtResource("2_ifayy")
+
+[node name="Center" type="TextureRect" parent="Main/CanvasLayer/Options/Sounds/Sliders/Effects/Slider"]
+layout_mode = 0
+offset_left = 165.0
+offset_right = 377.0
+offset_bottom = 40.0
+texture = ExtResource("3_ha70u")
+
+[node name="Right" type="TextureRect" parent="Main/CanvasLayer/Options/Sounds/Sliders/Effects/Slider"]
+layout_mode = 0
+offset_left = 350.0
+offset_right = 390.0
+offset_bottom = 40.0
+texture = ExtResource("4_s2jl3")
+
+[node name="HSlider" type="HSlider" parent="Main/CanvasLayer/Options/Sounds/Sliders/Effects/Slider"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 12.0
+offset_right = 383.0
+offset_bottom = 28.0
+max_value = 10.0
+
+[node name="Camera2D" type="Camera2D" parent="Main"]
+position = Vector2(579, 325)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Main"]
+layer = 0
+scale = Vector2(0.8, 0.8)
+transform = Transform2D(0.8, 0, 0, 0.8, 0, 0)
+
+[node name="ParallaxLayer1" type="ParallaxLayer" parent="Main/ParallaxBackground"]
+position = Vector2(500, 0)
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(1200, 0)
+
+[node name="Cloud" type="Sprite2D" parent="Main/ParallaxBackground/ParallaxLayer1"]
+position = Vector2(171, 83.004)
+scale = Vector2(4, 2.667)
+texture = SubResource("CompressedTexture2D_d8nc7")
+
+[node name="Cloud2" type="Sprite2D" parent="Main/ParallaxBackground/ParallaxLayer1"]
+position = Vector2(547, 119.004)
+scale = Vector2(4, 2.667)
+texture = SubResource("CompressedTexture2D_i0q63")
+
+[node name="Cloud3" type="Sprite2D" parent="Main/ParallaxBackground/ParallaxLayer1"]
+position = Vector2(949, 39.004)
+scale = Vector2(4, 2.667)
+texture = SubResource("CompressedTexture2D_legtt")
+
+[node name="Cloud4" type="Sprite2D" parent="Main/ParallaxBackground/ParallaxLayer1"]
+position = Vector2(1211, 123.004)
+scale = Vector2(4, 2.667)
+texture = SubResource("CompressedTexture2D_d18gj")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="Main/ParallaxBackground"]
+position = Vector2(400, 0)
+scale = Vector2(0.7, 0.7)
+motion_scale = Vector2(0.6, 0.6)
+motion_mirroring = Vector2(1200, 0)
+
+[node name="Cloud" type="Sprite2D" parent="Main/ParallaxBackground/ParallaxLayer3"]
+position = Vector2(249, 373)
+scale = Vector2(4, 4.324)
+texture = SubResource("CompressedTexture2D_xltub")
+
+[node name="Cloud2" type="Sprite2D" parent="Main/ParallaxBackground/ParallaxLayer3"]
+position = Vector2(725, 303)
+scale = Vector2(4, 4.324)
+texture = SubResource("CompressedTexture2D_tofkg")
+
+[node name="Parallax1" type="AnimationPlayer" parent="Main/ParallaxBackground"]
+libraries = {
+"": SubResource("AnimationLibrary_khdo0")
+}
+
+[node name="Parallax2" type="AnimationPlayer" parent="Main/ParallaxBackground"]
+speed_scale = 0.5
+libraries = {
+"": SubResource("AnimationLibrary_hyuae")
+}
+
+[connection signal="pressed" from="Main/CanvasLayer/Options/Init/Button/Button" to="." method="_on_button_pressed"]
+[connection signal="toggled" from="Main/CanvasLayer/Options/Fullscreen/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="animation_finished" from="Main/ParallaxBackground/Parallax1" to="." method="_on_parallax_1_animation_finished"]
+[connection signal="animation_finished" from="Main/ParallaxBackground/Parallax2" to="." method="_on_parallax_2_animation_finished"]

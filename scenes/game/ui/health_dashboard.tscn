@@ -14,15 +14,15 @@ region = Rect2(104, 4, 10, 11)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8oydo"]
 atlas = ExtResource("7_dkqak")
-region = Rect2(4, 4, 10, 11)
+region = Rect2(104, 44, 10, 11)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w2s7s"]
 atlas = ExtResource("7_dkqak")
-region = Rect2(104, 24, 10, 11)
+region = Rect2(104, 44, 10, 11)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xqiuc"]
 atlas = ExtResource("7_dkqak")
-region = Rect2(104, 24, 10, 11)
+region = Rect2(104, 44, 10, 11)
 
 [node name="health_dashboard" type="CanvasLayer"]
 script = ExtResource("1_66ol8")
@@ -66,7 +66,7 @@ offset_right = 108.0
 offset_bottom = 36.0
 scale = Vector2(3.5, 3.5)
 max_value = 10.0
-value = 5.0
+value = 10.0
 nine_patch_stretch = true
 texture_progress = ExtResource("5_3jsni")
 
