@@ -8,7 +8,7 @@ extends Node2D
 
 
 # Nivel inicial que se cargará al presionar "Iniciar" en el menú principal
-const PATH_LEVEL_1 = "res://scenes/game/levels/rooms/scene_1/scene_1.tscn"
+const PATH_LEVEL_1 = "res://scenes/game/levels/rooms/scene_2/scene_2.tscn"
 
 
 # Variables para animación de nubes

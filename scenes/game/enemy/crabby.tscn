@@ -194,6 +194,7 @@ func _on_enemy_animation_frame_changed():
 		# Pegamos al personaje
 		_animation_effect.play(\"attack_effect\")
 		_has_hits += 1
+		
 		if _body:
 			var _move_script = _body.get_node(\"MainCharacterMovement\")
 			_move_script.hit(5)
