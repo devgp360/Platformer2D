@@ -60,6 +60,7 @@ layer_1/tile_data = PackedInt32Array(1179648, 65539, 1, 1245184, 65539, 1, 11796
 position = Vector2(883, 562)
 animation = "idle"
 moving_direction = "right"
+hits_to_die = 3
 
 [node name="CollectableObjects" type="Node2D" parent="."]
 

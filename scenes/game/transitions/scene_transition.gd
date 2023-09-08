@@ -29,3 +29,20 @@ func change_scene(target: String):
 	await animation.animation_finished
 	# Volvemos a ocultar el canvas
 	visible = false
+	
+# Función de cambio de escena: target es la ruta hacia la escena a cargar
+func reload_scene():
+	await get_tree().create_timer(2).timeout
+	# Mostramos el canvas y mostramos animación (desde transparente hacia un color)
+	visible = true
+	animation.play("dissolve")
+	# Esperamos a que termine la animación
+	await animation.animation_finished
+	# Cargamos la escena
+	get_tree().reload_current_scene()
+	# Mostramos animación (desde un color hacia transparente)
+	animation.play_backwards("dissolve")
+	# Esperamos a que termine la animación
+	await animation.animation_finished
+	# Volvemos a ocultar el canvas
+	visible = false

@@ -146,6 +146,8 @@ func _on_animation_animation_finished():
 	if main_animation.get_animation() == 'dead_hit':
 		# Qitamos al personaje principal de la excena
 		self.get_parent().queue_free()
+		# Reiniciamos el juego despues de 3 segundos
+		SceneTransition.reload_scene()
 	elif main_animation.get_animation() == 'attack_2':
 		attacking = false
 
