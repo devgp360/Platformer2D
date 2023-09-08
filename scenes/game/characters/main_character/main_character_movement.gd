@@ -8,8 +8,9 @@ extends Node2D
 
 @export var character: CharacterBody2D # Referencia al personaje a mover
 @export var main_animation: AnimatedSprite2D # Referencia al sprite del personaje
-
+@export var audio_player: AudioStreamPlayer2D # Reproductor de audios
 @onready var _collision := $"../Area2D/CollisionShape2D" # Colicionador de espada
+@onready var _collision_body := $"../CollisionShape2D" # Colicionador de personaje principal
 
 var gravity = 650 # Gravedad para el personaje
 var velocity = 100 # Velocidad de movimiento en horizontal
@@ -31,6 +32,12 @@ var _max_jumps = 2 # Máximo número de saltos
 var _jump_count = 0 # Contador de saltos realizados
 var _died = false # Define si esta vovo o muerto
 var attacking = false # Define si esta atacando
+var _is_playing: String = "" # Define si se esta reproducionedo el sonido
+
+# Precargamos los sonidos de saltar
+var _jump_sound = preload("res://assets/sounds/jump.mp3")
+var _run_sound = preload("res://assets/sounds/running.mp3")
+var _dead_sound = preload("res://assets/sounds/dead.mp3")
 
 
 # Función de inicialización
@@ -93,7 +100,7 @@ func _set_animation():
 		main_animation.play(_movements.DEAD_HIT)
 		return
 		
-	if _is_jumping:
+	if _is_jumping:	
 		# Movimiento de salto (animación de "salto")
 		if character.velocity.y >= 0:
 			# Estamos cayendo
@@ -116,6 +123,9 @@ func _set_animation():
 	else:
 		# Movimiento por defecto (animación de "reposo")
 		main_animation.play(_movements.IDLE_WITH_SWORD)
+		# Pausamos el sonido
+		audio_player.stop()
+		_is_playing = ""
 
 
 # Función que aplica gravedad de caída o salto
@@ -144,18 +154,51 @@ func die():
 func _on_animation_animation_finished():
 	# Validamos si la animación es de morir
 	if main_animation.get_animation() == 'dead_hit':
-		# Qitamos al personaje principal de la excena
-		self.get_parent().queue_free()
-		# Reiniciamos el juego despues de 3 segundos
-		SceneTransition.reload_scene()
+		# Validamos si el sonido ya esta sonando
+		if _is_playing != "_dead_sound":
+			_is_playing = "_dead_sound"
+			# Reproducimos el sonido
+			_play_sound(_dead_sound)
 	elif main_animation.get_animation() == 'attack_2':
 		attacking = false
 
 
-func _on_animation_frame_changed():
+func _on_animation_frame_changed():	
 	# Si la animación es de atacar habilitamos el colicionador
 	if main_animation.animation == "attack_2" and main_animation.frame == 1:
 		_collision.disabled = false
 	else:
 		# Si la animación no es de atacar deshabilitamos el colicionador
 		_collision.disabled = true
+		
+	if main_animation.animation == _movements.JUMP_WITH_SWORD:
+		# Validamos si el sonido ya esta sonando
+		if _is_playing != "_jump_sound":
+			_is_playing = "_jump_sound"
+			# Reproducimos el sonido
+			_play_sound(_jump_sound)
+	if (
+		main_animation.animation == _movements.RIGHT_WITH_SWORD 
+		or main_animation.animation == _movements.LEFT_WITH_SWORD 
+	):
+		# Validamos si el sonido ya esta sonando
+		if _is_playing != "_run_sound":
+			_is_playing = "_run_sound"
+			# Reproducimos el sonido
+			_play_sound(_run_sound)
+
+
+func _on_audio_stream_player_2d_finished():
+	if audio_player.stream == _dead_sound:
+		# Qitamos al personaje principal de la excena
+		self.get_parent().queue_free()
+		# Reiniciamos el juego despues de 2 segundos
+		SceneTransition.reload_scene()
+		
+		
+func _play_sound(sound):
+	# Pausamos el sonido
+	audio_player.stop()
+	# Reproducimos el sonido
+	audio_player.stream = sound
+	audio_player.play()

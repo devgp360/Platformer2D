@@ -32,7 +32,7 @@ script/source = "extends Area2D
 
 # Definimos el sprite animado de la moneda
 @onready var _animated_sprite = $AnimatedSprite2D
-@onready var _audio_player= $AudioStreamPlayer2D # Reproductor de audios
+@onready var audio_player: $AudioStreamPlayer2D # Reproductor de audios
 
 var _pickup_sound = preload(\"res://assets/sounds/pickup.mp3\")
 
@@ -59,16 +59,14 @@ func _ready():
 	
 
 func _on_animated_sprite_2d_animation_finished():
-	# Esperamos 2 segundos 
-	await get_tree().create_timer(2).timeout
 	# Eliminamos el objeto recogido de la escena
 	queue_free()
 	
 	
 func do_animation():
 	# Validamos si la animación es de moneda
-	_audio_player.stream = _pickup_sound
-	_audio_player.play()
+	audio_player.stream = _pickup_sound
+	audio_player.play()
 	if animation == \"gold_coin\" or animation == \"silver_coin\":
 		# Reproducimos la animación de la moneda
 		_animated_sprite.play(\"coin_taken\")
@@ -103,9 +101,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("8_udmu3")
-}, {
-"duration": 1.0,
-"texture": null
 }],
 "loop": false,
 "name": &"coin_taken",
@@ -123,9 +118,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("7_qmpyn")
-}, {
-"duration": 1.0,
-"texture": null
 }],
 "loop": false,
 "name": &"diamond_taken",
@@ -154,10 +146,11 @@ radius = 7.0
 
 [node name="PickableObject" type="Area2D"]
 script = SubResource("GDScript_5io65")
+animation = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2ebd0")
-animation = &"diamond_taken"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_p0cjw")

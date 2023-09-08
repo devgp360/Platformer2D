@@ -32,8 +32,8 @@ func change_scene(target: String):
 	
 # Función de reiniciar la escena actual
 func reload_scene():
-	# Esperamos 2 segundos 
-	await get_tree().create_timer(2).timeout
+	# Esperamos 1 segundos 
+	await get_tree().create_timer(1).timeout
 	# Mostramos el canvas y mostramos animación (desde transparente hacia un color)
 	visible = true
 	animation.play("dissolve")

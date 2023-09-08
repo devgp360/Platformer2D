@@ -78,7 +78,6 @@ script/source = "extends CharacterBody2D
 @onready var _raycast_vision_right := $Area2D/RayCastVisionRight
 @onready var _audio_player= $AudioStreamPlayer2D # Reproductor de audios
 
-# Definimos sonidos
 var _punch_sound = preload(\"res://assets/sounds/punch.mp3\")
 var _male_hurt_sound = preload(\"res://assets/sounds/male_hurt.mp3\")
 
@@ -152,7 +151,7 @@ func _on_area_2d_body_entered(body):
 	if body.is_in_group(\"player\"):
 		_stop_detection = true
 		# Atacamos
-		_attack()
+		_atack()
 		# Creamos la copia de objeto
 		_body = body
 
@@ -172,7 +171,7 @@ func _turn():
 			scale.x = -scale.x
 
 
-func _attack():	
+func _atack():
 	# No atacamos si se seteó la banderita _stop_attack
 	if _stop_attack:
 		return
@@ -194,20 +193,13 @@ func _on_enemy_animation_frame_changed():
 		# Pegamos al personaje
 		_animation_effect.play(\"attack_effect\")
 		_has_hits += 1
-		
-		if _has_hits <= hits_to_die:
-			# Reproducimos sonido
-			_audio_player.stream = _male_hurt_sound
-			_audio_player.play()
-			
-		if _has_hits >= hits_to_die:
-			_animation.play(animation)
-			_animation_effect.play(\"idle\")
-			if _body:
-				# Matamos al personaje
-				var _move_script = _body.get_node(\"MainCharacterMovement\")
-				if _move_script:
-					_move_script.die()
+		_audio_player.stream = _male_hurt_sound
+		_audio_player.play()
+		if _has_hits >= hits_to_die and _body:
+			# Matamos al personaje
+			var _move_script = _body.get_node(\"MainCharacterMovement\")
+			if _move_script:
+				_move_script.die()
 
 
 func _detection():
@@ -257,7 +249,6 @@ func _on_area_2d_area_entered(area):
 	if area.is_in_group(\"hit\"):
 		# Seteamoas banderita no atacar
 		_stop_attack = true
-		# Reproducimos sonido
 		_audio_player.stream = _punch_sound
 		_audio_player.play()
 		# Lo matamos y quitamos de la escena
