@@ -31,6 +31,7 @@ load_path = "res://.godot/imported/small_cloud_3.png-2824e524f4818e08cf60700642a
 stream = ExtResource("1_xvhx7")
 volume_db = -6.548
 autoplay = true
+bus = &"Ambient"
 
 [node name="MainCharacter" parent="." instance=ExtResource("1_vi0ax")]
 position = Vector2(823, 561)
