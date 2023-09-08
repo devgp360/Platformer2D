@@ -412,7 +412,6 @@ frame_progress = 0.786022
 [node name="MainCharacter" parent="Main/World/Ship" instance=ExtResource("11_4tiyj")]
 position = Vector2(149, 467)
 scale = Vector2(5, 5)
-disable_mode = 1
 collision_layer = 2147483648
 collision_mask = 2147483648
 

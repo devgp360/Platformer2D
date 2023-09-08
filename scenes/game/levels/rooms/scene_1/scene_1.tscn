@@ -34,7 +34,7 @@ autoplay = true
 bus = &"Ambient"
 
 [node name="MainCharacter" parent="." instance=ExtResource("1_vi0ax")]
-position = Vector2(823, 561)
+position = Vector2(211, 561)
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("character") instance=ExtResource("2_2f152")]
 position = Vector2(324, 395)

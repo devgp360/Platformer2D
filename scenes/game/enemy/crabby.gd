@@ -100,7 +100,7 @@ func _on_area_2d_body_entered(body):
 	if body.is_in_group("player"):
 		_stop_detection = true
 		# Atacamos
-		_atack()
+		_attack()
 		# Creamos la copia de objeto
 		_body = body
 
@@ -120,7 +120,8 @@ func _turn():
 			scale.x = -scale.x
 
 
-func _atack():
+func _attack():
+	var _move_script = _body.get_node("MainCharacterMovement")
 	# No atacamos si se seteó la banderita _stop_attack
 	if _stop_attack:
 		return
