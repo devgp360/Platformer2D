@@ -56,9 +56,11 @@ func do_animation():
 	if animation == "gold_coin" or animation == "silver_coin":
 		# Reproducimos la animación de la moneda
 		_animated_sprite.play("coin_taken")
+		HealthDashboard.add_points(10) # Las monedas dan 10 puntos
 	else:
 		# Reproducimos la animación del diamante
 		_animated_sprite.play("diamond_taken")
+		HealthDashboard.add_points(50) # Los diamantes dan 50 puntos
 
 
 func _on_area_entered(area):
@@ -69,6 +71,7 @@ func _on_area_entered(area):
 
 
 func _on_body_entered(body):
+	print("body")
 	# Validamos que la colisión es con el personaje principal 
 	if body.is_in_group("player"):
 		# Reproducimos la animación de la moneda recogida
