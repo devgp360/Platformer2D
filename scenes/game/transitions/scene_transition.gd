@@ -31,21 +31,10 @@ func change_scene(target: String):
 	await animation.animation_finished
 	# Volvemos a ocultar el canvas
 	visible = false
-	
+
+
 # Función de reiniciar la escena actual
 func reload_scene():
-	# Esperamos 1 segundos 
-	await get_tree().create_timer(1).timeout
-	# Mostramos el canvas y mostramos animación (desde transparente hacia un color)
-	visible = true
-	animation.play("dissolve")
-	# Esperamos a que termine la animación
-	await animation.animation_finished
-	# Cargamos la escena
-	get_tree().reload_current_scene()
-	# Mostramos animación (desde un color hacia transparente)
-	animation.play_backwards("dissolve")
-	# Esperamos a que termine la animación
-	await animation.animation_finished
-	# Volvemos a ocultar el canvas
-	visible = false
+	MainMenu._toggle_show()
+	change_scene("res://scenes/game/levels/rooms/init/init.tscn")
+	

@@ -194,20 +194,9 @@ func _on_enemy_animation_frame_changed():
 		# Pegamos al personaje
 		_animation_effect.play(\"attack_effect\")
 		_has_hits += 1
-		
-		if _has_hits <= hits_to_die:
-			# Reproducimos sonido
-			_audio_player.stream = _male_hurt_sound
-			_audio_player.play()
-			
-		if _has_hits >= hits_to_die:
-			_animation.play(animation)
-			_animation_effect.play(\"idle\")
-			if _body:
-				# Matamos al personaje
-				var _move_script = _body.get_node(\"MainCharacterMovement\")
-				if _move_script:
-					_move_script.die()
+		if _body:
+			var _move_script = _body.get_node(\"MainCharacterMovement\")
+			_move_script.hit(5)
 
 
 func _detection():
