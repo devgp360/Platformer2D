@@ -152,7 +152,9 @@ func _on_animation_animation_finished():
 
 
 func _on_animation_frame_changed():
+	# Si la animación es de atacar habilitamos el colicionador
 	if main_animation.animation == "attack_2":
 		_collision.disabled = false
 	else:
+		# Si la animación no es de atacar deshabilitamos el colicionador
 		_collision.disabled = true
