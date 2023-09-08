@@ -21,6 +21,8 @@ func change_scene(target: String):
 	animation.play("dissolve")
 	# Esperamos a que termine la animación
 	await animation.animation_finished
+	# Ocultamos el menu principal
+	MainMenu.show_menu(false)
 	# Cargamos la escena
 	get_tree().change_scene_to_file(target)
 	# Mostramos animación (desde un color hacia transparente)

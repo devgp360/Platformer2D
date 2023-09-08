@@ -13,12 +13,13 @@ config_version=5
 config/name="Platformer 2d"
 run/main_scene="res://scenes/game/levels/rooms/scene_1/scene_1.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://icon.jpg"
 
 [autoload]
 
 SceneTransition="*res://scenes/game/transitions/scene_transition.tscn"
 HealthDashboard="*res://scenes/game/ui/health_dashboard.tscn"
+MainMenu="*res://scenes/game/ui/main_menu/main_menu.tscn"
 
 [display]
 

@@ -95,7 +95,6 @@ func _get_text_region(position: int):
 	
 	# Generamos un loop, para ir avanzando por cada región (por cada letra)
 	for p in range(position):
-		print(x, " / ", delta, "= ", x / delta)
 		if x  / delta < column_count -1:
 			# Nos vamos moviendo por las columnas
 			x += delta # Avanzamos a la siguiente columna
