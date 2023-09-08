@@ -80,8 +80,7 @@ func _move(delta):
 	_set_animation()
 	# Función de godot para mover y aplicar física y colisiones
 	character.move_and_slide()
-	for i in character.get_slide_collision_count():
-		var collision = character.get_slide_collision(i)
+
 
 # Controla la animación según el movimiento del personaje
 func _set_animation():

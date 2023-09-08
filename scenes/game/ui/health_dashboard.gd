@@ -88,14 +88,14 @@ func _set_points(value: int):
 func _get_text_region(position: int):
 	var w = 10 # Ancho de la letra (siempre es 10)
 	var h = 11 # Alto de la letra (siempre es 11)
-	var x = 4 # Valor de la posición X (inicia con el valor 4)
-	var y = 4 # Valor de la posición Y (inicia con el valor 4)
-	var delta = 20 # Separación entre letras
-	var column_count = 6 # Número de columnas según el atlas generado (en este caso 6)
+	var x = 4.0 # Valor de la posición X (inicia con el valor 4)
+	var y = 4.0 # Valor de la posición Y (inicia con el valor 4)
+	var delta = 20.0 # Separación entre letras
+	var column_count = 6.0 # Número de columnas según el atlas generado (en este caso 6)
 	
 	# Generamos un loop, para ir avanzando por cada región (por cada letra)
 	for p in range(position):
-		if x  / delta < column_count -1:
+		if x / delta < column_count - 1.0:
 			# Nos vamos moviendo por las columnas
 			x += delta # Avanzamos a la siguiente columna
 		else:
