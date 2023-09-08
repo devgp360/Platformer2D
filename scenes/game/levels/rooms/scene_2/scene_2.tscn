@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://tqg8duvjuik7"]
+[gd_scene load_steps=20 format=3 uid="uid://tqg8duvjuik7"]
 
 [ext_resource type="TileSet" uid="uid://bx1rsqucrwm2i" path="res://assets/resources/bg_tile_set.tres" id="1_0t8t3"]
 [ext_resource type="PackedScene" uid="uid://8rbt5lmdrp0s" path="res://scenes/game/camera/camera.tscn" id="1_8l71v"]
@@ -9,16 +9,15 @@
 [ext_resource type="Texture2D" uid="uid://cg4u52161cun0" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/small_cloud_3.png" id="4_ruur6"]
 [ext_resource type="Texture2D" uid="uid://c4mcmly0eo8in" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/small_cloud_2.png" id="5_1gi57"]
 [ext_resource type="Texture2D" uid="uid://5va2c11ojds3" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/spikes/spikes.png" id="5_6p3ud"]
-[ext_resource type="Texture2D" uid="uid://b454htkpkoqqr" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/chest/chest_close_01.png" id="8_wrgkp"]
-[ext_resource type="Texture2D" uid="uid://cmlgr3i0h1klc" path="res://assets/sprites/treasure_hunters/the_crusty_crew/sprites/crabby/01_idle/idle_01.png" id="11_ro86l"]
 [ext_resource type="Texture2D" uid="uid://b2a11ffyw34fs" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/water_reflect_medium_01.png" id="12_aiw82"]
 [ext_resource type="Texture2D" uid="uid://dcptpykdlp5rk" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/flag/flag_01.png" id="13_amc1m"]
 [ext_resource type="PackedScene" uid="uid://bcil4n46byhj5" path="res://scenes/game/levels/objects/back_palm_tree/back_palm_tree.tscn" id="13_uwpfu"]
-[ext_resource type="Texture2D" uid="uid://bf80xyf45y2wk" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/blue_diamond/02.png" id="14_te0nb"]
 [ext_resource type="PackedScene" uid="uid://c2nps502udtd6" path="res://scenes/game/levels/objects/front_palm_tree/front_palm_tree.tscn" id="14_uwyh7"]
 [ext_resource type="PackedScene" uid="uid://ca3ueo0yewjov" path="res://scenes/game/characters/main_character/main_character.tscn" id="15_ooixx"]
 [ext_resource type="PackedScene" uid="uid://brhmupxo2xjim" path="res://scenes/game/levels/objects/change_scene/door_change_scene.tscn" id="17_ydyba"]
+[ext_resource type="PackedScene" uid="uid://bo37g7mv4j6pn" path="res://scenes/game/enemy/crabby.tscn" id="18_dyrn2"]
 [ext_resource type="AudioStream" uid="uid://btstmivulu2by" path="res://assets/sounds/pirate_game_tune.ogg" id="19_as2yr"]
+[ext_resource type="PackedScene" uid="uid://b5qjvfbte4svk" path="res://scenes/game/levels/objects/pickable_object/pickable_object.tscn" id="20_juf85"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3x710"]
 size = Vector2(31, 21)
@@ -89,11 +88,6 @@ layer_1/tile_data = PackedInt32Array(655362, 65538, 1, 655363, 131074, 1, 917523
 [node name="Objects" type="Node2D" parent="."]
 position = Vector2(140, 511)
 
-[node name="Chest" type="Sprite2D" parent="Objects"]
-position = Vector2(900, -55)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("8_wrgkp")
-
 [node name="Reflect" type="Sprite2D" parent="Objects"]
 position = Vector2(60, -48)
 scale = Vector2(2, 2)
@@ -159,29 +153,9 @@ texture = ExtResource("5_6p3ud")
 position = Vector2(325, -46)
 texture = ExtResource("5_6p3ud")
 
-[node name="Npc" type="Sprite2D" parent="Objects"]
-position = Vector2(1314, -247)
-scale = Vector2(2, 2)
-texture = ExtResource("11_ro86l")
-
 [node name="Flag" type="Sprite2D" parent="Objects"]
 position = Vector2(298, -108)
 texture = ExtResource("13_amc1m")
-
-[node name="Diamond" type="Sprite2D" parent="Objects"]
-position = Vector2(995, -52)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("14_te0nb")
-
-[node name="Diamond2" type="Sprite2D" parent="Objects"]
-position = Vector2(1038, -52)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("14_te0nb")
-
-[node name="Diamond3" type="Sprite2D" parent="Objects"]
-position = Vector2(1079, -52)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("14_te0nb")
 
 [node name="DoorChangeScene" parent="." instance=ExtResource("17_ydyba")]
 position = Vector2(1392, 376)
@@ -190,3 +164,45 @@ _path_to_scene = "res://scenes/game/levels/rooms/scene_1/scene_1.tscn"
 
 [node name="MainCharacter" parent="." instance=ExtResource("15_ooixx")]
 position = Vector2(207, 479)
+
+[node name="Collectibles" type="Node2D" parent="."]
+
+[node name="PickableObject" parent="Collectibles" instance=ExtResource("20_juf85")]
+position = Vector2(378, 435)
+animation = "gold_coin"
+
+[node name="PickableObject2" parent="Collectibles" instance=ExtResource("20_juf85")]
+position = Vector2(398, 435)
+animation = "gold_coin"
+
+[node name="PickableObject3" parent="Collectibles" instance=ExtResource("20_juf85")]
+position = Vector2(388, 419)
+animation = "gold_coin"
+
+[node name="PickableObject4" parent="Collectibles" instance=ExtResource("20_juf85")]
+position = Vector2(535, 381)
+animation = "gold_coin"
+
+[node name="PickableObject5" parent="Collectibles" instance=ExtResource("20_juf85")]
+position = Vector2(557, 381)
+animation = "gold_coin"
+
+[node name="PickableObject6" parent="Collectibles" instance=ExtResource("20_juf85")]
+position = Vector2(579, 381)
+animation = "gold_coin"
+
+[node name="PickableObject7" parent="Collectibles" instance=ExtResource("20_juf85")]
+position = Vector2(1060, 328)
+animation = "red_diamond"
+
+[node name="PickableObject8" parent="Collectibles" instance=ExtResource("20_juf85")]
+position = Vector2(1089, 328)
+animation = "red_diamond"
+
+[node name="PickableObject9" parent="Collectibles" instance=ExtResource("20_juf85")]
+position = Vector2(1116, 328)
+animation = "red_diamond"
+
+[node name="Crabby" parent="." instance=ExtResource("18_dyrn2")]
+position = Vector2(1071, 467)
+is_active = true
