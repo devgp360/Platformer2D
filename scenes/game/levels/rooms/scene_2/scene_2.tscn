@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://tqg8duvjuik7"]
+[gd_scene load_steps=21 format=3 uid="uid://tqg8duvjuik7"]
 
 [ext_resource type="TileSet" uid="uid://bx1rsqucrwm2i" path="res://assets/resources/bg_tile_set.tres" id="1_0t8t3"]
 [ext_resource type="PackedScene" uid="uid://8rbt5lmdrp0s" path="res://scenes/game/camera/camera.tscn" id="1_8l71v"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://brhmupxo2xjim" path="res://scenes/game/levels/objects/change_scene/door_change_scene.tscn" id="17_ydyba"]
 [ext_resource type="PackedScene" uid="uid://bo37g7mv4j6pn" path="res://scenes/game/enemy/crabby.tscn" id="18_dyrn2"]
 [ext_resource type="AudioStream" uid="uid://btstmivulu2by" path="res://assets/sounds/pirate_game_tune.ogg" id="19_as2yr"]
+[ext_resource type="PackedScene" uid="uid://bnp6y3fe4kqob" path="res://scenes/game/levels/objects/damage_object/cannon.tscn" id="19_msljc"]
 [ext_resource type="PackedScene" uid="uid://b5qjvfbte4svk" path="res://scenes/game/levels/objects/pickable_object/pickable_object.tscn" id="20_juf85"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3x710"]
@@ -204,5 +205,9 @@ position = Vector2(1116, 328)
 animation = "red_diamond"
 
 [node name="Crabby" parent="." instance=ExtResource("18_dyrn2")]
-position = Vector2(1071, 467)
-is_active = true
+position = Vector2(135, 532)
+animation = "idle"
+moving_direction = "right"
+
+[node name="Cannon" parent="." instance=ExtResource("19_msljc")]
+position = Vector2(789, 341)
