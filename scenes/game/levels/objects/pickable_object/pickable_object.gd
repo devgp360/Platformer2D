@@ -16,6 +16,9 @@ extends Area2D
 
 # Definimos el sprite animado de la moneda
 @onready var _animated_sprite = $AnimatedSprite2D
+@onready var _audio_player= $AudioStreamPlayer2D # Reproductor de audios
+
+var _pickup_sound = preload("res://assets/sounds/pickup.mp3")
 
 
 # Función de carga del nodo
@@ -34,18 +37,22 @@ func _ready():
 	_animated_sprite.sprite_frames.set_frame("idle", 1, load(_animation2))
 	_animated_sprite.sprite_frames.set_frame("idle", 2, load(_animation3))
 	_animated_sprite.sprite_frames.set_frame("idle", 3, load(_animation4))
-
+	
 	# Reproducimos la animación idle
 	_animated_sprite.play("idle")
-
+	
 
 func _on_animated_sprite_2d_animation_finished():
+	# Esperamos 2 segundos 
+	await get_tree().create_timer(2).timeout
 	# Eliminamos el objeto recogido de la escena
 	queue_free()
-
-
+	
+	
 func do_animation():
 	# Validamos si la animación es de moneda
+	_audio_player.stream = _pickup_sound
+	_audio_player.play()
 	if animation == "gold_coin" or animation == "silver_coin":
 		# Reproducimos la animación de la moneda
 		_animated_sprite.play("coin_taken")
