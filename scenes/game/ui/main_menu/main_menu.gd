@@ -133,5 +133,17 @@ func _on_slider_effects_value_changed(value):
 
 # Función para poder mostrar/ocultar el menú
 func show_menu(_show: bool):
-	visible = not _show
-	_toggle_show()
+	if _show:
+		if not visible:
+			print("mostramos 1")
+			_toggle_show()
+	else:
+		if visible:
+			print("mostramos 2")
+			_toggle_show()
+
+
+# Función para resetear el juego
+func restart():
+	_started = false
+	_button.text = "Iniciar"

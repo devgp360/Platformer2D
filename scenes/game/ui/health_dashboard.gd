@@ -44,6 +44,14 @@ func add_points(value: int):
 	_set_points(points)
 
 
+# Función para resetear los valores de vida y puntos
+func restart():
+	life = 10
+	points = 0
+	_set_life_progress(life)
+	_set_points(points)
+
+
 # Actualiza la barra de progreso de la vida en el valor proporcionado
 func _set_life_progress(value: int):
 	bar.value = value

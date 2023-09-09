@@ -15,14 +15,14 @@ func _ready():
 
 
 # Función de cambio de escena: target es la ruta hacia la escena a cargar
-func change_scene(target: String):
+func change_scene(target: String, show_menu = false):
 	# Mostramos el canvas y mostramos animación (desde transparente hacia un color)
 	visible = true
 	animation.play("dissolve")
 	# Esperamos a que termine la animación
 	await animation.animation_finished
 	# Ocultamos el menu principal
-	MainMenu.show_menu(false)
+	MainMenu.show_menu(show_menu)
 	# Cargamos la escena
 	get_tree().change_scene_to_file(target)
 	# Mostramos animación (desde un color hacia transparente)
@@ -35,6 +35,9 @@ func change_scene(target: String):
 
 # Función de reiniciar la escena actual
 func reload_scene():
+	HealthDashboard.visible = false
+	HealthDashboard.restart()
+	MainMenu.restart()
 	MainMenu._toggle_show()
-	change_scene("res://scenes/game/levels/rooms/init/init.tscn")
+	change_scene("res://scenes/game/levels/rooms/init/init.tscn", false)
 	
