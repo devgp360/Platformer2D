@@ -64,9 +64,6 @@ script/source = "extends CharacterBody2D
 ) var moving_direction: String
 
 # Dirección de movimiento del Enemigo
-@export var hits_to_die: int = 1
-
-# Dirección de movimiento del Enemigo
 @export var is_active: bool = false
 
 # Variable para control de animación y colisiones
@@ -87,8 +84,6 @@ var _gravity = 10
 var _speed = 25
 # Definición de dirección de movimientos
 var _moving_left = true
-# Cuantas veces pegaron al personaje principal
-var _has_hits = 0
 # Copia de objeto que entra a colisión
 var _body: Node2D
 # Vandera de persecución
@@ -176,6 +171,12 @@ func _attack():
 	# No atacamos si se seteó la banderita _stop_attack
 	if _stop_attack:
 		return
+		
+	if not _body:
+		# Esperamos 1 segundos
+		await get_tree().create_timer(0).timeout
+		_attack()
+		
 	# Animación de atacar
 	_animation.play(\"attack\")
 
@@ -193,11 +194,18 @@ func _on_enemy_animation_frame_changed():
 	if _animation.frame == 0 and _animation.get_animation() == \"attack\":
 		# Pegamos al personaje
 		_animation_effect.play(\"attack_effect\")
-		_has_hits += 1
 		
-		if _body:
-			var _move_script = _body.get_node(\"MainCharacterMovement\")
-			_move_script.hit(5)
+		if HealthDashboard.life > 0:
+			# Reproducimos sonido
+			_audio_player.stream = _male_hurt_sound
+			_audio_player.play()
+		else:
+			_animation.play(\"idle\")
+			_animation_effect.play(\"idle\")
+		
+		# Quitamos vidas
+		var _move_script = _body.get_node(\"MainCharacterMovement\")
+		_move_script.hit(5)
 
 
 func _detection():
@@ -243,6 +251,7 @@ func _move(_direction):
 
 
 func _on_area_2d_area_entered(area):
+	print(\"areaAQIIOI\")
 	# Si estan atacando al enemigo
 	if area.is_in_group(\"hit\"):
 		# Seteamoas banderita no atacar
@@ -434,7 +443,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ku5hj"]
-size = Vector2(44, 23)
+size = Vector2(42, 23)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6nhye"]
 animations = [{
@@ -461,15 +470,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6eegh"]
-size = Vector2(52, 25)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_62ixa"]
+size = Vector2(44, 25)
 
 [node name="Crabby" type="CharacterBody2D"]
 script = SubResource("GDScript_6chrj")
 
 [node name="EnemyAnimation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fq7gh")
-animation = &"attack"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 1.5)
@@ -483,7 +492,8 @@ animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(2, 1.5)
-shape = SubResource("RectangleShape2D_6eegh")
+shape = SubResource("RectangleShape2D_62ixa")
+one_way_collision_margin = 0.0
 
 [node name="RayCastTerrain" type="RayCast2D" parent="Area2D"]
 position = Vector2(-23, -7)

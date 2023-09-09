@@ -1,25 +1,25 @@
 extends CharacterBody2D
-## Clase que controla animación y configuración del NPC
+## Clase que controla animación y configuración del Enemigo
 ##
-## Setea la animación y comportamiento del NPC 
+## Setea la animación y comportamiento del Enemigo 
 
 
-# Acciones del NPC
+# Acciones del Enemigo
 @export_enum(
 	"idle",
-	"run", 
+	"run",
 ) var animation: String
 
-# Dirección de movimiento del NPC
+# Dirección de movimiento del Enemigo
 @export_enum(
 	"left",
-	"right", 
+	"right",
 ) var moving_direction: String
 
-# Dirección de movimiento del NPC
+# Dirección de movimiento del Enemigo
 @export var hits_to_die: int = 1
 
-# Dirección de movimiento del NPC
+# Dirección de movimiento del Enemigo
 @export var is_active: bool = false
 
 # Variable para control de animación y colisiones
@@ -29,6 +29,11 @@ extends CharacterBody2D
 @onready var _raycast_wall := $Area2D/RayCastWall
 @onready var _raycast_vision_left := $Area2D/RayCastVisionLeft
 @onready var _raycast_vision_right := $Area2D/RayCastVisionRight
+@onready var _audio_player= $AudioStreamPlayer2D # Reproductor de audios
+
+# Definimos sonidos
+var _punch_sound = preload("res://assets/sounds/punch.mp3")
+var _male_hurt_sound = preload("res://assets/sounds/male_hurt.mp3")
 
 # Definición de parametros de física
 var _gravity = 10
@@ -74,13 +79,13 @@ func _physics_process(delta):
 
 func _move_character(delta):
 	# Aplicamos la gravidad
-	velocity.y += _gravity 
+	velocity.y += _gravity
 	
 	# Aplicamos la dirección de movimiento
 	if _moving_left:
-		velocity.x = - _speed 
+		velocity.x = - _speed
 	else:
-		velocity.x = _speed 
+		velocity.x = _speed
 
 	# Iniciamos el movimiento
 	move_and_slide()
@@ -88,7 +93,7 @@ func _move_character(delta):
 
 func _move_idle():
 	# Aplicamos la gravidad
-	velocity.y += _gravity 
+	velocity.y += _gravity
 	# Aplicamos la dirección de movimiento
 	velocity.x = 0
 	# Iniciamos el movimiento
@@ -120,11 +125,16 @@ func _turn():
 			scale.x = -scale.x
 
 
-func _attack():
-	var _move_script = _body.get_node("MainCharacterMovement")
+func _attack():	
 	# No atacamos si se seteó la banderita _stop_attack
 	if _stop_attack:
 		return
+		
+	if not _body:
+		# Esperamos 1 segundos
+		await get_tree().create_timer(0).timeout
+		_attack()
+		
 	# Animación de atacar
 	_animation.play("attack")
 
@@ -137,18 +147,16 @@ func _init_state():
 	_body = null
 	_stop_detection = false
 
-func _on_npc_animation_frame_changed():
+func _on_enemy_animation_frame_changed():
 	# Validamos si el frame de animación es 0
 	if _animation.frame == 0 and _animation.get_animation() == "attack":
 		# Pegamos al personaje
 		_animation_effect.play("attack_effect")
 		_has_hits += 1
 		
-		if _has_hits >= hits_to_die and _body:
-			# Matamos al personaje
-			var _move_script = _body.get_node("MainCharacterMovement")
-			if _move_script:
-				_move_script.die()
+		# Quitamos vidas
+		var _move_script = _body.get_node("MainCharacterMovement")
+		_move_script.hit(5)
 
 
 func _detection():
@@ -176,7 +184,7 @@ func _move(_direction):
 	if _is_persecuted or _animation.get_animation() == "attack":
 		return
 	# Aplicamos la gravidad
-	velocity.y += _gravity 
+	velocity.y += _gravity
 	
 	# Volteamos al personaje
 	if not _direction:
@@ -198,6 +206,9 @@ func _on_area_2d_area_entered(area):
 	if area.is_in_group("hit"):
 		# Seteamoas banderita no atacar
 		_stop_attack = true
+		# Reproducimos sonido
+		_audio_player.stream = _punch_sound
+		_audio_player.play()
 		# Lo matamos y quitamos de la escena
 		_animation.play("dead_ground")
 

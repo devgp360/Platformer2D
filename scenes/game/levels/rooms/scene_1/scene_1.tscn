@@ -33,7 +33,7 @@ autoplay = true
 bus = &"Ambient"
 
 [node name="MainCharacter" parent="." instance=ExtResource("1_vi0ax")]
-position = Vector2(1426, 524)
+position = Vector2(1197, 532)
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("character") instance=ExtResource("2_2f152")]
 position = Vector2(324, 395)
@@ -60,8 +60,6 @@ layer_1/tile_data = PackedInt32Array(1179648, 65539, 1, 1245184, 65539, 1, 11796
 position = Vector2(1282, 529)
 animation = "idle"
 moving_direction = "right"
-hits_to_die = 3
-is_active = true
 
 [node name="CollectableObjects" type="Node2D" parent="."]
 

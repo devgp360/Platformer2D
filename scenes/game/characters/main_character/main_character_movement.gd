@@ -51,7 +51,7 @@ func _ready():
 # Función de ejecución de físicas
 func _physics_process(_delta):
 	_move(_delta)
-
+	print(_ch.scale.x)
 
 # Función de movimiento general del personaje
 func _move(delta):
@@ -66,8 +66,8 @@ func _move(delta):
 	# Cuando no presionamos teclas, no hay movimiento	
 	else:
 		character.velocity.x = 0
-		_current_movement = _movements.IDLE
-		
+		_current_movement = _movements.IDLE	
+	
 	# Cuando se presiona el boton derecho de mouse, atacamos	
 	if Input.is_action_pressed("hit"):
 		character.velocity.x = 0

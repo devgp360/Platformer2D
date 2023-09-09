@@ -164,7 +164,7 @@ scale = Vector2(0.8, 0.8)
 _path_to_scene = "res://scenes/game/levels/rooms/scene_1/scene_1.tscn"
 
 [node name="MainCharacter" parent="." instance=ExtResource("15_ooixx")]
-position = Vector2(207, 479)
+position = Vector2(236, 513)
 
 [node name="Collectibles" type="Node2D" parent="."]
 
@@ -205,7 +205,7 @@ position = Vector2(1116, 328)
 animation = "red_diamond"
 
 [node name="Crabby" parent="." instance=ExtResource("18_dyrn2")]
-position = Vector2(135, 532)
+position = Vector2(131, 515)
 animation = "idle"
 moving_direction = "right"
 
