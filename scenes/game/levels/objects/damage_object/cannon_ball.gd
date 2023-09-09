@@ -29,5 +29,4 @@ func _on_body_entered(body):
 	if body.is_in_group("player"):
 		# Quitamos al personaje principal
 		var _move_script = body.get_node("MainCharacterMovement")
-		if _move_script:
-			_move_script.die()
+		_move_script.hit(5)

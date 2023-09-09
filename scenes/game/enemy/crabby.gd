@@ -40,8 +40,6 @@ var _gravity = 10
 var _speed = 25
 # Definición de dirección de movimientos
 var _moving_left = true
-# Cuantas veces pegaron al personaje principal
-var _has_hits = 0
 # Copia de objeto que entra a colisión
 var _body: Node2D
 # Vandera de persecución
@@ -152,7 +150,6 @@ func _on_enemy_animation_frame_changed():
 	if _animation.frame == 0 and _animation.get_animation() == "attack":
 		# Pegamos al personaje
 		_animation_effect.play("attack_effect")
-		_has_hits += 1
 		
 		# Quitamos vidas
 		var _move_script = _body.get_node("MainCharacterMovement")

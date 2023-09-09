@@ -51,7 +51,7 @@ func _ready():
 # Función de ejecución de físicas
 func _physics_process(_delta):
 	_move(_delta)
-	print(_ch.scale.x)
+
 
 # Función de movimiento general del personaje
 func _move(delta):

@@ -210,4 +210,4 @@ animation = "idle"
 moving_direction = "right"
 
 [node name="Cannon" parent="." instance=ExtResource("19_msljc")]
-position = Vector2(789, 341)
+position = Vector2(304, 497)
