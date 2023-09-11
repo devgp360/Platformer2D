@@ -79,19 +79,20 @@ func _on_parallax_2_animation_finished(_anim_name):
 func _toggle_show():
 	visible = not visible # Mostramos/Ocultamos el menu
 	HealthDashboard.visible = not visible # Mostramos/Ocultamos el tablero de salud
-	
+	print("_toggle_show: ")
 	# Agregar o remover el nodo principal del menú principal
 	if visible:
 		self.add_child(_main)
 	else:
 		self.remove_child(_main)
-		
+	
+	get_tree().paused = visible # Si estamos en el menú, pausamos
+	
 	# Buscamos el nodo principal del nivel actual "Main"
 	var main_node = get_tree().get_root().get_node("Main")
 	if main_node:
 		# Buscamos la cámara del nivel actual "Camera2D"
 		var camera = main_node.find_child("Camera2D")
-		get_tree().paused = visible # Si estamos en el menú, pausamos
 		if camera:
 			# La cámara la habilitamos o deshabilitamos
 			camera.enabled = not visible
@@ -117,6 +118,7 @@ func _on_button_pressed():
 		# Si no hemos iniciado, cargamos nivel 1 y cambiamos título de boton
 		SceneTransition.change_scene(PATH_LEVEL_1)
 		_started = true
+		#_toggle_show()
 
 
 # Cuando cambia el slider de sonido de ambiente ajustamos el volumne de ambiente
@@ -133,17 +135,17 @@ func _on_slider_effects_value_changed(value):
 
 # Función para poder mostrar/ocultar el menú
 func show_menu(_show: bool):
+	print("show: ", _show)
 	if _show:
 		if not visible:
-			print("mostramos 1")
 			_toggle_show()
 	else:
 		if visible:
-			print("mostramos 2")
 			_toggle_show()
 
 
 # Función para resetear el juego
 func restart():
+	#_toggle_show()
 	_started = false
 	_button.text = "Iniciar"
