@@ -20,4 +20,4 @@ func _ready():
 func _load_nex_level(body):
 	if body.is_in_group("player"):
 		var scene = "res://scenes/game/levels/rooms/scene_1/scene_1.tscn"
-		SceneTransition.change_scene(scene)
+		#SceneTransition.change_scene(scene) # Por el momento no usaremos este cambio de nivel
