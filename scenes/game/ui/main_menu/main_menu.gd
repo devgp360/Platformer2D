@@ -49,8 +49,9 @@ func _ready():
 
 # Detecta eventos de teclado y ratón
 func _unhandled_input(event):
-	if event.is_action_released("ui_cancel"):
-		_toggle_show() # Al presionar "scape" mostramos/ocultamos el menú
+	if event.is_action_released("ui_cancel") and _started:
+		# Al presionar "scape" mostramos/ocultamos el menú (solo si hemos "iniciado")
+		_toggle_show()
 
 
 # Se ejecuta cuando finaliza la animación de las nubes #1
