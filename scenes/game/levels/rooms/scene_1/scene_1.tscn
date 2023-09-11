@@ -33,7 +33,7 @@ autoplay = true
 bus = &"Ambient"
 
 [node name="MainCharacter" parent="." instance=ExtResource("1_vi0ax")]
-position = Vector2(1042, 561)
+position = Vector2(1032, 274)
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("character") instance=ExtResource("2_2f152")]
 position = Vector2(324, 395)
@@ -57,7 +57,7 @@ layer_1/tile_data = PackedInt32Array(1114140, 2, 0, 655394, 2, 0, 786451, 2, 0, 
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Crabby" parent="Enemies" instance=ExtResource("4_cmc0y")]
-position = Vector2(835, 414)
+position = Vector2(869, 551)
 animation = "run"
 moving_direction = "active"
 
@@ -116,7 +116,7 @@ position = Vector2(613, 147)
 position = Vector2(1142, 116)
 
 [node name="Cannon3" parent="DamageObject" instance=ExtResource("6_r6bnd")]
-position = Vector2(1071, 430)
+position = Vector2(982, 271)
 
 [node name="WaterReflect" type="Node2D" parent="."]
 

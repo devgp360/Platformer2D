@@ -4,7 +4,7 @@ extends RigidBody2D
 ## Setea la animación de exploción
 
 
-# Definimos la escena de destrucción del objeto
+# Definimos la animación del cañon
 @onready var _ball_animation = $AnimatedSprite2D
 
 # Called when the node enters the scene tree for the first time.
@@ -28,6 +28,8 @@ func _on_body_entered(body):
 	self.set_deferred("linear_velocity.x", 0)
 	self.set_deferred("linear_velocity.y", 0)
 	self.set_deferred("gravity_scale", 0)
+	self.collision_mask = 0
+	self.collision_layer = 0
 	# Reproducimos la animación de la exploción
 	_ball_animation.play("explosion")
 	if body.is_in_group("player"):
