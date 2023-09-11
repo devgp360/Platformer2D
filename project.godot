@@ -19,7 +19,7 @@ config/icon="res://icon.jpg"
 [autoload]
 
 SceneTransition="*res://scenes/game/transitions/scene_transition.tscn"
-HealthDashboard="*res://scenes/game/ui/health_dashboard.tscn"
+HealthDashboard="*res://scenes/game/ui/health_dashboard/health_dashboard.tscn"
 MainMenu="*res://scenes/game/ui/main_menu/main_menu.tscn"
 
 [display]
