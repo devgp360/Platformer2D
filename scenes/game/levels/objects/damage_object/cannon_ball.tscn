@@ -51,11 +51,12 @@ animations = [{
 
 [node name="CannonBall" type="RigidBody2D"]
 mass = 0.1
-gravity_scale = 0.5
+inertia = 5.0
+gravity_scale = 0.01
 max_contacts_reported = 1
 contact_monitor = true
 lock_rotation = true
-linear_velocity = Vector2(-500, 50)
+linear_velocity = Vector2(-500, 10)
 script = ExtResource("1_ms4ky")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
