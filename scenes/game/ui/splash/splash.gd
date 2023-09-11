@@ -20,8 +20,7 @@ func _input(event):
 	# Escuchamos si se preciona algun boton
 	if event is InputEventKey:
 		# Llamamos el la función de cambio de escena
-		#_go_title_screen()
-		pass
+		_go_title_screen()
 
 
 # Cuando termina la animación
