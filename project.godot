@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="Platformer 2d"
-run/main_scene="res://scenes/game/levels/rooms/init/init.tscn"
+run/main_scene="res://scenes/game/ui/splash/splash.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
+boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
 config/icon="res://icon.jpg"
 
 [autoload]
@@ -51,3 +52,4 @@ hit={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

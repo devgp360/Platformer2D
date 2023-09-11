@@ -45,6 +45,7 @@ func _ready():
 	# Iniciar volumen de sonidos en base al valor de los "sliders"
 	_on_slider_ambient_value_changed(_slider_ambient.value)
 	_on_slider_effects_value_changed(_slider_effects.value)
+	#_toggle_show()
 
 # Detecta eventos de teclado y ratón
 func _unhandled_input(event):
