@@ -79,7 +79,6 @@ func _on_parallax_2_animation_finished(_anim_name):
 func _toggle_show():
 	visible = not visible # Mostramos/Ocultamos el menu
 	HealthDashboard.visible = not visible # Mostramos/Ocultamos el tablero de salud
-	print("_toggle_show: ")
 	# Agregar o remover el nodo principal del menú principal
 	if visible:
 		self.add_child(_main)
@@ -135,7 +134,6 @@ func _on_slider_effects_value_changed(value):
 
 # Función para poder mostrar/ocultar el menú
 func show_menu(_show: bool):
-	print("show: ", _show)
 	if _show:
 		if not visible:
 			_toggle_show()
