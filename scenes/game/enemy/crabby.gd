@@ -14,13 +14,8 @@ extends CharacterBody2D
 @export_enum(
 	"left",
 	"right",
+	"active",
 ) var moving_direction: String
-
-# Dirección de movimiento del Enemigo
-@export var hits_to_die: int = 1
-
-# Dirección de movimiento del Enemigo
-@export var is_active: bool = false
 
 # Variable para control de animación y colisiones
 @onready var _animation := $EnemyAnimation
@@ -49,6 +44,7 @@ var _stop_detection := false
 # Vandera de no detectar ataques
 var _stop_attack := false
 
+
 # Función de inicialización
 func _ready():
 	# Seteamos la direccion de movimiento
@@ -71,9 +67,9 @@ func _physics_process(delta):
 	elif animation == "idle":
 		_move_idle()
 	# Si la animación es de persecución, aplicamos la persecución
-	if is_active and !_stop_detection:
+	if moving_direction == "active" and !_stop_detection:
 		_detection()
-		
+
 
 func _move_character(delta):
 	# Aplicamos la gravidad
@@ -87,7 +83,7 @@ func _move_character(delta):
 
 	# Iniciamos el movimiento
 	move_and_slide()
-	
+
 
 func _move_idle():
 	# Aplicamos la gravidad
@@ -151,6 +147,14 @@ func _on_enemy_animation_frame_changed():
 		# Pegamos al personaje
 		_animation_effect.play("attack_effect")
 		
+		if HealthDashboard.life > 0:
+			# Reproducimos sonido
+			_audio_player.stream = _male_hurt_sound
+			_audio_player.play()
+		else:
+			_animation.play("idle")
+			_animation_effect.play("idle")
+		
 		# Quitamos vidas
 		var _move_script = _body.get_node("MainCharacterMovement")
 		_move_script.hit(5)
@@ -190,9 +194,9 @@ func _move(_direction):
 	else:
 		# Aplicamos la dirección de movimiento
 		if _moving_left:
-			velocity.x = - _speed
+			velocity.x = - _speed * 5
 		else:
-			velocity.x = _speed
+			velocity.x = _speed * 5
 
 	# Iniciamos el movimiento
 	move_and_slide()
