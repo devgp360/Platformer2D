@@ -7,6 +7,7 @@ extends CanvasLayer
 ## Uso de objetos para cambio de escena: https://docs.google.com/document/d/1DeAuU4dYa7DsWs-ht5Aiq4mFraOOu7hraNgIeSZn4lA/edit?usp=sharing
 
 
+# Variable (públicas) de vida y puntuación
 var life = 10 # Variable para menejo de vida
 # Variable para menejo de puntos
 var points = {
@@ -17,15 +18,10 @@ var points = {
 	"RedDiamond": 0,
 }
 
-var gold_coin_points = 0
-var silver_coin_points = 0
-var blue_diamond_points = 0
-var green_diamond_points = 0
-var red_diamond_points = 0
-
-var number_1: TextureRect
-var number_2: TextureRect
-var number_3: TextureRect
+# Variables auxiliares para cambiar la puntuación de un tipo de objeto coleccionable
+var _number_1: TextureRect
+var _number_2: TextureRect
+var _number_3: TextureRect
 
 # Índice desde donde empieza el número 1 en la imagen atlas de letras y números
 var _index_number_1 = 8
@@ -60,9 +56,9 @@ func remove_life(value: int):
 func add_points(type: String, value: int):
 	var group = point_group.find_child(type)
 	if group:
-		number_1 = group.find_child("Number1")
-		number_2 = group.find_child("Number2")
-		number_3 = group.find_child("Number3")
+		_number_1 = group.find_child("Number1")
+		_number_2 = group.find_child("Number2")
+		_number_3 = group.find_child("Number3")
 		# Guardamos la puntuación correspondiente
 		points[type] += value
 		_set_points(points[type])
@@ -75,9 +71,9 @@ func restart():
 	# Reseteo de todos los diferentes tipos de puntos
 	for type in points:
 		var group = point_group.find_child(type)
-		number_1 = group.find_child("Number1")
-		number_2 = group.find_child("Number2")
-		number_3 = group.find_child("Number3")
+		_number_1 = group.find_child("Number1")
+		_number_2 = group.find_child("Number2")
+		_number_3 = group.find_child("Number3")
 		points[type] = 0
 		_set_points(points[type])
 
@@ -113,11 +109,11 @@ func _set_points(value: int):
 			region = _get_text_region(position)
 		match index: # Actualizamos cada imagen (3 imágenes desde 0 a 2)
 			0:
-				number_1.texture.set_region(region)
+				_number_1.texture.set_region(region)
 			1:
-				number_2.texture.set_region(region)
+				_number_2.texture.set_region(region)
 			2:
-				number_3.texture.set_region(region)
+				_number_3.texture.set_region(region)
 
 
 # Genera una región (Rect2) para la posición del caracter según el "Atlas de imágenes"
