@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bbdmu0jrh4l4o"]
+[gd_scene load_steps=29 format=3 uid="uid://bbdmu0jrh4l4o"]
 
 [ext_resource type="Script" path="res://scenes/game/ui/health_dashboard.gd" id="1_66ol8"]
 [ext_resource type="Texture2D" uid="uid://cl5b1weh62et3" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/life_bars/big_bars/1.png" id="1_chlyh"]
@@ -7,21 +7,76 @@
 [ext_resource type="Texture2D" uid="uid://bmn2hx61jlm7n" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/gold_coin/01.png" id="4_tr3c8"]
 [ext_resource type="Texture2D" uid="uid://ci24y5vdyxq0j" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/life_bars/colors/1.png" id="5_3jsni"]
 [ext_resource type="Texture2D" uid="uid://qegg5d225ej6" path="res://assets/atlases/text.png" id="7_dkqak"]
+[ext_resource type="Texture2D" uid="uid://cwxu4q044qobj" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/silver_coin/01.png" id="8_cl658"]
+[ext_resource type="Texture2D" uid="uid://d3bljsqlyvvf1" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/blue_diamond/01.png" id="9_ws0mj"]
+[ext_resource type="Texture2D" uid="uid://dag1d05f4evdq" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/green_diamond/01.png" id="10_0jece"]
+[ext_resource type="Texture2D" uid="uid://xiw4qwa52ual" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/red_diamond/01.png" id="11_lvbnv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2byhb"]
 atlas = ExtResource("7_dkqak")
 region = Rect2(104, 4, 10, 11)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8oydo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ytba"]
 atlas = ExtResource("7_dkqak")
 region = Rect2(104, 44, 10, 11)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_w2s7s"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8c5t"]
 atlas = ExtResource("7_dkqak")
 region = Rect2(104, 44, 10, 11)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xqiuc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pw7ap"]
 atlas = ExtResource("7_dkqak")
+region = Rect2(104, 44, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tym67"]
+atlas = ExtResource("7_dkqak")
+region = Rect2(104, 44, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vr0tu"]
+atlas = ExtResource("7_dkqak")
+region = Rect2(104, 44, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsmss"]
+atlas = ExtResource("7_dkqak")
+region = Rect2(104, 44, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1fmy"]
+atlas = ExtResource("7_dkqak")
+region = Rect2(104, 44, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twlol"]
+atlas = ExtResource("7_dkqak")
+region = Rect2(104, 44, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n10ep"]
+atlas = ExtResource("7_dkqak")
+region = Rect2(104, 44, 10, 11)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iwcxu"]
+load_path = "res://.godot/imported/text.png-c60f3c71437097c445e5745800ab64ed.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4nk5k"]
+atlas = SubResource("CompressedTexture2D_iwcxu")
+region = Rect2(104, 44, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tm3ur"]
+atlas = SubResource("CompressedTexture2D_iwcxu")
+region = Rect2(104, 44, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ed70e"]
+atlas = SubResource("CompressedTexture2D_iwcxu")
+region = Rect2(104, 44, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rm658"]
+atlas = SubResource("CompressedTexture2D_iwcxu")
+region = Rect2(104, 44, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7m60"]
+atlas = SubResource("CompressedTexture2D_iwcxu")
+region = Rect2(104, 44, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anbyg"]
+atlas = SubResource("CompressedTexture2D_iwcxu")
 region = Rect2(104, 44, 10, 11)
 
 [node name="health_dashboard" type="CanvasLayer"]
@@ -70,22 +125,32 @@ value = 10.0
 nine_patch_stretch = true
 texture_progress = ExtResource("5_3jsni")
 
-[node name="Points" type="Control" parent="."]
+[node name="PointGroup" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="GoldCoin" type="Control" parent="PointGroup"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 3.0
-offset_top = 64.0
-offset_right = 43.0
-offset_bottom = 104.0
+offset_left = -320.0
+offset_top = 8.0
+offset_right = -280.0
+offset_bottom = 48.0
+scale = Vector2(0.7, 0.7)
 
-[node name="Coin" type="TextureRect" parent="Points"]
+[node name="Coin" type="TextureRect" parent="PointGroup/GoldCoin"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(1.3, 1.3)
 texture = ExtResource("4_tr3c8")
 
-[node name="X" type="TextureRect" parent="Points"]
+[node name="X" type="TextureRect" parent="PointGroup/GoldCoin"]
 layout_mode = 0
 offset_left = 61.0
 offset_top = 9.0
@@ -94,29 +159,237 @@ offset_bottom = 49.0
 scale = Vector2(0.9, 0.9)
 texture = SubResource("AtlasTexture_2byhb")
 
-[node name="Number1" type="TextureRect" parent="Points"]
+[node name="Number1" type="TextureRect" parent="PointGroup/GoldCoin"]
 layout_mode = 0
 offset_left = 110.0
 offset_top = 9.0
 offset_right = 150.0
 offset_bottom = 49.0
 scale = Vector2(0.9, 0.9)
-texture = SubResource("AtlasTexture_8oydo")
+texture = SubResource("AtlasTexture_0ytba")
 
-[node name="Number2" type="TextureRect" parent="Points"]
+[node name="Number2" type="TextureRect" parent="PointGroup/GoldCoin"]
 layout_mode = 0
 offset_left = 152.0
 offset_top = 9.0
 offset_right = 192.0
 offset_bottom = 49.0
 scale = Vector2(0.9, 0.9)
-texture = SubResource("AtlasTexture_w2s7s")
+texture = SubResource("AtlasTexture_r8c5t")
 
-[node name="Number3" type="TextureRect" parent="Points"]
+[node name="Number3" type="TextureRect" parent="PointGroup/GoldCoin"]
 layout_mode = 0
 offset_left = 194.0
 offset_top = 9.0
 offset_right = 234.0
 offset_bottom = 49.0
 scale = Vector2(0.9, 0.9)
-texture = SubResource("AtlasTexture_xqiuc")
+texture = SubResource("AtlasTexture_pw7ap")
+
+[node name="SilverCoin" type="Control" parent="PointGroup"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -320.0
+offset_top = 38.0
+offset_right = -280.0
+offset_bottom = 78.0
+scale = Vector2(0.7, 0.7)
+
+[node name="Coin" type="TextureRect" parent="PointGroup/SilverCoin"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("8_cl658")
+
+[node name="X" type="TextureRect" parent="PointGroup/SilverCoin"]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 9.0
+offset_right = 101.0
+offset_bottom = 49.0
+scale = Vector2(0.9, 0.9)
+texture = SubResource("AtlasTexture_2byhb")
+
+[node name="Number1" type="TextureRect" parent="PointGroup/SilverCoin"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 9.0
+offset_right = 150.0
+offset_bottom = 49.0
+scale = Vector2(0.9, 0.9)
+texture = SubResource("AtlasTexture_tym67")
+
+[node name="Number2" type="TextureRect" parent="PointGroup/SilverCoin"]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 9.0
+offset_right = 192.0
+offset_bottom = 49.0
+scale = Vector2(0.9, 0.9)
+texture = SubResource("AtlasTexture_vr0tu")
+
+[node name="Number3" type="TextureRect" parent="PointGroup/SilverCoin"]
+layout_mode = 0
+offset_left = 194.0
+offset_top = 9.0
+offset_right = 234.0
+offset_bottom = 49.0
+scale = Vector2(0.9, 0.9)
+texture = SubResource("AtlasTexture_lsmss")
+
+[node name="BlueDiamond" type="Control" parent="PointGroup"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -140.0
+offset_top = 8.0
+offset_right = -100.0
+offset_bottom = 48.0
+scale = Vector2(0.7, 0.7)
+
+[node name="Coin" type="TextureRect" parent="PointGroup/BlueDiamond"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("9_ws0mj")
+
+[node name="X" type="TextureRect" parent="PointGroup/BlueDiamond"]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 9.0
+offset_right = 101.0
+offset_bottom = 49.0
+scale = Vector2(0.9, 0.9)
+texture = SubResource("AtlasTexture_2byhb")
+
+[node name="Number1" type="TextureRect" parent="PointGroup/BlueDiamond"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 9.0
+offset_right = 150.0
+offset_bottom = 49.0
+scale = Vector2(0.9, 0.9)
+texture = SubResource("AtlasTexture_o1fmy")
+
+[node name="Number2" type="TextureRect" parent="PointGroup/BlueDiamond"]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 9.0
+offset_right = 192.0
+offset_bottom = 49.0
+scale = Vector2(0.9, 0.9)
+texture = SubResource("AtlasTexture_twlol")
+
+[node name="Number3" type="TextureRect" parent="PointGroup/BlueDiamond"]
+layout_mode = 0
+offset_left = 194.0
+offset_top = 9.0
+offset_right = 234.0
+offset_bottom = 49.0
+scale = Vector2(0.9, 0.9)
+texture = SubResource("AtlasTexture_n10ep")
+
+[node name="GreenDiamond" type="Control" parent="PointGroup"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -140.0
+offset_top = 38.0
+offset_right = -100.0
+offset_bottom = 78.0
+scale = Vector2(0.7, 0.7)
+
+[node name="Coin" type="TextureRect" parent="PointGroup/GreenDiamond"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("10_0jece")
+
+[node name="X" type="TextureRect" parent="PointGroup/GreenDiamond"]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 9.0
+offset_right = 101.0
+offset_bottom = 49.0
+scale = Vector2(0.9, 0.9)
+texture = SubResource("AtlasTexture_2byhb")
+
+[node name="Number1" type="TextureRect" parent="PointGroup/GreenDiamond"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 9.0
+offset_right = 150.0
+offset_bottom = 49.0
+scale = Vector2(0.9, 0.9)
+texture = SubResource("AtlasTexture_4nk5k")
+
+[node name="Number2" type="TextureRect" parent="PointGroup/GreenDiamond"]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 9.0
+offset_right = 192.0
+offset_bottom = 49.0
+scale = Vector2(0.9, 0.9)
+texture = SubResource("AtlasTexture_tm3ur")
+
+[node name="Number3" type="TextureRect" parent="PointGroup/GreenDiamond"]
+layout_mode = 0
+offset_left = 194.0
+offset_top = 9.0
+offset_right = 234.0
+offset_bottom = 49.0
+scale = Vector2(0.9, 0.9)
+texture = SubResource("AtlasTexture_ed70e")
+
+[node name="RedDiamond" type="Control" parent="PointGroup"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -140.0
+offset_top = 68.0
+offset_right = -100.0
+offset_bottom = 108.0
+scale = Vector2(0.7, 0.7)
+
+[node name="Coin" type="TextureRect" parent="PointGroup/RedDiamond"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("11_lvbnv")
+
+[node name="X" type="TextureRect" parent="PointGroup/RedDiamond"]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 9.0
+offset_right = 101.0
+offset_bottom = 49.0
+scale = Vector2(0.9, 0.9)
+texture = SubResource("AtlasTexture_2byhb")
+
+[node name="Number1" type="TextureRect" parent="PointGroup/RedDiamond"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 9.0
+offset_right = 150.0
+offset_bottom = 49.0
+scale = Vector2(0.9, 0.9)
+texture = SubResource("AtlasTexture_rm658")
+
+[node name="Number2" type="TextureRect" parent="PointGroup/RedDiamond"]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 9.0
+offset_right = 192.0
+offset_bottom = 49.0
+scale = Vector2(0.9, 0.9)
+texture = SubResource("AtlasTexture_x7m60")
+
+[node name="Number3" type="TextureRect" parent="PointGroup/RedDiamond"]
+layout_mode = 0
+offset_left = 194.0
+offset_top = 9.0
+offset_right = 234.0
+offset_bottom = 49.0
+scale = Vector2(0.9, 0.9)
+texture = SubResource("AtlasTexture_anbyg")
