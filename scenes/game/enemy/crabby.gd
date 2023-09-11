@@ -73,7 +73,7 @@ func _physics_process(delta):
 	# Si la animación es de persecución, aplicamos la persecución
 	if is_active and !_stop_detection:
 		_detection()
-
+		
 
 func _move_character(delta):
 	# Aplicamos la gravidad

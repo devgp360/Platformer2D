@@ -115,17 +115,19 @@ func _set_animation():
 		# Movimiento hacia la derecha (animación "correr" no volteada)
 		main_animation.play(_movements.RIGHT_WITH_SWORD)
 		main_animation.flip_h = false
+		_collision.position.x = abs(_collision.position.x)
 	elif _current_movement == _movements.LEFT_WITH_SWORD:
 		# Movimiento hacia la izquierda (animación "correr" volteada)
 		main_animation.play(_movements.RIGHT_WITH_SWORD)
-		main_animation.flip_h = true	
+		main_animation.flip_h = true
+		_collision.position.x = - abs(_collision.position.x)
 	else:
 		# Movimiento por defecto (animación de "reposo")
 		main_animation.play(_movements.IDLE_WITH_SWORD)
 		# Pausamos el sonido
 		audio_player.stop()
 		_is_playing = ""
-
+	#print("character.scale.x ", character.scale.x)
 
 # Función que aplica gravedad de caída o salto
 func _apply_gravity(delta):
