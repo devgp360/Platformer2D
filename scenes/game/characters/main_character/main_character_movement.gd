@@ -131,7 +131,7 @@ func _set_animation():
 		# Pausamos el sonido
 		audio_player.stop()
 		_is_playing = ""
-	#print("character.scale.x ", character.scale.x)
+
 
 # Función que aplica gravedad de caída o salto
 func _apply_gravity(delta):
