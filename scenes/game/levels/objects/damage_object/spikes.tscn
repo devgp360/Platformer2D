@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2e1lhm1w4re4"]
+
+[ext_resource type="Texture2D" uid="uid://5va2c11ojds3" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/spikes/spikes.png" id="1_s4h20"]
+[ext_resource type="Script" path="res://scenes/game/levels/objects/damage_object/spikes.gd" id="1_u4vmy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_snodo"]
+size = Vector2(31, 16)
+
+[node name="Spikes" type="Node2D"]
+script = ExtResource("1_u4vmy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_s4h20")
+
+[node name="Area" type="Area2D" parent="."]
+
+[node name="CollisionShape" type="CollisionShape2D" parent="Area"]
+position = Vector2(-0.5, 8)
+shape = SubResource("RectangleShape2D_snodo")
+
+[connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]
