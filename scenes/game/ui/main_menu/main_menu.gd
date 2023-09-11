@@ -93,7 +93,6 @@ func _toggle_show():
 	if main_node:
 		# Buscamos la cámara del nivel actual "Camera2D"
 		var camera = main_node.find_child("Camera2D")
-		
 		if camera:
 			# La cámara la habilitamos o deshabilitamos
 			camera.enabled = not visible
