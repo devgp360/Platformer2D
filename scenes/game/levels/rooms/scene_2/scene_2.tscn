@@ -151,6 +151,11 @@ texture = ExtResource("5_6p3ud")
 position = Vector2(298, -108)
 texture = ExtResource("13_amc1m")
 
+[node name="DoorChangeScene" parent="Objects" instance=ExtResource("17_ydyba")]
+position = Vector2(1252, -135)
+scale = Vector2(0.8, 0.8)
+_path_to_scene = "res://scenes/game/levels/rooms/scene_1/scene_1.tscn"
+
 [node name="MainCharacter" parent="." instance=ExtResource("15_ooixx")]
 position = Vector2(124, 535)
 
@@ -167,11 +172,6 @@ layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(655362, 65538, 1, 655363, 131074, 1, 917523, 2, 0, 983059, 2, 1, 917518, 2, 0, 983054, 2, 1, 917524, 2, 0, 983060, 2, 1, 851988, 2, 0, 917506, 65538, 1, 917507, 131074, 1, 655387, 2, 0, 720923, 2, 1, 720939, 65538, 0, 720940, 131074, 0)
-
-[node name="DoorChangeScene" parent="." instance=ExtResource("17_ydyba")]
-position = Vector2(1392, 376)
-scale = Vector2(0.8, 0.8)
-_path_to_scene = "res://scenes/game/levels/rooms/scene_1/scene_1.tscn"
 
 [node name="Collectibles" type="Node2D" parent="."]
 
