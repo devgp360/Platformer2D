@@ -22,7 +22,6 @@ func _ready():
 func fire():
 	# Reproducimos la animación de disparo
 	_cannon_animation.play("fire")
-	print("ya")
 
 
 func _on_animated_sprite_2d_frame_changed():
