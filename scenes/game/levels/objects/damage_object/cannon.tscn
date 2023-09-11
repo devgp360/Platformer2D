@@ -19,6 +19,9 @@
 [ext_resource type="Texture2D" uid="uid://c8ml72h6eandi" path="res://assets/sprites/treasure_hunters/shooter_traps/sprites/cannon/cannon_hit/4.png" id="26_obvdl"]
 [ext_resource type="Texture2D" uid="uid://1c2x1eybvkk3" path="res://assets/sprites/treasure_hunters/shooter_traps/sprites/cannon/cannon_idle/1.png" id="27_o0xpr"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ktbri"]
+size = Vector2(28, 24)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_h5nvd"]
 animations = [{
 "frames": [{
@@ -99,26 +102,21 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x6cfl"]
-size = Vector2(31, 23)
-
-[node name="Cannon" type="Node2D"]
+[node name="Cannon" type="RigidBody2D" groups=["cannon"]]
 script = ExtResource("1_t2rj5")
 
-[node name="Cannon" type="Area2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_ktbri")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Cannon"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_h5nvd")
-animation = &"fire"
+animation = &"idle"
 
-[node name="AnimatedSprite2DEffects" type="AnimatedSprite2D" parent="Cannon"]
+[node name="AnimatedSprite2DEffects" type="AnimatedSprite2D" parent="."]
 position = Vector2(-25, -1)
 sprite_frames = SubResource("SpriteFrames_tmb21")
 animation = &"fire_effect"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cannon"]
-position = Vector2(-0.5, 1.5)
-shape = SubResource("RectangleShape2D_x6cfl")
-
-[connection signal="animation_finished" from="Cannon/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="frame_changed" from="Cannon/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

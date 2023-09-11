@@ -18,6 +18,10 @@ func _process(delta):
 
 
 func _on_body_entered(body):
+	# Validamos si el choque es con el cañon
+	if body.is_in_group("cannon"):
+		return
+
 	# Detenemos la bala
 	self.set_deferred("freeze", true)
 	self.set_deferred("sleeping", true)

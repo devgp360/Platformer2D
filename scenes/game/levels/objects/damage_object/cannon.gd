@@ -1,4 +1,4 @@
-extends Node2D
+extends RigidBody2D
 ## Clase que controla animación y configuración del objeto cañón
 ##
 ## Setea la animación del objeto 
@@ -6,9 +6,9 @@ extends Node2D
 
 
 # Definimos la escena de destrucción del objeto
-@onready var _cannon_animation = $Cannon/AnimatedSprite2D
+@onready var _cannon_animation = $AnimatedSprite2D
 # Definimos el sprite animado de efectos
-@onready var _animated_sprite_effects = $Cannon/AnimatedSprite2DEffects
+@onready var _animated_sprite_effects = $AnimatedSprite2DEffects
 # Definimos la bala de cañón
 var new_ball: RigidBody2D
 
@@ -22,6 +22,7 @@ func _ready():
 func fire():
 	# Reproducimos la animación de disparo
 	_cannon_animation.play("fire")
+	print("ya")
 
 
 func _on_animated_sprite_2d_frame_changed():
