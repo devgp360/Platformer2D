@@ -8,7 +8,24 @@ extends CanvasLayer
 
 
 var life = 10 # Variable para menejo de vida
-var points = 0 # Variable para menejo de puntos
+# Variable para menejo de puntos
+var points = {
+	"GoldCoin": 0,
+	"SilverCoin": 0,
+	"BlueDiamond": 0,
+	"GreenDiamond": 0,
+	"RedDiamond": 0,
+}
+
+var gold_coin_points = 0
+var silver_coin_points = 0
+var blue_diamond_points = 0
+var green_diamond_points = 0
+var red_diamond_points = 0
+
+var number_1: TextureRect
+var number_2: TextureRect
+var number_3: TextureRect
 
 # Índice desde donde empieza el número 1 en la imagen atlas de letras y números
 var _index_number_1 = 8
@@ -17,9 +34,10 @@ var _index_number_0 = 17
 
 # Referencias hacia la barra de vida y los números de la puntuación
 @onready var bar = $LifeBar/Bar
-@onready var number_1 = $Points/Number1
-@onready var number_2 = $Points/Number2
-@onready var number_3 = $Points/Number3
+#@onready var number_1 = $PointGroup/Points/Number1
+#@onready var number_2 = $PointGroup/Points/Number2
+#@onready var number_3 = $PointGroup/Points/Number3
+@onready var point_group = $PointGroup
 
 
 # Agrega vida del personaje principal, según el valor proporcionado
@@ -39,17 +57,29 @@ func remove_life(value: int):
 
 
 # Agrega puntos al personaje principal (va sumando los puntos totales)	
-func add_points(value: int):
-	points += value
-	_set_points(points)
+func add_points(type: String, value: int):
+	var group = point_group.find_child(type)
+	if group:
+		number_1 = group.find_child("Number1")
+		number_2 = group.find_child("Number2")
+		number_3 = group.find_child("Number3")
+		# Guardamos la puntuación correspondiente
+		points[type] += value
+		_set_points(points[type])
 
 
 # Función para resetear los valores de vida y puntos
 func restart():
 	life = 10
-	points = 0
 	_set_life_progress(life)
-	_set_points(points)
+	# Reseteo de todos los diferentes tipos de puntos
+	for type in points:
+		var group = point_group.find_child(type)
+		number_1 = group.find_child("Number1")
+		number_2 = group.find_child("Number2")
+		number_3 = group.find_child("Number3")
+		points[type] = 0
+		_set_points(points[type])
 
 
 # Actualiza la barra de progreso de la vida en el valor proporcionado
@@ -81,7 +111,6 @@ func _set_points(value: int):
 			# y restamos 1, porque _index_number_1 ya tiene la posición del número 1
 			var position = v + _index_number_1 - 1
 			region = _get_text_region(position)
-		
 		match index: # Actualizamos cada imagen (3 imágenes desde 0 a 2)
 			0:
 				number_1.texture.set_region(region)

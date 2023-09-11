@@ -153,6 +153,19 @@ position = Vector2(520, -46)
 [node name="Spikes3" parent="Objects" instance=ExtResource("19_4ldx5")]
 position = Vector2(488, -46)
 
+[node name="Crabby" parent="." instance=ExtResource("18_dyrn2")]
+position = Vector2(284, 500)
+animation = "run"
+moving_direction = "right"
+
+[node name="Cannon" parent="." instance=ExtResource("19_msljc")]
+position = Vector2(797, 340)
+
+[node name="Crabby2" parent="." instance=ExtResource("18_dyrn2")]
+position = Vector2(1155, 468)
+animation = "idle"
+moving_direction = "active"
+
 [node name="MainCharacter" parent="." instance=ExtResource("15_ooixx")]
 position = Vector2(124, 535)
 
@@ -207,14 +220,3 @@ animation = "red_diamond"
 [node name="PickableObject9" parent="Collectibles" instance=ExtResource("20_juf85")]
 position = Vector2(1116, 328)
 animation = "red_diamond"
-
-[node name="Crabby" parent="." instance=ExtResource("18_dyrn2")]
-position = Vector2(284, 500)
-animation = "run"
-moving_direction = "right"
-
-[node name="Cannon" parent="." instance=ExtResource("19_msljc")]
-position = Vector2(797, 340)
-
-[node name="Crabby2" parent="." instance=ExtResource("18_dyrn2")]
-position = Vector2(1155, 468)

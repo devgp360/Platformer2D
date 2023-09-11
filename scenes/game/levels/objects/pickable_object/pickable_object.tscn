@@ -72,12 +72,22 @@ func do_animation():
 	if animation == \"gold_coin\" or animation == \"silver_coin\":
 		# Reproducimos la animación de la moneda
 		_animated_sprite.play(\"coin_taken\")
-		HealthDashboard.add_points(10) # Las monedas dan 10 puntos
 	else:
 		# Reproducimos la animación del diamante
 		_animated_sprite.play(\"diamond_taken\")
-		HealthDashboard.add_points(50) # Los diamantes dan 50 puntos
 
+	# Sumar los objetos recolectados
+	var type = \"GoldCoin\"
+	if animation == \"silver_coin\":
+		type = \"SilverCoin\"
+	elif animation == \"blue_diamond\":
+		type = \"BlueDiamond\"
+	elif animation == \"green_diamond\":
+		type = \"GreenDiamond\"
+	elif animation == \"red_diamond\":
+		type = \"RedDiamond\"
+	# Todos los diferente tipos de objetos suman 1 unidad
+	HealthDashboard.add_points(type, 1) 
 
 func _on_area_entered(area):
 	# Validamos que la colisión es con el personaje principal 
