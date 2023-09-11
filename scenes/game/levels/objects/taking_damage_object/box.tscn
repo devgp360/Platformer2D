@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cqhiovy7j3xcq"]
+[gd_scene load_steps=10 format=3 uid="uid://cqhiovy7j3xcq"]
 
 [ext_resource type="Script" path="res://scenes/game/levels/objects/taking_damage_object/taking_damage_object.gd" id="1_5lw12"]
 [ext_resource type="Texture2D" uid="uid://demtjc6ujwp3v" path="res://assets/sprites/treasure_hunters/merchant_ship/sprites/box/hit/2.png" id="8_eiacq"]
@@ -35,6 +35,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oeywc"]
 size = Vector2(25, 18)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j4x3q"]
+size = Vector2(27, 20)
+
 [node name="Box" type="RigidBody2D"]
 input_pickable = true
 max_contacts_reported = 100
@@ -53,4 +56,11 @@ shape = SubResource("RectangleShape2D_oeywc")
 
 [node name="BoxDestroyed" parent="." instance=ExtResource("13_spjgs")]
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_j4x3q")
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
