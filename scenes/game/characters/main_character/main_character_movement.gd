@@ -84,6 +84,10 @@ func _move(delta):
 			_jump_count += 1 # Sumamos el segundo salto
 
 	_apply_gravity(delta)
+	
+	if _died: # Si el personaje murió, no se podrá mover en el eje X
+		character.velocity.x = 0
+	
 	_set_animation()
 	# Función de godot para mover y aplicar física y colisiones
 	character.move_and_slide()
@@ -134,7 +138,8 @@ func _apply_gravity(delta):
 	var v = character.velocity
 	
 	# El salto solo se ejecuta 1 vez, en ese momento hacemos que el personaje salte
-	if _current_movement == _movements.JUMP_WITH_SWORD:
+	if _current_movement == _movements.JUMP_WITH_SWORD and not _died:
+		# Saltamos, solo si el personaje no ha muerto
 		v.y = -jump
 	else:
 		# Aplicación de gravedad (aceleración en la caida)
