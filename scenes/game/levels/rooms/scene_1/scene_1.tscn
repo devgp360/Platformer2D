@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dhor7t5klwdwx"]
+[gd_scene load_steps=20 format=3 uid="uid://dhor7t5klwdwx"]
 
 [ext_resource type="Texture2D" uid="uid://cg6wkkuni8aq8" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/bg_image.png" id="1_a12cs"]
 [ext_resource type="TileSet" uid="uid://bx1rsqucrwm2i" path="res://assets/resources/bg_tile_set.tres" id="1_atorb"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://maf7s1c6fyyp" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/chest/chest_close_04.png" id="10_2jg0w"]
 [ext_resource type="Texture2D" uid="uid://dcptpykdlp5rk" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/flag/flag_01.png" id="11_4ker5"]
 [ext_resource type="Texture2D" uid="uid://ntgt51twdxdm" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/water_reflect_medium_03.png" id="13_u3w7t"]
+[ext_resource type="PackedScene" uid="uid://deedu63sld0es" path="res://scenes/game/levels/objects/death/death.tscn" id="16_kwprd"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7drek"]
 load_path = "res://.godot/imported/small_cloud_1.png-40532304be8a8e58b358963bfcb15f67.ctex"
@@ -289,3 +290,7 @@ texture = SubResource("CompressedTexture2D_d1lya")
 z_index = -1
 position = Vector2(526, 297)
 animation = &"idle_left"
+
+[node name="DieArea" type="Node2D" parent="."]
+
+[node name="Death" parent="DieArea" instance=ExtResource("16_kwprd")]

@@ -41,10 +41,11 @@ func do_animation():
 	_animated_sprite.play("hit")
 
 
-func hit():
-	# Validamos si estamos reproduciendo la animación
-	if not _do_animation:
-		# Seteamos que ya estamos reproduciendo la animación
-		_do_animation = true
-		# Reproducimos la animación
-		do_animation()
+func _on_area_2d_area_entered(area):
+	if area.is_in_group("hit"):
+		# Validamos si estamos reproduciendo la animación
+		if not _do_animation:
+			# Seteamos que ya estamos reproduciendo la animación
+			_do_animation = true
+			# Reproducimos la animación
+			do_animation()
