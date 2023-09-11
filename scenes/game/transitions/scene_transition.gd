@@ -6,12 +6,13 @@ extends CanvasLayer
 
 
 # Nodo de animación
-@onready var animation = $AnimationPlayer
+@onready var animation: AnimationPlayer = $AnimationPlayer
 
 
 # Función de inicialización
 func _ready():
 	visible = false # Al iniciar el canvas no se debe ver
+	self.process_mode = Node.PROCESS_MODE_ALWAYS
 
 
 # Función de cambio de escena: target es la ruta hacia la escena a cargar
@@ -29,6 +30,7 @@ func change_scene(target: String, show_menu = false):
 	animation.play_backwards("dissolve")
 	# Esperamos a que termine la animación
 	await animation.animation_finished
+	animation.stop()
 	# Volvemos a ocultar el canvas
 	visible = false
 
@@ -38,6 +40,5 @@ func reload_scene():
 	HealthDashboard.visible = false
 	HealthDashboard.restart()
 	MainMenu.restart()
-	MainMenu._toggle_show()
-	change_scene("res://scenes/game/levels/rooms/init/init.tscn", false)
+	change_scene("res://scenes/game/levels/rooms/init/init.tscn", true)
 	
