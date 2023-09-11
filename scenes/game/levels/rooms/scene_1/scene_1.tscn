@@ -58,7 +58,7 @@ layer_1/tile_data = PackedInt32Array(1114140, 2, 0, 655394, 2, 0, 786451, 2, 0, 
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Crabby" parent="Enemies" instance=ExtResource("4_cmc0y")]
-position = Vector2(869, 551)
+position = Vector2(315, 300)
 animation = "run"
 moving_direction = "active"
 
