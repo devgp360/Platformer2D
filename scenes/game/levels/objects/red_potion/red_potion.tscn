@@ -1,0 +1,95 @@
+[gd_scene load_steps=17 format=3 uid="uid://c36rtvjb7r5d1"]
+
+[ext_resource type="Script" path="res://scenes/game/levels/objects/red_potion/red_potion.gd" id="1_7bd8o"]
+[ext_resource type="Texture2D" uid="uid://cgc6clyoa81lm" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/potion_effect/01.png" id="2_auo2c"]
+[ext_resource type="Texture2D" uid="uid://gnsvka6ktyhy" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/potion_effect/02.png" id="3_r8svy"]
+[ext_resource type="Texture2D" uid="uid://dk47xkvemmp6q" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/potion_effect/03.png" id="4_ijorr"]
+[ext_resource type="Texture2D" uid="uid://dkdgoo76rjnhx" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/potion_effect/04.png" id="5_042fe"]
+[ext_resource type="Texture2D" uid="uid://ch20adx6uqc22" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/red_potion/01.png" id="6_h711j"]
+[ext_resource type="Texture2D" uid="uid://cyx7nnnkm10yj" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/red_potion/02.png" id="7_vqijw"]
+[ext_resource type="Texture2D" uid="uid://dh7i1603tye4t" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/red_potion/03.png" id="8_a8k2s"]
+[ext_resource type="Texture2D" uid="uid://wl3i5ifnxvwa" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/red_potion/04.png" id="9_47v6e"]
+[ext_resource type="Texture2D" uid="uid://esldhx6m2t05" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/red_potion/05.png" id="10_xb6we"]
+[ext_resource type="Texture2D" uid="uid://drvwapptr1h84" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/red_potion/06.png" id="11_q06fh"]
+[ext_resource type="Texture2D" uid="uid://fixrefxka34s" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/red_potion/07.png" id="12_l0cqv"]
+[ext_resource type="AudioStream" uid="uid://p7q0802yrppa" path="res://assets/sounds/pickup_life.ogg" id="13_8kaqc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gm1ck"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_auo2c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_r8svy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ijorr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_042fe")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ygm7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_h711j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_vqijw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_a8k2s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_47v6e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_xb6we")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_q06fh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_l0cqv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_im6xl"]
+size = Vector2(10, 15)
+
+[node name="RedPotion" type="Node2D"]
+script = ExtResource("1_7bd8o")
+
+[node name="Effect" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -5)
+sprite_frames = SubResource("SpriteFrames_gm1ck")
+
+[node name="Potion" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2ygm7")
+frame_progress = 0.950604
+
+[node name="Area" type="Area2D" parent="."]
+
+[node name="CollisionShape" type="CollisionShape2D" parent="Area"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_im6xl")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_8kaqc")
+bus = &"Effects"
+
+[connection signal="animation_finished" from="Effect" to="." method="_on_effect_animation_finished"]
+[connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]
