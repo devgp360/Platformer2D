@@ -36,3 +36,4 @@ func _on_npc_1_area_area_exited(_area):
 func on_dialogue_ended(fn):
 	if _npc_dialogue_area:
 		_npc_dialogue_area.on_dialogue_ended(fn)
+

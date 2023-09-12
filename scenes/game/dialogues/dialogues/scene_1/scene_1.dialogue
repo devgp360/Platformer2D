@@ -1,14 +1,13 @@
 ~ dialogue_1
 
-Doña Rosa: ¡Hola aventurera!. ¿Que te trea por estos rumbos?
-Aventurera: Necesito abrir la puerta. ¿Puedes ayudarme?
-Doña Rosa: Si, claro. Solo tiene que precionar el boton A y la puerta se abrirá.
+Selena la Ballena: ¡Hola aventurero! ¿qué te trae por estos rumbos?
+Pirata Malaplata: Necesito abrir la puerta. ¿Puedes ayudarme?
+Selena la Ballena: Sí, claro. Sólo tienes que presionar la tecla [A] y la puerta se abrirá..
 
-- Gracias, voy a probar!
-  Doña rosa: Suerte!
+- Gracias, ¡lo intentaré!
   => dialogue_2
 
 
 ~ dialogue_2
-Doña rosa: Bueno nos vemos!.
+Selena la Ballena: ¡Bueno nos vemos!
 => END

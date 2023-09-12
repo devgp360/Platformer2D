@@ -25,7 +25,7 @@ response_template = NodePath("Balloon/Margin/HBox/VBox/ResponseTemplate")
 [node name="Balloon" type="ColorRect" parent="."]
 offset_right = 1152.0
 size_flags_horizontal = 3
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0.788235)
 
 [node name="Margin" type="MarginContainer" parent="Balloon"]
 custom_minimum_size = Vector2(0, 150)

@@ -11,7 +11,7 @@ extends CanvasLayer
 # Señal de finalizacion de diálogo
 signal dialogue_ended()
 
-const PATH_SPRITES = "res://assets/sprites/dialogues/"
+const PATH_SPRITES = "res://scenes/game/dialogues/persons/"
 
 # Exportamos plantilla de respuestas
 @export var response_template: Node
@@ -45,8 +45,12 @@ var dialogue_line: DialogueLine:
 		character_label.visible = not dialogue_line.character.is_empty()
 		# Mostramos el titulo
 		character_label.text = tr(dialogue_line.character, "dialogue")
+		# Eliminamos los nodos insertados
+		for n in portrait_node.get_children():
+			portrait_node.remove_child(n)
+			n.queue_free()
 		# Mostramos el avatar
-		character_portrait.texture = _get_texture_for_dialogue(dialogue_line.character)
+		portrait_node.add_child(_get_texture_for_dialogue(dialogue_line.character))
 		
 		# Ajustamos las propiedades del diálogo
 		dialogue_label.modulate.a = 0
@@ -97,6 +101,7 @@ var dialogue_line: DialogueLine:
 @onready var balloon: ColorRect = $Balloon
 # Definición del nodo de margin
 @onready var margin: MarginContainer = $Balloon/Margin
+@onready var portrait_node: Control = $Balloon/Margin/HBox/Portrate
 # Definición del nodo del avatar
 @onready var character_portrait: Sprite2D = $Balloon/Margin/HBox/Portrate/Sprite2D
 # Definición del nodo del nombre del personaje
@@ -241,11 +246,12 @@ func _on_margin_resized() -> void:
 
 # Se carga la imagen del personaje que esté dialogando
 func _get_texture_for_dialogue(character: String):
-	var filename = "%s.png" % [character.to_lower()]
-	# Reemplazamos espacios por guiones (los nombres de archivos no llevan espacios)
-	filename = filename.replace(" ", "_")
+	# Obtenemos el primer nombre
+	var person = character.to_lower().split(" ")[0]
+	# Definimos la escena a insertar
+	var filename = "%s/" % [person] + "%s.tscn" % [person] 
 	# Retornamos el avatar
-	return load(PATH_SPRITES + filename)
+	return load(PATH_SPRITES + filename).instantiate()
 
 
 # Se ejecuta cuando el diálogo finaliza

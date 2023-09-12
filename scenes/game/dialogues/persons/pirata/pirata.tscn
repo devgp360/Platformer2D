@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3775cjmpvqtl"]
+
+[ext_resource type="Texture2D" uid="uid://dxflqrst5dy31" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/captain_clown_nose/captain_clown_nose_without_sword/01-idle/idle_01.png" id="1_hn12g"]
+[ext_resource type="Texture2D" uid="uid://blgvtq8v7xeg1" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/captain_clown_nose/captain_clown_nose_without_sword/01-idle/idle_02.png" id="2_mc88t"]
+[ext_resource type="Texture2D" uid="uid://bqhc3cxnlse2b" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/captain_clown_nose/captain_clown_nose_without_sword/01-idle/idle_03.png" id="3_ovrrf"]
+[ext_resource type="Texture2D" uid="uid://c8die1kuusyrb" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/captain_clown_nose/captain_clown_nose_without_sword/01-idle/idle_04.png" id="4_wde2s"]
+[ext_resource type="Texture2D" uid="uid://ds4p0uhg4fyws" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/captain_clown_nose/captain_clown_nose_without_sword/01-idle/idle_05.png" id="5_xw5w4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xpesx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hn12g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mc88t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ovrrf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wde2s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xw5w4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Pirata" type="Node2D"]
+position = Vector2(50, 60)
+scale = Vector2(3, 3)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xpesx")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.38907

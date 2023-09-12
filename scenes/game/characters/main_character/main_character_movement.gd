@@ -6,9 +6,6 @@ extends Node2D
 ## Movimiento básica de personaje: https://docs.google.com/document/d/1c9XXznR1KBJSr0jrEWjYIqfFuNGCGP2YASkXsFgEayU/edit
 
 
-# Definicion de la señal del dialogo (al emitir esta señal, se mostrará el diálogo)
-signal talk()
-
 @export var character: CharacterBody2D # Referencia al personaje a mover
 @export var main_animation: AnimatedSprite2D # Referencia al sprite del personaje
 @export var audio_player: AudioStreamPlayer2D # Reproductor de audios
@@ -35,7 +32,6 @@ var _jump_count = 0 # Contador de saltos realizados
 var _died = false # Define si esta vovo o muerto
 var attacking = false # Define si esta atacando
 var _is_playing: String = "" # Define si se esta reproducionedo el sonido
-var _stop: bool = false # Define si quitamos el movimiento al personaje principal
 
 # Precargamos los sonidos de saltar
 var _jump_sound = preload("res://assets/sounds/jump.mp3")
@@ -45,8 +41,6 @@ var _dead_sound = preload("res://assets/sounds/dead.mp3")
 
 # Función de inicialización
 func _ready():
-	# Quitamos el movimiento al entrar al diálogo
-	talk.connect(_stop_moving)
 	main_animation.play(_current_movement)
 	# Si no hay un personaje, deshabilitamos la función: _physics_process
 	if not character:
@@ -60,11 +54,6 @@ func _physics_process(_delta):
 
 # Función de movimiento general del personaje
 func _move(delta):
-	# Quitamos el movimiento si se abrió el diálogo
-	if _stop:
-		character.velocity.x = 0
-		return
-		
 	# Cuando se presiona la tecla (flecha izquierda), movemos el personaje a la izquierda
 	if Input.is_action_pressed("izquierda"):
 		character.velocity.x = -velocity
@@ -230,5 +219,11 @@ func _play_sound(sound):
 	audio_player.stream = sound
 	audio_player.play()
 	
-func _stop_moving():
-	_stop = true
+func set_disabled(disabled: bool):
+	set_physics_process(not disabled)
+	
+func set_idle():
+	# Movimiento por defecto (animación de "reposo")
+	main_animation.play(_movements.IDLE_WITH_SWORD)
+	# Pausamos el sonido
+	audio_player.stop()

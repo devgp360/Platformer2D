@@ -34,11 +34,11 @@ stream = ExtResource("1_xvhx7")
 bus = &"Ambient"
 
 [node name="MainCharacter" parent="." instance=ExtResource("1_vi0ax")]
-position = Vector2(307, 374)
+position = Vector2(299, 371)
 
 [node name="Npc" parent="." instance=ExtResource("3_7nl23")]
 position = Vector2(237, 369)
-scale = Vector2(-1, 1)
+scale = Vector2(0.6, 0.6)
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("character") instance=ExtResource("2_2f152")]
 position = Vector2(324, 395)
