@@ -9,6 +9,8 @@ var _npc_dialogue_area: Node2D
 # Determina el estado del diálogo (activo o inactivo)
 var _dialog_active = false
 
+@onready var _collision = $CollisionShape2D
+@onready var _animation = $Npc
 
 # Función de inicialización
 func _ready():
@@ -37,3 +39,11 @@ func on_dialogue_ended(fn):
 	if _npc_dialogue_area:
 		_npc_dialogue_area.on_dialogue_ended(fn)
 
+
+func disabled_collision(disabled: bool):
+	set_physics_process(not disabled)
+	_collision.disabled = disabled
+
+
+func flip_h(flip: bool):
+	_animation.flip_h = flip

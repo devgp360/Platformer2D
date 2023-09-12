@@ -215,14 +215,17 @@ moving_direction = "right"
 [node name="Cannon" parent="." instance=ExtResource("19_msljc")]
 position = Vector2(797, 340)
 
+[node name="BombShop" parent="." instance=ExtResource("21_sh538")]
+position = Vector2(1149, 460)
+
 [node name="Crabby2" parent="." instance=ExtResource("18_dyrn2")]
-visible = false
-position = Vector2(1155, 468)
+position = Vector2(936, 396)
+disable_mode = 1
 animation = "idle"
 moving_direction = "active"
 
 [node name="MainCharacter" parent="." instance=ExtResource("15_ooixx")]
-position = Vector2(124, 535)
+position = Vector2(1233, 468)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_0t8t3")
@@ -237,6 +240,3 @@ layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(655362, 65538, 1, 655363, 131074, 1, 917523, 2, 0, 983059, 2, 1, 917518, 2, 0, 983054, 2, 1, 917524, 2, 0, 983060, 2, 1, 851988, 2, 0, 917506, 65538, 1, 917507, 131074, 1, 655387, 2, 0, 720923, 2, 1, 720939, 65538, 0, 720940, 131074, 0)
-
-[node name="BombShop" parent="." instance=ExtResource("21_sh538")]
-position = Vector2(1149, 460)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=29 format=3 uid="uid://glchvmmfffqa"]
+[gd_scene load_steps=31 format=3 uid="uid://glchvmmfffqa"]
 
 [ext_resource type="Texture2D" uid="uid://cm142hc3tlhe6" path="res://assets/sprites/pirate_bomb/7_objects/1_bomb/1-bomb off/1.png" id="1_bnl6h"]
+[ext_resource type="Script" path="res://scenes/game/levels/areas/bomb_shop/bomb_shop.gd" id="1_dm6pg"]
 [ext_resource type="Texture2D" uid="uid://dcptpykdlp5rk" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/flag/flag_01.png" id="1_tj170"]
 [ext_resource type="Texture2D" uid="uid://yxsvhy0cus1p" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/flag/flag_02.png" id="2_l24vs"]
 [ext_resource type="Texture2D" uid="uid://cmowasw5ibj1b" path="res://assets/sprites/pirate_bomb/7_objects/16_enemy_cannon/1-idle/1.png" id="2_w4eoi"]
@@ -26,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://gwi1hikeg6o8" path="res://assets/sprites/pirate_bomb/7_objects/6_candle/7.png" id="16_pc8bn"]
 [ext_resource type="Texture2D" uid="uid://6r4l5ijq5vts" path="res://assets/sprites/pirate_bomb/7_objects/6_candle/8.png" id="17_d86xs"]
 [ext_resource type="Texture2D" uid="uid://b2urlepcggtqq" path="res://assets/sprites/pirate_bomb/7_objects/12_other_objects/barrel.png" id="18_0uwlx"]
+[ext_resource type="PackedScene" uid="uid://b2vwkov0n62rk" path="res://scenes/game/characters/npc/big_guy/big_guy.tscn" id="27_4e6sy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_48p14"]
 animations = [{
@@ -96,6 +98,7 @@ animations = [{
 
 [node name="BombShop" type="Node2D"]
 scale = Vector2(0.5, 0.5)
+script = ExtResource("1_dm6pg")
 
 [node name="Adorments" type="Node2D" parent="."]
 
@@ -227,3 +230,6 @@ scale = Vector2(0.8, 0.8)
 texture = ExtResource("3_6gi7t")
 
 [node name="NPC" type="Node2D" parent="."]
+
+[node name="BigGuy" parent="NPC" instance=ExtResource("27_4e6sy")]
+position = Vector2(-18, 4)
