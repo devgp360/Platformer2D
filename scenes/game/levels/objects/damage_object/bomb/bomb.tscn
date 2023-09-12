@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dfvk3qkvi7h6d"]
+[gd_scene load_steps=26 format=3 uid="uid://dfvk3qkvi7h6d"]
 
 [ext_resource type="Script" path="res://scenes/game/levels/objects/damage_object/bomb/bomb.gd" id="1_sqgb6"]
 [ext_resource type="Texture2D" uid="uid://b2j6x57xp2en0" path="res://assets/sprites/pirate_bomb/7_objects/1_bomb/3-explotion/1.png" id="2_i7xrw"]
@@ -21,6 +21,10 @@
 [ext_resource type="Texture2D" uid="uid://dxc6k8yim76y1" path="res://assets/sprites/pirate_bomb/7_objects/1_bomb/2-bomb on/8.png" id="19_g3jas"]
 [ext_resource type="Texture2D" uid="uid://iww6blu2s8ov" path="res://assets/sprites/pirate_bomb/7_objects/1_bomb/2-bomb on/9.png" id="20_my6ul"]
 [ext_resource type="Texture2D" uid="uid://bp7fqxoyn66pj" path="res://assets/sprites/pirate_bomb/7_objects/1_bomb/2-bomb on/10.png" id="21_6l6mk"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8pduw"]
+friction = 2.0
+bounce = 0.5
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mull3"]
 animations = [{
@@ -106,8 +110,13 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_85w0h"]
 radius = 16.0312
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mvwrh"]
+size = Vector2(5, 2)
+
 [node name="Bomb" type="RigidBody2D"]
-linear_velocity = Vector2(500, 100)
+mass = 0.3
+physics_material_override = SubResource("PhysicsMaterial_8pduw")
+linear_velocity = Vector2(200, -300)
 angular_velocity = 0.0872665
 script = ExtResource("1_sqgb6")
 
@@ -122,3 +131,7 @@ speed_scale = 2.0
 position = Vector2(0, 10)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_85w0h")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 2)
+shape = SubResource("RectangleShape2D_mvwrh")
