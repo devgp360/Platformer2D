@@ -1,0 +1,102 @@
+[gd_scene load_steps=19 format=3 uid="uid://b270rwdaoog0f"]
+
+[ext_resource type="Texture2D" uid="uid://c3ud7w6cq4pbb" path="res://assets/sprites/treasure_hunters/the_crusty_crew/sprites/fierce_tooth/01-idle/idle_01.png" id="1_j0aam"]
+[ext_resource type="PackedScene" uid="uid://btewge2lyid0y" path="res://scenes/game/dialogues/components/npc/npc_dialogue_area.tscn" id="1_js67w"]
+[ext_resource type="Texture2D" uid="uid://byop7fnsp6wi5" path="res://assets/sprites/treasure_hunters/the_crusty_crew/sprites/fierce_tooth/01-idle/idle_02.png" id="2_j7yry"]
+[ext_resource type="Texture2D" uid="uid://cyyu8kju63o3b" path="res://assets/sprites/treasure_hunters/the_crusty_crew/sprites/fierce_tooth/01-idle/idle_03.png" id="3_qcd3h"]
+[ext_resource type="Texture2D" uid="uid://cy8hr76bv33yn" path="res://assets/sprites/treasure_hunters/the_crusty_crew/sprites/fierce_tooth/01-idle/idle_04.png" id="4_l0p4b"]
+[ext_resource type="Texture2D" uid="uid://da8kfw5y7nl3q" path="res://assets/sprites/treasure_hunters/the_crusty_crew/sprites/fierce_tooth/01-idle/idle_05.png" id="5_qmt4l"]
+[ext_resource type="Texture2D" uid="uid://db47e7sbl6v4t" path="res://assets/sprites/treasure_hunters/the_crusty_crew/sprites/fierce_tooth/01-idle/idle_06.png" id="6_rt0hv"]
+[ext_resource type="Texture2D" uid="uid://du2dpwo4r7aab" path="res://assets/sprites/treasure_hunters/the_crusty_crew/sprites/fierce_tooth/01-idle/idle_07.png" id="7_cetu7"]
+[ext_resource type="Texture2D" uid="uid://cia0v85k8ic4e" path="res://assets/sprites/treasure_hunters/the_crusty_crew/sprites/fierce_tooth/01-idle/idle_08.png" id="8_gge15"]
+[ext_resource type="Texture2D" uid="uid://c3nj8ouc68pvp" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/dialogue/interrogation/interrogation_in_01.png" id="9_i1nqg"]
+[ext_resource type="Texture2D" uid="uid://b5o71w5gfbojc" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/dialogue/interrogation/interrogation_in_02.png" id="10_ycfj3"]
+[ext_resource type="Texture2D" uid="uid://c5vbrvw865uht" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/dialogue/interrogation/interrogation_in_03.png" id="11_ga8ty"]
+[ext_resource type="Texture2D" uid="uid://d07kywpy3ffon" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/dialogue/interrogation/interrogation_out_01.png" id="12_0vwrn"]
+[ext_resource type="Texture2D" uid="uid://b4vh2yxke6lsb" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/dialogue/interrogation/interrogation_out_02.png" id="13_xkqj8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o0oc8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_j0aam")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_j7yry")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qcd3h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_l0p4b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qmt4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rt0hv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_cetu7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_gge15")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n3db7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_i1nqg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ycfj3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ga8ty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_0vwrn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_xkqj8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7nihc"]
+size = Vector2(14.75, 13.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_httk0"]
+size = Vector2(22, 23)
+
+[node name="Npc" type="CharacterBody2D"]
+
+[node name="npc" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_o0oc8")
+animation = &"idle"
+frame_progress = 0.227407
+
+[node name="Question" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -20)
+sprite_frames = SubResource("SpriteFrames_n3db7")
+animation = &"idle"
+frame_progress = 0.454832
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.625, 2.125)
+shape = SubResource("RectangleShape2D_7nihc")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 2)
+shape = SubResource("RectangleShape2D_httk0")
+
+[node name="npc_dialogue_area" parent="Area2D" instance=ExtResource("1_js67w")]
