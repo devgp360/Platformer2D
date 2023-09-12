@@ -1,9 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://b270rwdaoog0f"]
+[gd_scene load_steps=19 format=3 uid="uid://b270rwdaoog0f"]
 
 [ext_resource type="Texture2D" uid="uid://c3ud7w6cq4pbb" path="res://assets/sprites/treasure_hunters/the_crusty_crew/sprites/fierce_tooth/01-idle/idle_01.png" id="1_j0aam"]
 [ext_resource type="PackedScene" uid="uid://btewge2lyid0y" path="res://scenes/game/dialogues/components/npc/npc_dialogue_area.tscn" id="1_js67w"]
 [ext_resource type="Texture2D" uid="uid://byop7fnsp6wi5" path="res://assets/sprites/treasure_hunters/the_crusty_crew/sprites/fierce_tooth/01-idle/idle_02.png" id="2_j7yry"]
-[ext_resource type="Resource" uid="uid://bn5myqf1kokjb" path="res://scenes/game/dialogues/dialogues/scene_2/scene_2.dialogue" id="2_v8iac"]
 [ext_resource type="Texture2D" uid="uid://cyyu8kju63o3b" path="res://assets/sprites/treasure_hunters/the_crusty_crew/sprites/fierce_tooth/01-idle/idle_03.png" id="3_qcd3h"]
 [ext_resource type="Texture2D" uid="uid://cy8hr76bv33yn" path="res://assets/sprites/treasure_hunters/the_crusty_crew/sprites/fierce_tooth/01-idle/idle_04.png" id="4_l0p4b"]
 [ext_resource type="Texture2D" uid="uid://da8kfw5y7nl3q" path="res://assets/sprites/treasure_hunters/the_crusty_crew/sprites/fierce_tooth/01-idle/idle_05.png" id="5_qmt4l"]
@@ -101,4 +100,3 @@ position = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_httk0")
 
 [node name="npc_dialogue_area" parent="Area2D" instance=ExtResource("1_js67w")]
-dialogue_resource = ExtResource("2_v8iac")
