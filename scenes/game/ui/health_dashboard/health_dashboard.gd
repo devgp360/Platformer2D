@@ -9,13 +9,14 @@ extends CanvasLayer
 
 # Variable (públicas) de vida y puntuación
 var life = 10 # Variable para menejo de vida
-# Variable para menejo de puntos
+# Variable para menejo de puntos y cantidad de bombas
 var points = {
 	"GoldCoin": 0,
 	"SilverCoin": 0,
 	"BlueDiamond": 0,
 	"GreenDiamond": 0,
 	"RedDiamond": 0,
+	"Bomb": 0,
 }
 
 # Variables auxiliares para cambiar la puntuación de un tipo de objeto coleccionable
@@ -30,10 +31,8 @@ var _index_number_0 = 17
 
 # Referencias hacia la barra de vida y los números de la puntuación
 @onready var bar = $LifeBar/Bar
-#@onready var number_1 = $PointGroup/Points/Number1
-#@onready var number_2 = $PointGroup/Points/Number2
-#@onready var number_3 = $PointGroup/Points/Number3
 @onready var point_group = $PointGroup
+@onready var bomb_group = $LifeBar/Bomb
 
 
 # Agrega vida del personaje principal, según el valor proporcionado
@@ -53,8 +52,9 @@ func remove_life(value: int):
 
 
 # Agrega puntos al personaje principal (va sumando los puntos totales)	
-func add_points(type: String, value: int):
-	var group = point_group.find_child(type)
+func add_points(type: String, value: int, group = null):
+	if not group:
+		group = point_group.find_child(type)
 	if group:
 		_number_1 = group.find_child("Number1")
 		_number_2 = group.find_child("Number2")
@@ -62,6 +62,11 @@ func add_points(type: String, value: int):
 		# Guardamos la puntuación correspondiente
 		points[type] += value
 		_set_points(points[type])
+
+
+# Permite sumar o restar la cantidad de bombas disponibles
+func add_bomb(value: int):
+	add_points("Bomb", value, bomb_group)
 
 
 # Función para resetear los valores de vida y puntos

@@ -1,16 +1,36 @@
-[gd_scene load_steps=29 format=3 uid="uid://bbdmu0jrh4l4o"]
+[gd_scene load_steps=34 format=3 uid="uid://bbdmu0jrh4l4o"]
 
 [ext_resource type="Script" path="res://scenes/game/ui/health_dashboard/health_dashboard.gd" id="1_rufnl"]
 [ext_resource type="Texture2D" uid="uid://cl5b1weh62et3" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/life_bars/big_bars/1.png" id="2_q6wv6"]
 [ext_resource type="Texture2D" uid="uid://c51psidx5cxry" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/life_bars/big_bars/3.png" id="3_c11lr"]
 [ext_resource type="Texture2D" uid="uid://t2qsw1ribmcp" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/life_bars/big_bars/4.png" id="4_r3fbm"]
 [ext_resource type="Texture2D" uid="uid://ci24y5vdyxq0j" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/life_bars/colors/1.png" id="5_ygykx"]
+[ext_resource type="Texture2D" uid="uid://cm142hc3tlhe6" path="res://assets/sprites/pirate_bomb/7_objects/1_bomb/1-bomb off/1.png" id="6_0stdc"]
 [ext_resource type="Texture2D" uid="uid://bmn2hx61jlm7n" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/gold_coin/01.png" id="6_tqefr"]
 [ext_resource type="Texture2D" uid="uid://qegg5d225ej6" path="res://assets/atlases/text.png" id="7_kitrq"]
 [ext_resource type="Texture2D" uid="uid://cwxu4q044qobj" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/silver_coin/01.png" id="8_sfwhs"]
 [ext_resource type="Texture2D" uid="uid://d3bljsqlyvvf1" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/blue_diamond/01.png" id="9_culmi"]
 [ext_resource type="Texture2D" uid="uid://dag1d05f4evdq" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/green_diamond/01.png" id="10_fhwqc"]
 [ext_resource type="Texture2D" uid="uid://xiw4qwa52ual" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/red_diamond/01.png" id="11_7u8si"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jphx6"]
+atlas = ExtResource("7_kitrq")
+region = Rect2(104, 4, 10, 11)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iwcxu"]
+load_path = "res://.godot/imported/text.png-c60f3c71437097c445e5745800ab64ed.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nallr"]
+atlas = SubResource("CompressedTexture2D_iwcxu")
+region = Rect2(104, 44, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qadic"]
+atlas = SubResource("CompressedTexture2D_iwcxu")
+region = Rect2(104, 44, 10, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25xk4"]
+atlas = SubResource("CompressedTexture2D_iwcxu")
+region = Rect2(104, 44, 10, 11)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2byhb"]
 atlas = ExtResource("7_kitrq")
@@ -51,9 +71,6 @@ region = Rect2(104, 44, 10, 11)
 [sub_resource type="AtlasTexture" id="AtlasTexture_n10ep"]
 atlas = ExtResource("7_kitrq")
 region = Rect2(104, 44, 10, 11)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iwcxu"]
-load_path = "res://.godot/imported/text.png-c60f3c71437097c445e5745800ab64ed.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4nk5k"]
 atlas = SubResource("CompressedTexture2D_iwcxu")
@@ -124,6 +141,57 @@ max_value = 10.0
 value = 10.0
 nine_patch_stretch = true
 texture_progress = ExtResource("5_ygykx")
+
+[node name="Bomb" type="Control" parent="LifeBar"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 68.0
+offset_right = 40.0
+offset_bottom = 108.0
+
+[node name="Coin" type="TextureRect" parent="LifeBar/Bomb"]
+layout_mode = 0
+offset_left = -17.0
+offset_top = -43.0
+offset_right = 79.0
+offset_bottom = 65.0
+texture = ExtResource("6_0stdc")
+
+[node name="X" type="TextureRect" parent="LifeBar/Bomb"]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 9.0
+offset_right = 101.0
+offset_bottom = 49.0
+scale = Vector2(0.9, 0.9)
+texture = SubResource("AtlasTexture_jphx6")
+
+[node name="Number1" type="TextureRect" parent="LifeBar/Bomb"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 9.0
+offset_right = 150.0
+offset_bottom = 49.0
+scale = Vector2(0.9, 0.9)
+texture = SubResource("AtlasTexture_nallr")
+
+[node name="Number2" type="TextureRect" parent="LifeBar/Bomb"]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 9.0
+offset_right = 192.0
+offset_bottom = 49.0
+scale = Vector2(0.9, 0.9)
+texture = SubResource("AtlasTexture_qadic")
+
+[node name="Number3" type="TextureRect" parent="LifeBar/Bomb"]
+layout_mode = 0
+offset_left = 194.0
+offset_top = 9.0
+offset_right = 234.0
+offset_bottom = 49.0
+scale = Vector2(0.9, 0.9)
+texture = SubResource("AtlasTexture_25xk4")
 
 [node name="PointGroup" type="Control" parent="."]
 layout_mode = 3
@@ -249,9 +317,10 @@ scale = Vector2(0.7, 0.7)
 
 [node name="Coin" type="TextureRect" parent="PointGroup/BlueDiamond"]
 layout_mode = 0
+offset_top = -4.0
 offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(1.3, 1.3)
+offset_bottom = 36.0
+scale = Vector2(1.6, 1.6)
 texture = ExtResource("9_culmi")
 
 [node name="X" type="TextureRect" parent="PointGroup/BlueDiamond"]
@@ -301,9 +370,10 @@ scale = Vector2(0.7, 0.7)
 
 [node name="Coin" type="TextureRect" parent="PointGroup/GreenDiamond"]
 layout_mode = 0
+offset_top = -4.0
 offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(1.3, 1.3)
+offset_bottom = 36.0
+scale = Vector2(1.6, 1.6)
 texture = ExtResource("10_fhwqc")
 
 [node name="X" type="TextureRect" parent="PointGroup/GreenDiamond"]
@@ -353,9 +423,10 @@ scale = Vector2(0.7, 0.7)
 
 [node name="Coin" type="TextureRect" parent="PointGroup/RedDiamond"]
 layout_mode = 0
+offset_top = -4.0
 offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(1.3, 1.3)
+offset_bottom = 36.0
+scale = Vector2(1.6, 1.6)
 texture = ExtResource("11_7u8si")
 
 [node name="X" type="TextureRect" parent="PointGroup/RedDiamond"]
