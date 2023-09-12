@@ -34,7 +34,7 @@ stream = ExtResource("1_xvhx7")
 bus = &"Ambient"
 
 [node name="MainCharacter" parent="." instance=ExtResource("1_vi0ax")]
-position = Vector2(44, 431)
+position = Vector2(970, 540)
 
 [node name="Npc" parent="." instance=ExtResource("3_7nl23")]
 position = Vector2(237, 369)
@@ -202,6 +202,11 @@ texture = ExtResource("10_2jg0w")
 position = Vector2(714, 370)
 texture = ExtResource("11_4ker5")
 
+[node name="DieArea" type="Node2D" parent="."]
+
+[node name="Death" parent="DieArea" instance=ExtResource("16_kwprd")]
+position = Vector2(231, 669)
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -275,7 +280,3 @@ texture = SubResource("CompressedTexture2D_d1lya")
 z_index = -1
 position = Vector2(526, 297)
 animation = &"idle_left"
-
-[node name="DieArea" type="Node2D" parent="."]
-
-[node name="Death" parent="DieArea" instance=ExtResource("16_kwprd")]

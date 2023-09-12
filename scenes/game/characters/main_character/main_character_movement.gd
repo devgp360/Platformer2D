@@ -32,6 +32,7 @@ var _jump_count = 0 # Contador de saltos realizados
 var _died = false # Define si esta vovo o muerto
 var attacking = false # Define si esta atacando
 var _is_playing: String = "" # Define si se esta reproducionedo el sonido
+var turn_side: String = "right" # Define si se esta reproducionedo el sonido
 
 # Precargamos los sonidos de saltar
 var _jump_sound = preload("res://assets/sounds/jump.mp3")
@@ -59,10 +60,12 @@ func _move(delta):
 	if Input.is_action_pressed("izquierda"):
 		character.velocity.x = -velocity
 		_current_movement = _movements.LEFT_WITH_SWORD	
+		turn_side = "left"
 	# Cuando se presiona la tecla (flecha derecha), movemos el personaje a la derecha
 	elif Input.is_action_pressed("derecha"):
 		character.velocity.x = velocity
 		_current_movement = _movements.RIGHT_WITH_SWORD
+		turn_side = "right"
 	# Cuando no presionamos teclas, no hay movimiento	
 	else:
 		character.velocity.x = 0
