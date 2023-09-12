@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://2c222ridowhl"]
 
-[ext_resource type="Script" path="res://scenes/game/levels/objects/damage_object/cannon_ball.gd" id="1_ms4ky"]
+[ext_resource type="Script" path="res://scenes/game/levels/objects/damage_object/cannon/cannon_ball.gd" id="1_ms4ky"]
 [ext_resource type="Texture2D" uid="uid://cg8uun7agulni" path="res://assets/sprites/treasure_hunters/shooter_traps/sprites/cannon/cannon_ball_explosion/1.png" id="4_vdsk3"]
 [ext_resource type="Texture2D" uid="uid://b2offginot023" path="res://assets/sprites/treasure_hunters/shooter_traps/sprites/cannon/cannon_ball_explosion/2.png" id="5_4wb0n"]
 [ext_resource type="Texture2D" uid="uid://blhrvpq6hlp5b" path="res://assets/sprites/treasure_hunters/shooter_traps/sprites/cannon/cannon_ball_explosion/3.png" id="6_jqdew"]

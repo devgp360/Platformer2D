@@ -37,6 +37,7 @@ var _is_playing: String = "" # Define si se esta reproducionedo el sonido
 var _jump_sound = preload("res://assets/sounds/jump.mp3")
 var _run_sound = preload("res://assets/sounds/running.mp3")
 var _dead_sound = preload("res://assets/sounds/dead.mp3")
+var _male_hurt_sound = preload("res://assets/sounds/male_hurt.mp3")
 
 
 # Función de inicialización
@@ -159,6 +160,8 @@ func die():
 # Recibir daño
 func hit(value: int):
 	HealthDashboard.remove_life(value)
+	_play_sound(_male_hurt_sound)
+	
 	# Bajamos vida y validamos si el personaje ha perdido
 	if HealthDashboard.life == 0:
 		_died = true

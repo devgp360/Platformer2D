@@ -28,7 +28,7 @@ func _on_animated_sprite_2d_frame_changed():
 	# Validamos si el frame de animación es 3
 	if _cannon_animation.frame == 3:
 		# Cargamos la escena de bala
-		var ball = "scenes/game/levels/objects/damage_object/cannon_ball.tscn"
+		var ball = "scenes/game/levels/objects/damage_object/cannon/cannon_ball.tscn"
 		new_ball = load(ball).instantiate()
 		new_ball.position.x = -20
 		# Agregamos la bala a la escena
