@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://ca3ueo0yewjov"]
+[gd_scene load_steps=71 format=3 uid="uid://ca3ueo0yewjov"]
 
 [ext_resource type="Texture2D" uid="uid://xd70a23vyklm" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/captain_clown_nose/captain_clown_nose_with_sword/15_attack_1/attack_1_01.png" id="2_082ap"]
 [ext_resource type="Texture2D" uid="uid://dxflqrst5dy31" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/captain_clown_nose/captain_clown_nose_without_sword/01-idle/idle_01.png" id="2_dghf6"]
@@ -344,6 +344,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_841yf"]
 size = Vector2(13, 26)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_56ery"]
+size = Vector2(26, 23)
+
 [node name="MainCharacter" type="CharacterBody2D" groups=["player"]]
 disable_mode = 1
 
@@ -371,18 +374,24 @@ sprite_frames = SubResource("SpriteFrames_cwldb")
 animation = &"fall"
 frame_progress = 0.450057
 
-[node name="Area2D" type="Area2D" parent="." groups=["hit"]]
+[node name="AreaSword" type="Area2D" parent="." groups=["hit"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaSword"]
 position = Vector2(21.5, 6)
 shape = SubResource("RectangleShape2D_841yf")
 disabled = true
 
+[node name="AreaDialogue" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDialogue"]
+position = Vector2(-1, -2.5)
+shape = SubResource("RectangleShape2D_56ery")
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 bus = &"Effects"
 
-[node name="main_char_dialogue_area" parent="." node_paths=PackedStringArray("external_area2d") instance=ExtResource("65_tdcic")]
-external_area2d = NodePath("../Area2D")
+[node name="MainCharDialogueArea" parent="." node_paths=PackedStringArray("external_area2d") instance=ExtResource("65_tdcic")]
+external_area2d = NodePath("../AreaDialogue")
 
 [connection signal="animation_finished" from="Animation" to="MainCharacterMovement" method="_on_animation_animation_finished"]
 [connection signal="frame_changed" from="Animation" to="MainCharacterMovement" method="_on_animation_frame_changed"]

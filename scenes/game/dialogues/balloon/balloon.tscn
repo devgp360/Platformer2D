@@ -1,43 +1,38 @@
-[gd_scene load_steps=8 format=3 uid="uid://b361p61jmf257"]
+[gd_scene load_steps=5 format=3 uid="uid://73jm5qjy52vq"]
 
-[ext_resource type="Script" path="res://scenes/game/dialogues/ballon/balloon.gd" id="1_4u26j"]
+[ext_resource type="Script" path="res://scenes/game/dialogues/balloon/balloon.gd" id="1_4u26j"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 
-[sub_resource type="Theme" id="Theme_isg48"]
-default_font_size = 9
-
-[sub_resource type="Theme" id="Theme_owda0"]
-default_font_size = 9
-
-[sub_resource type="Theme" id="Theme_fakos"]
-default_font_size = 9
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5d24i"]
-content_margin_left = 20.0
-content_margin_top = 2.0
-content_margin_right = 2.0
-content_margin_bottom = 2.0
+content_margin_left = 40.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
 bg_color = Color(1, 1, 1, 0.25098)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oj3c8"]
-content_margin_left = 20.0
-content_margin_top = 2.0
-content_margin_right = 2.0
-content_margin_bottom = 2.0
+content_margin_left = 40.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
 draw_center = false
 
-[node name="ExampleBalloon" type="CanvasLayer"]
+[node name="Balloon" type="CanvasLayer" node_paths=PackedStringArray("response_template")]
 layer = 100
 script = ExtResource("1_4u26j")
+response_template = NodePath("Balloon/Margin/HBox/VBox/ResponseTemplate")
 
 [node name="Balloon" type="ColorRect" parent="."]
+offset_right = 1152.0
+size_flags_horizontal = 3
 color = Color(0, 0, 0, 1)
 
 [node name="Margin" type="MarginContainer" parent="Balloon"]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 75.0
+offset_bottom = 150.0
 grow_horizontal = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 10
@@ -45,34 +40,40 @@ theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 10
 metadata/_edit_layout_mode = 1
 
-[node name="VBox" type="VBoxContainer" parent="Balloon/Margin"]
+[node name="HBox" type="HBoxContainer" parent="Balloon/Margin"]
 layout_mode = 2
-theme_override_constants/separation = 4
 
-[node name="CharacterLabel" type="RichTextLabel" parent="Balloon/Margin/VBox"]
+[node name="Portrate" type="Control" parent="Balloon/Margin/HBox"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Balloon/Margin/HBox/Portrate"]
+centered = false
+
+[node name="VBox" type="VBoxContainer" parent="Balloon/Margin/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="CharacterLabel" type="RichTextLabel" parent="Balloon/Margin/HBox/VBox"]
 modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 2
 mouse_filter = 1
-theme = SubResource("Theme_isg48")
 bbcode_enabled = true
 text = "Character"
 fit_content = true
 scroll_active = false
 
-[node name="DialogueLabel" parent="Balloon/Margin/VBox" instance=ExtResource("2_a8ve6")]
+[node name="DialogueLabel" parent="Balloon/Margin/HBox/VBox" instance=ExtResource("2_a8ve6")]
 layout_mode = 2
-theme = SubResource("Theme_owda0")
 text = "Dialogue"
 
-[node name="Responses" type="VBoxContainer" parent="Balloon/Margin/VBox"]
+[node name="Responses" type="VBoxContainer" parent="Balloon/Margin/HBox/VBox"]
 layout_mode = 2
-theme_override_constants/separation = 1
+theme_override_constants/separation = 2
 
-[node name="ResponseTemplate" type="RichTextLabel" parent="Balloon/Margin/VBox"]
-unique_name_in_owner = true
+[node name="ResponseTemplate" type="RichTextLabel" parent="Balloon/Margin/HBox/VBox"]
 layout_mode = 2
-focus_mode = 2
-theme = SubResource("Theme_fakos")
 theme_override_styles/focus = SubResource("StyleBoxFlat_5d24i")
 theme_override_styles/normal = SubResource("StyleBoxFlat_oj3c8")
 bbcode_enabled = true

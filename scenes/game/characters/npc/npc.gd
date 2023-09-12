@@ -1,11 +1,38 @@
-extends Node2D
+extends CharacterBody2D
+## Clase que controla el comportamiento de NPC
+##
+## Controla los dialogos con el personaje principal, escucha coliciones
 
 
-# Called when the node enters the scene tree for the first time.
+# Area de contacto, para mostrar el diálogo
+var _npc_dialogue_area: Node2D
+# Determina el estado del diálogo (activo o inactivo)
+var _dialog_active = false
+
+
+# Función de inicialización
 func _ready():
-	pass # Replace with function body.
+	_npc_dialogue_area = find_child("NpcDialogueArea") # Buscamos el area de diálogo
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _physics_process(delta):
+	# Agregamos la velocidad
+	velocity.y += 1000 * delta
+	move_and_slide() # Agregamos kinematica
+	if is_on_floor():
+		# Apagamos la física
+		set_physics_process(false)
+	
+
+# DOCUMENTACIÓN (áreas de colisión): https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw/edit?usp=drive_link
+# Función cuando un área entra en contacto con el NPC. _area: es el área que hace contacto
+func _on_npc_1_area_area_exited(_area):
+	# Seteamos variable del dialogo a false al abandonar el area
+	_dialog_active = false
+
+
+# DOCUMENTACIÓN (señales): https://docs.google.com/document/d/1bbroyXp11L4_FpHpqA-RckvFLRv3UOE-hmQdwtx27eo/edit?usp=drive_link
+# Se usa para poder "escuchar" cuando el diálgo finaliza
+func on_dialogue_ended(fn):
+	if _npc_dialogue_area:
+		_npc_dialogue_area.on_dialogue_ended(fn)

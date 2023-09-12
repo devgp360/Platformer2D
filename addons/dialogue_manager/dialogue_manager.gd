@@ -79,7 +79,7 @@ func get_next_dialogue_line(resource: DialogueResource, key: String = "", extra_
 	assert(resource.lines.size() > 0, DialogueConstants.translate("runtime.no_content").format({ file_path = resource.resource_path }))
 
 	var dialogue: DialogueLine = await get_line(resource, key, extra_game_states)
-
+	
 	# If our dialogue is nothing then we hit the end
 	if not is_valid(dialogue):
 		dialogue_ended.emit(resource)
@@ -250,7 +250,8 @@ func get_line(resource: DialogueResource, key: String, extra_game_states: Array)
 	# Key is blank so just use the first title
 	if key == null or key == "":
 		key = resource.first_title
-
+	print(resource.lines)
+	print(key)
 	assert(resource.lines.has(key), DialogueConstants.translate("errors.key_not_found").format({ key = key }))
 
 	var data: Dictionary = resource.lines.get(key)

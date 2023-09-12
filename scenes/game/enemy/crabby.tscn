@@ -118,7 +118,7 @@ func _physics_process(delta):
 		_detection()
 
 
-func _move_character(delta):
+func _move_character(_delta):
 	# Aplicamos la gravidad
 	velocity.y += _gravity
 	
@@ -151,7 +151,7 @@ func _on_area_2d_body_entered(body):
 		_body = body
 
 
-func _on_area_2d_body_exited(body):
+func _on_area_2d_body_exited(__body):
 	# Estado inicial
 	_init_state()
 

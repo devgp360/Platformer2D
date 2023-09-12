@@ -4,9 +4,6 @@ extends Node2D
 ## Se controlan los eventos de colisión de personaje principal, funciones que levantan diálogos 
 
 
-# DOCUMENTACIÓN ¿QUÉ SON LAS SEÑALES EN GDSCRIPT?: https://docs.google.com/document/d/1bbroyXp11L4_FpHpqA-RckvFLRv3UOE-hmQdwtx27eo
-# DOCUMENTACIÓN (diálogos entre personajes): https://docs.google.com/document/d/1LO1XeDq58IKrXyzbgeStl16No89CeKeArLRQyjY8oVk/edit?usp=drive_link
-
 # Definicion de la señal del dialogo (al emitir esta señal, se mostrará el diálogo)
 signal talk()
 
@@ -20,7 +17,6 @@ var _npc_dialogue_node: Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# DOCUMENTACIÓN (señales): https://docs.google.com/document/d/1bbroyXp11L4_FpHpqA-RckvFLRv3UOE-hmQdwtx27eo/edit?usp=drive_link
 	# Conexión del area de entrada al dialogo
 	external_area2d.area_entered.connect(_area_entered)
 	# Conexión del area de salida al dialogo
@@ -49,7 +45,7 @@ func _area_exited(_area):
 func _area_entered(area):
 	# En el caso que entremos al área de un NPC que tenga diálogos
 	var child = area.find_child("NpcDialogueArea")
-
+	
 	# Si se encuentra el NPC con diálogo
 	if child:
 		# Asignamos el diálogo encontrado al nodo del NPC

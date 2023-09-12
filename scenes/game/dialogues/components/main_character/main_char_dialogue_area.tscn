@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://scenes/game/dialogues/components/main_character/main_char_dialogue_area.gd" id="1_l6aeq"]
 
-[node name="main_char_dialogue_area" type="Node2D"]
+[node name="MainCharDialogueArea" type="Node2D"]
 script = ExtResource("1_l6aeq")

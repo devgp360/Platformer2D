@@ -1,8 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://btewge2lyid0y"]
 
 [ext_resource type="Script" path="res://scenes/game/dialogues/components/npc/npc_dialogue_area.gd" id="1_p6tis"]
-[ext_resource type="PackedScene" uid="uid://73jm5qjy52vq" path="res://scenes/game/dialogues/ballon/balloon.tscn" id="2_sra0x"]
+[ext_resource type="PackedScene" uid="uid://73jm5qjy52vq" path="res://scenes/game/dialogues/balloon/balloon.tscn" id="2_yfra4"]
 
-[node name="npc_dialogue_area" type="Node2D"]
+[node name="NpcDialogueArea" type="Node2D"]
 script = ExtResource("1_p6tis")
-Balloon = ExtResource("2_sra0x")
+dialogue_start = "dialogue_1"
+Balloon = ExtResource("2_yfra4")
