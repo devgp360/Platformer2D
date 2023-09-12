@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://tqg8duvjuik7"]
+[gd_scene load_steps=23 format=3 uid="uid://tqg8duvjuik7"]
 
 [ext_resource type="TileSet" uid="uid://bx1rsqucrwm2i" path="res://assets/resources/bg_tile_set.tres" id="1_0t8t3"]
 [ext_resource type="PackedScene" uid="uid://8rbt5lmdrp0s" path="res://scenes/game/camera/camera.tscn" id="1_8l71v"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://bnp6y3fe4kqob" path="res://scenes/game/levels/objects/damage_object/cannon.tscn" id="19_msljc"]
 [ext_resource type="PackedScene" uid="uid://c36rtvjb7r5d1" path="res://scenes/game/levels/objects/red_potion/red_potion.tscn" id="20_1tp5l"]
 [ext_resource type="PackedScene" uid="uid://b5qjvfbte4svk" path="res://scenes/game/levels/objects/pickable_object/pickable_object.tscn" id="20_juf85"]
+[ext_resource type="PackedScene" uid="uid://glchvmmfffqa" path="res://scenes/game/levels/areas/bomb_shop/bomb_shop.tscn" id="21_sh538"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3x710"]
 size = Vector2(31, 21)
@@ -215,6 +216,7 @@ moving_direction = "right"
 position = Vector2(797, 340)
 
 [node name="Crabby2" parent="." instance=ExtResource("18_dyrn2")]
+visible = false
 position = Vector2(1155, 468)
 animation = "idle"
 moving_direction = "active"
@@ -235,3 +237,6 @@ layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(655362, 65538, 1, 655363, 131074, 1, 917523, 2, 0, 983059, 2, 1, 917518, 2, 0, 983054, 2, 1, 917524, 2, 0, 983060, 2, 1, 851988, 2, 0, 917506, 65538, 1, 917507, 131074, 1, 655387, 2, 0, 720923, 2, 1, 720939, 65538, 0, 720940, 131074, 0)
+
+[node name="BombShop" parent="." instance=ExtResource("21_sh538")]
+position = Vector2(1149, 460)

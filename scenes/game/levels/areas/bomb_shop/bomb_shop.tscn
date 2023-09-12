@@ -1,0 +1,229 @@
+[gd_scene load_steps=29 format=3 uid="uid://glchvmmfffqa"]
+
+[ext_resource type="Texture2D" uid="uid://cm142hc3tlhe6" path="res://assets/sprites/pirate_bomb/7_objects/1_bomb/1-bomb off/1.png" id="1_bnl6h"]
+[ext_resource type="Texture2D" uid="uid://dcptpykdlp5rk" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/flag/flag_01.png" id="1_tj170"]
+[ext_resource type="Texture2D" uid="uid://yxsvhy0cus1p" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/flag/flag_02.png" id="2_l24vs"]
+[ext_resource type="Texture2D" uid="uid://cmowasw5ibj1b" path="res://assets/sprites/pirate_bomb/7_objects/16_enemy_cannon/1-idle/1.png" id="2_w4eoi"]
+[ext_resource type="Texture2D" uid="uid://3rlp58j8kdda" path="res://assets/sprites/pirate_bomb/7_objects/16_enemy_cannon/3-cannon ball/1.png" id="3_6gi7t"]
+[ext_resource type="Texture2D" uid="uid://btdjplxdrgn6r" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/flag/flag_03.png" id="3_s580d"]
+[ext_resource type="Texture2D" uid="uid://1kynpyiw1olq" path="res://assets/sprites/pirate_bomb/7_objects/12_other_objects/table.png" id="4_3s8cr"]
+[ext_resource type="Texture2D" uid="uid://dhq4qcrym3ytl" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/flag/flag_04.png" id="4_x10ks"]
+[ext_resource type="Texture2D" uid="uid://cxpuw6kkvyx0s" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/flag/flag_05.png" id="5_8yicj"]
+[ext_resource type="Texture2D" uid="uid://by5gekqlxaqtu" path="res://assets/sprites/pirate_bomb/7_objects/12_other_objects/chair.png" id="5_udu4i"]
+[ext_resource type="Texture2D" uid="uid://dunu4wqpb2c3s" path="res://assets/sprites/pirate_bomb/7_objects/12_other_objects/green bottle.png" id="6_boej0"]
+[ext_resource type="Texture2D" uid="uid://0511pwbspj7b" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/flag/flag_06.png" id="6_by7xd"]
+[ext_resource type="Texture2D" uid="uid://cwe1ftgkwbr53" path="res://assets/sprites/pirate_bomb/7_objects/12_other_objects/red bottle.png" id="7_qnprk"]
+[ext_resource type="Texture2D" uid="uid://ctvjlvq7b4ck6" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/flag/flag_07.png" id="7_x45hs"]
+[ext_resource type="Texture2D" uid="uid://jwp8gh886jp5" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/flag/flag_08.png" id="8_8bjyv"]
+[ext_resource type="Texture2D" uid="uid://cifao1bqhlvr1" path="res://assets/sprites/pirate_bomb/7_objects/12_other_objects/blue bottle.png" id="8_ij425"]
+[ext_resource type="Texture2D" uid="uid://nisbjvqp70qj" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/flag/flag_09.png" id="9_30ykk"]
+[ext_resource type="Texture2D" uid="uid://cx4pienruuc81" path="res://assets/sprites/pirate_bomb/7_objects/6_candle/1.png" id="10_43753"]
+[ext_resource type="Texture2D" uid="uid://7y1mqmbx5dbp" path="res://assets/sprites/pirate_bomb/7_objects/6_candle/2.png" id="11_sucnp"]
+[ext_resource type="Texture2D" uid="uid://b3mhch2lrjxp1" path="res://assets/sprites/pirate_bomb/7_objects/6_candle/3.png" id="12_vivh8"]
+[ext_resource type="Texture2D" uid="uid://bcwirmm7jvw5r" path="res://assets/sprites/pirate_bomb/7_objects/6_candle/4.png" id="13_qma6v"]
+[ext_resource type="Texture2D" uid="uid://lhcnx4a7ewag" path="res://assets/sprites/pirate_bomb/7_objects/6_candle/5.png" id="14_va2eu"]
+[ext_resource type="Texture2D" uid="uid://dllsswtomcwx6" path="res://assets/sprites/pirate_bomb/7_objects/6_candle/6.png" id="15_1kxak"]
+[ext_resource type="Texture2D" uid="uid://gwi1hikeg6o8" path="res://assets/sprites/pirate_bomb/7_objects/6_candle/7.png" id="16_pc8bn"]
+[ext_resource type="Texture2D" uid="uid://6r4l5ijq5vts" path="res://assets/sprites/pirate_bomb/7_objects/6_candle/8.png" id="17_d86xs"]
+[ext_resource type="Texture2D" uid="uid://b2urlepcggtqq" path="res://assets/sprites/pirate_bomb/7_objects/12_other_objects/barrel.png" id="18_0uwlx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_48p14"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tj170")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_l24vs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_s580d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_x10ks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8yicj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_by7xd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_x45hs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8bjyv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_30ykk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fqfwp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_43753")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_sucnp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_vivh8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_qma6v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_va2eu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_1kxak")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_pc8bn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_d86xs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="BombShop" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+
+[node name="Adorments" type="Node2D" parent="."]
+
+[node name="Flag" type="AnimatedSprite2D" parent="Adorments"]
+position = Vector2(130, -8)
+sprite_frames = SubResource("SpriteFrames_48p14")
+frame_progress = 0.665572
+
+[node name="Table" type="Node2D" parent="."]
+position = Vector2(80, 25)
+
+[node name="Table" type="Sprite2D" parent="Table"]
+texture = ExtResource("4_3s8cr")
+
+[node name="Chair" type="Sprite2D" parent="Table"]
+position = Vector2(-54, -12)
+texture = ExtResource("5_udu4i")
+
+[node name="Bottle" type="Sprite2D" parent="Table"]
+position = Vector2(20, -21)
+rotation = -1.5708
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("6_boej0")
+
+[node name="Bottle2" type="Sprite2D" parent="Table"]
+position = Vector2(-26, -26)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("7_qnprk")
+
+[node name="Bottle3" type="Sprite2D" parent="Table"]
+position = Vector2(-8, -23)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("8_ij425")
+
+[node name="Barrels" type="Node2D" parent="."]
+position = Vector2(140, 14)
+
+[node name="Candle" type="AnimatedSprite2D" parent="Barrels"]
+position = Vector2(5, -19)
+sprite_frames = SubResource("SpriteFrames_fqfwp")
+frame_progress = 0.552744
+
+[node name="Barrel" type="Sprite2D" parent="Barrels"]
+position = Vector2(-19, 8)
+texture = ExtResource("18_0uwlx")
+
+[node name="Barrel2" type="Sprite2D" parent="Barrels"]
+position = Vector2(5, 13)
+scale = Vector2(0.709524, 0.8)
+texture = ExtResource("18_0uwlx")
+flip_h = true
+
+[node name="Bombs" type="Node2D" parent="."]
+position = Vector2(-70, 0)
+scale = Vector2(0.8, 0.8)
+
+[node name="Bomb2" type="Sprite2D" parent="Bombs"]
+position = Vector2(-5, -22)
+texture = ExtResource("1_bnl6h")
+
+[node name="Bomb3" type="Sprite2D" parent="Bombs"]
+position = Vector2(-7, -3)
+rotation = -1.31249
+texture = ExtResource("1_bnl6h")
+
+[node name="Bomb4" type="Sprite2D" parent="Bombs"]
+position = Vector2(27, 1)
+rotation = 0.275762
+texture = ExtResource("1_bnl6h")
+
+[node name="Bomb5" type="Sprite2D" parent="Bombs"]
+position = Vector2(-24, -1)
+rotation = -0.345575
+texture = ExtResource("1_bnl6h")
+
+[node name="Bomb6" type="Sprite2D" parent="Bombs"]
+position = Vector2(5, 20)
+texture = ExtResource("1_bnl6h")
+
+[node name="Bomb7" type="Sprite2D" parent="Bombs"]
+position = Vector2(-15, 22)
+texture = ExtResource("1_bnl6h")
+
+[node name="Bomb8" type="Sprite2D" parent="Bombs"]
+position = Vector2(-37, 19)
+rotation = 0.0698132
+texture = ExtResource("1_bnl6h")
+
+[node name="Bomb9" type="Sprite2D" parent="Bombs"]
+position = Vector2(27, 23)
+rotation = -0.345575
+texture = ExtResource("1_bnl6h")
+
+[node name="Bomb" type="Sprite2D" parent="Bombs"]
+position = Vector2(1, 1)
+rotation = 0.286234
+texture = ExtResource("1_bnl6h")
+
+[node name="Canon" type="Node2D" parent="."]
+position = Vector2(80, 0)
+scale = Vector2(0.9, 0.9)
+
+[node name="Cannon" type="Sprite2D" parent="Canon"]
+position = Vector2(-20, 26)
+texture = ExtResource("2_w4eoi")
+flip_h = true
+
+[node name="Ball" type="Sprite2D" parent="Canon"]
+position = Vector2(18, 24)
+rotation = 2.13977
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_6gi7t")
+
+[node name="Ball2" type="Sprite2D" parent="Canon"]
+position = Vector2(47, 37)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_6gi7t")
+
+[node name="Ball3" type="Sprite2D" parent="Canon"]
+position = Vector2(3, 36)
+rotation = -2.00189
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_6gi7t")
+
+[node name="Ball4" type="Sprite2D" parent="Canon"]
+position = Vector2(26, 38)
+rotation = -2.62323
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_6gi7t")
+
+[node name="NPC" type="Node2D" parent="."]
