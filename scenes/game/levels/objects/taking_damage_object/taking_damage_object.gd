@@ -9,10 +9,6 @@ extends RigidBody2D
 @onready var _animated_sprite = $AnimatedSprite2D
 # Definimos la escena de destrucción del objeto
 @onready var _box_destroyed = $BoxDestroyed
-# Definimos raycast izquierdo
-@onready var _raycast_left := $Area2D/Left
-# Definimos raycast Derecho
-@onready var _raycast_right := $Area2D/Right
 # Vandera de hacer animación
 var _do_animation = false
 
@@ -46,24 +42,36 @@ func do_animation():
 
 
 func _on_area_2d_area_entered(area):
-	if area.is_in_group("hit") or area.is_in_group("die"):
-		if _raycast_left.is_colliding():
-			for _i in _box_destroyed.get_children():
-				set_direction(true)
-		elif _raycast_right.is_colliding():
-			pass
-			
-		# Validamos si estamos reproduciendo la animación
-		if not _do_animation:
-			# Seteamos que ya estamos reproduciendo la animación
-			_do_animation = true
-			# Reproducimos la animación
-			do_animation()
-			
+	# Validamos si hay colisión
+	if area.is_in_group("hit"):
+		_collided(area)
+	elif area.is_in_group("die"):
+		_collided(area)
+
+
+func _collided(area):
+	# Seteamos la dirección de destrucción
+	if global_position.x < area.global_position.x:
+		set_direction(false)
+	else:
+		set_direction(true)
+		
+	# Validamos si estamos reproduciendo la animación
+	if not _do_animation:
+		# Seteamos que ya estamos reproduciendo la animación
+		_do_animation = true
+		# Reproducimos la animación
+		do_animation()
+		
+		
 func set_direction(left):
+	# Recorremos todos los hijos de la escena
 	for child in _box_destroyed.get_children():
+		# Gardamos la velocidad definida
 		var speed = abs(child.linear_velocity.x)
 		if left:
+			# Aplicamos la velocidad positiva
 			child.linear_velocity.x = speed
 		else:
+			# Aplicamos la velocidad negativa
 			child.linear_velocity.x = - speed

@@ -182,6 +182,7 @@ func _attack():
 
 func _init_state():
 	# Animación de estado inicial
+	velocity.x = 0
 	_animation.play(animation)
 	_animation_effect.play(\"idle\")
 	# Limpiamos las variables
@@ -208,6 +209,11 @@ func _on_enemy_animation_frame_changed():
 
 
 func _detection():
+	# Si ya no hay tierra regresamos al estado inicial
+	if not _raycast_terrain.is_colliding():
+		# Iniciamos la animación
+		_init_state()
+		return
 	# Obtenemos los colaiders
 	var _object1 = _raycast_vision_left.get_collider()
 	var _object2 = _raycast_vision_right.get_collider()

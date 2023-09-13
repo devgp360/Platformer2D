@@ -62,11 +62,5 @@ shape = SubResource("RectangleShape2D_oeywc")
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_j4x3q")
 
-[node name="Left" type="RayCast2D" parent="Area2D"]
-target_position = Vector2(-40, 0)
-
-[node name="Right" type="RayCast2D" parent="Area2D"]
-target_position = Vector2(40, 0)
-
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

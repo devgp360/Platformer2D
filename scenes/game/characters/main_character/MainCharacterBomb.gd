@@ -11,14 +11,15 @@ var _move_script: Node2D
 
 
 func _ready():
+	HealthDashboard.add_bomb(2)
 	_move_script = get_parent().get_node("MainCharacterMovement")
 
 
 # Called when the node enters the scene tree for the first time.
-func _unhandled_input(_event):
+func _unhandled_input(event):
 	var _count_bomb = HealthDashboard.points["Bomb"]
 	# Cuando se presiona la tecla (B - bomb) y no tiramos la bomba antes
-	if Input.is_action_pressed("bomb") and not _move_script.bombing and _count_bomb > 0:
+	if event.is_action_released("bomb") and not _move_script.bombing and _count_bomb > 0:
 		# Quitamos la bomba del invetario
 		HealthDashboard.add_bomb(-1)
 		# Inicializamos la bomba
