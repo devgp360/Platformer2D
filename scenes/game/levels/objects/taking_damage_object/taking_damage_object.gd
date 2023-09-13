@@ -9,10 +9,6 @@ extends RigidBody2D
 @onready var _animated_sprite = $AnimatedSprite2D
 # Definimos la escena de destrucción del objeto
 @onready var _box_destroyed = $BoxDestroyed
-# Definimos raycast izquierdo
-@onready var _raycast_left := $Area2D/Left
-# Definimos raycast Derecho
-@onready var _raycast_right := $Area2D/Right
 # Vandera de hacer animación
 var _do_animation = false
 
@@ -55,11 +51,6 @@ func _on_area_2d_area_entered(area):
 
 func _collided(area):
 	# Seteamos la dirección de destrucción
-	var _collider_left = _raycast_left.get_collider()
-	var _collider_right = _raycast_right.get_collider()
-	print("_collider_left", _raycast_left.is_colliding())
-	print("_collider_right",_raycast_right.is_colliding())
-	
 	if global_position.x < area.global_position.x:
 		set_direction(false)
 	else:
@@ -74,7 +65,6 @@ func _collided(area):
 		
 		
 func set_direction(left):
-	print("entro", left)
 	# Recorremos todos los hijos de la escena
 	for child in _box_destroyed.get_children():
 		# Gardamos la velocidad definida

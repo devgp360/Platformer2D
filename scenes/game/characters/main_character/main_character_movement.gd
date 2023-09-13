@@ -63,7 +63,6 @@ func _unhandled_input(event):
 		_current_movement = _movements.ATTACK
 	# Cuando se presiona la tecla b, lanzamos bomba
 	elif event.is_action_released("bomb"):
-		print("bomb")
 		_current_movement = _movements.BOMB
 	_set_animation()
 
