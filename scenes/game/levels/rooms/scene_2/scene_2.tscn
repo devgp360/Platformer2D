@@ -215,14 +215,8 @@ position = Vector2(797, 340)
 [node name="BombShop" parent="." instance=ExtResource("21_sh538")]
 position = Vector2(1149, 460)
 
-[node name="Crabby2" parent="." instance=ExtResource("18_dyrn2")]
-position = Vector2(936, 396)
-disable_mode = 1
-animation = "idle"
-moving_direction = "active"
-
 [node name="MainCharacter" parent="." instance=ExtResource("15_ooixx")]
-position = Vector2(1233, 468)
+position = Vector2(168, 531)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_0t8t3")

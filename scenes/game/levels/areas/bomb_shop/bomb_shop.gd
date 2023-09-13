@@ -1,4 +1,7 @@
 extends Node2D
+## Script que controla el intercambio de monedas a bombas
+##
+## Muestra diálogos con un NPC, maneja eventos en el diálogo y agrega bombas y reduce monedas
 
 
 # Valor de cada bomba y la moneda de pago
@@ -20,19 +23,17 @@ var _responses = [] # Guardamos las respuestas seleccionadas
 
 # Función de inicialización
 func _ready():
-	# Quitamos colisiones del NPC
+	# Quitamos colisiones del NPC y escuchamos eventos del diálogo
 	npc.disabled_collision(true)
 	npc.on_dialogue_ended(_on_dialogue_ended)
 	npc.on_response_selected(_on_response_selected)
-	# Test, agregamos 100 monedas de oro
-	HealthDashboard.add_points(bomb_money, 101)
 
 
 # Procedemos a comprar una cantidad de bombas
 # Si se puede comprar la cantidad, se retorna "true", de lo contrario "false"
 # Si el "amount" es "-1", se intentará comprar todas las bombas que se puedan
 # (si se compra al menos 1, se retorna "true")
-func buy_bombs(amount: int):
+func _buy_bombs(amount: int):
 	# Cantidad de monedas disponibles
 	var coins = HealthDashboard.points[bomb_money]
 	
@@ -57,14 +58,15 @@ func buy_bombs(amount: int):
 # Cuando terminamos el diálogo, procedemos a comprar bombas o mostrar el diálogo de finalización
 func _on_dialogue_ended():
 	if _ended:
+		# Reseteamos el diálogo y variables para "volver a comprar"
 		_ended = false
 		_responses = []
 		npc.set_dialogue(buy_dialogue)
 	else:
+		# Intentamos hacer la compra y finalizamos la conversación
 		_ended = true
-		
 		var amount = _get_selected_amount()
-		var bought = buy_bombs(amount)
+		var bought = _buy_bombs(amount)
 		if bought:
 			# Si se pudo comprar, mostramos el diálogo "success"
 			npc.set_and_show_dialogue(success_dialogue)
