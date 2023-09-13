@@ -18,6 +18,8 @@ signal dialogue_ended()
 @export var Balloon: PackedScene
 # Definición del template del diálogo
 @export var area: Area2D
+# Definición del personaje principal
+@export var npc: CharacterBody2D
 
 # Definimoa el nodo del personaje principal
 var character: Node2D
@@ -64,3 +66,8 @@ func _body_entered(body):
 		character = body.get_node("MainCharacterMovement")
 		# Mostramos el diálogo
 		_show_dialogue()
+		# Giramos el personaje para ver hacia la izquierda o derecha
+		if body.global_position.x < area.global_position.x:
+			npc.flip_h(false)
+		else:
+			npc.flip_h(true)
