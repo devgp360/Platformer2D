@@ -71,7 +71,7 @@ func _physics_process(delta):
 		_detection()
 
 
-func _move_character(delta):
+func _move_character(_delta):
 	# Aplicamos la gravidad
 	velocity.y += _gravity
 	
@@ -104,7 +104,7 @@ func _on_area_2d_body_entered(body):
 		_body = body
 
 
-func _on_area_2d_body_exited(body):
+func _on_area_2d_body_exited(__body):
 	# Estado inicial
 	_init_state()
 
@@ -135,6 +135,7 @@ func _attack():
 
 func _init_state():
 	# Animación de estado inicial
+	velocity.x = 0
 	_animation.play(animation)
 	_animation_effect.play("idle")
 	# Limpiamos las variables
@@ -161,6 +162,11 @@ func _on_enemy_animation_frame_changed():
 
 
 func _detection():
+	# Si ya no hay tierra regresamos al estado inicial
+	if not _raycast_terrain.is_colliding():
+		# Iniciamos la animación
+		_init_state()
+		return
 	# Obtenemos los colaiders
 	var _object1 = _raycast_vision_left.get_collider()
 	var _object2 = _raycast_vision_right.get_collider()
@@ -205,14 +211,20 @@ func _move(_direction):
 func _on_area_2d_area_entered(area):
 	# Si estan atacando al enemigo
 	if area.is_in_group("hit"):
-		# Seteamoas banderita no atacar
-		_stop_attack = true
-		# Reproducimos sonido
-		_audio_player.stream = _punch_sound
-		_audio_player.play()
+		_damage(true)
+	elif area.is_in_group("die"):
+		_damage(true)
+
+func _damage(die: bool):
+	# Seteamoas banderita no atacar
+	_stop_attack = true
+	# Reproducimos sonido
+	_audio_player.stream = _punch_sound
+	_audio_player.play()
+	
+	if die:
 		# Lo matamos y quitamos de la escena
 		_animation.play("dead_ground")
-
 
 func _on_enemy_animation_animation_finished():
 	if _animation.animation == "dead_ground":
