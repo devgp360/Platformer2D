@@ -1,6 +1,8 @@
 ~ start
 
-Gran Pirata: Hola pequeño pirata. ¿En qué te puedo ayuadar?.
+Gran Pirata: Hola pequeño pirata. ¿En qué te puedo ayudar?.
+Pirata Malaplata: Estaba interesado en comprar un cañon destructor.
+Gran Pirata: Lo siento, por ahora solo te ofrezco bombas. 5 monedas de oro por cada una.
 Pirata Malaplata: Bueno...
 - Quiero una
 	=> pay
