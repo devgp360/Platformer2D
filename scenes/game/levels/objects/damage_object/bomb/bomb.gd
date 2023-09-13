@@ -12,7 +12,7 @@ var _bomb_effect = preload("res://scenes/game/levels/objects/damage_object/bomb/
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# Esperamos 3 segundos
+	# Esperamos 3 segundos para la exploción
 	await get_tree().create_timer(3).timeout
 	# Quitamos la bomba
 	_animation.play("idle")

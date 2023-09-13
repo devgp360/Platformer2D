@@ -76,6 +76,9 @@ func restart():
 	# Reseteo de todos los diferentes tipos de puntos
 	for type in points:
 		var group = point_group.find_child(type)
+		if not group:
+			group = bomb_group
+			
 		_number_1 = group.find_child("Number1")
 		_number_2 = group.find_child("Number2")
 		_number_3 = group.find_child("Number3")

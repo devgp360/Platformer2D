@@ -16,8 +16,11 @@ func _ready():
 
 # Called when the node enters the scene tree for the first time.
 func _unhandled_input(_event):
+	var _count_bomb = HealthDashboard.points["Bomb"]
 	# Cuando se presiona la tecla (B - bomb) y no tiramos la bomba antes
-	if Input.is_action_pressed("bomb") and not _move_script.bombing:
+	if Input.is_action_pressed("bomb") and not _move_script.bombing and _count_bomb > 0:
+		# Quitamos la bomba del invetario
+		HealthDashboard.add_bomb(-1)
 		# Inicializamos la bomba
 		var bomb_scene = _bomb.instantiate()
 		# Seteamos la posisión a la par del personaje principal
