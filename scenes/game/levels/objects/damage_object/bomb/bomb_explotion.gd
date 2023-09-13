@@ -8,15 +8,6 @@ extends AnimatedSprite2D
 @onready var _sound := $AudioStreamPlayer # Efecto de sonido
 
 
-func _on_frame_changed():
-	# Si el frame es 1 habilitamos el colicionador
-	if frame == 1:
-		_collision.disabled = false
-	else:
-		# deshabilitamos el colicionador
-		_collision.disabled = true
-
-
 func _on_audio_stream_player_finished():
 	# eliminamos la escena
 	queue_free()

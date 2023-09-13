@@ -64,13 +64,11 @@ script = ExtResource("10_ca1gs")
 
 [node name="DamageCollision" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_1x6on")
-disabled = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_y4kqn")
 autoplay = true
 bus = &"Effects"
 
-[connection signal="frame_changed" from="." to="." method="_on_frame_changed"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

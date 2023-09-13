@@ -56,13 +56,14 @@ func _physics_process(_delta):
 	_move(_delta)
 	
 
-func _unhandled_input(_xevent):
+func _unhandled_input(event):
 	# Cuando se presiona la tecla x, atacamos	
-	if Input.is_action_pressed("hit"):
+	if event.is_action_released("hit"):
 		character.velocity.x = 0
 		_current_movement = _movements.ATTACK
 	# Cuando se presiona la tecla b, lanzamos bomba
-	elif Input.is_action_pressed("bomb"):
+	elif event.is_action_released("bomb"):
+		print("bomb")
 		_current_movement = _movements.BOMB
 	_set_animation()
 
