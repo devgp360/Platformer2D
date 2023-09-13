@@ -1,6 +1,5 @@
-[gd_scene load_steps=26 format=3 uid="uid://dfvk3qkvi7h6d"]
+[gd_scene load_steps=25 format=3 uid="uid://dfvk3qkvi7h6d"]
 
-[ext_resource type="Script" path="res://scenes/game/levels/objects/damage_object/bomb/bomb.gd" id="1_sqgb6"]
 [ext_resource type="Texture2D" uid="uid://b2j6x57xp2en0" path="res://assets/sprites/pirate_bomb/7_objects/1_bomb/3-explotion/1.png" id="2_i7xrw"]
 [ext_resource type="Texture2D" uid="uid://dgnyjiunxp5nc" path="res://assets/sprites/pirate_bomb/7_objects/1_bomb/3-explotion/2.png" id="3_13aat"]
 [ext_resource type="Texture2D" uid="uid://bdiqkm8sokgyv" path="res://assets/sprites/pirate_bomb/7_objects/1_bomb/3-explotion/3.png" id="4_eccc6"]
@@ -10,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://b714md2ej20jy" path="res://assets/sprites/pirate_bomb/7_objects/1_bomb/3-explotion/7.png" id="8_d12ok"]
 [ext_resource type="Texture2D" uid="uid://d11bn1xatfrjr" path="res://assets/sprites/pirate_bomb/7_objects/1_bomb/3-explotion/8.png" id="9_w5gw2"]
 [ext_resource type="Texture2D" uid="uid://ci7hlrppyx8nv" path="res://assets/sprites/pirate_bomb/7_objects/1_bomb/3-explotion/9.png" id="10_30g6j"]
-[ext_resource type="Texture2D" uid="uid://cm142hc3tlhe6" path="res://assets/sprites/pirate_bomb/7_objects/1_bomb/1-bomb off/1.png" id="11_flsmu"]
 [ext_resource type="Texture2D" uid="uid://c7qfy1bwugl3n" path="res://assets/sprites/pirate_bomb/7_objects/1_bomb/2-bomb on/1.png" id="12_e6mkb"]
 [ext_resource type="Texture2D" uid="uid://bk4vg41bbyo0c" path="res://assets/sprites/pirate_bomb/7_objects/1_bomb/2-bomb on/2.png" id="13_uqpqo"]
 [ext_resource type="Texture2D" uid="uid://biypadubea25u" path="res://assets/sprites/pirate_bomb/7_objects/1_bomb/2-bomb on/3.png" id="14_vmwrf"]
@@ -25,6 +23,36 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8pduw"]
 friction = 2.0
 bounce = 0.5
+
+[sub_resource type="GDScript" id="GDScript_kjho4"]
+script/source = "extends RigidBody2D
+## Clase que controla animación y configuración de la bomba
+##
+## Setea la animación de la exploción
+
+# Precargamos la escena de la bomba
+var _bomb_effect = preload(\"res://scenes/game/levels/objects/damage_object/bomb/bomb_explotion.tscn\")
+
+# Definimos el nodo de animación
+@onready var _animation = $BombAnimation
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	# Esperamos 3 segundos
+	await get_tree().create_timer(3).timeout
+	# Quitamos la bomba
+	_animation.play(\"idle\")
+	# Obtenemos la ultima posición
+	var _pos = position
+	# Obtenemos la escena de exploción
+	var bomb_scene = _bomb_effect.instantiate()
+	# Ajustamos las posiciónes
+	bomb_scene.position = _pos
+	bomb_scene.position.y = _pos.y - 20
+	# Agregamos el efecto a la escena
+	get_parent().add_child(bomb_scene)
+	queue_free()
+"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mull3"]
 animations = [{
@@ -65,7 +93,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("11_flsmu")
+"texture": null
 }],
 "loop": true,
 "name": &"idle",
@@ -118,12 +146,12 @@ mass = 0.3
 physics_material_override = SubResource("PhysicsMaterial_8pduw")
 linear_velocity = Vector2(200, -300)
 angular_velocity = 0.0872665
-script = ExtResource("1_sqgb6")
+script = SubResource("GDScript_kjho4")
 
 [node name="BombAnimation" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_mull3")
-animation = &"on"
+animation = &"idle"
 autoplay = "on"
 speed_scale = 2.0
 

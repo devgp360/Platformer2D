@@ -3,17 +3,20 @@ extends Node2D
 ##
 ## Escucha la tecla de tirar bombas y tira la bomba
 
+
 # Precargamos la escena de la bomba
 var _bomb = preload("res://scenes/game/levels/objects/damage_object/bomb/bomb.tscn")
 # La bandera de que la bomba fue tirada
-var _launch = false
+var _move_script: Node2D
+
+func _ready():
+	_move_script = get_parent().get_node("MainCharacterMovement")
+	print(_move_script)
 
 # Called when the node enters the scene tree for the first time.
-func _unhandled_input(event):
+func _unhandled_input(_event):
 	# Cuando se presiona la tecla (B - bomb) y no tiramos la bomba antes
-	if Input.is_action_pressed("bomb") and not _launch:
-		# Seteamos la bandera de bomba lanzada a true
-		_launch = true
+	if Input.is_action_pressed("bomb") and not _move_script.bombing:
 		# Inicializamos la bomba
 		var bomb_scene = _bomb.instantiate()
 		# Seteamos la posisión a la par del personaje principal
@@ -31,7 +34,3 @@ func _unhandled_input(event):
 	
 		# Agregamos la bomba a la escena
 		get_parent().get_parent().add_child(bomb_scene)
-		# Esperamos 1 segundo
-		await get_tree().create_timer(1).timeout
-		# Liberamos la posibilidad de lanzar bombas
-		_launch = false

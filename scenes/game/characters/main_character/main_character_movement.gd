@@ -24,6 +24,7 @@ var _movements = {
 	FALL_WITH_SWORD = "fall_with_sword",
 	DEAD_HIT = "dead_hit",
 	ATTACK = "attack_2",
+	BOMB = "attack_3",
 }
 var _current_movement = _movements.IDLE # Variable de movimiento
 var _is_jumping = false # Indicamos que el personaje está saltando
@@ -31,6 +32,7 @@ var _max_jumps = 2 # Máximo número de saltos
 var _jump_count = 0 # Contador de saltos realizados
 var _died = false # Define si esta vovo o muerto
 var attacking = false # Define si esta atacando
+var bombing = false # Define si esta atacando
 var _is_playing: String = "" # Define si se esta reproducionedo el sonido
 var turn_side: String = "right" # Define si se esta reproducionedo el sonido
 
@@ -52,6 +54,17 @@ func _ready():
 # Función de ejecución de físicas
 func _physics_process(_delta):
 	_move(_delta)
+	
+
+func _unhandled_input(_xevent):
+	# Cuando se presiona la tecla x, atacamos	
+	if Input.is_action_pressed("hit"):
+		character.velocity.x = 0
+		_current_movement = _movements.ATTACK
+	# Cuando se presiona la tecla b, lanzamos bomba
+	elif Input.is_action_pressed("bomb"):
+		_current_movement = _movements.BOMB
+	_set_animation()
 
 
 # Función de movimiento general del personaje
@@ -70,11 +83,6 @@ func _move(delta):
 	else:
 		character.velocity.x = 0
 		_current_movement = _movements.IDLE	
-	
-	# Cuando se presiona el boton derecho de mouse, atacamos	
-	if Input.is_action_pressed("hit"):
-		character.velocity.x = 0
-		_current_movement = _movements.ATTACK
 	
 	# Cuando se presiona la tecla (espacio), hacemos animación de salto
 	if Input.is_action_just_pressed("saltar"):
@@ -99,8 +107,9 @@ func _move(delta):
 # Controla la animación según el movimiento del personaje
 func _set_animation():
 	# Si esta atacando no interrumpimos la animació	
-	if attacking:
+	if attacking or bombing:
 		return
+		
 	# Personaje murio
 	if _died:
 		main_animation.play(_movements.DEAD_HIT)
@@ -118,6 +127,10 @@ func _set_animation():
 		# Atacamos
 		attacking = true
 		main_animation.play(_movements.ATTACK)
+	elif _current_movement == _movements.BOMB:
+		# Lanzamos bomba
+		bombing = true
+		main_animation.play(_movements.BOMB)
 	elif _current_movement == _movements.RIGHT_WITH_SWORD:
 		# Movimiento hacia la derecha (animación "correr" no volteada)
 		main_animation.play(_movements.RIGHT_WITH_SWORD)
@@ -181,8 +194,10 @@ func _on_animation_animation_finished():
 			_is_playing = "_dead_sound"
 			# Reproducimos el sonido
 			_play_sound(_dead_sound)
-	elif main_animation.get_animation() == 'attack_2':
+	elif main_animation.get_animation() == _movements.ATTACK:
 		attacking = false
+	elif main_animation.get_animation() == _movements.BOMB:
+		bombing = false
 
 
 func _on_animation_frame_changed():	
