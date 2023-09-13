@@ -199,6 +199,7 @@ size = Vector2(53, 62)
 size = Vector2(76, 61)
 
 [node name="BigGuy" type="CharacterBody2D"]
+scale = Vector2(1.2, 1.2)
 floor_snap_length = 10.0
 script = ExtResource("1_wuf6s")
 

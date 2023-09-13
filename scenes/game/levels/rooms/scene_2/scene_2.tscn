@@ -33,9 +33,6 @@ stream = ExtResource("19_as2yr")
 autoplay = true
 bus = &"Ambient"
 
-[node name="Camera2D" parent="." node_paths=PackedStringArray("character") instance=ExtResource("1_8l71v")]
-character = NodePath("../MainCharacter")
-
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(765, 391.5)
 scale = Vector2(4.02083, 2.42969)
@@ -240,3 +237,7 @@ layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(655362, 65538, 1, 655363, 131074, 1, 917523, 2, 0, 983059, 2, 1, 917518, 2, 0, 983054, 2, 1, 917524, 2, 0, 983060, 2, 1, 851988, 2, 0, 917506, 65538, 1, 917507, 131074, 1, 655387, 2, 0, 720923, 2, 1, 720939, 65538, 0, 720940, 131074, 0)
+
+[node name="Camera2D" parent="." node_paths=PackedStringArray("character") instance=ExtResource("1_8l71v")]
+limit_bottom = 580
+character = NodePath("../MainCharacter")

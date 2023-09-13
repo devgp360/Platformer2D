@@ -11,7 +11,8 @@ extends Node2D
 # Diálogo de compra realizada
 @export var success_dialogue: DialogueResource
 
-var _ended = false
+var _ended = false # Guardamos si ya terminamos la compra
+var _responses = [] # Guardamos las respuestas seleccionadas
 
 # Referencia al npc
 @onready var npc = $NPC/BigGuy
@@ -23,6 +24,8 @@ func _ready():
 	npc.disabled_collision(true)
 	npc.on_dialogue_ended(_on_dialogue_ended)
 	npc.on_response_selected(_on_response_selected)
+	# Test, agregamos 100 monedas de oro
+	HealthDashboard.add_points(bomb_money, 101)
 
 
 # Procedemos a comprar una cantidad de bombas
@@ -51,20 +54,40 @@ func buy_bombs(amount: int):
 		return false
 
 
+# Cuando terminamos el diálogo, procedemos a comprar bombas o mostrar el diálogo de finalización
 func _on_dialogue_ended():
 	if _ended:
 		_ended = false
+		_responses = []
 		npc.set_dialogue(buy_dialogue)
 	else:
 		_ended = true
-		# Test, agregamos 100 monedas de oro
-		#HealthDashboard.add_points(bomb_money, 100)
-		var bought = buy_bombs(10)
+		
+		var amount = _get_selected_amount()
+		var bought = buy_bombs(amount)
 		if bought:
+			# Si se pudo comprar, mostramos el diálogo "success"
 			npc.set_and_show_dialogue(success_dialogue)
 		else:
+			# Si no se pudo comprar, mostramos el diálogo "failed"
 			npc.set_and_show_dialogue(failed_dialogue)
 
 
+# Sirve para guardar las respuestas seleccionadas
 func _on_response_selected(response: String):
-	print("response_selecrted: ", response)
+	_responses.append(response)
+
+
+# Obtenemos la cantidad a comprar, dependiendo de la respuesta seleccionada
+func _get_selected_amount():
+	var amount = 0
+	for r in _responses:
+		if (r as String).contains("una"):
+			amount = 1
+		elif (r as String).contains("tres"):
+			amount = 3
+		elif (r as String).contains("cinco"):
+			amount = 5
+		elif (r as String).contains("monedas"):
+			amount = -1
+	return amount
