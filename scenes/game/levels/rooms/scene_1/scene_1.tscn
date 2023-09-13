@@ -34,7 +34,7 @@ stream = ExtResource("1_xvhx7")
 bus = &"Ambient"
 
 [node name="MainCharacter" parent="." instance=ExtResource("1_vi0ax")]
-position = Vector2(970, 540)
+position = Vector2(883, 554)
 
 [node name="Npc" parent="." instance=ExtResource("3_7nl23")]
 position = Vector2(237, 369)
@@ -62,9 +62,9 @@ layer_1/tile_data = PackedInt32Array(1114140, 2, 0, 655394, 2, 0, 786451, 2, 0, 
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Crabby" parent="Enemies" instance=ExtResource("4_cmc0y")]
-position = Vector2(311, 302)
-animation = "run"
-moving_direction = "active"
+position = Vector2(1003, 559)
+animation = "idle"
+moving_direction = "left"
 
 [node name="CollectableObjects" type="Node2D" parent="."]
 
@@ -110,7 +110,7 @@ animation = "red_diamond"
 position = Vector2(210, 471)
 
 [node name="Box2" parent="TakingDamageObject" instance=ExtResource("5_phmby")]
-position = Vector2(166, 471)
+position = Vector2(1049, 564)
 
 [node name="DamageObject" type="Node2D" parent="."]
 

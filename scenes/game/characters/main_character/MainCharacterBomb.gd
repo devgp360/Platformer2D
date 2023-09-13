@@ -6,12 +6,13 @@ extends Node2D
 
 # Precargamos la escena de la bomba
 var _bomb = preload("res://scenes/game/levels/objects/damage_object/bomb/bomb.tscn")
-# La bandera de que la bomba fue tirada
+# El script de movimiento
 var _move_script: Node2D
+
 
 func _ready():
 	_move_script = get_parent().get_node("MainCharacterMovement")
-	print(_move_script)
+
 
 # Called when the node enters the scene tree for the first time.
 func _unhandled_input(_event):
@@ -22,7 +23,6 @@ func _unhandled_input(_event):
 		# Seteamos la posisión a la par del personaje principal
 		var _character = get_parent()
 		var _character_position = _character.position
-		var _move_script = _character.get_node("MainCharacterMovement")
 		bomb_scene.position = _character_position
 		# Seteamos la dirección de la fuerza y offset
 		if _move_script.turn_side == "right":

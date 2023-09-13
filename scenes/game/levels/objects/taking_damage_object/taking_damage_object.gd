@@ -42,7 +42,7 @@ func do_animation():
 
 
 func _on_area_2d_area_entered(area):
-	if area.is_in_group("hit"):
+	if area.is_in_group("hit") or area.is_in_group("die"):
 		# Validamos si estamos reproduciendo la animación
 		if not _do_animation:
 			# Seteamos que ya estamos reproduciendo la animación

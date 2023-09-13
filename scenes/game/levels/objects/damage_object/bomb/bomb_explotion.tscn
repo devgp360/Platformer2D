@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://u1sg0gun6vu2"]
+[gd_scene load_steps=14 format=3 uid="uid://u1sg0gun6vu2"]
 
 [ext_resource type="Texture2D" uid="uid://b2j6x57xp2en0" path="res://assets/sprites/pirate_bomb/7_objects/1_bomb/3-explotion/1.png" id="1_fp7ra"]
 [ext_resource type="Texture2D" uid="uid://dgnyjiunxp5nc" path="res://assets/sprites/pirate_bomb/7_objects/1_bomb/3-explotion/2.png" id="2_kv62d"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://d11bn1xatfrjr" path="res://assets/sprites/pirate_bomb/7_objects/1_bomb/3-explotion/8.png" id="8_jxpen"]
 [ext_resource type="Texture2D" uid="uid://ci7hlrppyx8nv" path="res://assets/sprites/pirate_bomb/7_objects/1_bomb/3-explotion/9.png" id="9_hadyc"]
 [ext_resource type="Script" path="res://scenes/game/levels/objects/damage_object/bomb/bomb_explotion.gd" id="10_ca1gs"]
+[ext_resource type="AudioStream" uid="uid://ca801ary3k02b" path="res://assets/sounds/explosion.mp3" id="11_y4kqn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kbf0l"]
 animations = [{
@@ -49,6 +50,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_1x6on"]
+radius = 97.0464
+
 [node name="BombExplotion" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_kbf0l")
 animation = &"explotion"
@@ -56,4 +60,17 @@ autoplay = "explotion"
 speed_scale = 1.5
 script = ExtResource("10_ca1gs")
 
-[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
+[node name="Area2D" type="Area2D" parent="." groups=["die"]]
+
+[node name="DamageCollision" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_1x6on")
+disabled = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_y4kqn")
+autoplay = true
+bus = &"Effects"
+
+[connection signal="frame_changed" from="." to="." method="_on_frame_changed"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
