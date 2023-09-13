@@ -10,6 +10,8 @@ extends CanvasLayer
 
 # Señal de finalizacion de diálogo
 signal dialogue_ended()
+# Señal que se lanza cuando se elige una respuesta
+signal response_selected(response: String)
 
 const PATH_SPRITES = "res://scenes/game/dialogues/persons/"
 
@@ -217,8 +219,10 @@ func _on_response_gui_input(event: InputEvent, item: Control) -> void:
 		return
 	# Pasamos a la siguiente linea de diálogo
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == 1:
+		response_selected.emit(dialogue_line.responses[item.get_index()].text)
 		_next(dialogue_line.responses[item.get_index()].next_id)
 	elif event.is_action_pressed("ui_accept") and item in _get_responses():
+		response_selected.emit(dialogue_line.responses[item.get_index()].text)
 		_next(dialogue_line.responses[item.get_index()].next_id)
 
 
@@ -249,7 +253,7 @@ func _get_texture_for_dialogue(character: String):
 	# Obtenemos el primer nombre
 	var person = character.to_lower().split(" ")[0]
 	# Definimos la escena a insertar
-	var filename = "%s/" % [person] + "%s.tscn" % [person] 
+	var filename = "%s/" % [person] + "%s.tscn" % [person]
 	# Retornamos el avatar
 	return load(PATH_SPRITES + filename).instantiate()
 
@@ -265,3 +269,8 @@ func _end_dialogue():
 # Conectamos la finalización del diálogo (para escuchar cuando termina el diálogo)
 func on_dialogue_ended(fn):
 	dialogue_ended.connect(fn)
+
+
+# Conectamos la señal para obtener respuestas seleccionadas en el diálogo
+func on_response_selected(fn):
+	response_selected.connect(fn)

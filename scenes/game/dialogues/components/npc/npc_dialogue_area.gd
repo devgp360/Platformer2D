@@ -9,6 +9,8 @@ signal talk()
 
 # Definición de la señal del diálogo terminado
 signal dialogue_ended()
+# Señal que escucha cuando se selecciona una respuesta de diálogo
+signal response_selected(response: String)
 
 # El NPC, es el que tendrá un diálogo cargado, para comunicarse con el personaje principal
 @export var dialogue_resource: DialogueResource
@@ -31,6 +33,17 @@ func _ready():
 	area.body_entered.connect(_body_entered)
 
 
+# Seteamos un nuevo diálogo y lo mostramos
+func set_and_show_dialogue(resource: DialogueResource):
+	set_dialogue(resource)
+	_show_dialogue()
+
+
+# Seteamos un nuevo diálogo
+func set_dialogue(resource: DialogueResource):
+	dialogue_resource = resource
+
+
 # Mostramos el diálogo
 func _show_dialogue():
 	# Inicialización del template del diálogo
@@ -42,6 +55,7 @@ func _show_dialogue():
 
 	# Escuchamos cuando el diálogo termine
 	balloon.on_dialogue_ended(_npc_dialogue_ended)
+	balloon.on_response_selected(_on_response_selected)
 	# deshabilitamos al personaje principal
 	character.set_disabled(true)
 	character.set_idle()
@@ -54,9 +68,19 @@ func _npc_dialogue_ended():
 	character.set_disabled(false)
 
 
+# Se emite la señal cuando se selecciona respuesta en el diálogo
+func _on_response_selected(response: String):
+	self.emit_signal("response_selected", response)
+
+
 # Se añade evento para escuchar cuando el diálogo finalice
 func on_dialogue_ended(fn):
 	dialogue_ended.connect(fn)
+
+
+# Se añade evento para escuchar cuando el diálogo finalice
+func on_response_selected(fn):
+	response_selected.connect(fn)
 
 
 func _body_entered(body):

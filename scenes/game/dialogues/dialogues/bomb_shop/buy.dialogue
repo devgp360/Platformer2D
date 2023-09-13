@@ -1,0 +1,17 @@
+~ start
+
+Gran Pirata: Hola pequeño pirata. ¿En qué te puedo ayuadar?.
+Pirata Malaplata: Bueno...
+- Quiero una
+	=> pay
+- Quiero tres
+	=> pay
+- Quiero cinco
+	=> pay
+- Las que me alcancen con estas monedas
+	=> END
+
+~ pay
+Gran Pirata: Sí te alcanza, ¿verdad?.
+Pirata Malaplata: ¡Claro que sí!
+=> END

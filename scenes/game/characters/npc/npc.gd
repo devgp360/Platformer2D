@@ -40,10 +40,36 @@ func on_dialogue_ended(fn):
 		_npc_dialogue_area.on_dialogue_ended(fn)
 
 
+# Se usa para poder "escuchar" cuando se selecciona una respuesta en el diálogo
+func on_response_selected(fn):
+	if _npc_dialogue_area:
+		_npc_dialogue_area.on_response_selected(fn)
+
+
+# Función que deshabilita las colisiones del NPC y también la física
 func disabled_collision(disabled: bool):
 	set_physics_process(not disabled)
 	_collision.disabled = disabled
 
 
+# Función para rotar la animación del NPC
 func flip_h(flip: bool):
 	_animation.flip_h = flip
+
+
+# Seteamos un nuevo diálogo y lo mostramos
+func set_and_show_dialogue(resource: DialogueResource):
+	if _npc_dialogue_area:
+		_npc_dialogue_area.set_and_show_dialogue(resource)
+
+
+# Seteamos un nuevo diálogo
+func set_dialogue(resource: DialogueResource):
+	if _npc_dialogue_area:
+		_npc_dialogue_area.set_dialogue(resource)
+
+
+# Retornamos el manejador de diálogos que esté activo
+func get_dialogue_manager():
+	if _npc_dialogue_area:
+		return _npc_dialogue_area.dialogue_manager
