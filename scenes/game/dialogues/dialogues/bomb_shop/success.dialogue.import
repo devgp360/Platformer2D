@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_8"
+type="Resource"
+uid="uid://ctd41a57bxw16"
+path="res://.godot/imported/success.dialogue-e224f27c5e6fdb3dbac4c3caf64ece21.tres"
+
+[deps]
+
+source_file="res://scenes/game/dialogues/dialogues/bomb_shop/success.dialogue"
+dest_files=["res://.godot/imported/success.dialogue-e224f27c5e6fdb3dbac4c3caf64ece21.tres"]
+
+[params]
+
+defaults=true

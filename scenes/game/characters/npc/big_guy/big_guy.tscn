@@ -40,12 +40,12 @@
 [ext_resource type="Texture2D" uid="uid://c1j2g5865af6q" path="res://assets/sprites/pirate_bomb/4_enemy_big_guy/1_idle/37.png" id="38_g5tjf"]
 [ext_resource type="Texture2D" uid="uid://c45cx56xm4k27" path="res://assets/sprites/pirate_bomb/4_enemy_big_guy/1_idle/38.png" id="39_yf7qn"]
 [ext_resource type="Texture2D" uid="uid://c3nj8ouc68pvp" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/dialogue/interrogation/interrogation_in_01.png" id="46_4bvgv"]
+[ext_resource type="Resource" uid="uid://bsrydnm3knldk" path="res://scenes/game/dialogues/dialogues/bomb_shop/buy.dialogue" id="46_illnt"]
 [ext_resource type="Texture2D" uid="uid://b5o71w5gfbojc" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/dialogue/interrogation/interrogation_in_02.png" id="47_l2f3m"]
 [ext_resource type="Texture2D" uid="uid://c5vbrvw865uht" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/dialogue/interrogation/interrogation_in_03.png" id="48_nlj4i"]
 [ext_resource type="Texture2D" uid="uid://d07kywpy3ffon" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/dialogue/interrogation/interrogation_out_01.png" id="49_uewkh"]
 [ext_resource type="Texture2D" uid="uid://b4vh2yxke6lsb" path="res://assets/sprites/treasure_hunters/captain_clown_nose/sprites/dialogue/interrogation/interrogation_out_02.png" id="50_koggk"]
 [ext_resource type="PackedScene" uid="uid://btewge2lyid0y" path="res://scenes/game/dialogues/components/npc/npc_dialogue_area.tscn" id="51_ahr2n"]
-[ext_resource type="Resource" uid="uid://bn5myqf1kokjb" path="res://scenes/game/dialogues/dialogues/scene_1/scene_1.dialogue" id="52_smust"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_o0oc8"]
 animations = [{
@@ -226,7 +226,8 @@ disabled = true
 disable_mode = 1
 
 [node name="NpcDialogueArea" parent="Area2D" node_paths=PackedStringArray("area", "npc") instance=ExtResource("51_ahr2n")]
-dialogue_resource = ExtResource("52_smust")
+dialogue_resource = ExtResource("46_illnt")
+dialogue_start = "start"
 area = NodePath("..")
 npc = NodePath("../..")
 

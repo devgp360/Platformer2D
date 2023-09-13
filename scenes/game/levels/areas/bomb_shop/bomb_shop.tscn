@@ -1,13 +1,16 @@
-[gd_scene load_steps=31 format=3 uid="uid://glchvmmfffqa"]
+[gd_scene load_steps=34 format=3 uid="uid://glchvmmfffqa"]
 
 [ext_resource type="Texture2D" uid="uid://cm142hc3tlhe6" path="res://assets/sprites/pirate_bomb/7_objects/1_bomb/1-bomb off/1.png" id="1_bnl6h"]
 [ext_resource type="Script" path="res://scenes/game/levels/areas/bomb_shop/bomb_shop.gd" id="1_dm6pg"]
 [ext_resource type="Texture2D" uid="uid://dcptpykdlp5rk" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/flag/flag_01.png" id="1_tj170"]
 [ext_resource type="Texture2D" uid="uid://yxsvhy0cus1p" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/flag/flag_02.png" id="2_l24vs"]
+[ext_resource type="Resource" uid="uid://bsrydnm3knldk" path="res://scenes/game/dialogues/dialogues/bomb_shop/buy.dialogue" id="2_tpxlg"]
 [ext_resource type="Texture2D" uid="uid://cmowasw5ibj1b" path="res://assets/sprites/pirate_bomb/7_objects/16_enemy_cannon/1-idle/1.png" id="2_w4eoi"]
 [ext_resource type="Texture2D" uid="uid://3rlp58j8kdda" path="res://assets/sprites/pirate_bomb/7_objects/16_enemy_cannon/3-cannon ball/1.png" id="3_6gi7t"]
 [ext_resource type="Texture2D" uid="uid://btdjplxdrgn6r" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/flag/flag_03.png" id="3_s580d"]
+[ext_resource type="Resource" uid="uid://c75j0ypg50kai" path="res://scenes/game/dialogues/dialogues/bomb_shop/failed.dialogue" id="3_snrv7"]
 [ext_resource type="Texture2D" uid="uid://1kynpyiw1olq" path="res://assets/sprites/pirate_bomb/7_objects/12_other_objects/table.png" id="4_3s8cr"]
+[ext_resource type="Resource" uid="uid://ctd41a57bxw16" path="res://scenes/game/dialogues/dialogues/bomb_shop/success.dialogue" id="4_on8cr"]
 [ext_resource type="Texture2D" uid="uid://dhq4qcrym3ytl" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/flag/flag_04.png" id="4_x10ks"]
 [ext_resource type="Texture2D" uid="uid://cxpuw6kkvyx0s" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/flag/flag_05.png" id="5_8yicj"]
 [ext_resource type="Texture2D" uid="uid://by5gekqlxaqtu" path="res://assets/sprites/pirate_bomb/7_objects/12_other_objects/chair.png" id="5_udu4i"]
@@ -99,6 +102,9 @@ animations = [{
 [node name="BombShop" type="Node2D"]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_dm6pg")
+buy_dialogue = ExtResource("2_tpxlg")
+failed_dialogue = ExtResource("3_snrv7")
+success_dialogue = ExtResource("4_on8cr")
 
 [node name="Adorments" type="Node2D" parent="."]
 
