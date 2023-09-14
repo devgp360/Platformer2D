@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://tqg8duvjuik7"]
+[gd_scene load_steps=24 format=3 uid="uid://tqg8duvjuik7"]
 
 [ext_resource type="TileSet" uid="uid://bx1rsqucrwm2i" path="res://assets/resources/bg_tile_set.tres" id="1_0t8t3"]
 [ext_resource type="PackedScene" uid="uid://8rbt5lmdrp0s" path="res://scenes/game/camera/camera.tscn" id="1_8l71v"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://c36rtvjb7r5d1" path="res://scenes/game/levels/objects/red_potion/red_potion.tscn" id="20_1tp5l"]
 [ext_resource type="PackedScene" uid="uid://b5qjvfbte4svk" path="res://scenes/game/levels/objects/pickable_object/pickable_object.tscn" id="20_juf85"]
 [ext_resource type="PackedScene" uid="uid://glchvmmfffqa" path="res://scenes/game/levels/areas/bomb_shop/bomb_shop.tscn" id="21_sh538"]
+[ext_resource type="PackedScene" uid="uid://dl8afnvp5w315" path="res://scenes/game/levels/objects/power_up/power_up.tscn" id="22_vr6n4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3x710"]
 size = Vector2(31, 21)
@@ -216,7 +217,7 @@ position = Vector2(797, 340)
 position = Vector2(1149, 460)
 
 [node name="MainCharacter" parent="." instance=ExtResource("15_ooixx")]
-position = Vector2(168, 531)
+position = Vector2(117, 531)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_0t8t3")
@@ -235,3 +236,7 @@ layer_1/tile_data = PackedInt32Array(655362, 65538, 1, 655363, 131074, 1, 917523
 [node name="Camera2D" parent="." node_paths=PackedStringArray("character") instance=ExtResource("1_8l71v")]
 limit_bottom = 580
 character = NodePath("../MainCharacter")
+
+[node name="PowerUp" parent="." instance=ExtResource("22_vr6n4")]
+position = Vector2(186, 523)
+animation = &"green_bottle"

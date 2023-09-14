@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://5ufjafjgartt"]
+
+[ext_resource type="Texture2D" uid="uid://duouw1jyvfj1w" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/blue_potion/01.png" id="1_awoxm"]
+[ext_resource type="Texture2D" uid="uid://dou8unl7cgc0j" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/green_bottle/01.png" id="2_o8twv"]
+[ext_resource type="Script" path="res://scenes/game/levels/objects/power_up/power_up_item.gd" id="3_mf2po"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1tywt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_awoxm")
+}],
+"loop": false,
+"name": &"blue_potion",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_o8twv")
+}],
+"loop": false,
+"name": &"green_bottle",
+"speed": 5.0
+}]
+
+[node name="PowerUpItem" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_1tywt")
+animation = &"green_bottle"
+script = ExtResource("3_mf2po")
