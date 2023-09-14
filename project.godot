@@ -22,8 +22,8 @@ SceneTransition="*res://scenes/game/transitions/scene_transition.tscn"
 HealthDashboard="*res://scenes/game/ui/health_dashboard/health_dashboard.tscn"
 MainMenu="*res://scenes/game/ui/main_menu/main_menu.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
-InventoryCanvas="*res://scenes/game/inventory/canvas/inventory_canvas.tscn"
 CustomDialogue="*res://scenes/game/dialogues/manager/custom_dialogue.gd"
+InventoryCanvas="*res://scenes/game/inventory/canvas/inventory_canvas.tscn"
 
 [display]
 
@@ -68,6 +68,11 @@ wheel_up={
 wheel_down={
 "deadzone": 0.5,
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":5,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
+clic={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
 }
 

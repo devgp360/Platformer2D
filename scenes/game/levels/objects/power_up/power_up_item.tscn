@@ -52,7 +52,7 @@ font = ExtResource("4_cefjb")
 font_size = 36
 font_color = Color(0, 0, 0, 1)
 
-[node name="Node2D" type="Node2D"]
+[node name="PowerUpItem" type="Node2D"]
 position = Vector2(3, 4)
 scale = Vector2(0.8, 0.8)
 script = ExtResource("3_mf2po")

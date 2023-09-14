@@ -29,13 +29,13 @@ func _unhandled_input(event):
 	if not _is_active:
 		return # Si el puntero no está sobre el item, terminamos la función
 	# Si hacemos clic, mostramos el diálogo de confirmación
-	if event is InputEventMouseButton and event.is_released():
+	if event is InputEventMouseButton and event.is_action_released("clic"):
 		_confirm.show()
 
 
 # Mostramos el diálogo
 func _show_dialogue():
-	var _resource = _dialogues[animation]
+	var _resource = _dialogues[animation.animation]
 	var _instance = load(_resource)
 	var _dialogue = CustomDialogue.create_and_show_dialogue(_instance)
 	_dialogue.on_dialogue_ended(_on_dialogue_ended)
@@ -45,7 +45,6 @@ func _show_dialogue():
 func _on_dialogue_ended():
 	# Restamos el item del inventario
 	InventoryCanvas.remove_item_by_name(animation.animation)
-
 
 # Actualizamos la cantidad disponible
 func set_num(_num: String):
@@ -72,7 +71,10 @@ func _on_cancel_pressed():
 	_confirm.hide()
 
 
+# Cuando se presiona el botón "aceptar"
 func _on_accept_pressed():
+	_confirm.hide()
+	InventoryCanvas.show_inventory(false)
 	_show_dialogue()
 
 

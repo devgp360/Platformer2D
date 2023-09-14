@@ -39,6 +39,7 @@ func _on_area_body_entered(body):
 func _pick_up():
 	# Sumar items de inventario
 	InventoryCanvas.add_item_by_name(animation)
+	# Hacer animación y eliminar el item de la escena
 	play("pick_up")
 	await animation_finished
 	_move.set_disabled(false)

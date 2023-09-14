@@ -139,3 +139,8 @@ func remove_all_items():
 # Retorna un listado de "nombres" de items que están en inventario
 func get_item_list_names():
 	return _item_object_names
+
+
+func show_inventory(show: bool):
+	canvas.visible = show
+	get_tree().paused = show
