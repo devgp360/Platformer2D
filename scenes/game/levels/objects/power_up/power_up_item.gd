@@ -35,7 +35,7 @@ func _unhandled_input(event):
 
 
 # Mostramos el diálogo
-func show_dialogue():
+func _show_dialogue():
 	var _resource = _dialogues[animation]
 	var _instance = load(_resource)
 	var _dialogue = CustomDialogue.create_and_show_dialogue(_instance)
@@ -44,7 +44,8 @@ func show_dialogue():
 
 # Escuchamos cuando termina el diálogo
 func _on_dialogue_ended():
-	pass
+	# Restamos el item del inventario
+	InventoryCanvas.remove_item_by_name(animation.animation)
 
 
 # Actualizamos la cantidad disponible
@@ -70,6 +71,10 @@ func _on_area_mouse_exited():
 # Cuando se presiona el botón "cancelar"
 func _on_cancel_pressed():
 	_confirm.hide()
+
+
+func _on_accept_pressed():
+	_show_dialogue()
 
 
 # Obtenemos la nombre del objeto
