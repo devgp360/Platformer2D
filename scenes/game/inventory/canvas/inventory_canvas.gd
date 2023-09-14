@@ -44,12 +44,6 @@ func _unhandled_input(event):
 	# Si estamos en las escenas definidas no mostramos Inventario
 	if scenes.find(actual_scene,0) > -1:
 		return
-		
-	if event.is_action_pressed("bomb"):
-		add_item_by_name("power_up/power_up_item")
-	
-	if event.is_action_pressed("hit"):
-		_remove_item_by_name("power_up/power_up_item")
 
 	if event.is_action_pressed("wheel_up"):
 		# Cuando deslizamos la rueda del ratón hacia arriba, ocultamos el inventario
@@ -70,12 +64,16 @@ func _unhandled_input(event):
 # Función que añade un item al inventario
 # Añadir significa, cargar un elemento (escena) y agregarlo al grid
 # El nombre del item, tiene que existir como una escena
-func add_item_by_name(_name: String, params = null):
+# Ejemplo del nombre: power_up/power_up_item
+func add_item_by_name(_name: String):
 	# Si el item ya existe (ya está agregado), se termina la función
 	var index = _item_object_names.find(_name)
 	if index >= 0:
+		# Obtenemos el numero disponible del objeto
 		var _num_available = _item_objects[index].get_num()
-		_num_available += 1 
+		# Sumamos uno
+		_num_available += 1
+		# Actualizamos nuevo número
 		var _num = _item_objects[index].set_num(str(_num_available))
 		return
 	
@@ -93,15 +91,13 @@ func add_item_by_name(_name: String, params = null):
 	item_content.add_child(item)
 	_item_object_names.append(_name);
 	_item_objects.append(item)
-	# Algunos objetos, pueden tener un método para agregarle parámetros
-	if item.has_method("add_params") and params:
-		item.add_params(_name, params) # Pasamos parámetros cuando creamos el objeto
 
 
 # Se elimina un elemento del iventario
 # Eliminar significa, buscar el "nodo" y eliminarlo del grid principal
 # Al eliminar el nodo, todos los demás nodos posteriores, se moverán "hacia atrás"
 # para evitar dejar "espacios vacíos"
+# Ejemplo del nombre: power_up/power_up_item
 func _remove_item_by_name(_name: String):
 	var index = _item_object_names.find(_name)
 	if index >= 0:
@@ -146,60 +142,3 @@ func remove_all_items():
 # Retorna un listado de "nombres" de items que están en inventario
 func get_item_list_names():
 	return _item_object_names
-
-
-# Función que servirá para seleccionar un item a usar (sobre otro item)
-func select_item_to_use(_name: String, select: bool):
-	# Quitar el item seleccionado
-	if not select and _current_item_selected:
-		_remove_selected_item()
-	# Si ya está seleccionado el item, solo terminamos la función
-	if _current_item_name_selected == _name:
-		return
-	# Cargamos el nuevo item
-	var item_to_load = load("res://scenes/game/inventory/items/" + _name + ".tscn")
-	if not item_to_load: # Si no existe el recurso, se termina la función
-		return
-	var escena = get_tree().get_root().get_node("Main")
-	if escena:
-		_remove_selected_item() # Removemos cualquier item que pueda existir previamente
-		var item = item_to_load.instantiate()
-		var index = _item_object_names.find(_name)
-		var params = null
-		if _item_objects[index].has_method("get_params"):
-			params = _item_objects[index].get_params()
-		# Se deberá agregar el item a la escena (luego moverlo junto al mouse)
-		# - Falta implementación
-		escena.add_child(item)
-		_current_item_selected = item
-		_current_item_name_selected = _name
-		# Agregamos los parámetros del item (si tiene)
-		if item.has_method("add_params") and params:
-			item.add_params(_name, params)
-		if item.has_method("set_item_selected"):
-			item.set_item_selected()
-
-
-# Se remueve "la selección" de un item de inventario
-func _remove_selected_item():
-	if _current_item_selected:
-		var escena = get_tree().get_root().get_node("Main")
-		if escena:
-			escena.remove_child(_current_item_selected)
-		_current_item_selected.queue_free() # Liberamos la memoria
-		_current_item_selected = null
-		_current_item_name_selected = ""
-
-
-# Procesamos un item seleccionado
-# Consiste en mostrar el objeto (junto al puntero del ratón) y moverlo en las mismas coordenadas
-func _process_item_selected():
-	if not _current_item_selected:
-		return
-	# Falta implementar la funcionalidad de mover objeto junto al puntero
-	_current_item_selected.position = get_global_mouse_position()
-
-
-# Retorna el nombre del objeto actualmente seleccionado
-func get_current_item_name_selected():
-	return _current_item_name_selected
