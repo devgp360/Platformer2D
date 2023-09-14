@@ -407,6 +407,7 @@ sprite_frames = SubResource("SpriteFrames_cwldb")
 animation = &"fall"
 
 [node name="EffectsSword" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.545098, 0.768627, 0.392157, 1)
 z_index = 2
 position = Vector2(32, -1)
 sprite_frames = SubResource("SpriteFrames_isfec")
