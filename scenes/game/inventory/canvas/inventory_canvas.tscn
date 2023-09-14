@@ -16,7 +16,7 @@
 line_spacing = 0.0
 font = ExtResource("5_2kt7l")
 font_size = 8
-font_color = Color(0.199219, 0.195313, 0.238281, 1)
+font_color = Color(0.2, 0.196078, 0.239216, 1)
 
 [sub_resource type="Animation" id="Animation_0parn"]
 resource_name = "down"
@@ -60,6 +60,7 @@ script = ExtResource("1_to3co")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
