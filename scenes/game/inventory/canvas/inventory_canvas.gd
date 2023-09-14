@@ -78,7 +78,7 @@ func add_item_by_name(_name: String):
 		return
 	
 	# Cargamos el recurso
-	var item_to_load = load("res://scenes/game/levels/objects/" + _name + ".tscn")
+	var item_to_load = load("res://scenes/game/levels/objects/power_up/power_up_item.tscn")
 	
 	# Si no existe el recurso, se termina la función
 	if not item_to_load:
@@ -87,6 +87,7 @@ func add_item_by_name(_name: String):
 	# Agregamos el item al grid, y guardamos las referencias (para poder eliminarlo si es requerido)
 	index = _item_object_names.size()
 	var item = item_to_load.instantiate()
+	item.
 	var item_content = _item_contents[index]
 	item_content.add_child(item)
 	_item_object_names.append(_name);

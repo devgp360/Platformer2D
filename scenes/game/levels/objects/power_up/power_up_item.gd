@@ -34,3 +34,8 @@ func set_num(_num: String):
 # Obtenemos la cantidad disponible
 func get_num():
 	return int(canvas.text)
+	
+
+# Obtenemos la nombre del objeto
+func set_animation():
+	return animation
