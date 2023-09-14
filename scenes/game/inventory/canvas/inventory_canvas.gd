@@ -10,12 +10,8 @@ var _item_contents = []
 var _item_object_names = []
 # Referencia de los items
 var _item_objects = []
-# Referencia de items que está usando (vistiendo) el personaje
-var _dressed_item_list = []
 # "Objeto" seleccionado
 var _current_item_selected = null
-# Nombre del objeto seleccionado
-var _current_item_name_selected = ""
 
 @onready var canvas = $CanvasLayer # Canvas principal
 @onready var animation_player = $CanvasLayer/AnimationPlayer # Player

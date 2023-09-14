@@ -22,7 +22,6 @@ var _dialogues = {
 # Función de inicialización
 func _ready():
 	canvas.text = num
-	HealthDashboard.visible = false
 
 
 # Función para detectar eventos de teclado y ratón

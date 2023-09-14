@@ -37,11 +37,11 @@ func _on_area_body_entered(body):
 
 # Al recoger el objeto, hacemos animación de recoger, y al terminar activamos el personaje y liberamos memoria
 func _pick_up():
+	# Sumar items de inventario
+	InventoryCanvas.add_item_by_name(animation)
 	play("pick_up")
 	await animation_finished
 	_move.set_disabled(false)
-	# Sumar items de inventario
-	InventoryCanvas.add_item_by_name(animation)
 	queue_free()
 
 
