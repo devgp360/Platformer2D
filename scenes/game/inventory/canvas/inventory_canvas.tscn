@@ -73,8 +73,8 @@ color = Color(0.317647, 0.317647, 0.317647, 0.529412)
 [node name="Inventory" type="Node2D" parent="CanvasLayer"]
 
 [node name="Title" type="Node2D" parent="CanvasLayer/Inventory"]
-position = Vector2(369, 153)
-scale = Vector2(3, 3)
+position = Vector2(309, 105)
+scale = Vector2(4, 4)
 
 [node name="BgLeft" type="TextureRect" parent="CanvasLayer/Inventory/Title"]
 offset_left = 0.599995
@@ -114,8 +114,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="GridBg" type="Node2D" parent="CanvasLayer/Inventory"]
-position = Vector2(396, 136)
-scale = Vector2(3, 3)
+position = Vector2(336, 88)
+scale = Vector2(4, 4)
 
 [node name="Line1" type="Node2D" parent="CanvasLayer/Inventory/GridBg"]
 
@@ -173,11 +173,11 @@ size_flags_vertical = 3
 texture = ExtResource("11_3am0h")
 
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer/Inventory"]
-offset_left = 474.0
-offset_top = 304.0
-offset_right = 542.0
-offset_bottom = 348.0
-scale = Vector2(3, 3)
+offset_left = 441.0
+offset_top = 293.0
+offset_right = 509.0
+offset_bottom = 337.0
+scale = Vector2(4, 4)
 columns = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
