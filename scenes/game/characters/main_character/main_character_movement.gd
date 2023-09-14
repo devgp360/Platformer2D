@@ -128,7 +128,8 @@ func _set_animation():
 		# Atacamos
 		attacking = true
 		main_animation.play(_movements.ATTACK)
-		_play_sword_effect("green_bottle")
+		# Agregamos el effecto especial
+		_play_sword_effect()
 	elif _current_movement == _movements.BOMB:
 		# Lanzamos bomba
 		bombing = true
@@ -251,12 +252,19 @@ func set_idle():
 	# Pausamos el sonido
 	audio_player.stop()
 	
-func _play_sword_effect(type: String):
+func _play_sword_effect():
+	# Obtenems que efecto tenemos activo
+	var type = Global.attack_effect
 	if type == "blue_potion":
+		# Aplicamos el efecto blue_potion
 		effect_animation_sword.self_modulate = Color("#70a2ff")
 	elif type == "green_bottle":
+		# Aplicamos el efecto green_bottle
 		effect_animation_sword.self_modulate = Color("#80b65a")
-	print(effect_animation_sword.self_modulate)
+	else:
+		# Aplicamos el efecto predefinido
+		effect_animation_sword.self_modulate = Color("#ffffff")
 	
+	# Reproducimos el efecto de la espada
 	effect_animation_sword.play("attack_2_effect")
 
