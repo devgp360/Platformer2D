@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgvbhi1w2n47v"]
+
+[ext_resource type="Texture2D" uid="uid://ch20adx6uqc22" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/red_potion/01.png" id="1_bx3qk"]
+[ext_resource type="FontFile" uid="uid://dregmkvncw55k" path="res://assets/fonts/press_Sstart_2p/PressStart2P-Regular.ttf" id="2_faigv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_leqvu"]
+font = ExtResource("2_faigv")
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+outline_size = 15
+
+[node name="Node2D" type="Node2D"]
+scale = Vector2(0.135, 0.135)
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(10, 10)
+offset_left = 48.0
+offset_top = 8.0
+offset_right = 138.0
+offset_bottom = 53.0
+text = "1"
+label_settings = SubResource("LabelSettings_leqvu")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+clip_contents = true
+offset_top = -15.0
+offset_right = 150.0
+offset_bottom = 135.0
+texture = ExtResource("1_bx3qk")

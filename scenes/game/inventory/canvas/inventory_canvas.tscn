@@ -1,0 +1,186 @@
+[gd_scene load_steps=16 format=3 uid="uid://d16s24mx1b377"]
+
+[ext_resource type="Script" path="res://scenes/game/inventory/canvas/inventory_canvas.gd" id="1_to3co"]
+[ext_resource type="Texture2D" uid="uid://dn6domd0ovhte" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/small_banner/1.png" id="2_w22ss"]
+[ext_resource type="Texture2D" uid="uid://dt53yhevvkq5a" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/small_banner/13.png" id="3_qfgcj"]
+[ext_resource type="Texture2D" uid="uid://cnlkngnu8ksil" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/small_banner/2.png" id="4_syws5"]
+[ext_resource type="FontFile" uid="uid://dregmkvncw55k" path="res://assets/fonts/press_Sstart_2p/PressStart2P-Regular.ttf" id="5_2kt7l"]
+[ext_resource type="Texture2D" uid="uid://bd0e5ecx23ihe" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/inventory/1.png" id="6_1srke"]
+[ext_resource type="Texture2D" uid="uid://ccmloibkkql76" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/inventory/2.png" id="7_v6q50"]
+[ext_resource type="Texture2D" uid="uid://bxf5k8l6xh7wh" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/inventory/3.png" id="8_i4g6r"]
+[ext_resource type="Texture2D" uid="uid://m5k1j7rvin8i" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/inventory/7.png" id="9_r1b02"]
+[ext_resource type="Texture2D" uid="uid://j5m0fpx06ael" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/inventory/8.png" id="10_7nh16"]
+[ext_resource type="Texture2D" uid="uid://cpnd0mbm13mq8" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/inventory/9.png" id="11_3am0h"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4rbqr"]
+line_spacing = 0.0
+font = ExtResource("5_2kt7l")
+font_size = 8
+font_color = Color(0.199219, 0.195313, 0.238281, 1)
+
+[sub_resource type="Animation" id="Animation_0parn"]
+resource_name = "down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Inventory:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -110), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uvcw2"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Inventory:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c00y8"]
+_data = {
+"RESET": SubResource("Animation_uvcw2"),
+"down": SubResource("Animation_0parn")
+}
+
+[node name="InventoryCanvas" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_to3co")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.317647, 0.317647, 0.317647, 0.529412)
+
+[node name="Inventory" type="Node2D" parent="CanvasLayer"]
+
+[node name="Title" type="Node2D" parent="CanvasLayer/Inventory"]
+position = Vector2(369, 137)
+scale = Vector2(3, 3)
+
+[node name="BgLeft" type="TextureRect" parent="CanvasLayer/Inventory/Title"]
+offset_left = 0.599995
+offset_right = 40.6
+offset_bottom = 40.0
+texture = ExtResource("2_w22ss")
+
+[node name="BgCenter" type="TextureRect" parent="CanvasLayer/Inventory/Title"]
+offset_left = 40.6
+offset_top = -0.4
+offset_right = 80.6
+offset_bottom = 39.6
+texture = ExtResource("3_qfgcj")
+
+[node name="BgCenter2" type="TextureRect" parent="CanvasLayer/Inventory/Title"]
+offset_left = 65.6
+offset_top = -0.4
+offset_right = 105.6
+offset_bottom = 39.6
+texture = ExtResource("3_qfgcj")
+
+[node name="BgRight" type="TextureRect" parent="CanvasLayer/Inventory/Title"]
+offset_left = 95.6
+offset_top = -0.4
+offset_right = 135.6
+offset_bottom = 39.6
+texture = ExtResource("4_syws5")
+
+[node name="Label" type="Label" parent="CanvasLayer/Inventory/Title"]
+offset_left = 27.6
+offset_top = 10.6
+offset_right = 107.6
+offset_bottom = 27.6
+text = "Inventario"
+label_settings = SubResource("LabelSettings_4rbqr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridBg" type="Node2D" parent="CanvasLayer/Inventory"]
+position = Vector2(396, 152)
+scale = Vector2(3, 3)
+
+[node name="Line1" type="Node2D" parent="CanvasLayer/Inventory/GridBg"]
+
+[node name="TextureLeft" type="TextureRect" parent="CanvasLayer/Inventory/GridBg/Line1"]
+offset_left = 17.0
+offset_top = 40.0
+offset_right = 55.0
+offset_bottom = 82.0
+texture = ExtResource("6_1srke")
+
+[node name="TextureCenter" type="TextureRect" parent="CanvasLayer/Inventory/GridBg/Line1"]
+offset_left = 41.0
+offset_top = 40.0
+offset_right = 79.0
+offset_bottom = 82.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("7_v6q50")
+
+[node name="TextureRight" type="TextureRect" parent="CanvasLayer/Inventory/GridBg/Line1"]
+offset_left = 65.0
+offset_top = 40.0
+offset_right = 103.0
+offset_bottom = 82.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("8_i4g6r")
+
+[node name="Line2" type="Node2D" parent="CanvasLayer/Inventory/GridBg"]
+position = Vector2(0, 24)
+
+[node name="TextureLeft" type="TextureRect" parent="CanvasLayer/Inventory/GridBg/Line2"]
+offset_left = 17.0
+offset_top = 40.0
+offset_right = 55.0
+offset_bottom = 82.0
+texture = ExtResource("9_r1b02")
+
+[node name="TextureCenter" type="TextureRect" parent="CanvasLayer/Inventory/GridBg/Line2"]
+offset_left = 41.0
+offset_top = 40.0
+offset_right = 79.0
+offset_bottom = 82.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("10_7nh16")
+
+[node name="TextureRight" type="TextureRect" parent="CanvasLayer/Inventory/GridBg/Line2"]
+offset_left = 65.0
+offset_top = 40.0
+offset_right = 103.0
+offset_bottom = 82.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("11_3am0h")
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Inventory"]
+offset_left = 474.0
+offset_top = 304.0
+offset_right = 542.0
+offset_bottom = 348.0
+scale = Vector2(3, 3)
+columns = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+libraries = {
+"": SubResource("AnimationLibrary_c00y8")
+}
