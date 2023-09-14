@@ -8,6 +8,7 @@ extends Node2D
 
 @export var character: CharacterBody2D # Referencia al personaje a mover
 @export var main_animation: AnimatedSprite2D # Referencia al sprite del personaje
+@export var effect_animation_sword: AnimatedSprite2D # Referencia al sprite del personaje
 @export var audio_player: AudioStreamPlayer2D # Reproductor de audios
 @onready var _collision := $"../AreaSword/CollisionShape2D" # Colicionador de espada
 
@@ -127,6 +128,7 @@ func _set_animation():
 		# Atacamos
 		attacking = true
 		main_animation.play(_movements.ATTACK)
+		_play_sword_effect("blue_potion")
 	elif _current_movement == _movements.BOMB:
 		# Lanzamos bomba
 		bombing = true
@@ -248,3 +250,16 @@ func set_idle():
 	main_animation.play(_movements.IDLE_WITH_SWORD)
 	# Pausamos el sonido
 	audio_player.stop()
+	
+func _play_sword_effect(type: String):
+	if type == "blue_potion":
+		effect_animation_sword.modulate.r = 13
+		effect_animation_sword.modulate.g = 105
+		effect_animation_sword.modulate.b = 161
+	elif type == "green_bottle":
+		effect_animation_sword.modulate.r = 35
+		effect_animation_sword.modulate.g = 108
+		effect_animation_sword.modulate.b = 0
+		
+	effect_animation_sword.play("attack_2_effect")
+
