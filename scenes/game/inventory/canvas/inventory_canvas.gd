@@ -47,6 +47,9 @@ func _unhandled_input(event):
 		
 	if event.is_action_pressed("bomb"):
 		add_item_by_name("power_up/power_up_item")
+	
+	if event.is_action_pressed("hit"):
+		_remove_item_by_name("power_up/power_up_item")
 
 	if event.is_action_pressed("wheel_up"):
 		# Cuando deslizamos la rueda del ratón hacia arriba, ocultamos el inventario
@@ -104,27 +107,33 @@ func _remove_item_by_name(_name: String):
 	if index >= 0:
 		var item_content = _item_contents[index] # Nodo que es un "cuadro" contenedor del item recolectado
 		var item = _item_objects[index] # Nodo que tiene el item recolectado
-		
-		# Removemos el nodo del item
-		item_content.remove_child(item)
-		item.queue_free(); # Liberamos memoria (porque no lo vamos a volver a usar)
-		
-		# Movemos todos los items "hacia atrás" para que ocupen el espacio vacío
-		var size = _item_objects.size()
-		for n in range(index, size - 1):
-			var current_content = _item_contents[n]
-			var next_content = _item_contents[n + 1]
-			var next_item = _item_objects[n + 1];
-			# Removemos el item "next_item" (pero no liberamos memoria)
-			next_content.remove_child(next_item);
-			# El item removido anteriormente, se reutiliza (agrega) en otro nodo
-			current_content.add_child(next_item);
-		
-		# Quitamos el nombre del listado de "nombres de items"
-		_item_object_names.remove_at(index)
-		
-		# Quitamos el nodo, del listado de nodos tipo item
-		_item_objects.remove_at(index)
+		# Ajustamos la cantidad disponible
+		var _num_available = _item_objects[index].get_num()
+		_num_available -= 1 
+		if _num_available > 0:
+			var _num = _item_objects[index].set_num(str(_num_available))
+			return
+		else:
+			# Removemos el nodo del item
+			item_content.remove_child(item)
+			item.queue_free(); # Liberamos memoria (porque no lo vamos a volver a usar)
+			
+			# Movemos todos los items "hacia atrás" para que ocupen el espacio vacío
+			var size = _item_objects.size()
+			for n in range(index, size - 1):
+				var current_content = _item_contents[n]
+				var next_content = _item_contents[n + 1]
+				var next_item = _item_objects[n + 1];
+				# Removemos el item "next_item" (pero no liberamos memoria)
+				next_content.remove_child(next_item);
+				# El item removido anteriormente, se reutiliza (agrega) en otro nodo
+				current_content.add_child(next_item);
+			
+			# Quitamos el nombre del listado de "nombres de items"
+			_item_object_names.remove_at(index)
+			
+			# Quitamos el nodo, del listado de nodos tipo item
+			_item_objects.remove_at(index)
 
 
 # Elimina todos los elementos del inventario
