@@ -80,6 +80,8 @@ position = Vector2(9.375, 6.25)
 shape = SubResource("RectangleShape2D_hx47d")
 
 [node name="CanvasConfirm" type="CanvasLayer" parent="."]
+layer = 3
+visible = false
 
 [node name="Background" type="ColorRect" parent="CanvasConfirm"]
 anchors_preset = 15
