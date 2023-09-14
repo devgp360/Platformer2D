@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://5ufjafjgartt"]
+[gd_scene load_steps=14 format=3 uid="uid://5ufjafjgartt"]
 
 [ext_resource type="Texture2D" uid="uid://duouw1jyvfj1w" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/blue_potion/01.png" id="1_awoxm"]
 [ext_resource type="Texture2D" uid="uid://dou8unl7cgc0j" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/green_bottle/01.png" id="2_o8twv"]
 [ext_resource type="Script" path="res://scenes/game/levels/objects/power_up/power_up_item.gd" id="3_mf2po"]
 [ext_resource type="FontFile" uid="uid://dregmkvncw55k" path="res://assets/fonts/press_Sstart_2p/PressStart2P-Regular.ttf" id="4_cefjb"]
+[ext_resource type="Texture2D" uid="uid://c14r6y1np720t" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/prefabs/2.png" id="5_3dqv6"]
+[ext_resource type="Texture2D" uid="uid://bbumqrqn70p0d" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/prefabs/8.png" id="6_x3rwv"]
+[ext_resource type="Texture2D" uid="uid://pcqim5waj7yv" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/yellow_button/1.png" id="7_k0vpq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1tywt"]
 animations = [{
@@ -31,6 +34,24 @@ font_size = 8
 font_color = Color(0, 0, 0, 1)
 outline_size = 3
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hx47d"]
+size = Vector2(23.75, 22.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_y7quu"]
+font = ExtResource("4_cefjb")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uuejc"]
+font = ExtResource("4_cefjb")
+font_size = 40
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_oxnwf"]
+font = ExtResource("4_cefjb")
+font_size = 36
+font_color = Color(0, 0, 0, 1)
+
 [node name="Node2D" type="Node2D"]
 position = Vector2(3, 4)
 scale = Vector2(0.8, 0.8)
@@ -51,3 +72,106 @@ text = "1"
 label_settings = SubResource("LabelSettings_fdxjo")
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="Area" type="Area2D" parent="."]
+
+[node name="CollisionShape" type="CollisionShape2D" parent="Area"]
+position = Vector2(9.375, 6.25)
+shape = SubResource("RectangleShape2D_hx47d")
+
+[node name="CanvasConfirm" type="CanvasLayer" parent="."]
+
+[node name="Background" type="ColorRect" parent="CanvasConfirm"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.490196)
+
+[node name="Container" type="TextureRect" parent="CanvasConfirm/Background"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -309.0
+offset_top = 150.0
+offset_right = 302.0
+offset_bottom = 532.0
+grow_horizontal = 2
+texture = ExtResource("5_3dqv6")
+
+[node name="Text" type="TextureRect" parent="CanvasConfirm/Background/Container"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -272.5
+offset_top = 32.0
+offset_right = 287.5
+offset_bottom = 236.0
+grow_horizontal = 2
+texture = ExtResource("6_x3rwv")
+
+[node name="Label" type="Label" parent="CanvasConfirm/Background/Container/Text"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -198.0
+offset_top = 82.0
+offset_right = 183.0
+offset_bottom = 128.0
+grow_horizontal = 2
+text = "¿Usar item?"
+label_settings = SubResource("LabelSettings_y7quu")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Accept" type="TextureButton" parent="CanvasConfirm/Background/Container"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 89.5
+offset_top = 260.0
+offset_right = 149.5
+offset_bottom = 320.0
+grow_horizontal = 2
+texture_normal = ExtResource("7_k0vpq")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="CanvasConfirm/Background/Container/Accept"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 3.0
+offset_right = 54.0
+offset_bottom = 54.0
+text = "✓"
+label_settings = SubResource("LabelSettings_uuejc")
+
+[node name="Cancel" type="TextureButton" parent="CanvasConfirm/Background/Container"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 161.5
+offset_top = 260.0
+offset_right = 221.5
+offset_bottom = 320.0
+grow_horizontal = 2
+texture_normal = ExtResource("7_k0vpq")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="CanvasConfirm/Background/Container/Cancel"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 4.0
+offset_right = 57.0
+offset_bottom = 55.0
+text = "✗"
+label_settings = SubResource("LabelSettings_oxnwf")
+
+[connection signal="mouse_entered" from="Area" to="." method="_on_area_mouse_entered"]
+[connection signal="mouse_exited" from="Area" to="." method="_on_area_mouse_exited"]
+[connection signal="pressed" from="CanvasConfirm/Background/Container/Cancel" to="." method="_on_cancel_pressed"]

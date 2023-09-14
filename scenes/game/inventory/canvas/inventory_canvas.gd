@@ -44,7 +44,7 @@ func _unhandled_input(event):
 	# Si estamos en las escenas definidas no mostramos Inventario
 	if scenes.find(actual_scene,0) > -1:
 		return
-
+	
 	if event.is_action_pressed("wheel_up"):
 		# Cuando deslizamos la rueda del ratón hacia arriba, ocultamos el inventario
 		animation_player.play_backwards("down")
@@ -64,7 +64,7 @@ func _unhandled_input(event):
 # Función que añade un item al inventario
 # Añadir significa, cargar un elemento (escena) y agregarlo al grid
 # El nombre del item, tiene que existir como una escena
-# Ejemplo del nombre: power_up/power_up_item
+# Ejemplo del nombre: blue_potion o green_bottle
 func add_item_by_name(_name: String):
 	# Si el item ya existe (ya está agregado), se termina la función
 	var index = _item_object_names.find(_name)
@@ -87,9 +87,9 @@ func add_item_by_name(_name: String):
 	# Agregamos el item al grid, y guardamos las referencias (para poder eliminarlo si es requerido)
 	index = _item_object_names.size()
 	var item = item_to_load.instantiate()
-	item.
 	var item_content = _item_contents[index]
 	item_content.add_child(item)
+	item.set_animation(_name)
 	_item_object_names.append(_name);
 	_item_objects.append(item)
 
@@ -98,8 +98,8 @@ func add_item_by_name(_name: String):
 # Eliminar significa, buscar el "nodo" y eliminarlo del grid principal
 # Al eliminar el nodo, todos los demás nodos posteriores, se moverán "hacia atrás"
 # para evitar dejar "espacios vacíos"
-# Ejemplo del nombre: power_up/power_up_item
-func _remove_item_by_name(_name: String):
+# Ejemplo del nombre: blue_potion o green_bottle
+func remove_item_by_name(_name: String):
 	var index = _item_object_names.find(_name)
 	if index >= 0:
 		var item_content = _item_contents[index] # Nodo que es un "cuadro" contenedor del item recolectado
@@ -137,7 +137,7 @@ func _remove_item_by_name(_name: String):
 func remove_all_items():
 	var size = _item_object_names.size()
 	for i in size:
-		_remove_item_by_name(_item_object_names[size - i - 1])
+		remove_item_by_name(_item_object_names[size - i - 1])
 
 
 # Retorna un listado de "nombres" de items que están en inventario

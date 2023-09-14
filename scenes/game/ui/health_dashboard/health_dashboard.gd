@@ -35,6 +35,11 @@ var _index_number_0 = 17
 @onready var bomb_group = $LifeBar/Bomb
 
 
+# Función de inicialización
+func _ready():
+	self.visible = false
+
+
 # Agrega vida del personaje principal, según el valor proporcionado
 func add_life(value: int):
 	life += value
