@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dgvbhi1w2n47v"]
+
+[node name="MarginContainer" type="MarginContainer"]
+custom_minimum_size = Vector2(20, 20)
+offset_right = 40.0
+offset_bottom = 40.0
