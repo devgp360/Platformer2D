@@ -59,7 +59,6 @@ process_mode = 3
 script = ExtResource("1_to3co")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
@@ -74,7 +73,7 @@ color = Color(0.317647, 0.317647, 0.317647, 0.529412)
 [node name="Inventory" type="Node2D" parent="CanvasLayer"]
 
 [node name="Title" type="Node2D" parent="CanvasLayer/Inventory"]
-position = Vector2(369, 137)
+position = Vector2(369, 153)
 scale = Vector2(3, 3)
 
 [node name="BgLeft" type="TextureRect" parent="CanvasLayer/Inventory/Title"]
@@ -115,7 +114,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="GridBg" type="Node2D" parent="CanvasLayer/Inventory"]
-position = Vector2(396, 152)
+position = Vector2(396, 136)
 scale = Vector2(3, 3)
 
 [node name="Line1" type="Node2D" parent="CanvasLayer/Inventory/GridBg"]

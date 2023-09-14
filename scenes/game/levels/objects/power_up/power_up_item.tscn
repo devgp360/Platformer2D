@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://5ufjafjgartt"]
+[gd_scene load_steps=7 format=3 uid="uid://5ufjafjgartt"]
 
 [ext_resource type="Texture2D" uid="uid://duouw1jyvfj1w" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/blue_potion/01.png" id="1_awoxm"]
 [ext_resource type="Texture2D" uid="uid://dou8unl7cgc0j" path="res://assets/sprites/treasure_hunters/pirate_treasure/sprites/green_bottle/01.png" id="2_o8twv"]
 [ext_resource type="Script" path="res://scenes/game/levels/objects/power_up/power_up_item.gd" id="3_mf2po"]
+[ext_resource type="FontFile" uid="uid://dregmkvncw55k" path="res://assets/fonts/press_Sstart_2p/PressStart2P-Regular.ttf" id="4_cefjb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1tywt"]
 animations = [{
@@ -23,8 +24,29 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="PowerUpItem" type="AnimatedSprite2D"]
+[sub_resource type="LabelSettings" id="LabelSettings_fdxjo"]
+line_spacing = 1.0
+font = ExtResource("4_cefjb")
+font_size = 6
+font_color = Color(0, 0, 0, 1)
+outline_size = 3
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(3, -1)
+scale = Vector2(0.8, 0.8)
+script = ExtResource("3_mf2po")
+
+[node name="PowerUpItem" type="AnimatedSprite2D" parent="."]
 position = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_1tywt")
 animation = &"green_bottle"
-script = ExtResource("3_mf2po")
+
+[node name="Num" type="Label" parent="."]
+offset_left = -3.75
+offset_top = -3.75
+offset_right = 20.25
+offset_bottom = 5.25
+text = "1"
+label_settings = SubResource("LabelSettings_fdxjo")
+horizontal_alignment = 2
+vertical_alignment = 1

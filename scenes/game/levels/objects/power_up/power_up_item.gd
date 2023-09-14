@@ -1,5 +1,9 @@
-extends AnimatedSprite2D
+extends Node2D
 
+
+@export var num = "1" # Numero de conteo
+@onready var canvas = $Num # Contador
+@onready var animation = $PowerUpItem # Animación
 
 # Mapeo de animación y diálogos
 var _dialogues = {
@@ -7,6 +11,9 @@ var _dialogues = {
 	"green_bottle": "res://scenes/game/dialogues/dialogues/power_up/green_bottle_item.dialogue",
 }
 
+
+func _ready():
+	canvas.text = num
 
 # Mostramos el diálogo
 func show_dialogue():
@@ -19,3 +26,11 @@ func show_dialogue():
 # Escuchamos cuando termina el diálogo
 func _on_dialogue_ended():
 	pass
+	
+# Actualizamos la cantidad disponible
+func set_num(_num: String):
+	canvas.text = _num
+	
+# Obtenemos la cantidad disponible
+func get_num():
+	return int(canvas.text)

@@ -44,6 +44,9 @@ func _unhandled_input(event):
 	# Si estamos en las escenas definidas no mostramos Inventario
 	if scenes.find(actual_scene,0) > -1:
 		return
+		
+	if event.is_action_pressed("bomb"):
+		add_item_by_name("power_up/power_up_item")
 
 	if event.is_action_pressed("wheel_up"):
 		# Cuando deslizamos la rueda del ratón hacia arriba, ocultamos el inventario
@@ -68,11 +71,13 @@ func add_item_by_name(_name: String, params = null):
 	# Si el item ya existe (ya está agregado), se termina la función
 	var index = _item_object_names.find(_name)
 	if index >= 0:
-		_item_object_names[index].find_node()
+		var _num_available = _item_objects[index].get_num()
+		_num_available += 1 
+		var _num = _item_objects[index].set_num(str(_num_available))
 		return
 	
 	# Cargamos el recurso
-	var item_to_load = load("res://scenes/game/inventory/items/" + _name + ".tscn")
+	var item_to_load = load("res://scenes/game/levels/objects/" + _name + ".tscn")
 	
 	# Si no existe el recurso, se termina la función
 	if not item_to_load:
