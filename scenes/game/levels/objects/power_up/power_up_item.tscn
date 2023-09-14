@@ -176,4 +176,5 @@ label_settings = SubResource("LabelSettings_oxnwf")
 
 [connection signal="mouse_entered" from="Area" to="." method="_on_area_mouse_entered"]
 [connection signal="mouse_exited" from="Area" to="." method="_on_area_mouse_exited"]
+[connection signal="pressed" from="CanvasConfirm/Background/Container/Accept" to="." method="_on_accept_pressed"]
 [connection signal="pressed" from="CanvasConfirm/Background/Container/Cancel" to="." method="_on_cancel_pressed"]
