@@ -128,7 +128,7 @@ func _set_animation():
 		# Atacamos
 		attacking = true
 		main_animation.play(_movements.ATTACK)
-		_play_sword_effect("blue_potion")
+		_play_sword_effect("green_bottle")
 	elif _current_movement == _movements.BOMB:
 		# Lanzamos bomba
 		bombing = true
@@ -253,13 +253,10 @@ func set_idle():
 	
 func _play_sword_effect(type: String):
 	if type == "blue_potion":
-		effect_animation_sword.modulate.r = 13
-		effect_animation_sword.modulate.g = 105
-		effect_animation_sword.modulate.b = 161
+		effect_animation_sword.self_modulate = Color("#70a2ff")
 	elif type == "green_bottle":
-		effect_animation_sword.modulate.r = 35
-		effect_animation_sword.modulate.g = 108
-		effect_animation_sword.modulate.b = 0
-		
+		effect_animation_sword.self_modulate = Color("#80b65a")
+	print(effect_animation_sword.self_modulate)
+	
 	effect_animation_sword.play("attack_2_effect")
 
