@@ -35,6 +35,7 @@ func _on_area_body_entered(body):
 		_move.set_idle()
 
 
+# Al recoger el objeto, hacemos animación de recoger, y al terminar activamos el personaje y liberamos memoria
 func _pick_up():
 	play("pick_up")
 	await animation_finished
@@ -42,5 +43,6 @@ func _pick_up():
 	queue_free()
 
 
+# Escuchamos cuando el diálogo terminte
 func _on_dialogue_ended():
 	_pick_up()
