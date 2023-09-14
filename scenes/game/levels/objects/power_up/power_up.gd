@@ -40,6 +40,7 @@ func _pick_up():
 	play("pick_up")
 	await animation_finished
 	_move.set_disabled(false)
+	# Sumar items de inventario
 	InventoryCanvas.add_item_by_name(animation)
 	queue_free()
 
