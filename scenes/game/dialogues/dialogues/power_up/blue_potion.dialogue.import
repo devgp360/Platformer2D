@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_8"
+type="Resource"
+uid="uid://bcx7uhgwte8ag"
+path="res://.godot/imported/blue_potion.dialogue-1c044d02f7fa15137c7d3e224a41f281.tres"
+
+[deps]
+
+source_file="res://scenes/game/dialogues/dialogues/power_up/blue_potion.dialogue"
+dest_files=["res://.godot/imported/blue_potion.dialogue-1c044d02f7fa15137c7d3e224a41f281.tres"]
+
+[params]
+
+defaults=true

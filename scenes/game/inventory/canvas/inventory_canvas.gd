@@ -33,7 +33,6 @@ func _ready():
 		var item = load("res://scenes/game/inventory/item_content/item_content.tscn").instantiate()
 		grid.add_child(item) # Agregamos el nodo "marco" a un grid
 		_item_contents.append(item) # Guardamos la referencia del nodo "marco" en un array
-		print(grid.get_child_count())
 
 
 # Función para detectar eventos del teclado o ratón

@@ -59,6 +59,7 @@ process_mode = 3
 script = ExtResource("1_to3co")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15

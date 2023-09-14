@@ -23,6 +23,7 @@ HealthDashboard="*res://scenes/game/ui/health_dashboard/health_dashboard.tscn"
 MainMenu="*res://scenes/game/ui/main_menu/main_menu.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 InventoryCanvas="*res://scenes/game/inventory/canvas/inventory_canvas.tscn"
+CustomDialogue="*res://scenes/game/dialogues/manager/custom_dialogue.gd"
 
 [display]
 
@@ -72,7 +73,7 @@ wheel_down={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://scenes/game/dialogues/dialogues/scene_2/scene_1.dialogue", "res://scenes/game/dialogues/dialogues/scene_2/scene_2.dialogue", "res://scenes/game/dialogues/dialogues/scene_1/scene_2.dialogue", "res://scenes/game/dialogues/dialogues/scene_1/scene_1.dialogue", "res://scenes/game/characters/npc/big_guy/shop_bomb.dialogue", "res://scenes/game/levels/areas/bomb_shop/dialogues/buy.dialogue", "res://scenes/game/dialogues/dialogues/bomb_shop/buy.dialogue", "res://scenes/game/dialogues/dialogues/bomb_shop/shop_bomb.dialogue", "res://scenes/game/dialogues/dialogues/bomb_shop/failed.dialogue", "res://scenes/game/dialogues/dialogues/bomb_shop/success.dialogue")
+locale/translations_pot_files=PackedStringArray("res://scenes/game/dialogues/dialogues/scene_2/scene_1.dialogue", "res://scenes/game/dialogues/dialogues/scene_2/scene_2.dialogue", "res://scenes/game/dialogues/dialogues/scene_1/scene_2.dialogue", "res://scenes/game/dialogues/dialogues/scene_1/scene_1.dialogue", "res://scenes/game/characters/npc/big_guy/shop_bomb.dialogue", "res://scenes/game/levels/areas/bomb_shop/dialogues/buy.dialogue", "res://scenes/game/dialogues/dialogues/bomb_shop/buy.dialogue", "res://scenes/game/dialogues/dialogues/bomb_shop/shop_bomb.dialogue", "res://scenes/game/dialogues/dialogues/bomb_shop/failed.dialogue", "res://scenes/game/dialogues/dialogues/bomb_shop/success.dialogue", "res://scenes/game/dialogues/dialogues/power_up/blue_potion.dialogue", "res://scenes/game/dialogues/dialogues/power_up/green_bottle.dialogue", "res://scenes/game/dialogues/dialogues/power_up/blue_potion_item.dialogue", "res://scenes/game/dialogues/dialogues/power_up/green_bottle_item.dialogue")
 
 [rendering]
 

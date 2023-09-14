@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_8"
+type="Resource"
+uid="uid://b6po7bqm6u5rk"
+path="res://.godot/imported/green_bottle_item.dialogue-1ff14d5dbe8fc96e70278de3a0a05a77.tres"
+
+[deps]
+
+source_file="res://scenes/game/dialogues/dialogues/power_up/green_bottle_item.dialogue"
+dest_files=["res://.godot/imported/green_bottle_item.dialogue-1ff14d5dbe8fc96e70278de3a0a05a77.tres"]
+
+[params]
+
+defaults=true
