@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dhor7t5klwdwx"]
+[gd_scene load_steps=21 format=3 uid="uid://dhor7t5klwdwx"]
 
 [ext_resource type="Texture2D" uid="uid://cg6wkkuni8aq8" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/bg_image.png" id="1_a12cs"]
 [ext_resource type="TileSet" uid="uid://bx1rsqucrwm2i" path="res://assets/resources/bg_tile_set.tres" id="1_atorb"]
@@ -17,7 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://dcptpykdlp5rk" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/flag/flag_01.png" id="11_4ker5"]
 [ext_resource type="Texture2D" uid="uid://ntgt51twdxdm" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/water_reflect_medium_03.png" id="13_u3w7t"]
 [ext_resource type="PackedScene" uid="uid://deedu63sld0es" path="res://scenes/game/levels/objects/death/death.tscn" id="16_kwprd"]
-[ext_resource type="PackedScene" uid="uid://dl8afnvp5w315" path="res://scenes/game/levels/objects/power_up/power_up.tscn" id="18_d5rut"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7drek"]
 load_path = "res://.godot/imported/small_cloud_1.png-40532304be8a8e58b358963bfcb15f67.ctex"
@@ -35,7 +34,7 @@ stream = ExtResource("1_xvhx7")
 bus = &"Ambient"
 
 [node name="MainCharacter" parent="." instance=ExtResource("1_vi0ax")]
-position = Vector2(809, 561)
+position = Vector2(52, 410)
 
 [node name="Npc" parent="." instance=ExtResource("3_7nl23")]
 position = Vector2(237, 369)
@@ -64,26 +63,6 @@ layer_1/tile_data = PackedInt32Array(1114140, 2, 0, 655394, 2, 0, 786451, 2, 0, 
 
 [node name="Crabby" parent="Enemies" instance=ExtResource("4_cmc0y")]
 position = Vector2(1064, 558)
-animation = "idle"
-moving_direction = "left"
-
-[node name="Crabby2" parent="Enemies" instance=ExtResource("4_cmc0y")]
-position = Vector2(1021, 559)
-animation = "idle"
-moving_direction = "left"
-
-[node name="Crabby3" parent="Enemies" instance=ExtResource("4_cmc0y")]
-position = Vector2(977, 560)
-animation = "idle"
-moving_direction = "left"
-
-[node name="Crabby4" parent="Enemies" instance=ExtResource("4_cmc0y")]
-position = Vector2(933, 560)
-animation = "idle"
-moving_direction = "left"
-
-[node name="Crabby5" parent="Enemies" instance=ExtResource("4_cmc0y")]
-position = Vector2(890, 560)
 animation = "idle"
 moving_direction = "left"
 
@@ -301,7 +280,3 @@ texture = SubResource("CompressedTexture2D_d1lya")
 z_index = -1
 position = Vector2(526, 297)
 animation = &"idle_left"
-
-[node name="PowerUp" parent="." instance=ExtResource("18_d5rut")]
-position = Vector2(845, 555)
-animation = &"green_bottle"
