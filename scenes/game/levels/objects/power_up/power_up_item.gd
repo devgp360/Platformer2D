@@ -2,21 +2,21 @@ extends Node2D
 ## Script de objetos de inventario
 ##
 ## Este objeto al utilizarse, mostrará un diálogo informativo
+## Creación de items: https://docs.google.com/document/d/1XY3Y5Q1njEV8fwL3x4ogLF6Nyz01gobjJ7mr_Vh-jPE/edit?usp=sharing
+## Utilización de items: https://docs.google.com/document/d/1zjo0Deoc_yy-wdmGRd9rvUbNIDHhNxRlmNxb8qhc5Xg/edit?usp=sharing
 
 
 var _is_active = false # Para saber si el puntero está en el item
-
-@export var num = "1" # Numero de conteo
-@onready var canvas = $Num # Contador
-@onready var animation = $PowerUpItem # Animación
-@onready var _confirm = $CanvasConfirm # Confirmación
-
-
 # Mapeo de animación y diálogos
 var _dialogues = {
 	"blue_potion": "res://scenes/game/dialogues/dialogues/power_up/blue_potion_item.dialogue",
 	"green_bottle": "res://scenes/game/dialogues/dialogues/power_up/green_bottle_item.dialogue",
 }
+
+@export var num = "1" # Numero de conteo
+@onready var canvas = $Num # Contador
+@onready var animation = $PowerUpItem # Animación
+@onready var _confirm = $CanvasConfirm # Confirmación
 
 
 # Función de inicialización
