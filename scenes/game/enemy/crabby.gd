@@ -226,6 +226,20 @@ func _damage(die = false):
 	# Reproducimos sonido
 	_audio_player.stream = _punch_sound
 	_audio_player.play()
+	# Reproducimos la animación de pegar
+	_animation.play("hit")
+	_animation_effect.play("idle")
+	
+	# Validamos si tenemos ataque especial
+	if Global.number_attack > 0:
+		# Restamos 1 al ataque especial
+		die = true
+		Global.number_attack -= 1
+	
+	# Validamos si ya no tenemos ataque
+	if Global.number_attack == 0:
+		# Seteamos el ataque normal
+		Global.attack_effect = "normal"
 	
 	if die or _hit_to_die <= _has_hits:
 		# Seteamoas banderita no atacar
@@ -237,4 +251,9 @@ func _damage(die = false):
 func _on_enemy_animation_animation_finished():
 	if _animation.animation == "dead_ground":
 		queue_free()
+	elif _animation.animation == "hit":
+		_animation.play("idle")
+		_animation_effect.play("idle")
+		# Atacamos
+		_attack()
 	
