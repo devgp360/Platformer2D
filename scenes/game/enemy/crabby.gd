@@ -38,11 +38,16 @@ var _moving_left = true
 # Copia de objeto que entra a colisión
 var _body: Node2D
 # Vandera de persecución
-var _is_persecuted := false
+var _is_persecuted = false
 # Vandera de no detectar colisiones
-var _stop_detection := false
+var _stop_detection = false
 # Vandera de no detectar ataques
-var _stop_attack := false
+var _stop_attack = false
+# Cuantas veces aguanta
+var _hit_to_die = 3
+# Cuantas veces pegaron al personaje principal
+var _has_hits = 0
+# Copia de objeto que
 
 
 # Función de inicialización
@@ -158,7 +163,7 @@ func _on_enemy_animation_frame_changed():
 		
 		# Quitamos vidas
 		var _move_script = _body.get_node("MainCharacterMovement")
-		_move_script.hit(5)
+		_move_script.hit(2)
 
 
 func _detection():
@@ -211,22 +216,44 @@ func _move(_direction):
 func _on_area_2d_area_entered(area):
 	# Si estan atacando al enemigo
 	if area.is_in_group("hit"):
-		_damage(true)
+		_damage()
 	elif area.is_in_group("die"):
 		_damage(true)
 
-func _damage(die: bool):
-	# Seteamoas banderita no atacar
-	_stop_attack = true
+func _damage(die = false):
+	# Agregamos un golpe
+	_has_hits += 1
 	# Reproducimos sonido
 	_audio_player.stream = _punch_sound
 	_audio_player.play()
+	# Reproducimos la animación de pegar
+	_animation.play("hit")
+	_animation_effect.play("idle")
 	
-	if die:
+	# Validamos si tenemos ataque especial
+	if Global.number_attack > 0:
+		# Restamos 1 al ataque especial
+		die = true
+		Global.number_attack -= 1
+	
+	# Validamos si ya no tenemos ataque
+	if Global.number_attack == 0:
+		# Seteamos el ataque normal
+		Global.attack_effect = "normal"
+	
+	if die or _hit_to_die <= _has_hits:
+		# Seteamoas banderita no atacar
+		_stop_attack = true
 		# Lo matamos y quitamos de la escena
 		_animation.play("dead_ground")
+
 
 func _on_enemy_animation_animation_finished():
 	if _animation.animation == "dead_ground":
 		queue_free()
+	elif _animation.animation == "hit":
+		_animation.play("idle")
+		_animation_effect.play("idle")
+		# Atacamos
+		_attack()
 	

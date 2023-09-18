@@ -22,8 +22,9 @@ SceneTransition="*res://scenes/game/transitions/scene_transition.tscn"
 HealthDashboard="*res://scenes/game/ui/health_dashboard/health_dashboard.tscn"
 MainMenu="*res://scenes/game/ui/main_menu/main_menu.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
-CustomDialogue="*res://scenes/game/dialogues/manager/custom_dialogue.gd"
 InventoryCanvas="*res://scenes/game/inventory/canvas/inventory_canvas.tscn"
+CustomDialogue="*res://scenes/game/dialogues/manager/custom_dialogue.gd"
+Global="*res://scenes/game/global/global.gd"
 
 [display]
 

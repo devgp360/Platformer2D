@@ -10,8 +10,7 @@ var _item_contents = []
 var _item_object_names = []
 # Referencia de los items
 var _item_objects = []
-# "Objeto" seleccionado
-var _current_item_selected = null
+
 
 @onready var canvas = $CanvasLayer # Canvas principal
 @onready var animation_player = $CanvasLayer/AnimationPlayer # Player

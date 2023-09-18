@@ -213,7 +213,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("14_6fnvh")
 }],
-"loop": true,
+"loop": false,
 "name": &"hit_with_sword",
 "speed": 8.0
 }, {
@@ -394,7 +394,7 @@ script = ExtResource("3_odvu6")
 
 [node name="Animation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sohxe")
-animation = &"idle_with_sword"
+animation = &"hit_with_sword"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -2.5)
@@ -407,7 +407,6 @@ sprite_frames = SubResource("SpriteFrames_cwldb")
 animation = &"fall"
 
 [node name="EffectsSword" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.545098, 0.768627, 0.392157, 1)
 z_index = 2
 position = Vector2(32, -1)
 sprite_frames = SubResource("SpriteFrames_isfec")
