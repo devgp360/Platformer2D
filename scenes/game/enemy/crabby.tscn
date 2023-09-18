@@ -273,6 +273,20 @@ func _damage(die = false):
 	# Reproducimos sonido
 	_audio_player.stream = _punch_sound
 	_audio_player.play()
+	# Reproducimos la animación de pegar
+	_animation.play(\"hit\")
+	_animation_effect.play(\"idle\")
+	
+	# Validamos si tenemos ataque especial
+	if Global.number_attack > 0:
+		# Restamos 1 al ataque especial
+		die = true
+		Global.number_attack -= 1
+	
+	# Validamos si ya no tenemos ataque
+	if Global.number_attack == 0:
+		# Seteamos el ataque normal
+		Global.attack_effect = \"normal\"
 	
 	if die or _hit_to_die <= _has_hits:
 		# Seteamoas banderita no atacar
@@ -284,6 +298,11 @@ func _damage(die = false):
 func _on_enemy_animation_animation_finished():
 	if _animation.animation == \"dead_ground\":
 		queue_free()
+	elif _animation.animation == \"hit\":
+		_animation.play(\"idle\")
+		_animation_effect.play(\"idle\")
+		# Atacamos
+		_attack()
 	
 "
 
@@ -386,7 +405,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("22_7qqld")
 }],
-"loop": true,
+"loop": false,
 "name": &"hit",
 "speed": 5.0
 }, {
@@ -496,7 +515,7 @@ script = SubResource("GDScript_6chrj")
 
 [node name="EnemyAnimation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fq7gh")
-animation = &"idle"
+animation = &"hit"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 1.5)

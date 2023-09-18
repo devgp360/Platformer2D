@@ -216,11 +216,13 @@ func _move(_direction):
 func _on_area_2d_area_entered(area):
 	# Si estan atacando al enemigo
 	if area.is_in_group("hit"):
-		_damage(true)
+		_damage()
 	elif area.is_in_group("die"):
 		_damage(true)
 
-func _damage(die: bool):	
+func _damage(die = false):
+	# Agregamos un golpe
+	_has_hits += 1
 	# Reproducimos sonido
 	_audio_player.stream = _punch_sound
 	_audio_player.play()
@@ -230,8 +232,7 @@ func _damage(die: bool):
 		_stop_attack = true
 		# Lo matamos y quitamos de la escena
 		_animation.play("dead_ground")
-	else:
-		_has_hits += 1
+
 
 func _on_enemy_animation_animation_finished():
 	if _animation.animation == "dead_ground":

@@ -23,6 +23,7 @@ var _movements = {
 	RIGHT_WITH_SWORD = "run_with_sword",
 	JUMP_WITH_SWORD = "jump_with_sword",
 	FALL_WITH_SWORD = "fall_with_sword",
+	HIT_WITH_SWORD = "hit_with_sword",
 	DEAD_HIT = "dead_hit",
 	ATTACK = "attack_2",
 	BOMB = "attack_3",
@@ -34,6 +35,7 @@ var _jump_count = 0 # Contador de saltos realizados
 var _died = false # Define si esta vovo o muerto
 var attacking = false # Define si esta atacando
 var bombing = false # Define si esta atacando
+var hited = false # Define si esta atacando
 var _is_playing: String = "" # Define si se esta reproducionedo el sonido
 var turn_side: String = "right" # Define si se esta reproducionedo el sonido
 
@@ -42,6 +44,7 @@ var _jump_sound = preload("res://assets/sounds/jump.mp3")
 var _run_sound = preload("res://assets/sounds/running.mp3")
 var _dead_sound = preload("res://assets/sounds/dead.mp3")
 var _male_hurt_sound = preload("res://assets/sounds/male_hurt.mp3")
+var _hit_sound = preload("res://assets/sounds/slash.mp3")
 
 
 # Función de inicialización
@@ -108,7 +111,7 @@ func _move(delta):
 # Controla la animación según el movimiento del personaje
 func _set_animation():
 	# Si esta atacando no interrumpimos la animació	
-	if attacking or bombing:
+	if attacking or bombing or hited:
 		return
 		
 	# Personaje murio
@@ -128,6 +131,7 @@ func _set_animation():
 		# Atacamos
 		attacking = true
 		main_animation.play(_movements.ATTACK)
+		_play_sound(_hit_sound)
 		# Agregamos el effecto especial
 		_play_sword_effect()
 	elif _current_movement == _movements.BOMB:
@@ -180,6 +184,9 @@ func die():
 func hit(value: int):
 	HealthDashboard.remove_life(value)
 	_play_sound(_male_hurt_sound)
+	if not hited:
+		main_animation.play("hit_with_sword")
+		hited = true
 	
 	# Bajamos vida y validamos si el personaje ha perdido
 	if HealthDashboard.life == 0:
@@ -201,6 +208,8 @@ func _on_animation_animation_finished():
 		attacking = false
 	elif main_animation.get_animation() == _movements.BOMB:
 		bombing = false
+	elif main_animation.get_animation() == _movements.HIT_WITH_SWORD:
+		hited = false
 
 
 func _on_animation_frame_changed():	
@@ -267,4 +276,3 @@ func _play_sword_effect():
 	
 	# Reproducimos el efecto de la espada
 	effect_animation_sword.play("attack_2_effect")
-

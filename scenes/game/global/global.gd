@@ -6,3 +6,6 @@ extends Node
 
 # Tipo de ataque aplicado
 var attack_effect = "normal"
+
+# Numero de ataques disponibles
+var number_attack = 0

@@ -75,6 +75,7 @@ func _on_cancel_pressed():
 func _on_accept_pressed():
 	# Activamos el poder
 	Global.attack_effect = animation.animation
+	Global.number_attack = 4
 	_confirm.hide()
 	InventoryCanvas.show_inventory(false)
 	_show_dialogue()
