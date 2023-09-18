@@ -35,7 +35,6 @@ var _jump_count = 0 # Contador de saltos realizados
 var _died = false # Define si esta vovo o muerto
 var attacking = false # Define si esta atacando
 var bombing = false # Define si esta atacando
-var hited = false # Define si esta atacando
 var _is_playing: String = "" # Define si se esta reproducionedo el sonido
 var turn_side: String = "right" # Define si se esta reproducionedo el sonido
 
@@ -111,7 +110,7 @@ func _move(delta):
 # Controla la animación según el movimiento del personaje
 func _set_animation():
 	# Si esta atacando no interrumpimos la animació	
-	if attacking or bombing or hited:
+	if attacking or bombing:
 		return
 		
 	# Personaje murio
@@ -184,9 +183,7 @@ func die():
 func hit(value: int):
 	HealthDashboard.remove_life(value)
 	_play_sound(_male_hurt_sound)
-	if not hited:
-		main_animation.play("hit_with_sword")
-		hited = true
+	main_animation.play("hit_with_sword")
 	
 	# Bajamos vida y validamos si el personaje ha perdido
 	if HealthDashboard.life == 0:
@@ -208,17 +205,15 @@ func _on_animation_animation_finished():
 		attacking = false
 	elif main_animation.get_animation() == _movements.BOMB:
 		bombing = false
-	elif main_animation.get_animation() == _movements.HIT_WITH_SWORD:
-		hited = false
 
 
 func _on_animation_frame_changed():	
 	# Si la animación es de atacar habilitamos el colicionador
 	if main_animation.animation == "attack_2" and main_animation.frame == 1:
-		_collision.disabled = false
+		_collision.set_deferred("disabled", false)
 	else:
 		# Si la animación no es de atacar deshabilitamos el colicionador
-		_collision.disabled = true
+		_collision.set_deferred("disabled", true)
 		
 	if main_animation.animation == _movements.JUMP_WITH_SWORD:
 		# Validamos si el sonido ya esta sonando

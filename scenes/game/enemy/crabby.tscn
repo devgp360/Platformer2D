@@ -94,7 +94,8 @@ var _stop_attack = false
 var _hit_to_die = 3
 # Cuantas veces pegaron al personaje principal
 var _has_hits = 0
-# Copia de objeto que
+# La muerte del cangrejo
+var die = false
 
 
 # Función de inicialización
@@ -157,8 +158,9 @@ func _on_area_2d_body_entered(body):
 
 
 func _on_area_2d_body_exited(__body):
-	# Estado inicial
-	_init_state()
+	if not die:
+		# Estado inicial
+		_init_state()
 
 
 func _turn():
@@ -208,9 +210,10 @@ func _on_enemy_animation_frame_changed():
 			_animation.play(\"idle\")
 			_animation_effect.play(\"idle\")
 		
-		# Quitamos vidas
-		var _move_script = _body.get_node(\"MainCharacterMovement\")
-		_move_script.hit(2)
+		if _body:
+			# Quitamos vidas
+			var _move_script = _body.get_node(\"MainCharacterMovement\")
+			_move_script.hit(2)
 
 
 func _detection():
@@ -265,9 +268,10 @@ func _on_area_2d_area_entered(area):
 	if area.is_in_group(\"hit\"):
 		_damage()
 	elif area.is_in_group(\"die\"):
-		_damage(true)
+		die = true
+		_damage()
 
-func _damage(die = false):
+func _damage():
 	# Agregamos un golpe
 	_has_hits += 1
 	# Reproducimos sonido
@@ -515,7 +519,7 @@ script = SubResource("GDScript_6chrj")
 
 [node name="EnemyAnimation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fq7gh")
-animation = &"hit"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 1.5)
