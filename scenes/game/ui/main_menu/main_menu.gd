@@ -26,6 +26,7 @@ var _started = false # Indica si ya iniciamos el juego (entramos al primer nivel
 @onready var _slider_ambient = $Main/CanvasLayer/Options/Sounds/Sliders/Ambient/Slider/SliderAmbient
 @onready var _slider_effects = $Main/CanvasLayer/Options/Sounds/Sliders/Effects/Slider/SliderEffects
 @onready var _main = $Main
+@onready var _game_controls = $Main/GameControls
 
 
 # Función de inicialización
@@ -46,6 +47,8 @@ func _ready():
 	_on_slider_ambient_value_changed(_slider_ambient.value)
 	_on_slider_effects_value_changed(_slider_effects.value)
 	_toggle_show()
+	# Ocultamos el canvas de los controles
+	_game_controls.visible = false
 
 # Detecta eventos de teclado y ratón
 func _unhandled_input(event):
@@ -149,3 +152,13 @@ func restart():
 	#_toggle_show()
 	_started = false
 	_button.text = "Iniciar"
+
+
+# Mostramos/Ocultamos la pantalla de controles
+func _on_show_controls_pressed():
+	_game_controls.visible = not _game_controls.visible
+
+
+# Cerramos la pantalla de controles
+func _on_close_controls_pressed():
+	_game_controls.visible = false
