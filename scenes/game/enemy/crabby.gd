@@ -47,7 +47,8 @@ var _stop_attack = false
 var _hit_to_die = 3
 # Cuantas veces pegaron al personaje principal
 var _has_hits = 0
-# Copia de objeto que
+# La muerte del cangrejo
+var die = false
 
 
 # Función de inicialización
@@ -64,6 +65,7 @@ func _ready():
 
 
 func _physics_process(delta):
+	if (die): return
 	# Si la animación es de correr, aplicamos el movimiento
 	if animation == "run":
 		_move_character(delta)
@@ -110,8 +112,9 @@ func _on_area_2d_body_entered(body):
 
 
 func _on_area_2d_body_exited(__body):
-	# Estado inicial
-	_init_state()
+	if not die:
+		# Estado inicial
+		_init_state()
 
 
 func _turn():
@@ -126,6 +129,7 @@ func _turn():
 
 func _attack():	
 	# No atacamos si se seteó la banderita _stop_attack
+	print("_stop_attack", _stop_attack)
 	if _stop_attack:
 		return
 		
@@ -139,6 +143,8 @@ func _attack():
 
 
 func _init_state():
+	if _stop_attack:
+		return
 	# Animación de estado inicial
 	velocity.x = 0
 	_animation.play(animation)
@@ -148,6 +154,8 @@ func _init_state():
 	_stop_detection = false
 
 func _on_enemy_animation_frame_changed():
+	if _stop_attack:
+		return
 	# Validamos si el frame de animación es 0
 	if _animation.frame == 0 and _animation.get_animation() == "attack":
 		# Pegamos al personaje
@@ -161,9 +169,10 @@ func _on_enemy_animation_frame_changed():
 			_animation.play("idle")
 			_animation_effect.play("idle")
 		
-		# Quitamos vidas
-		var _move_script = _body.get_node("MainCharacterMovement")
-		_move_script.hit(2)
+		if _body:
+			# Quitamos vidas
+			var _move_script = _body.get_node("MainCharacterMovement")
+			_move_script.hit(2)
 
 
 func _detection():
@@ -218,9 +227,10 @@ func _on_area_2d_area_entered(area):
 	if area.is_in_group("hit"):
 		_damage()
 	elif area.is_in_group("die"):
-		_damage(true)
+		die = true
+		_damage()
 
-func _damage(die = false):
+func _damage():	
 	# Agregamos un golpe
 	_has_hits += 1
 	# Reproducimos sonido
@@ -240,20 +250,24 @@ func _damage(die = false):
 	if Global.number_attack == 0:
 		# Seteamos el ataque normal
 		Global.attack_effect = "normal"
-	
+
 	if die or _hit_to_die <= _has_hits:
 		# Seteamoas banderita no atacar
 		_stop_attack = true
+		die = true
+		velocity.x = 0
 		# Lo matamos y quitamos de la escena
-		_animation.play("dead_ground")
+		if _animation.animation != "dead_ground":
+			_animation.play("dead_ground")
 
 
 func _on_enemy_animation_animation_finished():
 	if _animation.animation == "dead_ground":
 		queue_free()
 	elif _animation.animation == "hit":
-		_animation.play("idle")
-		_animation_effect.play("idle")
-		# Atacamos
-		_attack()
+		if not _stop_attack: 
+			_animation.play("idle")
+			_animation_effect.play("idle")
+			# Atacamos
+			_attack()
 	
