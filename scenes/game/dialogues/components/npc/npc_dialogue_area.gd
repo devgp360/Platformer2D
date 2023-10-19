@@ -90,8 +90,10 @@ func _body_entered(body):
 		character = body.get_node("MainCharacterMovement")
 		# Mostramos el diálogo
 		_show_dialogue()
+		# Buscamos el nodo de animación
+		var _npc_animation: AnimatedSprite2D = npc.find_child('Npc')
 		# Giramos el personaje para ver hacia la izquierda o derecha
 		if body.global_position.x < area.global_position.x:
-			npc.flip_h(false)
+			_npc_animation.flip_h = true
 		else:
-			npc.flip_h(true)
+			_npc_animation.flip_h = false

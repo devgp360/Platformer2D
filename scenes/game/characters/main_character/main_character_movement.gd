@@ -4,7 +4,7 @@ extends Node2D
 ## Detecta eventos de teclado para poder mover un personaje por un escenario
 ## y ajustar animaciones según el movimiento
 ## Movimiento básica de personaje: https://docs.google.com/document/d/1c9XXznR1KBJSr0jrEWjYIqfFuNGCGP2YASkXsFgEayU/edit
-
+ 
 
 @export var character: CharacterBody2D # Referencia al personaje a mover
 @export var main_animation: AnimatedSprite2D # Referencia al sprite del personaje
@@ -76,11 +76,13 @@ func _move(delta):
 	if Input.is_action_pressed("izquierda"):
 		character.velocity.x = -velocity
 		_current_movement = _movements.LEFT_WITH_SWORD	
+		if turn_side != "left":print("left")
 		turn_side = "left"
 	# Cuando se presiona la tecla (flecha derecha), movemos el personaje a la derecha
 	elif Input.is_action_pressed("derecha"):
 		character.velocity.x = velocity
 		_current_movement = _movements.RIGHT_WITH_SWORD
+		if turn_side != "right":print("right")
 		turn_side = "right"
 	# Cuando no presionamos teclas, no hay movimiento	
 	else:
@@ -109,15 +111,18 @@ func _move(delta):
 
 # Controla la animación según el movimiento del personaje
 func _set_animation():
+	
+	print("attacking", attacking);
+	print("bombing", bombing);
+	print("_died", _died);
 	# Si esta atacando no interrumpimos la animació	
 	if attacking or bombing:
 		return
-		
 	# Personaje murio
 	if _died:
 		main_animation.play(_movements.DEAD_HIT)
 		return
-		
+	print(_current_movement);
 	if _is_jumping:	
 		# Movimiento de salto (animación de "salto")
 		if character.velocity.y >= 0:
@@ -138,11 +143,13 @@ func _set_animation():
 		bombing = true
 		main_animation.play(_movements.BOMB)
 	elif _current_movement == _movements.RIGHT_WITH_SWORD:
+		print("_movements.RIGHT_WITH_SWORD", _movements.RIGHT_WITH_SWORD)
 		# Movimiento hacia la derecha (animación "correr" no volteada)
 		main_animation.play(_movements.RIGHT_WITH_SWORD)
 		main_animation.flip_h = false
 		_collision.position.x = abs(_collision.position.x)
 	elif _current_movement == _movements.LEFT_WITH_SWORD:
+		print("_movements.RIGHT_WITH_SWORD", _movements.RIGHT_WITH_SWORD)
 		# Movimiento hacia la izquierda (animación "correr" volteada)
 		main_animation.play(_movements.RIGHT_WITH_SWORD)
 		main_animation.flip_h = true
@@ -181,6 +188,7 @@ func die():
 
 # Recibir daño
 func hit(value: int):
+	attacking = false
 	HealthDashboard.remove_life(value)
 	_play_sound(_male_hurt_sound)
 	main_animation.play("hit_with_sword")
@@ -233,9 +241,12 @@ func _on_animation_frame_changed():
 
 
 func _on_audio_stream_player_2d_finished():
+	print("audio_player.stream",audio_player.stream)
 	if audio_player.stream == _dead_sound:
 		# Qitamos al personaje principal de la excena
+		print("quitamos")
 		self.get_parent().queue_free()
+		print("SceneTransition")
 		# Reiniciamos el juego despues de 2 segundos
 		SceneTransition.reload_scene()
 		
