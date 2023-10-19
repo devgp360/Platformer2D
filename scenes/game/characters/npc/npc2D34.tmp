@@ -226,7 +226,7 @@ size = Vector2(55, 40)
 floor_snap_length = 10.0
 script = ExtResource("1_p8b57")
 
-[node name="Npc" type="AnimatedSprite2D" parent="."]
+[node name="npc" type="AnimatedSprite2D" parent="."]
 scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_o0oc8")
 animation = &"idle"
@@ -247,10 +247,12 @@ shape = SubResource("RectangleShape2D_7nihc")
 [node name="Area2D" type="Area2D" parent="."]
 disable_mode = 1
 
-[node name="NpcDialogueArea" parent="Area2D" node_paths=PackedStringArray("area", "npc") instance=ExtResource("1_js67w")]
+[node name="NpcDialogueArea" parent="Area2D" instance=ExtResource("1_js67w")]
 dialogue_resource = ExtResource("15_tqdhh")
-area = NodePath("..")
-npc = NodePath("../..")
+area = Object(Area2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"disable_mode":1,"collision_layer":1,"collision_mask":1,"collision_priority":1.0,"input_pickable":true,"monitoring":true,"monitorable":true,"priority":0,"gravity_space_override":0,"gravity_point":false,"gravity_point_unit_distance":0.0,"gravity_point_center":Vector2(0, 1),"gravity_direction":Vector2(0, 1),"gravity":980.0,"linear_damp_space_override":0,"linear_damp":0.1,"angular_damp_space_override":0,"angular_damp":1.0,"audio_bus_override":false,"audio_bus_name":&"Master","script":null)
+
+npc = Object(CharacterBody2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"disable_mode":0,"collision_layer":1,"collision_mask":1,"collision_priority":1.0,"input_pickable":false,"motion_mode":0,"up_direction":Vector2(0, -1),"velocity":Vector2(0, 0),"slide_on_ceiling":true,"max_slides":4,"wall_min_slide_angle":0.261799,"floor_stop_on_slope":true,"floor_constant_speed":false,"floor_block_on_wall":true,"floor_max_angle":0.785398,"floor_snap_length":10.0,"platform_on_leave":0,"platform_floor_layers":4294967295,"platform_wall_layers":0,"safe_margin":0.08,"script":ExtResource("1_p8b57"))
+
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(4.5, 3)
