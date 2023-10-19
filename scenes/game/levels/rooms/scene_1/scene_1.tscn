@@ -34,7 +34,7 @@ stream = ExtResource("1_xvhx7")
 bus = &"Ambient"
 
 [node name="MainCharacter" parent="." instance=ExtResource("1_vi0ax")]
-position = Vector2(809, 561)
+position = Vector2(52, 410)
 
 [node name="Npc" parent="." instance=ExtResource("3_7nl23")]
 position = Vector2(237, 369)
@@ -63,26 +63,6 @@ layer_1/tile_data = PackedInt32Array(1114140, 2, 0, 655394, 2, 0, 786451, 2, 0, 
 
 [node name="Crabby" parent="Enemies" instance=ExtResource("4_cmc0y")]
 position = Vector2(1064, 558)
-animation = "idle"
-moving_direction = "left"
-
-[node name="Crabby2" parent="Enemies" instance=ExtResource("4_cmc0y")]
-position = Vector2(1021, 559)
-animation = "idle"
-moving_direction = "left"
-
-[node name="Crabby3" parent="Enemies" instance=ExtResource("4_cmc0y")]
-position = Vector2(977, 560)
-animation = "idle"
-moving_direction = "left"
-
-[node name="Crabby4" parent="Enemies" instance=ExtResource("4_cmc0y")]
-position = Vector2(933, 560)
-animation = "idle"
-moving_direction = "left"
-
-[node name="Crabby5" parent="Enemies" instance=ExtResource("4_cmc0y")]
-position = Vector2(890, 560)
 animation = "idle"
 moving_direction = "left"
 
