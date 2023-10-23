@@ -129,7 +129,6 @@ func _turn():
 
 func _attack():	
 	# No atacamos si se seteó la banderita _stop_attack
-	print("_stop_attack", _stop_attack)
 	if _stop_attack:
 		return
 		
