@@ -69,6 +69,7 @@ _data = {
 }
 
 [node name="Splash" type="Node2D"]
+position = Vector2(-13, -2)
 script = ExtResource("1_roa58")
 
 [node name="GP360" type="Sprite2D" parent="."]
@@ -83,8 +84,15 @@ texture = ExtResource("3_g3n3v")
 
 [node name="PixelFrog" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(578, 312)
+position = Vector2(576, 315)
 texture = ExtResource("4_r4eep")
+
+[node name="Label" type="Label" parent="PixelFrog"]
+offset_left = -179.0
+offset_top = 34.0
+offset_right = 175.0
+offset_bottom = 60.0
+text = "Gracias a por su Asset Pack: Treasure Hunters"
 
 [node name="AnimationPlayerGP360" type="AnimationPlayer" parent="."]
 libraries = {
