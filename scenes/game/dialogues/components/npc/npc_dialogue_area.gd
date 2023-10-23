@@ -39,6 +39,8 @@ func _ready():
 	# Inicialización del diálogo
 	talk.connect(_show_dialogue)
 	area.body_entered.connect(_body_entered)
+	if !area_listen:
+		area_listen = area
 	area_listen.body_exited.connect(_body_exited)
 
 

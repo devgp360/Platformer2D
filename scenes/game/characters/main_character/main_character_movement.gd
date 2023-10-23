@@ -179,6 +179,8 @@ func die():
 
 # Recibir daño
 func hit(value: int):
+	if _died:
+		return
 	attacking = false
 	HealthDashboard.remove_life(value)
 	_play_sound(_male_hurt_sound)
