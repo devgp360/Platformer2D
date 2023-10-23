@@ -35,7 +35,7 @@ stream = ExtResource("1_xvhx7")
 bus = &"Ambient"
 
 [node name="MainCharacter" parent="." instance=ExtResource("1_vi0ax")]
-position = Vector2(313, 367)
+position = Vector2(47, 431)
 
 [node name="Npc" parent="." instance=ExtResource("3_7nl23")]
 position = Vector2(264, 368)
@@ -68,7 +68,7 @@ _path_to_scene = "res://scenes/game/levels/rooms/scene_3/scene_3.tscn"
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Crabby" parent="Enemies" instance=ExtResource("4_cmc0y")]
-position = Vector2(1010, 558)
+position = Vector2(1013, 555)
 animation = "idle"
 moving_direction = "left"
 
