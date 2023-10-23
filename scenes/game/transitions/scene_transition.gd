@@ -39,5 +39,5 @@ func change_scene(target: String, show_menu = false):
 func reload_scene():
 	HealthDashboard.visible = true
 	HealthDashboard.restart()
-	# Recatgamos la escena
+	# Reiniciamos la escena
 	get_tree().reload_current_scene()
