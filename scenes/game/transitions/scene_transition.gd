@@ -37,8 +37,7 @@ func change_scene(target: String, show_menu = false):
 
 # Función de reiniciar la escena actual
 func reload_scene():
-	HealthDashboard.visible = false
+	HealthDashboard.visible = true
 	HealthDashboard.restart()
-	MainMenu.restart()
-	change_scene("res://scenes/game/levels/rooms/init/init.tscn", true)
-	
+	# Reiniciamos la escena
+	get_tree().reload_current_scene()

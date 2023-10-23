@@ -1,4 +1,7 @@
 extends Area2D
+## Clase que quita la vida al personaje principal
+##
+## Quita la vida al personaje principal
 
 
 func _on_body_entered(body):
