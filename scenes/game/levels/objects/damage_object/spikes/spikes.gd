@@ -8,4 +8,5 @@ extends Node
 func _on_area_body_entered(body):
 	if body.is_in_group("player"):
 		var _move_script = body.get_node("MainCharacterMovement")
-		_move_script.hit(10)
+		# "Golpeamos" al personaje
+		_move_script.hit(2)
