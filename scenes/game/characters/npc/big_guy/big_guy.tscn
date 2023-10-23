@@ -231,6 +231,7 @@ dialogue_resource = ExtResource("46_illnt")
 dialogue_start = "start"
 area = NodePath("..")
 npc = NodePath("../..")
+show_input_key = "buy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(7, 6.5)

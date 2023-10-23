@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://ln85llv8md7"]
+[gd_scene load_steps=89 format=3 uid="uid://ln85llv8md7"]
 
 [ext_resource type="Script" path="res://scenes/game/ui/main_menu/main_menu.gd" id="1_g1i31"]
 [ext_resource type="Texture2D" uid="uid://c8apilaqosli4" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/additional_sky.png" id="2_66173"]
@@ -26,6 +26,13 @@
 [ext_resource type="Texture2D" uid="uid://cmkbl2imk4eyd" path="res://assets/sprites/treasure_hunters/merchant_ship/sprites/ship/sail/wind/2.png" id="12_xkehm"]
 [ext_resource type="Texture2D" uid="uid://dmbw1ubsgqxwe" path="res://assets/sprites/treasure_hunters/merchant_ship/sprites/ship/sail/wind/3.png" id="13_olerl"]
 [ext_resource type="Texture2D" uid="uid://dwsfqoltg7rlt" path="res://assets/sprites/treasure_hunters/merchant_ship/sprites/ship/sail/wind/4.png" id="14_t7icp"]
+[ext_resource type="FontFile" uid="uid://dregmkvncw55k" path="res://assets/fonts/press_Sstart_2p/PressStart2P-Regular.ttf" id="27_eb3si"]
+[ext_resource type="Texture2D" uid="uid://c1565oiq4iveu" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/big_banner/13.png" id="28_2um5v"]
+[ext_resource type="Texture2D" uid="uid://b0x5mxa2tsy1u" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/big_banner/14.png" id="29_qsbm4"]
+[ext_resource type="Texture2D" uid="uid://c8ashne3hoseq" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/big_banner/15.png" id="30_qlj7f"]
+[ext_resource type="Texture2D" uid="uid://bqcbpn2cey2eg" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/big_banner/16.png" id="31_76hrj"]
+[ext_resource type="Texture2D" uid="uid://b1ffrt80ib4na" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/big_banner/17.png" id="32_sxqtv"]
+[ext_resource type="Texture2D" uid="uid://mqsgcbqwnnsq" path="res://assets/sprites/treasure_hunters/wood_and_paper_ui/sprites/big_banner/18.png" id="33_14dux"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4u6xb"]
 animations = [{
@@ -436,8 +443,8 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -40.0
-offset_top = -20.0
-offset_bottom = 20.0
+offset_top = -70.0
+offset_bottom = -30.0
 grow_horizontal = 0
 grow_vertical = 2
 
@@ -885,6 +892,291 @@ max_value = 1.0
 step = 0.01
 value = 0.5
 
+[node name="Controls" type="Control" parent="Main/CanvasLayer/Options"]
+anchors_preset = 0
+offset_left = -400.0
+offset_top = 280.0
+offset_right = -360.0
+offset_bottom = 320.0
+
+[node name="ShowControls" type="Button" parent="Main/CanvasLayer/Options/Controls"]
+layout_mode = 0
+offset_right = 244.0
+offset_bottom = 47.0
+theme_override_fonts/font = ExtResource("27_eb3si")
+theme_override_font_sizes/font_size = 24
+text = "Controles"
+
+[node name="GameControls" type="CanvasLayer" parent="Main"]
+
+[node name="Background" type="ColorRect" parent="Main/GameControls"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.215686, 0.176471, 0.0705882, 0.917647)
+
+[node name="Background" type="Control" parent="Main/GameControls/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft" type="TextureRect" parent="Main/GameControls/Background/Background"]
+modulate = Color(0.741176, 0.752941, 0.756863, 1)
+layout_mode = 0
+offset_left = -450.0
+offset_top = -330.0
+offset_bottom = -180.0
+texture = ExtResource("28_2um5v")
+
+[node name="TopRight" type="TextureRect" parent="Main/GameControls/Background/Background"]
+modulate = Color(0.741176, 0.752941, 0.756863, 1)
+layout_mode = 0
+offset_top = -330.0
+offset_right = 500.0
+offset_bottom = -180.0
+texture = ExtResource("29_qsbm4")
+
+[node name="MiddleLeft" type="TextureRect" parent="Main/GameControls/Background/Background"]
+modulate = Color(0.741176, 0.752941, 0.756863, 1)
+layout_mode = 0
+offset_left = -450.0
+offset_top = -180.0
+offset_bottom = 260.0
+texture = ExtResource("30_qlj7f")
+
+[node name="MiddleRight" type="TextureRect" parent="Main/GameControls/Background/Background"]
+modulate = Color(0.741176, 0.752941, 0.756863, 1)
+layout_mode = 0
+offset_top = -180.0
+offset_right = 500.0
+offset_bottom = 260.0
+texture = ExtResource("31_76hrj")
+
+[node name="BottomLeft" type="TextureRect" parent="Main/GameControls/Background/Background"]
+modulate = Color(0.741176, 0.752941, 0.756863, 1)
+layout_mode = 0
+offset_left = -450.0
+offset_top = 250.0
+offset_bottom = 400.0
+texture = ExtResource("32_sxqtv")
+
+[node name="BottomRight" type="TextureRect" parent="Main/GameControls/Background/Background"]
+modulate = Color(0.741176, 0.752941, 0.756863, 1)
+layout_mode = 0
+offset_top = 250.0
+offset_right = 500.0
+offset_bottom = 400.0
+texture = ExtResource("33_14dux")
+
+[node name="Texts" type="Control" parent="Main/GameControls/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -120.0
+offset_right = 20.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Control" parent="Main/GameControls/Background/Texts"]
+anchors_preset = 0
+offset_top = -80.0
+offset_right = 40.0
+offset_bottom = -40.0
+
+[node name="Title" type="Label" parent="Main/GameControls/Background/Texts/Title"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -26.5
+offset_right = 225.0
+offset_bottom = 26.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("27_eb3si")
+theme_override_font_sizes/font_size = 50
+text = "Controles"
+
+[node name="Row1" type="Control" parent="Main/GameControls/Background/Texts"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title" type="Label" parent="Main/GameControls/Background/Texts/Row1"]
+layout_mode = 0
+offset_left = -400.0
+offset_right = -158.0
+offset_bottom = 25.0
+theme_override_fonts/font = ExtResource("27_eb3si")
+theme_override_font_sizes/font_size = 22
+text = "Movimiento:"
+
+[node name="Description" type="Label" parent="Main/GameControls/Background/Texts/Row1"]
+layout_mode = 0
+offset_left = -50.0
+offset_right = 490.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("27_eb3si")
+theme_override_font_sizes/font_size = 20
+text = "Flechas ← y → "
+
+[node name="Row2" type="Control" parent="Main/GameControls/Background/Texts"]
+anchors_preset = 0
+offset_top = 60.0
+offset_right = 40.0
+offset_bottom = 100.0
+
+[node name="Title" type="Label" parent="Main/GameControls/Background/Texts/Row2"]
+layout_mode = 0
+offset_left = -400.0
+offset_right = -158.0
+offset_bottom = 25.0
+theme_override_fonts/font = ExtResource("27_eb3si")
+theme_override_font_sizes/font_size = 22
+text = "Salto:"
+
+[node name="Description" type="Label" parent="Main/GameControls/Background/Texts/Row2"]
+layout_mode = 0
+offset_left = -50.0
+offset_right = 490.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("27_eb3si")
+theme_override_font_sizes/font_size = 20
+text = "Espacio"
+
+[node name="Row3" type="Control" parent="Main/GameControls/Background/Texts"]
+anchors_preset = 0
+offset_top = 120.0
+offset_right = 40.0
+offset_bottom = 160.0
+
+[node name="Title" type="Label" parent="Main/GameControls/Background/Texts/Row3"]
+layout_mode = 0
+offset_left = -400.0
+offset_right = -158.0
+offset_bottom = 25.0
+theme_override_fonts/font = ExtResource("27_eb3si")
+theme_override_font_sizes/font_size = 22
+text = "Ataque:"
+
+[node name="Description" type="Label" parent="Main/GameControls/Background/Texts/Row3"]
+layout_mode = 0
+offset_left = -50.0
+offset_right = 490.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("27_eb3si")
+theme_override_font_sizes/font_size = 20
+text = "Tecla X"
+
+[node name="Row4" type="Control" parent="Main/GameControls/Background/Texts"]
+anchors_preset = 0
+offset_top = 180.0
+offset_right = 40.0
+offset_bottom = 220.0
+
+[node name="Title" type="Label" parent="Main/GameControls/Background/Texts/Row4"]
+layout_mode = 0
+offset_left = -400.0
+offset_right = -158.0
+offset_bottom = 25.0
+theme_override_fonts/font = ExtResource("27_eb3si")
+theme_override_font_sizes/font_size = 22
+text = "Mercado:"
+
+[node name="Description" type="Label" parent="Main/GameControls/Background/Texts/Row4"]
+layout_mode = 0
+offset_left = -50.0
+offset_right = 490.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("27_eb3si")
+theme_override_font_sizes/font_size = 20
+text = "Tecla M"
+
+[node name="Row5" type="Control" parent="Main/GameControls/Background/Texts"]
+anchors_preset = 0
+offset_top = 240.0
+offset_right = 40.0
+offset_bottom = 280.0
+
+[node name="Title" type="Label" parent="Main/GameControls/Background/Texts/Row5"]
+layout_mode = 0
+offset_left = -400.0
+offset_right = -158.0
+offset_bottom = 25.0
+theme_override_fonts/font = ExtResource("27_eb3si")
+theme_override_font_sizes/font_size = 22
+text = "Iventario:"
+
+[node name="Description" type="Label" parent="Main/GameControls/Background/Texts/Row5"]
+layout_mode = 0
+offset_left = -50.0
+offset_right = 490.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("27_eb3si")
+theme_override_font_sizes/font_size = 20
+text = "Rueda del ratón"
+
+[node name="Row6" type="Control" parent="Main/GameControls/Background/Texts"]
+anchors_preset = 0
+offset_top = 300.0
+offset_right = 40.0
+offset_bottom = 340.0
+
+[node name="Title" type="Label" parent="Main/GameControls/Background/Texts/Row6"]
+layout_mode = 0
+offset_left = -400.0
+offset_right = -158.0
+offset_bottom = 25.0
+theme_override_fonts/font = ExtResource("27_eb3si")
+theme_override_font_sizes/font_size = 22
+text = "Menú:"
+
+[node name="Description" type="Label" parent="Main/GameControls/Background/Texts/Row6"]
+layout_mode = 0
+offset_left = -50.0
+offset_right = 490.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("27_eb3si")
+theme_override_font_sizes/font_size = 20
+text = "Escape"
+
+[node name="Close" type="Control" parent="Main/GameControls/Background"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="CloseControls" type="Button" parent="Main/GameControls/Background/Close"]
+layout_mode = 0
+offset_left = -30.0
+offset_right = 40.0
+offset_bottom = 70.0
+theme_override_font_sizes/font_size = 40
+text = "X"
+flat = true
+
 [node name="Camera2D" type="Camera2D" parent="Main"]
 position = Vector2(579, 325)
 
@@ -949,5 +1241,7 @@ libraries = {
 [connection signal="toggled" from="Main/CanvasLayer/Options/Fullscreen/CheckButton" to="." method="_on_check_button_toggled"]
 [connection signal="value_changed" from="Main/CanvasLayer/Options/Sounds/Sliders/Ambient/Slider/SliderAmbient" to="." method="_on_slider_ambient_value_changed"]
 [connection signal="value_changed" from="Main/CanvasLayer/Options/Sounds/Sliders/Effects/Slider/SliderEffects" to="." method="_on_slider_effects_value_changed"]
+[connection signal="pressed" from="Main/CanvasLayer/Options/Controls/ShowControls" to="." method="_on_show_controls_pressed"]
+[connection signal="pressed" from="Main/GameControls/Background/Close/CloseControls" to="." method="_on_close_controls_pressed"]
 [connection signal="animation_finished" from="Main/ParallaxBackground/Parallax1" to="." method="_on_parallax_1_animation_finished"]
 [connection signal="animation_finished" from="Main/ParallaxBackground/Parallax2" to="." method="_on_parallax_2_animation_finished"]
