@@ -22,16 +22,29 @@ signal response_selected(response: String)
 @export var area: Area2D
 # Definición del personaje principal
 @export var npc: CharacterBody2D
+# Opcionalmente se puede hacer que el diálogo inicie con un evento de teclado
+@export var show_input_key: String = ""
 
 # Definimoa el nodo del personaje principal
 var character: Node2D
+# Indica si el diálogo se está mostrando o no
+var _dialogue_is_visible = false
 
 # Función de inicialización
 func _ready():
 	# Inicialización del diálogo
 	talk.connect(_show_dialogue)
 	area.body_entered.connect(_body_entered)
+	area.body_exited.connect(_body_exited)
 
+
+func _unhandled_input(event):
+	if event.is_action_pressed(show_input_key) and character and not _dialogue_is_visible:
+		# Si presionamos la tecla definida en "show_input_key" y no se está mostrando actualmente
+		# mostramos el diálogo
+		# También la variable "character" tiene que existir, ya que indica que el
+		# personaje principal, está en el área del NPC
+		_show_dialogue()
 
 # Seteamos un nuevo diálogo y lo mostramos
 func set_and_show_dialogue(resource: DialogueResource):
@@ -59,6 +72,7 @@ func _show_dialogue():
 	# deshabilitamos al personaje principal
 	character.set_disabled(true)
 	character.set_idle()
+	_dialogue_is_visible = true
 
 
 # Se emite la señal de finalización del diálogo
@@ -66,6 +80,7 @@ func _npc_dialogue_ended():
 	self.emit_signal("dialogue_ended")
 	# Habilitamos al personaje principal
 	character.set_disabled(false)
+	_dialogue_is_visible = false
 
 
 # Se emite la señal cuando se selecciona respuesta en el diálogo
@@ -83,17 +98,24 @@ func on_response_selected(fn):
 	response_selected.connect(fn)
 
 
+# Detectamos cuando un "cuerpo" entra en contacto con el NPC
 func _body_entered(body):
 	# Validamos si la colisión es con el personaje principal
 	if body.is_in_group("player"):
 		# Accedemos al script
 		character = body.get_node("MainCharacterMovement")
-		# Mostramos el diálogo
-		_show_dialogue()
+		# Mostramos el diálogo (solo si no tenemos una "tecla" para activarlo)
+		if show_input_key == "":
+			_show_dialogue()
 		# Buscamos el nodo de animación
 		var _npc_animation: AnimatedSprite2D = npc.find_child('Npc')
 		# Giramos el personaje para ver hacia la izquierda o derecha
 		if body.global_position.x < area.global_position.x:
-			_npc_animation.flip_h = true
-		else:
 			_npc_animation.flip_h = false
+		else:
+			_npc_animation.flip_h = true
+
+
+# Detectamos cuando un "cuerpo" sale del NPC
+func _body_exited(_body):
+	character = null
