@@ -75,10 +75,9 @@ func add_bomb(value: int):
 
 
 # Función para resetear los valores de vida y puntos
-func restart(life_only=false):
+func restart():
 	life = 10
 	_set_life_progress(life)
-	if life_only: return
 	# Reseteo de todos los diferentes tipos de puntos
 	for type in points:
 		var group = point_group.find_child(type)

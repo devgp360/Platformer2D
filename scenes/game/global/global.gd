@@ -9,6 +9,3 @@ var attack_effect = "normal"
 
 # Numero de ataques disponibles
 var number_attack = 0
-
-# Nivel actual
-var actual_level = ""
