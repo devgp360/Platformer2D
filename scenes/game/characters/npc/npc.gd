@@ -10,6 +10,7 @@ var _npc_dialogue_area: Node2D
 var _dialog_active = false
 
 @onready var _collision = $CollisionShape2D
+@onready var _collisionListen = $Area2DListen/CollisionShape2D
 @onready var _animation = $Npc
 
 # Función de inicialización
@@ -25,13 +26,6 @@ func _physics_process(delta):
 		# Apagamos la física
 		set_physics_process(false)
 	
-
-# DOCUMENTACIÓN (áreas de colisión): https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw/edit?usp=drive_link
-# Función cuando un área entra en contacto con el NPC. _area: es el área que hace contacto
-func _on_npc_1_area_area_exited(_area):
-	# Seteamos variable del dialogo a false al abandonar el area
-	_dialog_active = false
-
 
 # DOCUMENTACIÓN (señales): https://docs.google.com/document/d/1bbroyXp11L4_FpHpqA-RckvFLRv3UOE-hmQdwtx27eo/edit?usp=drive_link
 # Se usa para poder "escuchar" cuando el diálgo finaliza
@@ -73,3 +67,10 @@ func set_dialogue(resource: DialogueResource):
 func get_dialogue_manager():
 	if _npc_dialogue_area:
 		return _npc_dialogue_area.dialogue_manager
+
+
+# DOCUMENTACIÓN (áreas de colisión): https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw/edit?usp=drive_link
+# Función cuando un área entra en contacto con el NPC. _area: es el área que hace contacto
+func _on_area_2d_listen_area_exited(area):
+	# Seteamos variable del dialogo a false al abandonar el area
+	_dialog_active = false

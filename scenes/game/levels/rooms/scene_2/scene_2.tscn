@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dhor7t5klwdwx"]
+[gd_scene load_steps=22 format=3 uid="uid://dhor7t5klwdwx"]
 
 [ext_resource type="Texture2D" uid="uid://cg6wkkuni8aq8" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/background/bg_image.png" id="1_a12cs"]
 [ext_resource type="TileSet" uid="uid://bx1rsqucrwm2i" path="res://assets/resources/bg_tile_set.tres" id="1_atorb"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bo37g7mv4j6pn" path="res://scenes/game/enemy/crabby.tscn" id="4_cmc0y"]
 [ext_resource type="PackedScene" uid="uid://cqhiovy7j3xcq" path="res://scenes/game/levels/objects/taking_damage_object/box.tscn" id="5_phmby"]
 [ext_resource type="PackedScene" uid="uid://b5qjvfbte4svk" path="res://scenes/game/levels/objects/pickable_object/pickable_object.tscn" id="6_6sl3g"]
+[ext_resource type="PackedScene" uid="uid://brhmupxo2xjim" path="res://scenes/game/levels/objects/change_scene/door_change_scene.tscn" id="6_6vihd"]
 [ext_resource type="PackedScene" uid="uid://bnp6y3fe4kqob" path="res://scenes/game/levels/objects/damage_object/cannon/cannon.tscn" id="6_r6bnd"]
 [ext_resource type="PackedScene" uid="uid://bcil4n46byhj5" path="res://scenes/game/levels/objects/back_palm_tree/back_palm_tree.tscn" id="7_243vd"]
 [ext_resource type="Texture2D" uid="uid://maf7s1c6fyyp" path="res://assets/sprites/treasure_hunters/palm_tree_island/sprites/objects/chest/chest_close_04.png" id="10_2jg0w"]
@@ -34,10 +35,10 @@ stream = ExtResource("1_xvhx7")
 bus = &"Ambient"
 
 [node name="MainCharacter" parent="." instance=ExtResource("1_vi0ax")]
-position = Vector2(52, 410)
+position = Vector2(313, 367)
 
 [node name="Npc" parent="." instance=ExtResource("3_7nl23")]
-position = Vector2(237, 369)
+position = Vector2(264, 368)
 scale = Vector2(0.6, 0.6)
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("character") instance=ExtResource("2_2f152")]
@@ -59,10 +60,15 @@ layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(1114140, 2, 0, 655394, 2, 0, 786451, 2, 0, 917504, 2, 1, 851968, 2, 0, 327693, 2, 0, 393229, 2, 1, 1179676, 2, 1, 851987, 2, 1, 589828, 2, 0, 655364, 2, 1)
 
+[node name="DoorChangeScene" parent="." instance=ExtResource("6_6vihd")]
+z_index = -1
+position = Vector2(1067, 526)
+_path_to_scene = "res://scenes/game/levels/rooms/scene_3/scene_3.tscn"
+
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Crabby" parent="Enemies" instance=ExtResource("4_cmc0y")]
-position = Vector2(1064, 558)
+position = Vector2(1010, 558)
 animation = "idle"
 moving_direction = "left"
 

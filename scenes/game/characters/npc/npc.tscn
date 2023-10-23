@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://b270rwdaoog0f"]
+[gd_scene load_steps=58 format=3 uid="uid://b270rwdaoog0f"]
 
 [ext_resource type="PackedScene" uid="uid://btewge2lyid0y" path="res://scenes/game/dialogues/components/npc/npc_dialogue_area.tscn" id="1_js67w"]
 [ext_resource type="Script" path="res://scenes/game/characters/npc/npc.gd" id="1_p8b57"]
@@ -220,7 +220,10 @@ animations = [{
 size = Vector2(53, 38)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_httk0"]
-size = Vector2(55, 40)
+size = Vector2(91, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g8wy3"]
+size = Vector2(304, 188)
 
 [node name="Npc" type="CharacterBody2D"]
 floor_snap_length = 10.0
@@ -247,11 +250,20 @@ shape = SubResource("RectangleShape2D_7nihc")
 [node name="Area2D" type="Area2D" parent="."]
 disable_mode = 1
 
-[node name="NpcDialogueArea" parent="Area2D" node_paths=PackedStringArray("area", "npc") instance=ExtResource("1_js67w")]
+[node name="NpcDialogueArea" parent="Area2D" node_paths=PackedStringArray("area", "area_listen", "npc") instance=ExtResource("1_js67w")]
 dialogue_resource = ExtResource("15_tqdhh")
 area = NodePath("..")
+area_listen = NodePath("../../Area2DListen")
 npc = NodePath("../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(4.5, 3)
+position = Vector2(5.5, 17.5)
 shape = SubResource("RectangleShape2D_httk0")
+
+[node name="Area2DListen" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DListen"]
+position = Vector2(9, 4)
+shape = SubResource("RectangleShape2D_g8wy3")
+
+[connection signal="area_exited" from="Area2DListen" to="." method="_on_area_2d_listen_area_exited"]

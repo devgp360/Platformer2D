@@ -18,8 +18,10 @@ signal response_selected(response: String)
 @export var dialogue_start: String = "start"
 # Definición del template del diálogo
 @export var Balloon: PackedScene
-# Definición del template del diálogo
+# Definición del area del NPC
 @export var area: Area2D
+# Definición del area de salida del NPC
+@export var area_listen: Area2D
 # Definición del personaje principal
 @export var npc: CharacterBody2D
 # Opcionalmente se puede hacer que el diálogo inicie con un evento de teclado
@@ -29,13 +31,15 @@ signal response_selected(response: String)
 var character: Node2D
 # Indica si el diálogo se está mostrando o no
 var _dialogue_is_visible = false
+# Indica si estamos en el area de dialogo
+var _in_dialogue = false
 
 # Función de inicialización
 func _ready():
 	# Inicialización del diálogo
 	talk.connect(_show_dialogue)
 	area.body_entered.connect(_body_entered)
-	area.body_exited.connect(_body_exited)
+	area_listen.body_exited.connect(_body_exited)
 
 
 func _unhandled_input(event):
@@ -59,6 +63,8 @@ func set_dialogue(resource: DialogueResource):
 
 # Mostramos el diálogo
 func _show_dialogue():
+	if _in_dialogue:
+		return
 	# Inicialización del template del diálogo
 	var balloon: Node = (Balloon).instantiate()
 	# Agtregar el código inicaliazado a la escena
@@ -73,6 +79,7 @@ func _show_dialogue():
 	character.set_disabled(true)
 	character.set_idle()
 	_dialogue_is_visible = true
+	_in_dialogue = true
 
 
 # Se emite la señal de finalización del diálogo
@@ -110,7 +117,7 @@ func _body_entered(body):
 		# Buscamos el nodo de animación
 		var _npc_animation: AnimatedSprite2D = npc.find_child('Npc')
 		# Giramos el personaje para ver hacia la izquierda o derecha
-		if body.global_position.x < area.global_position.x:
+		if body.global_position.x > area.global_position.x:
 			_npc_animation.flip_h = false
 		else:
 			_npc_animation.flip_h = true
@@ -119,3 +126,4 @@ func _body_entered(body):
 # Detectamos cuando un "cuerpo" sale del NPC
 func _body_exited(_body):
 	character = null
+	_in_dialogue = false
