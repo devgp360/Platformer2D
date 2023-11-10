@@ -196,7 +196,7 @@ animations = [{
 size = Vector2(53, 62)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_httk0"]
-size = Vector2(76, 61)
+size = Vector2(87.5, 8.66667)
 
 [node name="BigGuy" type="CharacterBody2D"]
 scale = Vector2(1.2, 1.2)
@@ -232,7 +232,8 @@ dialogue_start = "start"
 area = NodePath("..")
 npc = NodePath("../..")
 show_input_key = "buy"
+is_big_guy = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(7, 6.5)
+position = Vector2(7.08333, 32.6667)
 shape = SubResource("RectangleShape2D_httk0")

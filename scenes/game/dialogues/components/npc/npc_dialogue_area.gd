@@ -26,6 +26,8 @@ signal response_selected(response: String)
 @export var npc: CharacterBody2D
 # Opcionalmente se puede hacer que el diálogo inicie con un evento de teclado
 @export var show_input_key: String = ""
+# Para saber si el NPC es el "BigGuy"
+@export var is_big_guy: bool = false
 
 # Definimoa el nodo del personaje principal
 var character: Node2D
@@ -121,8 +123,12 @@ func _body_entered(body):
 		# Giramos el personaje para ver hacia la izquierda o derecha
 		if body.global_position.x > area.global_position.x:
 			_npc_animation.flip_h = false
+			if is_big_guy:
+				_npc_animation.flip_h = true
 		else:
 			_npc_animation.flip_h = true
+			if is_big_guy:
+				_npc_animation.flip_h = false
 
 
 # Detectamos cuando un "cuerpo" sale del NPC
