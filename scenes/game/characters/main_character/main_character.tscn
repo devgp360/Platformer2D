@@ -410,7 +410,9 @@ animation = &"fall"
 z_index = 2
 position = Vector2(32, -1)
 sprite_frames = SubResource("SpriteFrames_isfec")
-animation = &"idle"
+animation = &"attack_2_effect"
+frame = 3
+frame_progress = 1.0
 
 [node name="AreaSword" type="Area2D" parent="." groups=["hit"]]
 
