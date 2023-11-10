@@ -11,6 +11,7 @@ extends Node2D
 @export var effect_animation_sword: AnimatedSprite2D # Referencia al sprite del personaje
 @export var audio_player: AudioStreamPlayer2D # Reproductor de audios
 @onready var _collision := $"../AreaSword/CollisionShape2D" # Colicionador de espada
+@onready var _effect_sword := $"../EffectsSword" # Efectos de espada
 
 var gravity = 650 # Gravedad para el personaje
 var velocity = 100 # Velocidad de movimiento en horizontal
@@ -140,11 +141,15 @@ func _set_animation():
 		main_animation.play(_movements.RIGHT_WITH_SWORD)
 		main_animation.flip_h = false
 		_collision.position.x = abs(_collision.position.x)
+		_effect_sword.position.x = abs(_effect_sword.position.x)
+		_effect_sword.scale.x = abs(_effect_sword.scale.x)
 	elif _current_movement == _movements.LEFT_WITH_SWORD:
 		# Movimiento hacia la izquierda (animación "correr" volteada)
 		main_animation.play(_movements.RIGHT_WITH_SWORD)
 		main_animation.flip_h = true
 		_collision.position.x = - abs(_collision.position.x)
+		_effect_sword.position.x = - abs(_effect_sword.position.x)
+		_effect_sword.scale.x = - abs(_effect_sword.scale.x)
 	else:
 		# Movimiento por defecto (animación de "reposo")
 		main_animation.play(_movements.IDLE_WITH_SWORD)
